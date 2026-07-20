@@ -1,0 +1,49 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/aza-finance-openapi-original.json
+docs: https://docs.transferzero.com/docs/authentication
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  model: hmac
+  detail: >-
+    Two documented modes. Preferred: HMAC request signing using Authorization-Key,
+    Authorization-Nonce and Authorization-Signature headers (signature is an HMAC over
+    the request built from the API secret). Simpler alternative for lower-risk calls:
+    Authorization-Key + Authorization-Secret. Sandbox and production use separate
+    key/secret pairs. Webhook callbacks are signed with the same HMAC scheme.
+schemes:
+- name: AuthorizationKey
+  type: apiKey
+  in: header
+  parameter: Authorization-Key
+  description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication)
+    on how to use these fields
+  sources:
+  - openapi/aza-finance-openapi-original.json
+- name: AuthorizationSecret
+  type: apiKey
+  in: header
+  parameter: Authorization-Secret
+  description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication)
+    on how to use these fields
+  sources:
+  - openapi/aza-finance-openapi-original.json
+- name: AuthorizationNonce
+  type: apiKey
+  in: header
+  parameter: Authorization-Nonce
+  description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication)
+    on how to use these fields
+  sources:
+  - openapi/aza-finance-openapi-original.json
+- name: AuthorizationSignature
+  type: apiKey
+  in: header
+  parameter: Authorization-Signature
+  description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication)
+    on how to use these fields
+  sources:
+  - openapi/aza-finance-openapi-original.json
