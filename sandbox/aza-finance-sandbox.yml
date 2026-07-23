@@ -1,0 +1,39 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.transferzero.com/docs/sandbox-testing/
+summary: >-
+  TransferZero (AZA Finance) exposes a dedicated sandbox that mirrors a trimmed-down
+  version of the production API. Test vs live is separated by base host and by the
+  API key/secret pair issued for each environment. Payout outcomes are simulated
+  deterministically by the last digits of the recipient account number / phone number.
+environments:
+  sandbox:
+    base_url: https://api-sandbox.transferzero.com/v1
+    portal: https://developers.transferzero.com/users/sign_in?environment_id=test
+  production:
+    base_url: https://api.transferzero.com/v1
+separation:
+  detail: >-
+    Sandbox and production use separate HMAC API Key + Secret credentials and separate
+    base hosts. The sandbox is described in the docs as "a trimmed down version of our
+    production API".
+magic_values:
+  note: >-
+    In the sandbox, the resulting transaction/payout state is determined by the ending
+    digits of the recipient account number or phone number. Values below are quoted
+    verbatim from the sandbox-testing docs.
+  ghana_ghs_bank:
+    - {ending: "00", example: "12345678900", state: paid}
+    - {ending: "01", example: "12345678901", state: pending}
+    - {ending: "18", example: "12345678918", state: temporary_error}
+    - {ending: "19", example: "12345678919", state: sender_error}
+    - {ending: "39", example: "12345678939", state: recipient_error}
+  ghana_ghs_mobile:
+    - {ending: "00", example: "+233302123400", state: paid}
+    - {ending: "39", example: "+233302123439", state: recipient_error}
+  nigeria_ngn_bank:
+    - {ending: "00", example: "12345678900", state: paid}
+    - {ending: "71", example: "12345678971", state: sender_error}
+  uganda_ugx_mobile_mtn:
+    - {ending: "0", example: "+256772123400", state: paid}
+    - {ending: "09", example: "+256772123419", state: recipient_error}

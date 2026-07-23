@@ -1,0 +1,180 @@
+openapi: 3.0.2
+info:
+  title: TransferZero Account Debits Mandates API
+  description: Reference documentation for the TransferZero API V1
+  version: '1.0'
+servers:
+- url: https://api-sandbox.transferzero.com/v1
+- url: https://api.transferzero.com/v1
+security:
+- AuthorizationKey: []
+  AuthorizationNonce: []
+  AuthorizationSignature: []
+- AuthorizationKey: []
+  AuthorizationSecret: []
+tags:
+- name: Mandates
+paths:
+  /mandates/{Mandate ID}:
+    get:
+      tags:
+      - Mandates
+      summary: Fetch a single mandate
+      description: 'Finds and returns a Mandate created within the current calendar year,
+
+        where the mandate is linked to a Recipient owned by the authenticated
+
+        API key.
+
+
+        Returns 404 if the mandate is not owned by the API key or was not
+
+        issued in the current calendar year — mandates are only valid for
+
+        the year in which they were issued.'
+      operationId: get-mandate
+      parameters:
+      - name: Mandate ID
+        in: path
+        description: 'ID of the mandate.
+
+
+          Example: `/v1/mandates/bf9ff782-e182-45ac-abea-5bce83ad6670`'
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Mandate object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MandateResponse'
+        '401':
+          description: Authentication information is missing or invalid.
+        '404':
+          description: Resource Not Found.
+        '500':
+          description: Internal Server Error.
+      x-group-parameters: true
+components:
+  schemas:
+    Mandate:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the mandate
+          format: uuid
+          readOnly: true
+          example: bf9ff782-e182-45ac-abea-5bce83ad6670
+        status:
+          $ref: '#/components/schemas/MandateStatus'
+        type_id:
+          type: integer
+          description: 'Numeric beneficiary type identifier. Identifies whether the mandate
+
+            was issued for a natural person, sole proprietor, partnership,
+
+            company, etc.'
+          readOnly: true
+          example: 1
+        reference:
+          type: string
+          description: Human-readable reference assigned to the mandate at creation.
+          readOnly: true
+          example: 74a07630
+        signed_at:
+          type: string
+          description: 'Timestamp when the mandate transitioned to `signed`. `null` for
+
+            mandates that are pending, notified, failed, or bypassed.'
+          format: date-time
+          nullable: true
+          readOnly: true
+        created_at:
+          type: string
+          description: Timestamp when the mandate was created.
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          description: Timestamp when the mandate was last updated.
+          format: date-time
+          readOnly: true
+      description: 'A Mandate authorises payouts to a Recipient. Mandates are issued per
+
+        calendar year and must be in a `signed` (or `bypassed`) state before
+
+        the linked Recipient can receive a payout.'
+      readOnly: true
+      example:
+        reference: 74a07630
+        updated_at: '2000-01-23T04:56:07.000+00:00'
+        type_id: 1
+        signed_at: '2000-01-23T04:56:07.000+00:00'
+        created_at: '2000-01-23T04:56:07.000+00:00'
+        id: bf9ff782-e182-45ac-abea-5bce83ad6670
+        status: signed
+    MandateResponse:
+      type: object
+      properties:
+        object:
+          $ref: '#/components/schemas/Mandate'
+      readOnly: true
+      example:
+        object:
+          reference: 74a07630
+          updated_at: '2000-01-23T04:56:07.000+00:00'
+          type_id: 1
+          signed_at: '2000-01-23T04:56:07.000+00:00'
+          created_at: '2000-01-23T04:56:07.000+00:00'
+          id: bf9ff782-e182-45ac-abea-5bce83ad6670
+          status: signed
+    MandateStatus:
+      type: string
+      description: 'Current state of the mandate.
+
+
+        * `pending` — created, awaiting signing flow
+
+        * `notified` — recipient has been notified to sign
+
+        * `signed` — recipient signed; mandate is active
+
+        * `failed` — signing flow failed (e.g. AVS/CDV rejection)
+
+        * `bypassed` — administratively bypassed for an inward AZA payment'
+      readOnly: true
+      example: signed
+      enum:
+      - pending
+      - notified
+      - signed
+      - failed
+      - bypassed
+  securitySchemes:
+    AuthorizationKey:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Key
+      in: header
+    AuthorizationSecret:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Secret
+      in: header
+    AuthorizationNonce:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Nonce
+      in: header
+    AuthorizationSignature:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Signature
+      in: header
+externalDocs:
+  description: API documentation and onboarding guide
+  url: https://docs.transferzero.com/

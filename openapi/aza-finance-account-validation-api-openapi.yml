@@ -1,0 +1,345 @@
+openapi: 3.0.2
+info:
+  title: TransferZero Account Debits Account Validation API
+  description: Reference documentation for the TransferZero API V1
+  version: '1.0'
+servers:
+- url: https://api-sandbox.transferzero.com/v1
+- url: https://api.transferzero.com/v1
+security:
+- AuthorizationKey: []
+  AuthorizationNonce: []
+  AuthorizationSignature: []
+- AuthorizationKey: []
+  AuthorizationSecret: []
+tags:
+- name: Account Validation
+paths:
+  /account_validations:
+    post:
+      tags:
+      - Account Validation
+      summary: Validates the existence of a bank account or a mobile phone number
+      description: Validates the existence of a bank account or mobile phone number and returns the associated customer name
+      externalDocs:
+        description: More information on account validation and bank account name enquiry
+        url: https://docs.transferzero.com/docs/additional-features/#account-name-enquiry
+      operationId: post-account-validations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountValidationRequest'
+            examples:
+              bank:
+                summary: Bank Account Validation
+                value:
+                  bank_account: '12345678'
+                  bank_code: '050'
+                  country: NG
+                  currency: NGN
+                  method: bank
+              bank_with_iban:
+                summary: Bank account Validation using IBAN in BBAN format
+                value:
+                  iban: CI1630120200000018678768
+                  country: CI
+                  currency: XOF
+                  method: bank
+              mobile:
+                summary: Mobile Phone Number Validation
+                value:
+                  phone_number: '+233000000000'
+                  country: GH
+                  currency: GHS
+                  method: mobile
+        required: true
+      responses:
+        '200':
+          description: Success - Account details found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountValidationResponse'
+        '422':
+          description: Error - Account details not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountValidationResponse'
+        '401':
+          description: Authentication information is missing or invalid.
+        '500':
+          description: Internal Server Error.
+components:
+  schemas:
+    AccountValidationError:
+      type: object
+      properties:
+        error:
+          type: string
+          readOnly: true
+          example: Could not find account
+      description: Describes the error message on an unsuccessful match
+      readOnly: true
+    AccountValidationResult:
+      type: object
+      properties:
+        account_name:
+          type: string
+          readOnly: true
+          example: John Smith
+        mapped_mobile_provider:
+          type: string
+          readOnly: true
+          example: mtn
+        account_status:
+          type: string
+          readOnly: true
+          example: active
+      description: Describes the account holder name on a successful match
+      readOnly: true
+    AccountValidationRequest:
+      required:
+      - country
+      - currency
+      - method
+      type: object
+      properties:
+        bank_account:
+          type: string
+          description: Account Number to query
+          writeOnly: true
+        bank_code:
+          type: string
+          description: Bank Code to query - same codes are used as for creating the transactions
+          writeOnly: true
+        iban:
+          type: string
+          description: IBAN to query - BBAN format for XOF bank accounts
+          writeOnly: true
+        phone_number:
+          type: string
+          description: Phone number to query in E.164 format
+          writeOnly: true
+          example: '+233000000000'
+        mobile_provider:
+          $ref: '#/components/schemas/PayoutMethodMobileProviderEnum'
+        country:
+          type: string
+          description: Country of account in 2-character alpha ISO 3166-2 country format
+          writeOnly: true
+          enum:
+          - BF
+          - BJ
+          - CG
+          - CI
+          - CM
+          - GA
+          - GH
+          - KE
+          - NG
+          - SN
+          - TD
+          - TG
+          - UG
+        currency:
+          type: string
+          description: The currency the bank account is in
+          writeOnly: true
+          enum:
+          - NGN
+          - GHS
+          - KES
+          - XOF
+          - UGX
+          - XAF
+        method:
+          type: string
+          description: The method of the payment. Currently bank and mobile are supported
+          writeOnly: true
+          enum:
+          - bank
+          - mobile
+      example:
+        bank_code: bank_code
+        country: BF
+        mobile_provider: orange
+        method: bank
+        iban: iban
+        phone_number: '+233000000000'
+        currency: NGN
+        bank_account: bank_account
+    AccountValidationResponse:
+      type: object
+      properties:
+        object:
+          $ref: '#/components/schemas/AccountValidationResult'
+        meta:
+          $ref: '#/components/schemas/AccountValidationError'
+      readOnly: true
+      example:
+        object:
+          account_name: John Smith
+          mapped_mobile_provider: mtn
+    PayoutMethodMobileProviderEnum:
+      type: string
+      description: 'The Mobile Wallet provider of the recipient:
+
+
+        For XOF (Senegal) valid options are:
+
+        - `orange`: Orange
+
+        - `tigo`: Tigo
+
+        - `emoney`: Emoney
+
+        - `free`: Free
+
+        - `expresso` : Expresso
+
+        - `wave`: Wave
+
+
+        For XOF (Ivory Coast) valid options are:
+
+        - `orange`: Orange
+
+        - `moov`: Moov
+
+        - `mtn`: MTN
+
+        - `wave`: Wave
+
+
+        For XOF (Burkina Faso) valid options are:
+
+        - `orange`: Orange
+
+        - `mobicash`: Mobicash
+
+        - `moov` : Moov
+
+
+        For XOF (Togo) valid options are:
+
+        - `moov`: Moov
+
+        - `tmoney`: Tmoney
+
+
+        For XOF (Benin) valid options are:
+
+        - `moov`: Moov
+
+        - `mtn`: Mtn
+
+
+        For XOF (Mali) valid options are:
+
+        - `orange`: Orange
+
+        - `mobicash`: Mobicash
+
+        - `tigo` : Tigo
+
+
+        For GHS valid options are:
+
+        - `airteltigo`: AirtelTigo
+
+        - `mtn`: MTN
+
+        - `vodafone`: Vodafone
+
+
+        For KES valid options are:
+
+        - `mpesa`: MPESA
+
+
+        For UGX valid options are:
+
+        - `africell`: Africell
+
+        - `airtel`: Airtel
+
+        - `mtn`: MTN
+
+        - `telecom`: Telecom
+
+
+        For XAF (Chad) valid options are:
+
+        - `moov`: Moov
+
+
+        For XAF (Cameroon) valid options are:
+
+        - `orange`: Orange
+
+        - `mtn`: MTN
+
+
+        For XAF (Congo) valid options are:
+
+        - `airtel`: Airtel
+
+        - `mtn`: MTN
+
+
+        For XAF (Gabon) valid options are:
+
+        - `airtel`: Airtel
+
+        - `moov`: Moov
+
+
+        For GNF (Guinea) valid options are:
+
+        - `orange`: Orange
+
+        - `mtn`: MTN'
+      example: orange
+      enum:
+      - africell
+      - airtel
+      - airteltigo
+      - emoney
+      - expresso
+      - free
+      - mobicash
+      - moov
+      - mpesa
+      - mtn
+      - orange
+      - telecom
+      - tigo
+      - tmoney
+      - vodafone
+      - wave
+  securitySchemes:
+    AuthorizationKey:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Key
+      in: header
+    AuthorizationSecret:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Secret
+      in: header
+    AuthorizationNonce:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Nonce
+      in: header
+    AuthorizationSignature:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Signature
+      in: header
+externalDocs:
+  description: API documentation and onboarding guide
+  url: https://docs.transferzero.com/

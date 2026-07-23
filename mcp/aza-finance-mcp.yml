@@ -1,0 +1,159 @@
+generated: '2026-07-18'
+method: derived
+status: candidate
+source: openapi/aza-finance-openapi-original.json
+note: No official hosted/remote MCP server was found for AZA Finance / TransferZero. This is a DERIVED
+  candidate tool list, one tool per OpenAPI operation, to seed a future MCP server. Not an endorsement
+  that a server exists.
+server:
+  name: aza-finance
+  transport: stdio
+  url: null
+tools:
+- name: get_accounts
+  description: Fetches account balances for all currencies
+  source_operation: openapi/aza-finance-openapi-original.json#get-accounts
+- name: get_account
+  description: Fetches account balance for specified currrency
+  source_operation: openapi/aza-finance-openapi-original.json#get-account
+- name: post_accounts_debits
+  description: Creating an account debit
+  source_operation: openapi/aza-finance-openapi-original.json#post-accounts-debits
+- name: post_account_validations
+  description: Validates the existence of a bank account or a mobile phone number
+  source_operation: openapi/aza-finance-openapi-original.json#post-account-validations
+- name: get_api_logs
+  description: Fetch a list of API logs
+  source_operation: openapi/aza-finance-openapi-original.json#get-api-logs
+- name: get_api_log
+  description: Fetch an individual API log
+  source_operation: openapi/aza-finance-openapi-original.json#get-api-log
+- name: get_balance
+  description: Get dlocal balances
+  source_operation: openapi/aza-finance-openapi-original.json#get-balance
+- name: info_currencies
+  description: Getting a list of possible requested currencies
+  source_operation: openapi/aza-finance-openapi-original.json#info-currencies
+- name: info_currencies_in
+  description: Getting a list of possible input currencies
+  source_operation: openapi/aza-finance-openapi-original.json#info-currencies-in
+- name: info_currencies_out
+  description: Getting a list of possible output currencies
+  source_operation: openapi/aza-finance-openapi-original.json#info-currencies-out
+- name: get_documents
+  description: Getting a list of documents
+  source_operation: openapi/aza-finance-openapi-original.json#get-documents
+- name: post_documents
+  description: Creating a document
+  source_operation: openapi/aza-finance-openapi-original.json#post-documents
+- name: get_document
+  description: Fetching a document
+  source_operation: openapi/aza-finance-openapi-original.json#get-document
+- name: payment_methods_in
+  description: This method returns possible payin methods.
+  source_operation: openapi/aza-finance-openapi-original.json#payment-methods-in
+- name: payment_methods_out
+  description: This method returns possible payout methods.
+  source_operation: openapi/aza-finance-openapi-original.json#payment-methods-out
+- name: get_webhook_logs
+  description: Fetch a list of webhook logs
+  source_operation: openapi/aza-finance-openapi-original.json#get-webhook-logs
+- name: get_webhook_log
+  description: Fetch an individual webhook log
+  source_operation: openapi/aza-finance-openapi-original.json#get-webhook-log
+- name: get_mandate
+  description: Fetch a single mandate
+  source_operation: openapi/aza-finance-openapi-original.json#get-mandate
+- name: get_payin_method
+  description: Fetching a payin method
+  source_operation: openapi/aza-finance-openapi-original.json#get-payin-method
+- name: delete_payin_method
+  description: Deleting a payin method
+  source_operation: openapi/aza-finance-openapi-original.json#delete-payin-method
+- name: patch_payin_method
+  description: Updating a payin method
+  source_operation: openapi/aza-finance-openapi-original.json#patch-payin-method
+- name: retry_payin_method
+  description: Retries PayinMethod
+  source_operation: openapi/aza-finance-openapi-original.json#retry-payin-method
+- name: get_payout_methods
+  description: Listing payout methods
+  source_operation: openapi/aza-finance-openapi-original.json#get-payout-methods
+- name: post_payout_methods
+  description: Creating a payout method
+  source_operation: openapi/aza-finance-openapi-original.json#post-payout-methods
+- name: get_payout_method
+  description: Fetching a payout method
+  source_operation: openapi/aza-finance-openapi-original.json#get-payout-method
+- name: delete_payout_method
+  description: Deleting a payout method
+  source_operation: openapi/aza-finance-openapi-original.json#delete-payout-method
+- name: patch_payout_method
+  description: Updating a payout method
+  source_operation: openapi/aza-finance-openapi-original.json#patch-payout-method
+- name: get_recipients
+  description: Getting a list of recipients with filtering
+  source_operation: openapi/aza-finance-openapi-original.json#get-recipients
+- name: delete_recipient
+  description: Cancelling a recipient
+  source_operation: openapi/aza-finance-openapi-original.json#delete-recipient
+- name: patch_recipient
+  description: Updating a recipient
+  source_operation: openapi/aza-finance-openapi-original.json#patch-recipient
+- name: proof_of_payments
+  description: Returns list of proof of payments
+  source_operation: openapi/aza-finance-openapi-original.json#proof-of-payments
+- name: get_senders
+  description: Listing senders
+  source_operation: openapi/aza-finance-openapi-original.json#get-senders
+- name: post_senders
+  description: Creating a sender
+  source_operation: openapi/aza-finance-openapi-original.json#post-senders
+- name: get_sender
+  description: Fetching a sender
+  source_operation: openapi/aza-finance-openapi-original.json#get-sender
+- name: delete_sender
+  description: Deleting a sender
+  source_operation: openapi/aza-finance-openapi-original.json#delete-sender
+- name: patch_sender
+  description: Updating a sender
+  source_operation: openapi/aza-finance-openapi-original.json#patch-sender
+- name: get_transactions
+  description: Get a list of transactions
+  source_operation: openapi/aza-finance-openapi-original.json#get-transactions
+- name: post_transactions
+  description: Creates a new transaction
+  source_operation: openapi/aza-finance-openapi-original.json#post-transactions
+- name: calculate_transactions
+  description: Calculates transaction amounts for a transaction payload
+  source_operation: openapi/aza-finance-openapi-original.json#calculate-transactions
+- name: validate_transactions
+  description: Validates a transaction payload
+  source_operation: openapi/aza-finance-openapi-original.json#validate-transactions
+- name: create_and_fund_transaction
+  description: Creates a new transaction and funds it from account balance
+  source_operation: openapi/aza-finance-openapi-original.json#create-and-fund-transaction
+- name: get_transaction
+  description: Fetch a single transaction
+  source_operation: openapi/aza-finance-openapi-original.json#get-transaction
+- name: payin_transaction
+  description: Creates a fake payin for transaction
+  source_operation: openapi/aza-finance-openapi-original.json#payin-transaction
+- name: payout_transaction
+  description: Creates a fake payout for transaction
+  source_operation: openapi/aza-finance-openapi-original.json#payout-transaction
+- name: get_webhooks
+  description: Listing webhooks
+  source_operation: openapi/aza-finance-openapi-original.json#get-webhooks
+- name: post_webhooks
+  description: Creating a webhook
+  source_operation: openapi/aza-finance-openapi-original.json#post-webhooks
+- name: get_webhook
+  description: Find a webhook's details
+  source_operation: openapi/aza-finance-openapi-original.json#get-webhook
+- name: delete_webhook
+  description: Unsubscribing from a webhook
+  source_operation: openapi/aza-finance-openapi-original.json#delete-webhook
+- name: get_webhook_events
+  description: Find possible webhook events
+  source_operation: openapi/aza-finance-openapi-original.json#get-webhook-events

@@ -1,0 +1,43 @@
+generated: '2026-07-18'
+method: searched
+source: https://github.com/transferzero
+description: >-
+  Official TransferZero (AZA Finance) API V1 client SDKs, all generated from the
+  same OpenAPI specification and published under the transferzero GitHub org.
+packages:
+  - language: ruby
+    registry: rubygems
+    name: transferzero-sdk
+    url: https://rubygems.org/gems/transferzero-sdk
+    repository: https://github.com/transferzero/transferzero-sdk-ruby
+    install: gem install transferzero-sdk
+    official: true
+  - language: javascript
+    registry: npm
+    name: transferzero-sdk
+    url: https://www.npmjs.com/package/transferzero-sdk
+    repository: https://github.com/transferzero/transferzero-sdk-javascript
+    install: npm install transferzero-sdk --save
+    official: true
+  - language: php
+    registry: packagist
+    name: transferzero/transferzero-php-sdk
+    url: https://packagist.org/packages/transferzero/transferzero-php-sdk
+    repository: https://github.com/transferzero/transferzero-sdk-php
+    install: composer require transferzero/transferzero-php-sdk
+    official: true
+  - language: csharp
+    registry: nuget
+    name: TransferZero.Sdk
+    url: https://www.nuget.org/packages/TransferZero.Sdk
+    repository: https://github.com/transferzero/transferzero-sdk-dotnet
+    install: Install-Package TransferZero.Sdk
+    official: true
+  - language: java
+    registry: maven
+    name: com.transferzero.sdk:transferzero-sdk-java8
+    url: https://github.com/transferzero/transferzero-sdk-java8
+    repository: https://github.com/transferzero/transferzero-sdk-java8
+    install: "maven: com.transferzero.sdk:transferzero-sdk-java8"
+    note: "Java 8+ SDK; a Java 7 variant is published at transferzero-sdk-java7."
+    official: true

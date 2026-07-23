@@ -1,0 +1,108 @@
+openapi: 3.0.2
+info:
+  title: TransferZero Account Debits dlocal balance API
+  description: Reference documentation for the TransferZero API V1
+  version: '1.0'
+servers:
+- url: https://api-sandbox.transferzero.com/v1
+- url: https://api.transferzero.com/v1
+security:
+- AuthorizationKey: []
+  AuthorizationNonce: []
+  AuthorizationSignature: []
+- AuthorizationKey: []
+  AuthorizationSecret: []
+tags:
+- name: dlocal balance
+paths:
+  /dlocal/balance:
+    get:
+      tags:
+      - dlocal balance
+      summary: Get dlocal balances
+      description: This endpoint retrieves dlocal account balances
+      operationId: get-balance
+      responses:
+        '200':
+          description: Array of balances
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DlocalBalanceResponse'
+        '401':
+          description: Authentication information is missing or invalid.
+        '500':
+          description: Internal Server Error.
+components:
+  schemas:
+    DlocalBalanceResponse:
+      type: object
+      properties:
+        object:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/DlocalBalance'
+      readOnly: true
+      example:
+        object:
+        - current_balance_date: '2026-02-24'
+          currency: USD
+          available_balance: 1000
+          previous_day_closing_balance: 1000
+        - current_balance_date: '2026-02-24'
+          currency: USD
+          available_balance: 1000
+          previous_day_closing_balance: 1000
+    DlocalBalance:
+      properties:
+        currency:
+          type: string
+          description: The currency of this balance
+          readOnly: true
+          example: USD
+        available_balance:
+          type: number
+          description: The available balance for the given currency
+          readOnly: true
+          example: 1000
+        previous_day_closing_balance:
+          type: number
+          description: The balance at end of previous day
+          readOnly: true
+          example: 1000
+        current_balance_date:
+          type: string
+          description: Current date
+          readOnly: true
+          example: '2026-02-24'
+      readOnly: true
+      example:
+        current_balance_date: '2026-02-24'
+        currency: USD
+        available_balance: 1000
+        previous_day_closing_balance: 1000
+  securitySchemes:
+    AuthorizationKey:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Key
+      in: header
+    AuthorizationSecret:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Secret
+      in: header
+    AuthorizationNonce:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Nonce
+      in: header
+    AuthorizationSignature:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Signature
+      in: header
+externalDocs:
+  description: API documentation and onboarding guide
+  url: https://docs.transferzero.com/

@@ -1,27 +1,428 @@
 aid: aza-finance
 name: AZA Finance
-description: 'AZA Finance is a company surfaced as a portfolio company of pantera-capital and added to
-  the API Evangelist network as a stub for enrichment. Sector: crypto. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: >-
+  AZA Finance is a regulated financial-infrastructure provider delivering foreign
+  exchange (FX), collections, treasury and cross-border payout services across Africa
+  and between Africa and the rest of the world. Its developer platform is the
+  TransferZero API V1 — a REST API that lets businesses create senders, quote FX,
+  send bulk and individual payouts to bank accounts and mobile-money wallets, validate
+  accounts, attach KYC documents, and receive real-time webhook notifications.
+  Authentication is HMAC request-signing; official SDKs are published for Ruby,
+  JavaScript, PHP, .NET and Java. AZA Finance is licensed by the UK FCA (#673100),
+  the Bank of Uganda (#MR 125/23) and the Central Bank of Nigeria.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://www.azafinance.com/favicon.ico
 url: https://raw.githubusercontent.com/api-evangelist/aza-finance/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - pantera-capital
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: enriched-from-openapi
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
-- Crypto
-apis: []
+- Financial Services
+- Payments
+- Foreign Exchange
+- Cross-Border Payments
+- Africa
+- Fintech
+- API
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: aza-finance:aza-finance-account-debits-api
+  name: AZA Finance Account Debits API
+  description: The Account Debits API from AZA Finance — 1 operation(s) for account debits.
+  humanURL: https://docs.transferzero.com/
+  baseURL: https://api.transferzero.com/v1
+  tags:
+  - Account Debits
+  properties:
+  - type: OpenAPI
+    url: openapi/aza-finance-account-debits-api-openapi.yml
+  - type: APIReference
+    url: https://api.transferzero.com/documentation/
+  - type: Webhooks
+    url: asyncapi/aza-finance-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aza-finance-problem-types.yml
+  - type: DataModel
+    url: data-model/aza-finance-data-model.yml
+  - type: Arazzo
+    url: arazzo/aza-finance-send-payout.yml
+- aid: aza-finance:aza-finance-account-validation-api
+  name: AZA Finance Account Validation API
+  description: The Account Validation API from AZA Finance — 1 operation(s) for account validation.
+  humanURL: https://docs.transferzero.com/
+  baseURL: https://api.transferzero.com/v1
+  tags:
+  - Account Validation
+  properties:
+  - type: OpenAPI
+    url: openapi/aza-finance-account-validation-api-openapi.yml
+  - type: APIReference
+    url: https://api.transferzero.com/documentation/
+  - type: Webhooks
+    url: asyncapi/aza-finance-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aza-finance-problem-types.yml
+  - type: DataModel
+    url: data-model/aza-finance-data-model.yml
+  - type: Arazzo
+    url: arazzo/aza-finance-send-payout.yml
+- aid: aza-finance:aza-finance-accounts-api
+  name: AZA Finance Accounts API
+  description: The Accounts API from AZA Finance — 2 operation(s) for accounts.
+  humanURL: https://docs.transferzero.com/
+  baseURL: https://api.transferzero.com/v1
+  tags:
+  - Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/aza-finance-accounts-api-openapi.yml
+  - type: APIReference
+    url: https://api.transferzero.com/documentation/
+  - type: Webhooks
+    url: asyncapi/aza-finance-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aza-finance-problem-types.yml
+  - type: DataModel
+    url: data-model/aza-finance-data-model.yml
+  - type: Arazzo
+    url: arazzo/aza-finance-send-payout.yml
+- aid: aza-finance:aza-finance-api-logs-api
+  name: AZA Finance API Logs API
+  description: The API Logs API from AZA Finance — 2 operation(s) for api logs.
+  humanURL: https://docs.transferzero.com/
+  baseURL: https://api.transferzero.com/v1
+  tags:
+  - API Logs
+  properties:
+  - type: OpenAPI
+    url: openapi/aza-finance-api-logs-api-openapi.yml
+  - type: APIReference
+    url: https://api.transferzero.com/documentation/
+  - type: Webhooks
+    url: asyncapi/aza-finance-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aza-finance-problem-types.yml
+  - type: DataModel
+    url: data-model/aza-finance-data-model.yml
+  - type: Arazzo
+    url: arazzo/aza-finance-send-payout.yml
+- aid: aza-finance:aza-finance-currency-info-api
+  name: AZA Finance Currency Info API
+  description: The Currency Info API from AZA Finance — 3 operation(s) for currency info.
+  humanURL: https://docs.transferzero.com/
+  baseURL: https://api.transferzero.com/v1
+  tags:
+  - Currency Info
+  properties:
+  - type: OpenAPI
+    url: openapi/aza-finance-currency-info-api-openapi.yml
+  - type: APIReference
+    url: https://api.transferzero.com/documentation/
+  - type: Webhooks
+    url: asyncapi/aza-finance-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aza-finance-problem-types.yml
+  - type: DataModel
+    url: data-model/aza-finance-data-model.yml
+  - type: Arazzo
+    url: arazzo/aza-finance-send-payout.yml
+- aid: aza-finance:aza-finance-dlocal-balance-api
+  name: AZA Finance dlocal balance API
+  description: The dlocal balance API from AZA Finance — 1 operation(s) for dlocal balance.
+  humanURL: https://docs.transferzero.com/
+  baseURL: https://api.transferzero.com/v1
+  tags:
+  - dlocal balance
+  properties:
+  - type: OpenAPI
+    url: openapi/aza-finance-dlocal-balance-api-openapi.yml
+  - type: APIReference
+    url: https://api.transferzero.com/documentation/
+  - type: Webhooks
+    url: asyncapi/aza-finance-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aza-finance-problem-types.yml
+  - type: DataModel
+    url: data-model/aza-finance-data-model.yml
+  - type: Arazzo
+    url: arazzo/aza-finance-send-payout.yml
+- aid: aza-finance:aza-finance-documents-api
+  name: AZA Finance Documents API
+  description: The Documents API from AZA Finance — 2 operation(s) for documents.
+  humanURL: https://docs.transferzero.com/
+  baseURL: https://api.transferzero.com/v1
+  tags:
+  - Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/aza-finance-documents-api-openapi.yml
+  - type: APIReference
+    url: https://api.transferzero.com/documentation/
+  - type: Webhooks
+    url: asyncapi/aza-finance-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aza-finance-problem-types.yml
+  - type: DataModel
+    url: data-model/aza-finance-data-model.yml
+  - type: Arazzo
+    url: arazzo/aza-finance-send-payout.yml
+- aid: aza-finance:aza-finance-logs-api
+  name: AZA Finance Logs API
+  description: The Logs API from AZA Finance — 2 operation(s) for logs.
+  humanURL: https://docs.transferzero.com/
+  baseURL: https://api.transferzero.com/v1
+  tags:
+  - Logs
+  properties:
+  - type: OpenAPI
+    url: openapi/aza-finance-logs-api-openapi.yml
+  - type: APIReference
+    url: https://api.transferzero.com/documentation/
+  - type: Webhooks
+    url: asyncapi/aza-finance-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aza-finance-problem-types.yml
+  - type: DataModel
+    url: data-model/aza-finance-data-model.yml
+  - type: Arazzo
+    url: arazzo/aza-finance-send-payout.yml
+- aid: aza-finance:aza-finance-mandates-api
+  name: AZA Finance Mandates API
+  description: The Mandates API from AZA Finance — 1 operation(s) for mandates.
+  humanURL: https://docs.transferzero.com/
+  baseURL: https://api.transferzero.com/v1
+  tags:
+  - Mandates
+  properties:
+  - type: OpenAPI
+    url: openapi/aza-finance-mandates-api-openapi.yml
+  - type: APIReference
+    url: https://api.transferzero.com/documentation/
+  - type: Webhooks
+    url: asyncapi/aza-finance-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aza-finance-problem-types.yml
+  - type: DataModel
+    url: data-model/aza-finance-data-model.yml
+  - type: Arazzo
+    url: arazzo/aza-finance-send-payout.yml
+- aid: aza-finance:aza-finance-payin-methods-api
+  name: AZA Finance Payin Methods API
+  description: The Payin Methods API from AZA Finance — 2 operation(s) for payin methods.
+  humanURL: https://docs.transferzero.com/
+  baseURL: https://api.transferzero.com/v1
+  tags:
+  - Payin Methods
+  properties:
+  - type: OpenAPI
+    url: openapi/aza-finance-payin-methods-api-openapi.yml
+  - type: APIReference
+    url: https://api.transferzero.com/documentation/
+  - type: Webhooks
+    url: asyncapi/aza-finance-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aza-finance-problem-types.yml
+  - type: DataModel
+    url: data-model/aza-finance-data-model.yml
+  - type: Arazzo
+    url: arazzo/aza-finance-send-payout.yml
+- aid: aza-finance:aza-finance-payment-methods-api
+  name: AZA Finance Payment Methods API
+  description: The Payment Methods API from AZA Finance — 2 operation(s) for payment methods.
+  humanURL: https://docs.transferzero.com/
+  baseURL: https://api.transferzero.com/v1
+  tags:
+  - Payment Methods
+  properties:
+  - type: OpenAPI
+    url: openapi/aza-finance-payment-methods-api-openapi.yml
+  - type: APIReference
+    url: https://api.transferzero.com/documentation/
+  - type: Webhooks
+    url: asyncapi/aza-finance-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aza-finance-problem-types.yml
+  - type: DataModel
+    url: data-model/aza-finance-data-model.yml
+  - type: Arazzo
+    url: arazzo/aza-finance-send-payout.yml
+- aid: aza-finance:aza-finance-payout-methods-api
+  name: AZA Finance Payout Methods API
+  description: The Payout Methods API from AZA Finance — 2 operation(s) for payout methods.
+  humanURL: https://docs.transferzero.com/
+  baseURL: https://api.transferzero.com/v1
+  tags:
+  - Payout Methods
+  properties:
+  - type: OpenAPI
+    url: openapi/aza-finance-payout-methods-api-openapi.yml
+  - type: APIReference
+    url: https://api.transferzero.com/documentation/
+  - type: Webhooks
+    url: asyncapi/aza-finance-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aza-finance-problem-types.yml
+  - type: DataModel
+    url: data-model/aza-finance-data-model.yml
+  - type: Arazzo
+    url: arazzo/aza-finance-send-payout.yml
+- aid: aza-finance:aza-finance-recipients-api
+  name: AZA Finance Recipients API
+  description: The Recipients API from AZA Finance — 3 operation(s) for recipients.
+  humanURL: https://docs.transferzero.com/
+  baseURL: https://api.transferzero.com/v1
+  tags:
+  - Recipients
+  properties:
+  - type: OpenAPI
+    url: openapi/aza-finance-recipients-api-openapi.yml
+  - type: APIReference
+    url: https://api.transferzero.com/documentation/
+  - type: Webhooks
+    url: asyncapi/aza-finance-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aza-finance-problem-types.yml
+  - type: DataModel
+    url: data-model/aza-finance-data-model.yml
+  - type: Arazzo
+    url: arazzo/aza-finance-send-payout.yml
+- aid: aza-finance:aza-finance-senders-api
+  name: AZA Finance Senders API
+  description: The Senders API from AZA Finance — 2 operation(s) for senders.
+  humanURL: https://docs.transferzero.com/
+  baseURL: https://api.transferzero.com/v1
+  tags:
+  - Senders
+  properties:
+  - type: OpenAPI
+    url: openapi/aza-finance-senders-api-openapi.yml
+  - type: APIReference
+    url: https://api.transferzero.com/documentation/
+  - type: Webhooks
+    url: asyncapi/aza-finance-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aza-finance-problem-types.yml
+  - type: DataModel
+    url: data-model/aza-finance-data-model.yml
+  - type: Arazzo
+    url: arazzo/aza-finance-send-payout.yml
+- aid: aza-finance:aza-finance-transactions-api
+  name: AZA Finance Transactions API
+  description: The Transactions API from AZA Finance — 7 operation(s) for transactions.
+  humanURL: https://docs.transferzero.com/
+  baseURL: https://api.transferzero.com/v1
+  tags:
+  - Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/aza-finance-transactions-api-openapi.yml
+  - type: APIReference
+    url: https://api.transferzero.com/documentation/
+  - type: Webhooks
+    url: asyncapi/aza-finance-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aza-finance-problem-types.yml
+  - type: DataModel
+    url: data-model/aza-finance-data-model.yml
+  - type: Arazzo
+    url: arazzo/aza-finance-send-payout.yml
+- aid: aza-finance:aza-finance-webhooks-api
+  name: AZA Finance Webhooks API
+  description: The Webhooks API from AZA Finance — 3 operation(s) for webhooks.
+  humanURL: https://docs.transferzero.com/
+  baseURL: https://api.transferzero.com/v1
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/aza-finance-webhooks-api-openapi.yml
+  - type: APIReference
+    url: https://api.transferzero.com/documentation/
+  - type: Webhooks
+    url: asyncapi/aza-finance-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aza-finance-problem-types.yml
+  - type: DataModel
+    url: data-model/aza-finance-data-model.yml
+  - type: Arazzo
+    url: arazzo/aza-finance-send-payout.yml
 common:
+- type: DeveloperPortal
+  url: https://docs.transferzero.com/
+- type: Documentation
+  url: https://docs.transferzero.com/docs/home/
+- type: APIReference
+  url: https://api.transferzero.com/documentation/
+- type: GettingStarted
+  url: https://docs.transferzero.com/docs/home/
+- type: Authentication
+  url: authentication/aza-finance-authentication.yml
+- type: Packages
+  url: packages/aza-finance-packages.yml
+- type: SDKs
+  url: packages/aza-finance-packages.yml
+- type: Sandbox
+  url: sandbox/aza-finance-sandbox.yml
+- type: Conventions
+  url: conventions/aza-finance-conventions.yml
+- type: Idempotency
+  url: conventions/aza-finance-conventions.yml
+- type: Lifecycle
+  url: lifecycle/aza-finance-lifecycle.yml
+- type: Conformance
+  url: conformance/aza-finance-conformance.yml
+- type: Webhooks
+  url: asyncapi/aza-finance-webhooks.yml
+- type: MCPServer
+  url: mcp/aza-finance-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/aza-finance-llms.txt
+- type: WellKnown
+  url: well-known/aza-finance-well-known.yml
+- type: DomainSecurity
+  url: security/aza-finance-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/aza-finance-agentic-access.yml
+- type: Blog
+  url: https://azafinance.com/blog/
+- type: GitHubOrganization
+  url: https://github.com/transferzero
+- type: Support
+  url: https://azafinance.com/contact/
+- type: TermsOfService
+  url: https://azafinance.com/terms-and-use/
+- type: PrivacyPolicy
+  url: https://azafinance.com/privacy-policy/
+- type: SignUp
+  url: https://account.azafinance.com/signin
 - type: Website
   url: https://www.azafinance.com/
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

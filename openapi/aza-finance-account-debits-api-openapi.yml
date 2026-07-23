@@ -1,0 +1,354 @@
+openapi: 3.0.2
+info:
+  title: TransferZero Account Debits API
+  description: Reference documentation for the TransferZero API V1
+  version: '1.0'
+servers:
+- url: https://api-sandbox.transferzero.com/v1
+- url: https://api.transferzero.com/v1
+security:
+- AuthorizationKey: []
+  AuthorizationNonce: []
+  AuthorizationSignature: []
+- AuthorizationKey: []
+  AuthorizationSecret: []
+tags:
+- name: Account Debits
+paths:
+  /accounts/debits:
+    post:
+      tags:
+      - Account Debits
+      summary: Creating an account debit
+      description: 'Creates a new account debit finding transaction through the internal balance
+
+
+        To successfully fund a transaction -
+
+        - The currency needs to be the same as the input_currency on the transaction
+
+        - The amount has to be the same as the input_amount on the transaction
+
+        - The to_id is the id of the transaction
+
+        - You need to have enough balance of the appropriate currency inside your wallet
+
+
+        Once the transaction is funded, we will immediately start trying to pay out the recipient(s).
+
+
+        It is also possible to create multiple account debits by supplying an array of debit objects
+
+        '
+      externalDocs:
+        description: Funding Transaction guide including alternative ways to fund transactions.
+        url: https://docs.transferzero.com/docs/transaction-flow/#funding-transactions
+      operationId: post-accounts-debits
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DebitRequestWrapper'
+            examples:
+              single_debit:
+                summary: Single Debit
+                value:
+                  debit:
+                    currency: NGN
+                    amount: '2000.0'
+                    to_id: 5f44026b-7904-4c30-87d6-f8972d790ded
+                    to_type: Transaction
+              multiple_debit:
+                summary: Multiple Debit
+                value:
+                  debit:
+                  - currency: NGN
+                    amount: 2.0
+                    to_id: d9269c2a-7049-4625-b3b8-30e25ad33162
+                    to_type: Transaction
+                    metadata:
+                      id: b783a4f5-a959-4a1f-87fa-112fe6eae9e4
+                  - currency: NGN
+                    amount: 2.0
+                    to_id: 912973a9-e027-4768-8e98-5a8f44469bf4
+                    to_type: Transaction
+                    metadata:
+                      id: 4900f50a-bfb6-469f-ad0e-8c8cf0ef5dfa
+        required: true
+      responses:
+        '201':
+          description: Account Debit details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DebitListResponse'
+        '401':
+          description: Authentication information is missing or invalid.
+        '422':
+          description: Invalid account debit object (includes errors object)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DebitListResponse'
+        '500':
+          description: Internal Server Error.
+components:
+  schemas:
+    Debit:
+      required:
+      - to_id
+      - to_type
+      type: object
+      properties:
+        amount:
+          type: number
+          description: 'The amount to be debited from your account.
+
+
+            The "amount" parameter is optional -
+
+            - if included, it must equal the amount required to fund the transaction.
+
+            - if omitted, it will default to the amount required to fund the transaction.
+
+            '
+          format: double
+          example: 10000
+        currency:
+          type: string
+          description: 'The currency of the amount in 3-character alpha ISO 4217 currency format.
+
+
+            The "currency" parameter is optional
+
+            - if omitted, it will default to the payin currency of the transaction.
+
+            - it can be added in as an additional check to ensure that the expected currency is used. (an error will be given back if it does not match up with the payin currency of the transaction)
+
+            '
+          example: NGN
+        to_type:
+          type: string
+          description: Describes what the debit is funding
+          example: Transaction
+        to_id:
+          type: string
+          description: The ID of the resource the debit is funding
+          format: uuid
+          example: 5f44026b-7904-4c30-87d6-f8972d790ded
+        metadata:
+          type: object
+          description: Metadata of account debit
+          example: {}
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          example: 5f44026b-7904-4c30-87d6-f8972d790ded
+        created_at:
+          type: string
+          description: Date and time that the debit was created
+          format: date-time
+          readOnly: true
+        usd_amount:
+          type: number
+          description: 'The amount to be debited from your account converted to USD
+
+            '
+          format: double
+          readOnly: true
+          example: 200.06211683187206
+        running_balance:
+          type: number
+          description: 'The total amount remaining in your account after the debit call
+
+            '
+          format: double
+          readOnly: true
+          example: 2000000
+        errors:
+          additionalProperties:
+            type: array
+            readOnly: true
+            items:
+              $ref: '#/components/schemas/ValidationErrorDescription'
+          description: The fields that have some problems and don't pass validation
+          readOnly: true
+          example:
+            phone_number:
+            - error: invalid
+            documents:
+            - error: blank
+      description: Debits are used to fund transactions from your internal TransferZero balance.
+      example:
+        to_type: Transaction
+        amount: 10000
+        metadata: {}
+        to_id: 5f44026b-7904-4c30-87d6-f8972d790ded
+        created_at: '2000-01-23T04:56:07.000+00:00'
+        currency: NGN
+        id: 5f44026b-7904-4c30-87d6-f8972d790ded
+        running_balance: 2000000
+        errors:
+          phone_number:
+          - error: invalid
+          documents:
+          - error: blank
+        usd_amount: 200.06211683187206
+      externalDocs:
+        description: Funding Transactions in the API Guide
+        url: https://docs.transferzero.com/docs/transaction-flow/#funding-transactions
+    DebitListResponse:
+      type: object
+      properties:
+        object:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Debit'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+      readOnly: true
+      example:
+        meta:
+          pagination:
+            next_page: 3
+            total_count: 45
+            total_pages: 5
+            prev_page: 1
+            current_page: 2
+        object:
+        - to_type: Transaction
+          amount: 10000
+          metadata: {}
+          to_id: 5f44026b-7904-4c30-87d6-f8972d790ded
+          created_at: '2000-01-23T04:56:07.000+00:00'
+          currency: NGN
+          id: 5f44026b-7904-4c30-87d6-f8972d790ded
+          running_balance: 2000000
+          errors:
+            phone_number:
+            - error: invalid
+            documents:
+            - error: blank
+          usd_amount: 200.06211683187206
+        - to_type: Transaction
+          amount: 10000
+          metadata: {}
+          to_id: 5f44026b-7904-4c30-87d6-f8972d790ded
+          created_at: '2000-01-23T04:56:07.000+00:00'
+          currency: NGN
+          id: 5f44026b-7904-4c30-87d6-f8972d790ded
+          running_balance: 2000000
+          errors:
+            phone_number:
+            - error: invalid
+            documents:
+            - error: blank
+          usd_amount: 200.06211683187206
+    PaginationMeta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+      readOnly: true
+      example:
+        pagination:
+          next_page: 3
+          total_count: 45
+          total_pages: 5
+          prev_page: 1
+          current_page: 2
+    ValidationErrorDescription:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Describes what the problem is with the field
+          readOnly: true
+          example: invalid
+      description: The description of the error
+      readOnly: true
+      example:
+        error: invalid
+    DebitRequestWrapper:
+      example:
+        debit:
+          currency: NGN
+          amount: '2000.0'
+          to_id: 5f44026b-7904-4c30-87d6-f8972d790ded
+          to_type: Transaction
+      oneOf:
+      - $ref: '#/components/schemas/DebitRequest'
+      - $ref: '#/components/schemas/DebitListRequest'
+    DebitRequest:
+      type: object
+      properties:
+        debit:
+          $ref: '#/components/schemas/Debit'
+    DebitListRequest:
+      type: object
+      properties:
+        debit:
+          type: array
+          items:
+            $ref: '#/components/schemas/Debit'
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: integer
+          description: The number of the current page
+          readOnly: true
+          example: 2
+        next_page:
+          type: integer
+          description: The number of the next page. If no next page exists, this will be `null`
+          readOnly: true
+          example: 3
+        prev_page:
+          type: integer
+          description: The number of the previous page. If no previous page exists, this will be `null`
+          readOnly: true
+          example: 1
+        total_pages:
+          type: integer
+          description: The number of pages in the result set
+          readOnly: true
+          example: 5
+        total_count:
+          type: integer
+          description: The total number of results in the set
+          readOnly: true
+          example: 45
+      readOnly: true
+      example:
+        next_page: 3
+        total_count: 45
+        total_pages: 5
+        prev_page: 1
+        current_page: 2
+  securitySchemes:
+    AuthorizationKey:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Key
+      in: header
+    AuthorizationSecret:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Secret
+      in: header
+    AuthorizationNonce:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Nonce
+      in: header
+    AuthorizationSignature:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Signature
+      in: header
+externalDocs:
+  description: API documentation and onboarding guide
+  url: https://docs.transferzero.com/

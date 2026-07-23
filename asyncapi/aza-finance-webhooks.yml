@@ -1,0 +1,28 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/aza-finance-openapi-original.json
+spec_type: Webhooks
+note: >-
+  AZA Finance / TransferZero does not publish an AsyncAPI document, but webhooks are a
+  first-class part of the REST API. This captures the webhook surface. Callbacks are
+  signed with the same HMAC scheme as requests (Authorization-Key / Authorization-Nonce
+  / Authorization-Signature) and validated with the SDK validate_webhook_request().
+management:
+  register:   {operationId: post-webhooks, method: POST, path: /webhooks}
+  list:       {operationId: get-webhooks, method: GET, path: /webhooks}
+  get:        {operationId: get-webhook, method: GET, path: "/webhooks/{Webhook ID}"}
+  delete:     {operationId: delete-webhook, method: DELETE, path: "/webhooks/{Webhook ID}"}
+  list_event_types: {operationId: get-webhook-events, method: GET, path: /webhooks/events}
+  delivery_logs:
+    list: {operationId: get-webhook-logs, method: GET, path: /logs/webhooks}
+    get:  {operationId: get-webhook-log, method: GET, path: "/logs/{Webhook Log ID}"}
+payload_categories:
+  - {object: transaction, schema: TransactionWebhook, description: "Transaction state changes (e.g. transaction.mispaid)."}
+  - {object: sender, schema: SenderWebhook, description: "Sender/KYC updates."}
+  - {object: recipient, schema: RecipientWebhook, description: "Recipient/payout leg updates."}
+  - {object: document, schema: DocumentWebhook, description: "KYC document updates."}
+  - {object: payout_method, schema: PayoutMethodWebhook, description: "Payout method updates."}
+signature:
+  scheme: hmac
+  headers: [Authorization-Key, Authorization-Nonce, Authorization-Signature]
+  detail: "Verify the HMAC signature over the raw callback body before trusting the payload."

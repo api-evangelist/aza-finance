@@ -1,0 +1,45 @@
+# AZA Finance (TransferZero API)
+
+> AZA Finance provides foreign exchange and cross-border payment infrastructure for
+> Africa, offering FX, collections, treasury and bulk/online payouts across African and
+> European currencies. Its developer platform is the TransferZero API V1 — a REST API
+> with HMAC-signed authentication, first-class webhooks, and official SDKs in Ruby,
+> JavaScript, PHP, .NET and Java. AZA Finance is regulated by the UK FCA (#673100), the
+> Bank of Uganda (#MR 125/23) and the Central Bank of Nigeria.
+
+## API
+- [TransferZero API V1](https://docs.transferzero.com/): Cross-border FX and payout API. Production base URL https://api.transferzero.com/v1, sandbox https://api-sandbox.transferzero.com/v1.
+
+## Specs
+- [OpenAPI 3.0.2 specification](https://specification.transferzero.com/generated/openapi.json): 49 operations across Accounts, Senders, Recipients, Transactions, Payout/Payin Methods, Documents, Webhooks, Mandates, Currency Info and Account Validation.
+- [Interactive reference](https://api.transferzero.com/documentation/)
+
+## Docs
+- [Getting started](https://docs.transferzero.com/docs/home/)
+- [Reference documentation](https://docs.transferzero.com/docs/reference-documentation/)
+- [Authentication (HMAC)](https://docs.transferzero.com/docs/authentication)
+- [SDKs](https://docs.transferzero.com/docs/sdks/)
+- [Sandbox testing](https://docs.transferzero.com/docs/sandbox-testing/)
+- [Example payments](https://docs.transferzero.com/docs/example-payments/)
+
+## SDKs
+- Ruby: `gem install transferzero-sdk` — https://rubygems.org/gems/transferzero-sdk
+- JavaScript/Node: `npm install transferzero-sdk` — https://www.npmjs.com/package/transferzero-sdk
+- PHP: `composer require transferzero/transferzero-php-sdk` — https://packagist.org/packages/transferzero/transferzero-php-sdk
+- .NET: `Install-Package TransferZero.Sdk` — https://www.nuget.org/packages/TransferZero.Sdk
+- Java: `com.transferzero.sdk:transferzero-sdk-java8` — https://github.com/transferzero/transferzero-sdk-java8
+
+## Conventions
+- Auth: HMAC request signing (Authorization-Key / Authorization-Nonce / Authorization-Signature) or Authorization-Key + Authorization-Secret.
+- Idempotency: client-supplied `external_id`; resubmitting returns the existing record under `meta.existing`.
+- Pagination: `page` / `per` query params; `meta.pagination` in responses.
+- Webhooks: HMAC-signed callbacks; manage via /webhooks.
+
+## Company
+- [Website](https://www.azafinance.com/)
+- [API product](https://azafinance.com/api-product/)
+- [Blog](https://azafinance.com/blog/)
+- [Security](https://azafinance.com/security/)
+- [Terms of use](https://azafinance.com/terms-and-use/)
+- [Privacy policy](https://azafinance.com/privacy-policy/)
+- [GitHub](https://github.com/transferzero)

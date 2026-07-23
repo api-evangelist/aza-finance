@@ -1,0 +1,36 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/aza-finance-openapi-original.json
+note: >-
+  Standards conformance asserted from the OpenAPI spec and public docs. AZA Finance is
+  a regulated cross-border FX / payments provider (UK FCA #673100, Bank of Uganda
+  #MR 125/23, Central Bank of Nigeria) but publishes no security-certification trust
+  page, so no Compliance certifications are asserted here.
+standards:
+  - id: openapi-3.0
+    conforms: true
+    evidence: "openapi 3.0.2 document published at specification.transferzero.com"
+  - id: oauth2
+    conforms: false
+    evidence: "auth is HMAC apiKey headers, not OAuth2"
+  - id: oidc
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: "errors use a custom field-keyed validation envelope, not application/problem+json"
+  - id: hmac-request-signing
+    conforms: true
+    evidence: "Authorization-Key / Authorization-Nonce / Authorization-Signature headers"
+  - id: pagination
+    conforms: true
+    evidence: "page/per params with meta.pagination (current/next/prev/total)"
+  - id: idempotency
+    conforms: true
+    evidence: "external_id creation dedup; existing record returned under meta.existing"
+  - id: webhooks
+    conforms: true
+    evidence: "first-class /webhooks resource with HMAC-signed callbacks"
+  - id: fapi
+    conforms: false
+  - id: json-api
+    conforms: false

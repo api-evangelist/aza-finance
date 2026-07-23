@@ -1,0 +1,12 @@
+generated: '2026-07-18'
+method: generated
+source: openapi/aza-finance-openapi-original.json
+skills:
+  - file: aza-finance-send-payout.md
+    name: Send a cross-border payout with AZA Finance
+    api: openapi/aza-finance-openapi-original.json
+    operations: [calculate-transactions, post-senders, post-transactions, create-and-fund-transaction, payin-transaction, get-transaction]
+  - file: aza-finance-webhooks.md
+    name: Subscribe to and verify AZA Finance webhooks
+    api: openapi/aza-finance-openapi-original.json
+    operations: [get-webhook-events, post-webhooks, get-webhooks, get-webhook-logs, get-webhook-log, delete-webhook]

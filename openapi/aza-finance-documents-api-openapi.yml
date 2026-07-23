@@ -1,0 +1,394 @@
+openapi: 3.0.2
+info:
+  title: TransferZero Account Debits Documents API
+  description: Reference documentation for the TransferZero API V1
+  version: '1.0'
+servers:
+- url: https://api-sandbox.transferzero.com/v1
+- url: https://api.transferzero.com/v1
+security:
+- AuthorizationKey: []
+  AuthorizationNonce: []
+  AuthorizationSignature: []
+- AuthorizationKey: []
+  AuthorizationSecret: []
+tags:
+- name: Documents
+paths:
+  /documents:
+    get:
+      tags:
+      - Documents
+      summary: Getting a list of documents
+      description: Fetches a list of documents.
+      operationId: get-documents
+      parameters:
+      - name: page
+        in: query
+        description: The page number to request (defaults to 1)
+        required: false
+        schema:
+          type: integer
+        example: 1
+      - name: per
+        in: query
+        description: The number of results to load per page (defaults to 10)
+        required: false
+        schema:
+          type: integer
+        example: 10
+      responses:
+        '200':
+          description: Array of documents requested
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentListResponse'
+        '401':
+          description: Authentication information is missing or invalid.
+        '500':
+          description: Internal Server Error.
+      x-group-parameters: true
+    post:
+      tags:
+      - Documents
+      summary: Creating a document
+      description: Creates a new document
+      operationId: post-documents
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentRequest'
+        required: true
+      responses:
+        '201':
+          description: Details of the created document
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentResponse'
+        '401':
+          description: Authentication information is missing or invalid.
+        '422':
+          description: Invalid document object (includes errors object)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentResponse'
+        '500':
+          description: Internal Server Error.
+  /documents/{Document ID}:
+    get:
+      tags:
+      - Documents
+      summary: Fetching a document
+      description: Returns a single document by the Documents ID
+      operationId: get-document
+      parameters:
+      - name: Document ID
+        in: path
+        description: 'ID of the document to get.
+
+
+          Example: `/v1/documents/bf9ff782-e182-45ac-abea-5bce83ad6670`'
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Details of requested document
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentResponse'
+        '401':
+          description: Authentication information is missing or invalid.
+        '404':
+          description: Resource Not Found.
+        '500':
+          description: Internal Server Error.
+      x-group-parameters: true
+components:
+  schemas:
+    Document:
+      required:
+      - upload
+      - upload_file_name
+      type: object
+      properties:
+        upload:
+          type: string
+          description: Base64 encoded data uri of an image/pdf file or a fully qualified url
+          example: data:image/png;base64,iVBORw0KGg...lFTkSuQmCC
+        url:
+          type: string
+          description: URL of the document location
+          example: https://bitpesa-documents.amazonaws.com/document.pdf
+        upload_file_name:
+          type: string
+          description: Name of the upload
+          example: example.png
+        metadata:
+          type: object
+          description: Metadata of document
+          example: {}
+        upload_content_type:
+          type: string
+          example: image/png
+        upload_file_size:
+          type: integer
+          example: 30255
+        category:
+          type: string
+          description: uncategorised
+          readOnly: true
+        side:
+          type: string
+          description: The side of the KYC ID. One of 'front' or 'back'
+          readOnly: true
+          enum:
+          - front
+          - back
+        document_type:
+          type: string
+          description: This is a brief description of the document type
+          example: certificate_of_business_name_registration
+        issuing_country:
+          type: string
+          description: Issuing country of ID in 2-character alpha ISO 3166-2 country format
+          readOnly: true
+          example: NG
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          example: ebe9bc0b-f2f6-4ce8-802a-8b79912d041e
+        document_id:
+          type: string
+          description: Document ID issued by government
+          example: XYZ12345
+        expiry_date:
+          type: string
+          description: Document expiry date issued by government
+          format: date
+        source:
+          type: string
+          description: Determines the document's source. Default value "Manual"
+          example: Manual
+        errors:
+          additionalProperties:
+            type: array
+            readOnly: true
+            items:
+              $ref: '#/components/schemas/ValidationErrorDescription'
+          description: The fields that have some problems and don't pass validation
+          readOnly: true
+          example:
+            phone_number:
+            - error: invalid
+            documents:
+            - error: blank
+      example:
+        metadata: {}
+        side: front
+        upload: data:image/png;base64,iVBORw0KGg...lFTkSuQmCC
+        expiry_date: '2000-01-23'
+        upload_file_name: example.png
+        upload_content_type: image/png
+        source: Manual
+        document_id: XYZ12345
+        url: https://bitpesa-documents.amazonaws.com/document.pdf
+        issuing_country: NG
+        id: ebe9bc0b-f2f6-4ce8-802a-8b79912d041e
+        upload_file_size: 30255
+        category: category
+        errors:
+          phone_number:
+          - error: invalid
+          documents:
+          - error: blank
+        document_type: certificate_of_business_name_registration
+    DocumentResponse:
+      type: object
+      properties:
+        object:
+          $ref: '#/components/schemas/Document'
+      readOnly: true
+      example:
+        object:
+          metadata: {}
+          side: front
+          upload: data:image/png;base64,iVBORw0KGg...lFTkSuQmCC
+          expiry_date: '2000-01-23'
+          upload_file_name: example.png
+          upload_content_type: image/png
+          source: Manual
+          document_id: XYZ12345
+          url: https://bitpesa-documents.amazonaws.com/document.pdf
+          issuing_country: NG
+          id: ebe9bc0b-f2f6-4ce8-802a-8b79912d041e
+          upload_file_size: 30255
+          category: category
+          errors:
+            phone_number:
+            - error: invalid
+            documents:
+            - error: blank
+          document_type: certificate_of_business_name_registration
+    PaginationMeta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+      readOnly: true
+      example:
+        pagination:
+          next_page: 3
+          total_count: 45
+          total_pages: 5
+          prev_page: 1
+          current_page: 2
+    ValidationErrorDescription:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Describes what the problem is with the field
+          readOnly: true
+          example: invalid
+      description: The description of the error
+      readOnly: true
+      example:
+        error: invalid
+    DocumentRequest:
+      type: object
+      properties:
+        document:
+          $ref: '#/components/schemas/Document'
+      example:
+        document:
+          upload: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAACXBIWXMAAAsT
+
+            3Y2wAAAAAElFTkSuQmCC(...)'
+          upload_file_name: passport.png
+          metadata:
+            meta: data
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: integer
+          description: The number of the current page
+          readOnly: true
+          example: 2
+        next_page:
+          type: integer
+          description: The number of the next page. If no next page exists, this will be `null`
+          readOnly: true
+          example: 3
+        prev_page:
+          type: integer
+          description: The number of the previous page. If no previous page exists, this will be `null`
+          readOnly: true
+          example: 1
+        total_pages:
+          type: integer
+          description: The number of pages in the result set
+          readOnly: true
+          example: 5
+        total_count:
+          type: integer
+          description: The total number of results in the set
+          readOnly: true
+          example: 45
+      readOnly: true
+      example:
+        next_page: 3
+        total_count: 45
+        total_pages: 5
+        prev_page: 1
+        current_page: 2
+    DocumentListResponse:
+      type: object
+      properties:
+        object:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Document'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+      readOnly: true
+      example:
+        meta:
+          pagination:
+            next_page: 3
+            total_count: 45
+            total_pages: 5
+            prev_page: 1
+            current_page: 2
+        object:
+        - metadata: {}
+          side: front
+          upload: data:image/png;base64,iVBORw0KGg...lFTkSuQmCC
+          expiry_date: '2000-01-23'
+          upload_file_name: example.png
+          upload_content_type: image/png
+          source: Manual
+          document_id: XYZ12345
+          url: https://bitpesa-documents.amazonaws.com/document.pdf
+          issuing_country: NG
+          id: ebe9bc0b-f2f6-4ce8-802a-8b79912d041e
+          upload_file_size: 30255
+          category: category
+          errors:
+            phone_number:
+            - error: invalid
+            documents:
+            - error: blank
+          document_type: certificate_of_business_name_registration
+        - metadata: {}
+          side: front
+          upload: data:image/png;base64,iVBORw0KGg...lFTkSuQmCC
+          expiry_date: '2000-01-23'
+          upload_file_name: example.png
+          upload_content_type: image/png
+          source: Manual
+          document_id: XYZ12345
+          url: https://bitpesa-documents.amazonaws.com/document.pdf
+          issuing_country: NG
+          id: ebe9bc0b-f2f6-4ce8-802a-8b79912d041e
+          upload_file_size: 30255
+          category: category
+          errors:
+            phone_number:
+            - error: invalid
+            documents:
+            - error: blank
+          document_type: certificate_of_business_name_registration
+  securitySchemes:
+    AuthorizationKey:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Key
+      in: header
+    AuthorizationSecret:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Secret
+      in: header
+    AuthorizationNonce:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Nonce
+      in: header
+    AuthorizationSignature:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Signature
+      in: header
+externalDocs:
+  description: API documentation and onboarding guide
+  url: https://docs.transferzero.com/

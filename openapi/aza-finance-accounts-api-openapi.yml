@@ -1,0 +1,162 @@
+openapi: 3.0.2
+info:
+  title: TransferZero Account Debits Accounts API
+  description: Reference documentation for the TransferZero API V1
+  version: '1.0'
+servers:
+- url: https://api-sandbox.transferzero.com/v1
+- url: https://api.transferzero.com/v1
+security:
+- AuthorizationKey: []
+  AuthorizationNonce: []
+  AuthorizationSignature: []
+- AuthorizationKey: []
+  AuthorizationSecret: []
+tags:
+- name: Accounts
+paths:
+  /accounts:
+    get:
+      tags:
+      - Accounts
+      summary: Fetches account balances for all currencies
+      description: Fetches account balances for all currencies, and returns an array of the current balances and associated currency codes.
+      operationId: get-accounts
+      responses:
+        '200':
+          description: Array of account balances
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountListResponse'
+        '401':
+          description: Authentication information is missing or invalid.
+        '500':
+          description: Internal Server Error.
+      x-group-parameters: true
+  /accounts/{Currency}:
+    get:
+      tags:
+      - Accounts
+      summary: Fetches account balance for specified currrency
+      description: Fetches account balance for specified currrency, and returns current balance and associated currency code
+      operationId: get-account
+      parameters:
+      - name: Currency
+        in: path
+        description: 'Currency code of account balance to fetch
+
+
+          Example: `/v1/accounts/USD`'
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Account balance for currency
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountResponse'
+        '401':
+          description: Authentication information is missing or invalid.
+        '404':
+          description: Resource Not Found.
+        '500':
+          description: Internal Server Error.
+      x-group-parameters: true
+components:
+  schemas:
+    AccountResponse:
+      type: object
+      properties:
+        object:
+          $ref: '#/components/schemas/Account'
+        meta:
+          $ref: '#/components/schemas/AccountMeta'
+      readOnly: true
+      example:
+        meta:
+          negative_balance: false
+        object:
+          amount: 1000.0
+          amount_after_pending: 1000.0
+          currency: USD
+    Account:
+      properties:
+        amount:
+          type: number
+          description: The account balance for the given currency
+          readOnly: true
+          example: 1000.0
+        currency:
+          type: string
+          description: The currency of this balance
+          readOnly: true
+          example: USD
+        amount_after_pending:
+          type: number
+          description: Represents the account balance after deducting pending transactions from the last 7 days. It provides a more accurate depiction of available funds.
+          readOnly: true
+          example: 1000.0
+      readOnly: true
+      example:
+        amount: 1000.0
+        amount_after_pending: 1000.0
+        currency: USD
+    AccountMeta:
+      type: object
+      properties:
+        negative_balance:
+          type: boolean
+          description: Indicates whether account balances are permitted to be debited below zero
+          readOnly: true
+          example: false
+      readOnly: true
+      example:
+        negative_balance: false
+    AccountListResponse:
+      type: object
+      properties:
+        object:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Account'
+        meta:
+          $ref: '#/components/schemas/AccountMeta'
+      readOnly: true
+      example:
+        meta:
+          negative_balance: false
+        object:
+        - amount: 1000.0
+          amount_after_pending: 1000.0
+          currency: USD
+        - amount: 1000.0
+          amount_after_pending: 1000.0
+          currency: USD
+  securitySchemes:
+    AuthorizationKey:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Key
+      in: header
+    AuthorizationSecret:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Secret
+      in: header
+    AuthorizationNonce:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Nonce
+      in: header
+    AuthorizationSignature:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Signature
+      in: header
+externalDocs:
+  description: API documentation and onboarding guide
+  url: https://docs.transferzero.com/

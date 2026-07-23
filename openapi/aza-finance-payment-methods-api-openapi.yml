@@ -1,0 +1,305 @@
+openapi: 3.0.2
+info:
+  title: TransferZero Account Debits Payment Methods API
+  description: Reference documentation for the TransferZero API V1
+  version: '1.0'
+servers:
+- url: https://api-sandbox.transferzero.com/v1
+- url: https://api.transferzero.com/v1
+security:
+- AuthorizationKey: []
+  AuthorizationNonce: []
+  AuthorizationSignature: []
+- AuthorizationKey: []
+  AuthorizationSecret: []
+tags:
+- name: Payment Methods
+paths:
+  /info/payment_methods/in:
+    get:
+      tags:
+      - Payment Methods
+      summary: This method returns possible payin methods.
+      description: 'Fetching possible payin methods.
+
+        '
+      operationId: payment-methods-in
+      responses:
+        '200':
+          description: List of possible methods
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentMethodListResponse'
+        '401':
+          description: Authentication information is missing or invalid.
+        '500':
+          description: Internal Server Error.
+      x-group-parameters: true
+  /info/payment_methods/out:
+    get:
+      tags:
+      - Payment Methods
+      summary: This method returns possible payout methods.
+      description: 'Fetching possible payout methods.
+
+        '
+      operationId: payment-methods-out
+      responses:
+        '200':
+          description: List of possible methods
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentMethodListResponse'
+        '401':
+          description: Authentication information is missing or invalid.
+        '500':
+          description: Internal Server Error.
+      x-group-parameters: true
+components:
+  schemas:
+    FieldSelectValidation:
+      type: object
+      properties:
+        in:
+          type: object
+          description: Describes the valid options for this selectbox
+          readOnly: true
+          example:
+            '20': Current
+            '10': Savings
+        allow_blank:
+          type: boolean
+          description: Describes whether the field is optional or not
+          readOnly: true
+          example: false
+    PaymentMethodOpposite:
+      allOf:
+      - $ref: '#/components/schemas/PaymentMethod'
+      - properties:
+          opposites:
+            type: array
+            description: List of all providers that can be used in conjunction with the main provider
+            readOnly: true
+            items:
+              $ref: '#/components/schemas/PaymentMethod'
+    PaymentMethodListResponse:
+      type: object
+      properties:
+        object:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/PaymentMethodOpposite'
+      readOnly: true
+      example:
+        object:
+        - type: NGN::Bank
+          provider: interswitch
+          otc_permitted: false
+          details:
+          - url
+          opposites:
+          - type: CNY::Bank
+            provider: melotic
+            otc_permitted: false
+            details:
+            - email
+            - name
+            - phone_number
+            - bank_account
+            default: true
+            fields:
+              email:
+                type: input
+                validations:
+                  format: \A((\w+([\-+.]\w+)*@[a-zA-Z0-9]+([\-\.][a-zA-Z0-9]+)*)*){3,320}\z
+              name:
+                type: input
+                validations:
+                  presence: true
+              phone_number:
+                type: input
+                validations:
+                  presence: true
+                  invalid: true
+              bank_account:
+                type: input
+                validations:
+                  presence: true
+                  invalid: true
+          - type: USD::Manual::Bank
+            provider: bank_transfer
+            otc_permitted: false
+            details:
+            - email
+            - first_name
+            - last_name
+            - bank_name
+            - bank_account
+            - routing_number
+            default: true
+            fields:
+              email:
+                type: input
+                validations:
+                  format: \A((\w+([\-+.]\w+)*@[a-zA-Z0-9]+([\-\.][a-zA-Z0-9]+)*)*){3,320}\z
+              first_name:
+                type: input
+              last_name:
+                type: input
+              bank_name:
+                type: input
+              bank_account:
+                type: input
+              routing_number:
+                type: input
+    PaymentMethod:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Details currency and type of payment.
+          readOnly: true
+          example: NGN::Bank
+        provider:
+          type: string
+          description: Identifies the payment provider.
+          readOnly: true
+          example: Interswitch
+        otc_permitted:
+          type: boolean
+          description: Are over the counter transactions permitted?
+          readOnly: true
+          example: false
+        details:
+          type: array
+          description: Fields required to make the payment depending on type.
+          readOnly: true
+          example:
+          - email
+          - first_name
+          - last_name
+          - address
+          items:
+            type: string
+        default:
+          type: boolean
+          description: Boolean revealing whether this is the default payout method. Only present on payout methods
+          readOnly: true
+          example: false
+        fields:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/FieldDescription'
+          description: The fields needed for payments with this payment method with details on validation requirements
+          readOnly: true
+          example:
+            email:
+              type: input
+              validations:
+                inclusion:
+                  in:
+                    NI: National Id
+                    PP: Passport
+                  allow_blank: true
+      description: Describes an available payment provider
+      readOnly: true
+      example:
+        type: GHS::Bank
+        provider: etranzact
+        otc_permitted: false
+        details:
+        - email
+        - first_name
+        - last_name
+        - bank_code
+        - bank_account
+        - bank_account_title
+        default: true
+        fields:
+          email:
+            type: input
+            validations:
+              format: \A((\w+([\-+.]\w+)*@[a-zA-Z0-9]+([\-\.][a-zA-Z0-9]+)*)*){3,320}\z
+          first_name:
+            type: input
+            validations:
+              presence: true
+          last_name:
+            type: input
+            validations:
+              presence: true
+          bank_code:
+            type: select
+            options:
+              '025': ACCESS BANK
+              008: ADB
+            validations:
+              presence: true
+              inclusion:
+                in:
+                  '025': ACCESS BANK
+                  008: ADB
+          bank_account:
+            type: input
+            validations:
+              presence: true
+          bank_account_title:
+            type: input
+            validations:
+              presence: true
+    FieldValidation:
+      type: object
+      properties:
+        presence:
+          type: boolean
+          description: Describes whether the field is mandatory or not
+          readOnly: true
+          example: true
+        inclusion:
+          $ref: '#/components/schemas/FieldSelectValidation'
+        format:
+          type: object
+          description: Contains the regex to use to validate the input field
+          readOnly: true
+          example:
+            with: (?-mix:\A\d+\z)
+    FieldDescription:
+      type: object
+      properties:
+        type:
+          type: string
+          description: the type of the field.
+          readOnly: true
+          example: input
+          enum:
+          - input
+          - select
+        validations:
+          $ref: '#/components/schemas/FieldValidation'
+  securitySchemes:
+    AuthorizationKey:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Key
+      in: header
+    AuthorizationSecret:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Secret
+      in: header
+    AuthorizationNonce:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Nonce
+      in: header
+    AuthorizationSignature:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Signature
+      in: header
+externalDocs:
+  description: API documentation and onboarding guide
+  url: https://docs.transferzero.com/

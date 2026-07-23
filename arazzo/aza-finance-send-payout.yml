@@ -1,0 +1,72 @@
+arazzo: 1.0.1
+info:
+  title: AZA Finance — send a cross-border payout
+  version: 1.0.0
+  summary: Quote FX, create a sender, create a transaction, fund it, and confirm settlement.
+sourceDescriptions:
+  - name: azafinance
+    url: ../openapi/aza-finance-openapi-original.json
+    type: openapi
+workflows:
+  - workflowId: send-cross-border-payout
+    summary: Create a sender and transaction, fund it, and poll to a settled state.
+    description: >-
+      Runs against the TransferZero API V1. Seed with sandbox recipient values
+      (account/phone ending 00 = paid) so a fork settles in test mode.
+    inputs:
+      type: object
+      properties:
+        input_currency: {type: string}
+        output_currency: {type: string}
+        amount: {type: number}
+        external_id: {type: string}
+        sender: {type: object}
+        recipients: {type: array}
+    steps:
+      - stepId: quote
+        description: Quote FX and fees for the transfer.
+        operationId: calculate-transactions
+        requestBody:
+          payload:
+            transaction:
+              input_currency: $inputs.input_currency
+              output_currency: $inputs.output_currency
+              recipients: $inputs.recipients
+        successCriteria:
+          - condition: $statusCode == 200
+      - stepId: create-sender
+        description: Create (or reuse via external_id) the sending party.
+        operationId: post-senders
+        requestBody:
+          payload:
+            sender: $inputs.sender
+        successCriteria:
+          - condition: $statusCode == 201
+        outputs:
+          sender_id: $response.body#/object/id
+      - stepId: create-and-fund
+        description: Create the transaction and fund it in one call.
+        operationId: create-and-fund-transaction
+        requestBody:
+          payload:
+            transaction:
+              external_id: $inputs.external_id
+              input_currency: $inputs.input_currency
+              output_currency: $inputs.output_currency
+              sender_id: $steps.create-sender.outputs.sender_id
+              recipients: $inputs.recipients
+        successCriteria:
+          - condition: $statusCode == 201
+        outputs:
+          transaction_id: $response.body#/object/id
+      - stepId: confirm
+        description: Fetch the transaction and confirm the recipient state.
+        operationId: get-transaction
+        parameters:
+          - name: Transaction ID
+            in: path
+            value: $steps.create-and-fund.outputs.transaction_id
+        successCriteria:
+          - condition: $statusCode == 200
+    outputs:
+      transaction_id: $steps.create-and-fund.outputs.transaction_id

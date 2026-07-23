@@ -1,0 +1,870 @@
+openapi: 3.0.2
+info:
+  title: TransferZero Account Debits Payin Methods API
+  description: Reference documentation for the TransferZero API V1
+  version: '1.0'
+servers:
+- url: https://api-sandbox.transferzero.com/v1
+- url: https://api.transferzero.com/v1
+security:
+- AuthorizationKey: []
+  AuthorizationNonce: []
+  AuthorizationSignature: []
+- AuthorizationKey: []
+  AuthorizationSecret: []
+tags:
+- name: Payin Methods
+paths:
+  /payin_methods/{PayinMethod ID}:
+    get:
+      tags:
+      - Payin Methods
+      summary: Fetching a payin method
+      description: Show a payin method by id
+      operationId: get-payin-method
+      parameters:
+      - name: PayinMethod ID
+        in: path
+        description: 'ID of the payin method to get.
+
+
+          Example: `/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`'
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayinMethodResponse'
+        '401':
+          description: Authentication information is missing or invalid.
+        '404':
+          description: Resource Not Found.
+        '500':
+          description: Internal Server Error.
+      x-group-parameters: true
+    delete:
+      tags:
+      - Payin Methods
+      summary: Deleting a payin method
+      description: Initiates a cancellation request for the specified payin method
+      operationId: delete-payin-method
+      parameters:
+      - name: PayinMethod ID
+        in: path
+        description: 'ID of the payin method to delete.
+
+
+          Example: `/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`'
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Details of deleted payin method
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayinMethodResponse'
+        '401':
+          description: Authentication information is missing or invalid.
+        '404':
+          description: Resource Not Found.
+        '422':
+          description: Invalid payin method object (includes errors object)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayinMethodResponse'
+        '500':
+          description: Internal Server Error.
+    patch:
+      tags:
+      - Payin Methods
+      summary: Updating a payin method
+      description: Updates a single payin method by the Payin Method ID
+      operationId: patch-payin-method
+      parameters:
+      - name: PayinMethod ID
+        in: path
+        description: 'ID of the payin method to get.
+
+
+          Example: `/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`'
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayinMethod'
+        required: true
+      responses:
+        '200':
+          description: Details of updated payin method
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayinMethodResponse'
+        '401':
+          description: Authentication information is missing or invalid.
+        '404':
+          description: Resource Not Found.
+        '422':
+          description: Invalid payin method object (includes errors object)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayinMethodResponse'
+        '500':
+          description: Internal Server Error.
+  /payin_methods/{PayinMethod ID}/retry:
+    post:
+      tags:
+      - Payin Methods
+      summary: Retries PayinMethod
+      description: 'Retries the collection process for the payin method.
+
+
+        Please note only payin methods in `error` state can be retried.'
+      operationId: retry-payin-method
+      parameters:
+      - name: PayinMethod ID
+        in: path
+        description: 'ID of the payin method whose collection process should be retried
+
+
+          Example: `/v1/payin_methods/9d4d7b73-a94c-4979-ab57-09074fd55d33/retry`'
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayinMethodResponse'
+        '401':
+          description: Authentication information is missing or invalid.
+        '404':
+          description: Resource Not Found.
+        '422':
+          description: This operation is unavailable
+        '500':
+          description: Internal Server Error.
+components:
+  schemas:
+    PayinMethod:
+      type: object
+      properties:
+        type:
+          type: string
+          description: 'Describes how the payment should be requested from the sender.
+
+
+            Possible values:
+
+            - `GHS::Mobile`: GHS mobile collections
+
+            - `UGX::Mobile`: UGX mobile collections
+
+            - `XOF::Mobile`: XOF mobile collections
+
+            - `NGN::Bank`: NGN bank collections
+
+            - `EUR::Bank`: EUR IBAN collections
+
+            - `GBP::Bank`: GBP IBAN collections
+
+            '
+          example: GHS::Mobile
+        ux_flow:
+          $ref: '#/components/schemas/PayinMethodUxFlow'
+        in_details:
+          $ref: '#/components/schemas/PayinMethodDetails'
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          example: 97e79719-06e4-4794-aeeb-d2d9415d983a
+        state:
+          $ref: '#/components/schemas/PayinMethodState'
+        state_reason_details:
+          $ref: '#/components/schemas/StateReasonDetails'
+        out_details:
+          type: object
+          description: This will contain the description on where to pay the funds. Please see the [Collections Details](https://docs.transferzero.com/docs/collection-details) in the API documentation on what to expect here.
+          readOnly: true
+        instructions:
+          type: object
+          description: This will contain the instructions on how to pay the funds. Please see the [Collections Details](https://docs.transferzero.com/docs/collection-details) in the API documentation on what to expect here.
+          readOnly: true
+        errors:
+          additionalProperties:
+            type: array
+            readOnly: true
+            items:
+              $ref: '#/components/schemas/ValidationErrorDescription'
+          description: The fields that have some problems and don't pass validation
+          readOnly: true
+          example:
+            phone_number:
+            - error: invalid
+            documents:
+            - error: blank
+      description: This describes the specific details on how the funds should be collected from the sender.
+      example:
+        type: GHS::Mobile
+        ux_flow: ussd_popup
+        in_details:
+          phone_number: '+233541299999'
+          mobile_provider: vodafone
+      externalDocs:
+        description: Collections Details
+        url: https://docs.transferzero.com/docs/collection-details
+    PayinMethodDetailsBTC:
+      type: object
+      properties:
+        refund_address:
+          type: string
+          description: Please make sure the refund_address is a valid BTC address belonging to the sender, as that is going to be used in case the transaction has to be refunded.
+      description: "```JSON\n  \"details\": {\n    \"refund_address\": \"n4VQ5YdHf7hLQ2gWQYYrcxoE5B7nWuDFNF\"\n  }\n```"
+    PayinMethodUxFlow:
+      type: string
+      description: 'Describes the collection experience that will be presented to
+
+        the sender. Can be one of the following:
+
+
+        * `ussd_popup`: Payment prompt is pushed to the sender''s phone. They can approve or decline. Supported for GHS::Mobile, UGX::Mobile
+
+        * `ussd_voucher`: Sender has to request an authorization code via ussd of the mobile provider and then provide that code to initiate the transaction. Supported for XOF::Mobile(Orange)
+
+        * `ussd_menu_approval`: Sender has to dial a USSD code and navigate to a list of payments to approve.
+
+        * `otp_verified_ussd_popup`: Sender receives and validates an OTP then a payment prompt is pushed if the OTP they submit is valid.
+
+        * `bank_transfer`: For bank collections. Sender should send funds to the bank account details specified in out_details. Supported for EUR::Bank, GBP::Bank
+
+        * `http_redirect`: The sender will be redirected to a website where they can fill in their details to initiate the collection.'
+      example: ussd_popup
+      enum:
+      - ussd_popup
+      - ussd_voucher
+      - ussd_menu_approval
+      - otp_verified_ussd_popup
+      - bank_transfer
+      - http_redirect
+      - blockchain
+      - unknown
+    ValidationErrorDescription:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Describes what the problem is with the field
+          readOnly: true
+          example: invalid
+      description: The description of the error
+      readOnly: true
+      example:
+        error: invalid
+    PayoutMethodCountryEnum:
+      type: string
+      description: 'The country for the pickup or mobile payout.
+
+
+        For USD cash pickup in Nigeria, valid options are:
+
+        - `NG`: Nigeria
+
+
+        For XOF cash pickup, valid options are:
+
+        - `CI`: Ivory Coast
+
+        - `ML`: Mali
+
+        - `SN`: Senegal
+
+
+        For XOF mobile payout, valid options are:
+
+        - `BJ`: Benin
+
+        - `BF`: Burkina Faso
+
+        - `CI`: Ivory Coast
+
+        - `ML`: Mali
+
+        - `SN`: Senegal
+
+        - `TG`: Togo
+
+
+        For XAF mobile payout, valid options are:
+
+        - `CG`: Congo
+
+        - `CM`: Cameroon
+
+        - `GA`: Gabon
+
+        - `TD`: Chad'
+      example: SN
+      enum:
+      - AF
+      - AL
+      - DZ
+      - AS
+      - AD
+      - AO
+      - AI
+      - AQ
+      - AG
+      - AR
+      - AM
+      - AW
+      - AX
+      - AU
+      - AT
+      - AZ
+      - BS
+      - BH
+      - BD
+      - BB
+      - BY
+      - BE
+      - BZ
+      - BJ
+      - BM
+      - BT
+      - BO
+      - BA
+      - BW
+      - BV
+      - BR
+      - IO
+      - BN
+      - BG
+      - BF
+      - BI
+      - KH
+      - CM
+      - CA
+      - CV
+      - KY
+      - CF
+      - TD
+      - CL
+      - CN
+      - CX
+      - CC
+      - CO
+      - KM
+      - CG
+      - CD
+      - CK
+      - CR
+      - CI
+      - HR
+      - CU
+      - CY
+      - CZ
+      - DK
+      - DJ
+      - DM
+      - DO
+      - TP
+      - EC
+      - EG
+      - SV
+      - GQ
+      - ER
+      - EE
+      - ET
+      - FK
+      - FO
+      - FJ
+      - FI
+      - FR
+      - GF
+      - PF
+      - TF
+      - GA
+      - GM
+      - GE
+      - DE
+      - GH
+      - GI
+      - GR
+      - GL
+      - GD
+      - GP
+      - GU
+      - GT
+      - GN
+      - GW
+      - GY
+      - HT
+      - HM
+      - VA
+      - HN
+      - HK
+      - HU
+      - IS
+      - IN
+      - ID
+      - IR
+      - IQ
+      - IE
+      - IL
+      - IT
+      - JM
+      - JP
+      - JO
+      - KZ
+      - KE
+      - KI
+      - KP
+      - KR
+      - KV
+      - KW
+      - KG
+      - LA
+      - LV
+      - LB
+      - LS
+      - LR
+      - LY
+      - LI
+      - LT
+      - LU
+      - MO
+      - MK
+      - MG
+      - MW
+      - MY
+      - MV
+      - ML
+      - MT
+      - MH
+      - MQ
+      - MR
+      - MU
+      - YT
+      - MX
+      - FM
+      - MD
+      - MC
+      - MN
+      - MS
+      - ME
+      - MA
+      - MZ
+      - MM
+      - NA
+      - NR
+      - NP
+      - NL
+      - AN
+      - NC
+      - NZ
+      - NI
+      - NE
+      - NG
+      - NU
+      - NF
+      - MP
+      - 'NO'
+      - OM
+      - PK
+      - PW
+      - PS
+      - PA
+      - PG
+      - PY
+      - PE
+      - PH
+      - PN
+      - PL
+      - PT
+      - PR
+      - QA
+      - RE
+      - RO
+      - RU
+      - RW
+      - SH
+      - KN
+      - LC
+      - PM
+      - VC
+      - WS
+      - SM
+      - ST
+      - SA
+      - SN
+      - RS
+      - SC
+      - SL
+      - SG
+      - SK
+      - SI
+      - SB
+      - SO
+      - ZA
+      - GS
+      - ES
+      - LK
+      - SD
+      - SR
+      - SJ
+      - SZ
+      - SE
+      - CH
+      - SY
+      - TW
+      - TJ
+      - TZ
+      - TH
+      - TG
+      - TK
+      - TO
+      - TT
+      - TN
+      - TR
+      - TM
+      - TC
+      - TV
+      - UG
+      - UA
+      - AE
+      - GB
+      - US
+      - UM
+      - UY
+      - UZ
+      - VU
+      - VE
+      - VN
+      - VG
+      - VI
+      - WF
+      - EH
+      - YE
+      - ZM
+    PayinMethodState:
+      type: string
+      description: 'The state of the payin method, which can be one of the following:
+
+
+        * `incomplete`: Some fields need to be filled in in_details before we can initiate the collection request.
+
+        * `initial`: All required fields in in_details are present and collection process with the sender will start.
+
+        * `pending`: Collection process has been started, waiting for sender to send funds.
+
+        * `success`: Collection succeeded and funds have been cleared.
+
+        * `processing`: Collection succeeded but waiting for funds to fully clear.
+
+        * `error`: Collection failed. No funds received from sender. You can update or retry the PayinMethod.
+
+        * `mispaid`: Collection succeeded but sender sent the wrong amount.
+
+        * `canceled`: The transaction has been canceled and we will refund the sender soon.
+
+        * `refunded`: The sender has been refunded the amount they sent in.
+
+        * `exception`: An exception happened during processing of the collection. Please contact support.'
+      readOnly: true
+      example: initial
+      enum:
+      - incomplete
+      - initial
+      - pending
+      - success
+      - processing
+      - error
+      - mispaid
+      - canceled
+      - refunded
+      - exception
+    PayinMethodDetailsNGNBank:
+      type: object
+      properties:
+        phone_number:
+          type: string
+          description: Sender's phone number
+          example: '+2348187221236'
+        account_name:
+          type: string
+          description: Merchant's virtual account name
+          example: Test Merchant
+        account_number:
+          type: string
+          description: Merchant's virtual account number
+          example: '1234567890'
+      description: "```JSON\n  \"details\": {\n    \"phone_number\": \"+2348187221236\",\n    \"account_name\": \"Test Merchant\",\n    \"account_number\": \"1234567890\"\n  }\n```"
+    PayinMethodDetails:
+      description: 'Fields needed by the payment processor. Depends on the chose payin type.
+
+
+        See the appropriate model details for more info:
+
+
+        - `NGN::Bank`: see [`PayinMethodDetailsNGNBank`](#model-PayinMethodDetailsNGNBank)
+
+        - `GHS::Mobile`: see [`PayinMethodDetailsMobile`](#model-PayinMethodDetailsMobile)
+
+        - `UGX::Mobile`: see [`PayinMethodDetailsMobile`](#model-PayinMethodDetailsMobile)
+
+
+        Note that some payin processors don''t require additional input, these include `lhv` through `EUR::Bank` and `GBP::Bank`.
+
+        Some providers like `providus` also have all of their fields set as optional, so you might not want to set any values.
+
+        To use these providers please set this value to `{}` (an empty hash)
+
+        '
+      oneOf:
+      - $ref: '#/components/schemas/PayinMethodDetailsNGNBank'
+      - $ref: '#/components/schemas/PayinMethodDetailsMobile'
+      - $ref: '#/components/schemas/PayinMethodDetailsBTC'
+    PayinMethodResponse:
+      type: object
+      properties:
+        object:
+          $ref: '#/components/schemas/PayinMethod'
+      readOnly: true
+      example:
+        object:
+          type: GHS::Mobile
+          ux_flow: ussd_popup
+          in_details:
+            phone_number: '+233541299999'
+            mobile_provider: vodafone
+    StateReasonDetails:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Status code of transaction
+          readOnly: true
+          example: '311'
+        category:
+          type: string
+          description: Main category of status code, it could be paid, unknown, pickupable, temporary_error, recipient_error, sender_error, sender_action_required
+          readOnly: true
+          example: temporary_error
+        messages:
+          type: array
+          description: Tiered messages
+          readOnly: true
+          example:
+          - Temporary error
+          - Switch Error
+          - Issuer/Switch inoperative
+          items:
+            type: string
+        description:
+          type: string
+          description: Public, human readable, detailed error message
+          readOnly: true
+          example: The central switch is not accepting transactions at the moment. We will retry the transaction
+      readOnly: true
+      example:
+        code: '311'
+        category: temporary_error
+        messages:
+        - Temporary error - Retriable
+        - Switch Error
+        - Issuer/Switch inoperative
+        description: The central switch is not accepting transactions at the moment. We will retry the transaction
+    PayinMethodDetailsMobile:
+      type: object
+      properties:
+        phone_number:
+          type: string
+          description: The phone number where the funds should be collected from
+          example: '+256129999999'
+        mobile_provider:
+          $ref: '#/components/schemas/PayoutMethodMobileProviderEnum'
+        country:
+          $ref: '#/components/schemas/PayoutMethodCountryEnum'
+        otp:
+          type: string
+          description: The OTP that the sender received in otp verified ussd popup ux flow.
+      description: "```JSON\n\"details\": {\n  \"phone_number\": \"+256129999999\",\n}\n```"
+    PayoutMethodMobileProviderEnum:
+      type: string
+      description: 'The Mobile Wallet provider of the recipient:
+
+
+        For XOF (Senegal) valid options are:
+
+        - `orange`: Orange
+
+        - `tigo`: Tigo
+
+        - `emoney`: Emoney
+
+        - `free`: Free
+
+        - `expresso` : Expresso
+
+        - `wave`: Wave
+
+
+        For XOF (Ivory Coast) valid options are:
+
+        - `orange`: Orange
+
+        - `moov`: Moov
+
+        - `mtn`: MTN
+
+        - `wave`: Wave
+
+
+        For XOF (Burkina Faso) valid options are:
+
+        - `orange`: Orange
+
+        - `mobicash`: Mobicash
+
+        - `moov` : Moov
+
+
+        For XOF (Togo) valid options are:
+
+        - `moov`: Moov
+
+        - `tmoney`: Tmoney
+
+
+        For XOF (Benin) valid options are:
+
+        - `moov`: Moov
+
+        - `mtn`: Mtn
+
+
+        For XOF (Mali) valid options are:
+
+        - `orange`: Orange
+
+        - `mobicash`: Mobicash
+
+        - `tigo` : Tigo
+
+
+        For GHS valid options are:
+
+        - `airteltigo`: AirtelTigo
+
+        - `mtn`: MTN
+
+        - `vodafone`: Vodafone
+
+
+        For KES valid options are:
+
+        - `mpesa`: MPESA
+
+
+        For UGX valid options are:
+
+        - `africell`: Africell
+
+        - `airtel`: Airtel
+
+        - `mtn`: MTN
+
+        - `telecom`: Telecom
+
+
+        For XAF (Chad) valid options are:
+
+        - `moov`: Moov
+
+
+        For XAF (Cameroon) valid options are:
+
+        - `orange`: Orange
+
+        - `mtn`: MTN
+
+
+        For XAF (Congo) valid options are:
+
+        - `airtel`: Airtel
+
+        - `mtn`: MTN
+
+
+        For XAF (Gabon) valid options are:
+
+        - `airtel`: Airtel
+
+        - `moov`: Moov
+
+
+        For GNF (Guinea) valid options are:
+
+        - `orange`: Orange
+
+        - `mtn`: MTN'
+      example: orange
+      enum:
+      - africell
+      - airtel
+      - airteltigo
+      - emoney
+      - expresso
+      - free
+      - mobicash
+      - moov
+      - mpesa
+      - mtn
+      - orange
+      - telecom
+      - tigo
+      - tmoney
+      - vodafone
+      - wave
+  securitySchemes:
+    AuthorizationKey:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Key
+      in: header
+    AuthorizationSecret:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Secret
+      in: header
+    AuthorizationNonce:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Nonce
+      in: header
+    AuthorizationSignature:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Signature
+      in: header
+externalDocs:
+  description: API documentation and onboarding guide
+  url: https://docs.transferzero.com/

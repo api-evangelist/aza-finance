@@ -1,0 +1,321 @@
+openapi: 3.0.2
+info:
+  title: TransferZero Account Debits Currency Info API
+  description: Reference documentation for the TransferZero API V1
+  version: '1.0'
+servers:
+- url: https://api-sandbox.transferzero.com/v1
+- url: https://api.transferzero.com/v1
+security:
+- AuthorizationKey: []
+  AuthorizationNonce: []
+  AuthorizationSignature: []
+- AuthorizationKey: []
+  AuthorizationSecret: []
+tags:
+- name: Currency Info
+paths:
+  /info/currencies:
+    get:
+      tags:
+      - Currency Info
+      summary: Getting a list of possible requested currencies
+      description: Fetches a list of currencies available to use in other API requests. Usually the 3-character alpha ISO 4217 currency code (eg. USD) is used as the identifier.
+      operationId: info-currencies
+      responses:
+        '200':
+          description: Returns the available currencies in the system
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CurrencyListResponse'
+        '401':
+          description: Authentication information is missing or invalid.
+        '500':
+          description: Internal Server Error.
+      x-group-parameters: true
+  /info/currencies/in:
+    get:
+      tags:
+      - Currency Info
+      summary: Getting a list of possible input currencies
+      description: 'Fetches a list of currencies available to use as the input currency in other API requests.
+
+        Usually the 3-character alpha ISO 4217 currency code (eg. USD) is used as the identifier.
+
+        Use this endpoint to determine the current exchange rate from a specific input currency to any output currency that''s available.
+
+        '
+      operationId: info-currencies-in
+      parameters:
+      - name: sender_id
+        in: query
+        description: 'Allows the scoping of the results by `sender_id` (optional).
+
+
+          Example: `/v1/info/currencies/in?sender_id=26ec8517-2f0d-48c0-b74f-0bccb9ab3a87`'
+        required: false
+        schema:
+          type: string
+          description: ID of the sender to use.
+          format: uuid
+      responses:
+        '200':
+          description: Returns the potential input currencies with their exchange rates
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CurrencyExchangeListResponse'
+        '401':
+          description: Authentication information is missing or invalid.
+        '500':
+          description: Internal Server Error.
+      x-group-parameters: true
+  /info/currencies/out:
+    get:
+      tags:
+      - Currency Info
+      summary: Getting a list of possible output currencies
+      description: 'Fetches a list of currencies available to use as the output currency and their exchange rates against the available input currencies.
+
+        Usually the 3-character alpha ISO 4217 currency code (eg. USD) is used as the identifier.
+
+        '
+      operationId: info-currencies-out
+      parameters:
+      - name: sender_id
+        in: query
+        description: 'Allows the scoping of the results by `sender_id` (optional).
+
+
+          Example: `/v1/info/currencies/out?sender_id=26ec8517-2f0d-48c0-b74f-0bccb9ab3a87`'
+        required: false
+        schema:
+          type: string
+          description: ID of the sender to use.
+          format: uuid
+      responses:
+        '200':
+          description: Returns the potential output currencies with their exchange rates
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CurrencyExchangeListResponse'
+        '401':
+          description: Authentication information is missing or invalid.
+        '500':
+          description: Internal Server Error.
+      x-group-parameters: true
+components:
+  schemas:
+    CurrencyExchangeListResponse:
+      properties:
+        object:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/CurrencyExchange'
+      description: List of possible currency exchange pairs
+      readOnly: true
+      example:
+        object:
+        - code: NGN
+          name: Nigerian Naira
+          symbol: ₦
+          decimals: 2
+          subunit_to_unit: 100
+          primary: true
+          min: '1000.0'
+          max: '10000000.0'
+          margin: '3.0'
+          usd_equivalent: '0.002743485349395299586854627'
+          opposites:
+          - code: CNY
+            name: Chinese Renminbi Yuan
+            symbol: ¥
+            decimals: 2
+            subunit_to_unit: 100
+            primary: true
+            min: '100.0'
+            max: '50000.0'
+            margin: '3.0'
+            usd_equivalent: '0.14596446284532970096399939'
+            rate: 0.01784400294334069
+            mtm_rate: 56
+          - code: XOF
+            name: West African Cfa Franc
+            symbol: Fr
+            decimals: 0
+            subunit_to_unit: 1
+            primary: true
+            min: '1.0'
+            max: '100.0'
+            margin: '3.0'
+            usd_equivalent: '0.001728621452207475495474445'
+            rate: 1.5132
+            mtm_rate: 0.660851176315094
+        - code: UGX
+          name: Ugandan Shilling
+          symbol: UGX
+          decimals: 2
+          subunit_to_unit: 100
+          primary: true
+          min: '1000.0'
+          max: '4000000.0'
+          margin: '3.0'
+          usd_equivalent: '0.000268161238738656449967193'
+          opposites:
+          - code: CNY
+            name: Chinese Renminbi Yuan
+            symbol: ¥
+            decimals: 2
+            subunit_to_unit: 100
+            primary: true
+            min: '100.0'
+            max: '50000.0'
+            margin: '3.0'
+            usd_equivalent: '0.14596446284532970096399939'
+            rate: 0.0017820529497794776
+            mtm_rate: 561.1505539853607
+          - code: NGN
+            name: Nigerian Naira
+            symbol: ₦
+            decimals: 2
+            subunit_to_unit: 100
+            primary: true
+            min: '1000.0'
+            max: '10000000.0'
+            margin: '3.0'
+            usd_equivalent: '0.002743485349395299586854627'
+            rate: 0.09613478691774034
+            mtm_rate: 10.402061855670103
+    CurrencyListResponse:
+      type: object
+      properties:
+        object:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Currency'
+      description: List of possible currencies
+      readOnly: true
+      example:
+        object:
+        - code: USD
+          name: United States Dollar
+          symbol: $
+          decimals: 2
+          subunit_to_unit: 100
+          primary: false
+          min: '0.000000000000000000000001'
+          max: '999999999999999999999999999.0'
+        - code: KES
+          name: Kenyan Shilling
+          symbol: KSh
+          decimals: 2
+          subunit_to_unit: 100
+          primary: true
+          min: '0.000000000000000000000001'
+          max: '999999999999999999999999999.0'
+    CurrencyExchange:
+      allOf:
+      - $ref: '#/components/schemas/Currency'
+      - type: object
+        properties:
+          opposites:
+            type: array
+            description: Lists the currencies where you can exchange from this one
+            readOnly: true
+            items:
+              $ref: '#/components/schemas/CurrencyOpposite'
+        readOnly: true
+    Currency:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The currency code in 3-character alpha ISO 4217 currency format
+          readOnly: true
+          example: NGN
+        name:
+          type: string
+          description: Name of currency
+          readOnly: true
+          example: Nigerian Naira
+        symbol:
+          type: string
+          description: Symbol of currency
+          readOnly: true
+          example: ₦
+        decimals:
+          type: number
+          description: Number of decimal points
+          readOnly: true
+          example: 2
+        subunit_to_unit:
+          type: string
+          description: Subunits in Unit (eg. there are 100 cents in 1 US Dollar)
+          readOnly: true
+          example: '100'
+        primary:
+          type: boolean
+          description: Is this a primary currency?
+          readOnly: true
+          example: true
+        min:
+          type: string
+          description: The minimum amount allowed in a transaction
+          readOnly: true
+          example: '100'
+        max:
+          type: string
+          description: The maximum amount allowed in a transaction
+          readOnly: true
+          example: '50000000'
+        usd_equivalent:
+          type: string
+          description: The equivalent of the currency to 1 USD
+          readOnly: true
+      readOnly: true
+    CurrencyOpposite:
+      allOf:
+      - $ref: '#/components/schemas/Currency'
+      - type: object
+        properties:
+          rate:
+            type: number
+            description: The rate of this particular currency with the base one
+            readOnly: true
+          mtm_rate:
+            type: number
+            description: Mark to market rate of this particular currency against the base one with the margin factored in
+            readOnly: true
+          margin:
+            type: string
+            description: The margin set for transactions of this particular currency with the base one
+            readOnly: true
+        readOnly: true
+  securitySchemes:
+    AuthorizationKey:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Key
+      in: header
+    AuthorizationSecret:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Secret
+      in: header
+    AuthorizationNonce:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Nonce
+      in: header
+    AuthorizationSignature:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Signature
+      in: header
+externalDocs:
+  description: API documentation and onboarding guide
+  url: https://docs.transferzero.com/

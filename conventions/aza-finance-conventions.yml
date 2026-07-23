@@ -1,0 +1,61 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.transferzero.com/
+spec: openapi/aza-finance-openapi-original.json
+summary: >-
+  Cross-cutting request/response semantics for the TransferZero (AZA Finance) API V1:
+  HMAC-signed authentication, external_id-based creation idempotency, page/per
+  pagination, and a field-keyed validation-error envelope.
+authentication:
+  style: hmac
+  detail: >-
+    Two modes. Preferred: HMAC request signing with Authorization-Key,
+    Authorization-Nonce and Authorization-Signature headers (the signature is an
+    HMAC over method + URL + nonce + body digest). Simpler alternative:
+    Authorization-Key + Authorization-Secret headers. Webhook callbacks are signed
+    with the same HMAC scheme and validated with the SDK validate_webhook_request().
+  ref: authentication/aza-finance-authentication.yml
+idempotency:
+  supported: true
+  mechanism: external_id
+  detail: >-
+    Creation requests carry a client-supplied external_id. Re-submitting a create
+    (senders, transactions) with an external_id that already exists does not create a
+    duplicate; the API returns the existing record and surfaces it under
+    meta.existing (SenderResponseMeta.existing / TransactionResponseMeta.existing in
+    the OpenAPI). This provides safe retry / at-most-once creation without a separate
+    Idempotency-Key header.
+  header: null
+  field: external_id
+pagination:
+  style: page-number
+  params:
+    - {name: page, in: query, description: "1-indexed page number"}
+    - {name: per, in: query, description: "items per page"}
+  response_meta:
+    location: meta.pagination
+    fields: [current_page, next_page, prev_page, total_pages, total_count]
+filtering:
+  detail: >-
+    List endpoints (e.g. GET /transactions) accept filters such as currency, state,
+    external_id, sender_id, created_at_from, created_at_to, amount_from, amount_to,
+    transactions_type.
+error_envelope:
+  format: custom-json
+  detail: >-
+    Not RFC 9457. Errors return a JSON object echoing the resource with an object-level
+    errors map keyed by field name; each field maps to an array of
+    {error: <code>} descriptions (ValidationErrors / ValidationErrorDescription).
+    A simpler {status, error} shape (ErrorStatus) is used for auth/other failures.
+  ref: errors/aza-finance-problem-types.yml
+versioning:
+  scheme: uri-path
+  current: v1
+  detail: "Version is pinned in the base path (/v1). Base hosts: production api.transferzero.com, sandbox api-sandbox.transferzero.com."
+webhooks:
+  supported: true
+  detail: "First-class webhook resource; subscriptions managed via /webhooks. HMAC-signed callbacks. See asyncapi/aza-finance-webhooks.yml."
+  ref: asyncapi/aza-finance-webhooks.yml
+rate_limiting:
+  documented: false
+  detail: "No published rate-limit headers or quotas were found in the docs or spec."

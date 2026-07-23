@@ -1,0 +1,41 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/aza-finance-openapi-original.json
+format: custom-json
+note: >-
+  Derived from the TransferZero API V1 OpenAPI 4xx/5xx responses. The API does NOT use
+  RFC 9457 application/problem+json. Validation failures (422) return the submitted
+  resource with an object-level `errors` map keyed by field name, each field holding an
+  array of {error: <code>} descriptions (schemas ValidationErrors / ValidationErrorDescription).
+  Other failures use a compact {status, error} shape (ErrorStatus).
+envelope:
+  validation:
+    schema: ValidationErrors
+    shape: '{ "<field>": [ { "error": "<code>" } ], ... }'
+    example: '{ "phone_number": [ { "error": "invalid" } ], "documents": [ { "error": "blank" } ] }'
+  status:
+    schema: ErrorStatus
+    shape: '{ "status": <int>, "error": "<message>" }'
+problems:
+  - status: 400
+    title: Bad Request
+    description: Server was unable to process the request due to invalid syntax.
+    occurs_on: 4 operations
+  - status: 401
+    title: Unauthorized
+    description: Authentication information is missing or invalid (bad HMAC key / signature / secret).
+    occurs_on: 48 operations
+  - status: 404
+    title: Not Found
+    description: Resource not found.
+    occurs_on: 22 operations
+  - status: 422
+    title: Unprocessable Entity
+    description: >-
+      Validation failed. Response includes the resource plus an `errors` object mapping
+      each invalid field to an array of error codes (e.g. invalid, blank, taken).
+    occurs_on: 22 operations
+  - status: 500
+    title: Internal Server Error
+    description: Unexpected server error.
+    occurs_on: 48 operations

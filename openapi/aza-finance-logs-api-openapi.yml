@@ -1,0 +1,675 @@
+openapi: 3.0.2
+info:
+  title: TransferZero Account Debits Logs API
+  description: Reference documentation for the TransferZero API V1
+  version: '1.0'
+servers:
+- url: https://api-sandbox.transferzero.com/v1
+- url: https://api.transferzero.com/v1
+security:
+- AuthorizationKey: []
+  AuthorizationNonce: []
+  AuthorizationSignature: []
+- AuthorizationKey: []
+  AuthorizationSecret: []
+tags:
+- name: Logs
+paths:
+  /logs/webhooks:
+    get:
+      tags:
+      - Logs
+      summary: Fetch a list of webhook logs
+      description: Returns a list of webhook logs. Response includes pagination.
+      operationId: get-webhook-logs
+      parameters:
+      - name: page
+        in: query
+        description: The page number to request (defaults to 1)
+        required: false
+        schema:
+          type: integer
+        example: 1
+      - name: per
+        in: query
+        description: The number of results to load per page (defaults to 10)
+        required: false
+        schema:
+          type: integer
+        example: 10
+      - name: created_at_from
+        in: query
+        description: 'Start date to filter recipients by created_at range
+
+          Allows filtering results by the specified `created_at` timeframe.
+
+
+          Example: `/v1/recipients?created_at_from=2018-06-06&created_at_to=2018-06-08`'
+        required: false
+        schema:
+          type: string
+      - name: created_at_to
+        in: query
+        description: 'End date to filter recipients by created_at range
+
+          Allows filtering results by the specified `created_at` timeframe.
+
+
+          Example: `/v1/recipients?created_at_from=2018-06-06&created_at_to=2018-06-08`'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Webhook logs returned within an array wrapped inside a JSON object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookLogListResponse'
+        '401':
+          description: Authentication information is missing or invalid.
+        '500':
+          description: Internal Server Error.
+      x-group-parameters: true
+  /logs/{Webhook Log ID}:
+    get:
+      tags:
+      - Logs
+      summary: Fetch an individual webhook log
+      description: Returns a single webhook log based on the webhook log ID.
+      operationId: get-webhook-log
+      parameters:
+      - name: Webhook Log ID
+        in: path
+        description: 'ID of the webhook log to retrieve
+
+
+          Example: `/v1/logs/9d1ad631-f34a-4cff-9a7e-2c83e3a556df`'
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Details of requested webhook log
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookLogResponse'
+        '401':
+          description: Authentication information is missing or invalid.
+        '404':
+          description: Resource Not Found.
+        '500':
+          description: Internal Server Error.
+      x-group-parameters: true
+components:
+  schemas:
+    WebhookLogMetadata:
+      type: object
+      properties:
+        params:
+          $ref: '#/components/schemas/WebhookDefinition'
+        event:
+          type: string
+          description: Specific event that triggered the webhook
+          readOnly: true
+          example: transaction.mispaid
+        instance_id:
+          type: string
+          description: Instance ID of the webhook event
+          readOnly: true
+          example: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+        instance_type:
+          type: string
+          description: Type of instance event
+          readOnly: true
+          example: Transaction
+        attempt_id:
+          type: string
+          description: Attempt ID
+          readOnly: true
+          example: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+        tries:
+          type: integer
+          description: Number of tries at the point webhook was triggered
+          readOnly: true
+          example: 15
+        request:
+          $ref: '#/components/schemas/WebhookLogMetadataRequest'
+        response:
+          $ref: '#/components/schemas/WebhookLogMetadataResponse'
+        app_id:
+          type: string
+          description: ID of app on which webhook event was triggered
+          readOnly: true
+          example: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+        api_key_id:
+          type: string
+          description: ID of API key in use at point of webhook event
+          readOnly: true
+          example: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+      example:
+        tries: 15
+        request:
+          headers:
+            Content-Type: application/json
+            Authorization-Nonce: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+            Authorization-Key: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+            Authorization-Signature: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+            Accept-Encoding: gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+            Accept: '*/*'
+            User-Agent: Ruby
+            Host: localhost:3000
+            Content-Length: '3549'
+          body: '{"webhook":"54cbd6f2-b920-41e9-a225-b1000e024787","event":"transaction.mispaid","object":{"id":"cbcea909-85e3-448f-bd07-b9ecdff6e971"}}'
+          url: http://localhost:3000
+        instance_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+        response:
+          headers:
+            date: Fri, 11 Jan 2019 09:00:00 GMT
+            connection: close
+            content-type: text/html; charset=utf-8
+            x-web-console-session-id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+            x-web-console-mount-point: /__web_console
+            x-request-id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+            x-runtime: '0.484015'
+            content-length: '145453'
+          body: '<!DOCTYPE html> <html lang="en"> <head> <meta charset="utf-8" /> <title>Action Controller: Exception caught</title>'
+          status: '500'
+        attempt_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+        params:
+          metadata: {}
+          id: 1cd580b2-2a1b-4f73-81c8-0308308baef2
+          url: http://webhook.site/webhooks
+          events:
+          - transaction.paid_in
+          - transaction.paid_in
+          errors:
+            phone_number:
+            - error: invalid
+            documents:
+            - error: blank
+        event: transaction.mispaid
+        instance_type: Transaction
+        app_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+        api_key_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+    WebhookLogResponse:
+      type: object
+      properties:
+        object:
+          $ref: '#/components/schemas/WebhookLog'
+      readOnly: true
+      example:
+        object:
+          metadata:
+            tries: 15
+            request:
+              headers:
+                Content-Type: application/json
+                Authorization-Nonce: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+                Authorization-Key: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+                Authorization-Signature: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+                Accept-Encoding: gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+                Accept: '*/*'
+                User-Agent: Ruby
+                Host: localhost:3000
+                Content-Length: '3549'
+              body: '{"webhook":"54cbd6f2-b920-41e9-a225-b1000e024787","event":"transaction.mispaid","object":{"id":"cbcea909-85e3-448f-bd07-b9ecdff6e971"}}'
+              url: http://localhost:3000
+            instance_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+            response:
+              headers:
+                date: Fri, 11 Jan 2019 09:00:00 GMT
+                connection: close
+                content-type: text/html; charset=utf-8
+                x-web-console-session-id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+                x-web-console-mount-point: /__web_console
+                x-request-id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+                x-runtime: '0.484015'
+                content-length: '145453'
+              body: '<!DOCTYPE html> <html lang="en"> <head> <meta charset="utf-8" /> <title>Action Controller: Exception caught</title>'
+              status: '500'
+            attempt_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+            params:
+              metadata: {}
+              id: 1cd580b2-2a1b-4f73-81c8-0308308baef2
+              url: http://webhook.site/webhooks
+              events:
+              - transaction.paid_in
+              - transaction.paid_in
+              errors:
+                phone_number:
+                - error: invalid
+                documents:
+                - error: blank
+            event: transaction.mispaid
+            instance_type: Transaction
+            app_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+            api_key_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+          parent_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+          created_at: 2018-12-31T23:59:50.059+0000
+          id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+          message: Transaction(a0696374-de2f-4b4e-a2d7-cb4e0a1240c0) transaction.mispaid pending!
+          parent_type: Webhook
+    WebhookLogMetadataRequest:
+      type: object
+      properties:
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+          readOnly: true
+          example:
+            Content-Type: application/json
+            Authorization-Nonce: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+            Authorization-Key: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+            Authorization-Signature: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+            Accept-Encoding: gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+            Accept: '*/*'
+            User-Agent: Ruby
+            Host: localhost:3000
+            Content-Length: '3549'
+        body:
+          type: string
+          description: The body that was sent in the webhook
+          readOnly: true
+          example: '{"webhook":"54cbd6f2-b920-41e9-a225-b1000e024787","event":"transaction.mispaid","object":{"id":"cbcea909-85e3-448f-bd07-b9ecdff6e971"}}'
+        url:
+          type: string
+          description: Webhook URL
+          readOnly: true
+          example: http://localhost:3000
+      description: Metadata related to the initial request that triggered the webhook
+      example:
+        headers:
+          Content-Type: application/json
+          Authorization-Nonce: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+          Authorization-Key: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+          Authorization-Signature: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+          Accept-Encoding: gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+          Accept: '*/*'
+          User-Agent: Ruby
+          Host: localhost:3000
+          Content-Length: '3549'
+        body: '{"webhook":"54cbd6f2-b920-41e9-a225-b1000e024787","event":"transaction.mispaid","object":{"id":"cbcea909-85e3-448f-bd07-b9ecdff6e971"}}'
+        url: http://localhost:3000
+    PaginationMeta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+      readOnly: true
+      example:
+        pagination:
+          next_page: 3
+          total_count: 45
+          total_pages: 5
+          prev_page: 1
+          current_page: 2
+    ValidationErrorDescription:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Describes what the problem is with the field
+          readOnly: true
+          example: invalid
+      description: The description of the error
+      readOnly: true
+      example:
+        error: invalid
+    WebhookLogListResponse:
+      type: object
+      properties:
+        object:
+          type: array
+          description: Array of webhook log objects
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/WebhookLog'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+      readOnly: true
+      example:
+        meta:
+          pagination:
+            next_page: 3
+            total_count: 45
+            total_pages: 5
+            prev_page: 1
+            current_page: 2
+        object:
+        - metadata:
+            tries: 15
+            request:
+              headers:
+                Content-Type: application/json
+                Authorization-Nonce: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+                Authorization-Key: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+                Authorization-Signature: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+                Accept-Encoding: gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+                Accept: '*/*'
+                User-Agent: Ruby
+                Host: localhost:3000
+                Content-Length: '3549'
+              body: '{"webhook":"54cbd6f2-b920-41e9-a225-b1000e024787","event":"transaction.mispaid","object":{"id":"cbcea909-85e3-448f-bd07-b9ecdff6e971"}}'
+              url: http://localhost:3000
+            instance_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+            response:
+              headers:
+                date: Fri, 11 Jan 2019 09:00:00 GMT
+                connection: close
+                content-type: text/html; charset=utf-8
+                x-web-console-session-id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+                x-web-console-mount-point: /__web_console
+                x-request-id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+                x-runtime: '0.484015'
+                content-length: '145453'
+              body: '<!DOCTYPE html> <html lang="en"> <head> <meta charset="utf-8" /> <title>Action Controller: Exception caught</title>'
+              status: '500'
+            attempt_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+            params:
+              metadata: {}
+              id: 1cd580b2-2a1b-4f73-81c8-0308308baef2
+              url: http://webhook.site/webhooks
+              events:
+              - transaction.paid_in
+              - transaction.paid_in
+              errors:
+                phone_number:
+                - error: invalid
+                documents:
+                - error: blank
+            event: transaction.mispaid
+            instance_type: Transaction
+            app_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+            api_key_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+          parent_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+          created_at: 2018-12-31T23:59:50.059+0000
+          id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+          message: Transaction(a0696374-de2f-4b4e-a2d7-cb4e0a1240c0) transaction.mispaid pending!
+          parent_type: Webhook
+        - metadata:
+            tries: 15
+            request:
+              headers:
+                Content-Type: application/json
+                Authorization-Nonce: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+                Authorization-Key: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+                Authorization-Signature: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+                Accept-Encoding: gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+                Accept: '*/*'
+                User-Agent: Ruby
+                Host: localhost:3000
+                Content-Length: '3549'
+              body: '{"webhook":"54cbd6f2-b920-41e9-a225-b1000e024787","event":"transaction.mispaid","object":{"id":"cbcea909-85e3-448f-bd07-b9ecdff6e971"}}'
+              url: http://localhost:3000
+            instance_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+            response:
+              headers:
+                date: Fri, 11 Jan 2019 09:00:00 GMT
+                connection: close
+                content-type: text/html; charset=utf-8
+                x-web-console-session-id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+                x-web-console-mount-point: /__web_console
+                x-request-id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+                x-runtime: '0.484015'
+                content-length: '145453'
+              body: '<!DOCTYPE html> <html lang="en"> <head> <meta charset="utf-8" /> <title>Action Controller: Exception caught</title>'
+              status: '500'
+            attempt_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+            params:
+              metadata: {}
+              id: 1cd580b2-2a1b-4f73-81c8-0308308baef2
+              url: http://webhook.site/webhooks
+              events:
+              - transaction.paid_in
+              - transaction.paid_in
+              errors:
+                phone_number:
+                - error: invalid
+                documents:
+                - error: blank
+            event: transaction.mispaid
+            instance_type: Transaction
+            app_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+            api_key_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+          parent_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+          created_at: 2018-12-31T23:59:50.059+0000
+          id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+          message: Transaction(a0696374-de2f-4b4e-a2d7-cb4e0a1240c0) transaction.mispaid pending!
+          parent_type: Webhook
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: integer
+          description: The number of the current page
+          readOnly: true
+          example: 2
+        next_page:
+          type: integer
+          description: The number of the next page. If no next page exists, this will be `null`
+          readOnly: true
+          example: 3
+        prev_page:
+          type: integer
+          description: The number of the previous page. If no previous page exists, this will be `null`
+          readOnly: true
+          example: 1
+        total_pages:
+          type: integer
+          description: The number of pages in the result set
+          readOnly: true
+          example: 5
+        total_count:
+          type: integer
+          description: The total number of results in the set
+          readOnly: true
+          example: 45
+      readOnly: true
+      example:
+        next_page: 3
+        total_count: 45
+        total_pages: 5
+        prev_page: 1
+        current_page: 2
+    WebhookLogMetadataResponse:
+      type: object
+      properties:
+        body:
+          type: string
+          description: Full body of response
+          readOnly: true
+          example: '<!DOCTYPE html> <html lang="en"> <head> <meta charset="utf-8" /> <title>Action Controller: Exception caught</title>'
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+          description: Headers delivered with webhook response
+          readOnly: true
+          example:
+            date: Fri, 11 Jan 2019 09:00:00 GMT
+            connection: close
+            content-type: text/html; charset=utf-8
+            x-web-console-session-id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+            x-web-console-mount-point: /__web_console
+            x-request-id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+            x-runtime: '0.484015'
+            content-length: '145453'
+        status:
+          type: string
+          description: Status of response
+          readOnly: true
+          example: '500'
+      description: Metadata related to the webhook response
+      example:
+        headers:
+          date: Fri, 11 Jan 2019 09:00:00 GMT
+          connection: close
+          content-type: text/html; charset=utf-8
+          x-web-console-session-id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+          x-web-console-mount-point: /__web_console
+          x-request-id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+          x-runtime: '0.484015'
+          content-length: '145453'
+        body: '<!DOCTYPE html> <html lang="en"> <head> <meta charset="utf-8" /> <title>Action Controller: Exception caught</title>'
+        status: '500'
+    WebhookDefinition:
+      required:
+      - events
+      - url
+      type: object
+      properties:
+        url:
+          type: string
+          description: The URL to receive the webhook
+          example: http://webhook.site/webhooks
+        events:
+          type: array
+          description: A list of events to subscribe to
+          items:
+            type: string
+            example: transaction.paid_in
+        metadata:
+          type: object
+          example: {}
+        id:
+          type: string
+          description: The ID of the webhook
+          readOnly: true
+          example: 1cd580b2-2a1b-4f73-81c8-0308308baef2
+        errors:
+          additionalProperties:
+            type: array
+            readOnly: true
+            items:
+              $ref: '#/components/schemas/ValidationErrorDescription'
+          description: The fields that have some problems and don't pass validation
+          readOnly: true
+          example:
+            phone_number:
+            - error: invalid
+            documents:
+            - error: blank
+      description: Object that holds where to send webhooks, and what events should it be triggered with
+      example:
+        metadata: {}
+        id: 1cd580b2-2a1b-4f73-81c8-0308308baef2
+        url: http://webhook.site/webhooks
+        events:
+        - transaction.paid_in
+        - transaction.paid_in
+        errors:
+          phone_number:
+          - error: invalid
+          documents:
+          - error: blank
+      externalDocs:
+        description: Webhooks in the API guide
+        url: https://docs.transferzero.com/docs/architecture/#webhooks
+    WebhookLog:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the webhook log
+          readOnly: true
+          example: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+        message:
+          type: string
+          description: Message detailing webhook event
+          readOnly: true
+          example: Transaction(a0696374-de2f-4b4e-a2d7-cb4e0a1240c0) transaction.mispaid pending!
+        metadata:
+          $ref: '#/components/schemas/WebhookLogMetadata'
+        created_at:
+          type: string
+          description: Date and time of response
+          readOnly: true
+          example: 2018-12-31T23:59:50.059+0000
+        parent_id:
+          type: string
+          readOnly: true
+          example: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+        parent_type:
+          type: string
+          readOnly: true
+          example: Webhook
+      readOnly: true
+      example:
+        metadata:
+          tries: 15
+          request:
+            headers:
+              Content-Type: application/json
+              Authorization-Nonce: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+              Authorization-Key: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+              Authorization-Signature: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+              Accept-Encoding: gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+              Accept: '*/*'
+              User-Agent: Ruby
+              Host: localhost:3000
+              Content-Length: '3549'
+            body: '{"webhook":"54cbd6f2-b920-41e9-a225-b1000e024787","event":"transaction.mispaid","object":{"id":"cbcea909-85e3-448f-bd07-b9ecdff6e971"}}'
+            url: http://localhost:3000
+          instance_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+          response:
+            headers:
+              date: Fri, 11 Jan 2019 09:00:00 GMT
+              connection: close
+              content-type: text/html; charset=utf-8
+              x-web-console-session-id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+              x-web-console-mount-point: /__web_console
+              x-request-id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+              x-runtime: '0.484015'
+              content-length: '145453'
+            body: '<!DOCTYPE html> <html lang="en"> <head> <meta charset="utf-8" /> <title>Action Controller: Exception caught</title>'
+            status: '500'
+          attempt_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+          params:
+            metadata: {}
+            id: 1cd580b2-2a1b-4f73-81c8-0308308baef2
+            url: http://webhook.site/webhooks
+            events:
+            - transaction.paid_in
+            - transaction.paid_in
+            errors:
+              phone_number:
+              - error: invalid
+              documents:
+              - error: blank
+          event: transaction.mispaid
+          instance_type: Transaction
+          app_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+          api_key_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+        parent_id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+        created_at: 2018-12-31T23:59:50.059+0000
+        id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+        message: Transaction(a0696374-de2f-4b4e-a2d7-cb4e0a1240c0) transaction.mispaid pending!
+        parent_type: Webhook
+  securitySchemes:
+    AuthorizationKey:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Key
+      in: header
+    AuthorizationSecret:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Secret
+      in: header
+    AuthorizationNonce:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Nonce
+      in: header
+    AuthorizationSignature:
+      type: apiKey
+      description: Please see the [Authentication guide](https://docs.transferzero.com/docs/authentication) on how to use these fields
+      name: Authorization-Signature
+      in: header
+externalDocs:
+  description: API documentation and onboarding guide
+  url: https://docs.transferzero.com/

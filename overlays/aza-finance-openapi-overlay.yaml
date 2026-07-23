@@ -1,0 +1,24 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for AZA Finance (TransferZero API V1)
+  version: 1.0.0
+extends: openapi/aza-finance-openapi-original.json
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: aza-finance
+      x-apievangelist-auth: hmac
+      x-apievangelist-idempotency: external_id
+      x-apievangelist-pagination: page-per
+      x-apievangelist-webhooks: true
+      x-apievangelist-sandbox: https://api-sandbox.transferzero.com/v1
+  - target: $.info
+    update:
+      x-apievangelist-artifacts:
+        authentication: authentication/aza-finance-authentication.yml
+        conventions: conventions/aza-finance-conventions.yml
+        errors: errors/aza-finance-problem-types.yml
+        webhooks: asyncapi/aza-finance-webhooks.yml
+        sandbox: sandbox/aza-finance-sandbox.yml
+        data_model: data-model/aza-finance-data-model.yml
+        packages: packages/aza-finance-packages.yml

@@ -1,0 +1,24 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.transferzero.com/
+versioning:
+  scheme: uri-path
+  current: v1
+  docs: https://docs.transferzero.com/docs/reference-documentation/
+deprecation:
+  policy_url: null
+  sunset_header: false
+  detail: "No formal published deprecation policy or RFC 8594 Sunset/Deprecation header support was found."
+sla:
+  url: null
+  uptime_target: null
+status_page:
+  url: null
+  detail: "No dedicated public status page (status.transferzero.com / status.azafinance.com) was found."
+sdk_version_train:
+  current: 1.37.9
+  detail: >-
+    All language SDKs are versioned together off the shared OpenAPI generator; the
+    Ruby/JS/PHP/.NET/Java packages tracked 1.37.9 at capture time. The JS SDK repo has
+    100+ release tags, indicating an active, frequently-regenerated release cadence.
+deprecated_operations: []

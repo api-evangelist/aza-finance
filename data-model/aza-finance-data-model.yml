@@ -1,0 +1,46 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/aza-finance-openapi-original.json
+note: >-
+  Entity-relationship graph derived from the TransferZero API V1 OpenAPI schema
+  references and id-reference fields. Payouts are modelled as a Transaction that fans
+  out to one or more Recipients, each carrying a PayoutMethod; a Sender is the party
+  funding the transaction.
+entities:
+  - name: Account
+    description: Per-currency balance held by the API account.
+    key: currency
+  - name: Sender
+    description: The party sending funds (individual or business); KYC-bearing.
+    key: id
+    external_key: external_id
+  - name: Recipient
+    description: A payout leg of a transaction; resolves to a payout method and destination.
+    key: id
+  - name: Transaction
+    description: A cross-border transfer; groups recipients and settles against sender funds.
+    key: id
+    external_key: external_id
+  - name: PayoutMethod
+    description: The destination rails/details for a recipient (bank, mobile money, etc.).
+    key: id
+  - name: PayinMethod
+    description: How a transaction is funded.
+    key: id
+  - name: Document
+    description: KYC/compliance document attached to a sender.
+    key: id
+  - name: Mandate
+    description: Debit/collection mandate.
+    key: id
+  - name: WebhookDefinition
+    description: A subscription registering a callback URL for events.
+    key: id
+relationships:
+  - {from: Transaction, type: belongs_to, to: Sender, via: sender}
+  - {from: Transaction, type: has_many, to: Recipient, via: recipients}
+  - {from: Recipient, type: belongs_to, to: Transaction, via: transaction_id}
+  - {from: Recipient, type: has_one, to: PayoutMethod, via: payout_method}
+  - {from: Recipient, type: has_one, to: Mandate, via: mandate_id}
+  - {from: Document, type: belongs_to, to: Sender, via: document_id}
+  - {from: Sender, type: has_many, to: Document, via: documents}
