@@ -369,6 +369,8 @@ apis:
   - type: Arazzo
     url: arazzo/aza-finance-send-payout.yml
 common:
+- type: Overlay
+  url: overlays/aza-finance-openapi-overlay.yaml
 - type: DeveloperPortal
   url: https://docs.transferzero.com/
 - type: Documentation
