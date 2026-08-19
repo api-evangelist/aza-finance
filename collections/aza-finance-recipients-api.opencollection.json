@@ -1,0 +1,148 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TransferZero Account Debits Recipients API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization-Key",
+      "value": "{{Authorization-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Recipients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Getting a list of recipients with filtering",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.transferzero.com/v1/recipients",
+            "params": [
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "The page number to request (defaults to 1)"
+              },
+              {
+                "name": "per",
+                "value": "10",
+                "type": "query",
+                "description": "The number of results to load per page (defaults to 10)"
+              },
+              {
+                "name": "created_at_from",
+                "value": "",
+                "type": "query",
+                "description": "Start date to filter recipients by created_at range\nAllows filtering results by the specified `created_at` timeframe.\n\nExample: `/v1/recipients?created_at_from=2018-06-06&created_at_to=2018-06-08`"
+              },
+              {
+                "name": "created_at_to",
+                "value": "",
+                "type": "query",
+                "description": "End date to filter recipients by created_at range\nAllows filtering results by the specified `created_at` timeframe.\n\nExample: `/v1/recipients?created_at_from=2018-06-06&created_at_to=2018-06-08`"
+              },
+              {
+                "name": "amount_from",
+                "value": "",
+                "type": "query",
+                "description": "Minimum amount to filter recipients by amount range.\n\nAllows filtering results by the specified `amount` range. When using this filter, the `currency` should also be specified.\n\nExample: `/v1/recipients?currency=NGN&amount_from=83.76672339&amount_to=83.76672339`"
+              },
+              {
+                "name": "amount_to",
+                "value": "",
+                "type": "query",
+                "description": "Max amount to filter recipients by amount range.\n\nAllows filtering results by the specified `amount` range. When using this filter, the `currency` should also be specified.\n\nExample: `/v1/recipients?currency=NGN&amount_from=83.76672339&amount_to=83.76672339`"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Allows filtering results by `state` of recipient. See [API Documentation - Recipient state](https://docs.transferzero.com/docs/transaction-flow/#state) for possible states.\n\nExample: `/v1/recipients?state[]=error&state[]=initial`"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Allows filtering results by `input_currency`.\n\nAdditionally required when filtering by an amount range\nExample: `/v1/recipients?currency[]=KES&currency[]=NGN`"
+              }
+            ]
+          },
+          "docs": "Fetches details of all recipients."
+        },
+        {
+          "info": {
+            "name": "Updating a recipient",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api-sandbox.transferzero.com/v1/recipients/:Recipient ID",
+            "params": [
+              {
+                "name": "Recipient ID",
+                "value": "",
+                "type": "path",
+                "description": "ID of recipient to update.\n\nExample: `/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the recipient specified in the URL path.\n\nPlease note that only recipients where the `editable` field is true can be modified. Once the recipient is modified any subsequent payout tries will be sent to the updated details."
+        },
+        {
+          "info": {
+            "name": "Cancelling a recipient",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-sandbox.transferzero.com/v1/recipients/:Recipient ID",
+            "params": [
+              {
+                "name": "Recipient ID",
+                "value": "",
+                "type": "path",
+                "description": "ID of recipient to cancel.\n\nExample: `/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+              }
+            ]
+          },
+          "docs": "Cancels the payment to the recipient specified in the URL path.\n\nPlease note recipients where the `may_cancel` attribute is true will be cancelled immediately. If the `may_cancel` attribute is false you can still try to cancel the recipient, however it will only gets cancelled if we will receive a confirmation from our partner that the payment has failed"
+        },
+        {
+          "info": {
+            "name": "Returns list of proof of payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.transferzero.com/v1/recipients/:Recipient ID/proof_of_payments",
+            "params": [
+              {
+                "name": "Recipient ID",
+                "value": "",
+                "type": "path",
+                "description": "ID of the recipient for whom the proof of payments will be returned.\n\nExample: `/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33/proof_of_payments`"
+              }
+            ]
+          },
+          "docs": "Returns a list of uploaded proof of payment files for a transaction recipient"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

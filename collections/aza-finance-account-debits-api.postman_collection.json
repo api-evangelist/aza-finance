@@ -1,0 +1,298 @@
+{
+  "item": [
+    {
+      "id": "f4120da4-bc86-4fc0-a53e-60cc757519dc",
+      "name": "Account Debits",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "02401fee-4248-4019-bebb-29c958f32cf5",
+          "name": "Creating an account debit",
+          "request": {
+            "name": "Creating an account debit",
+            "description": {
+              "content": "Creates a new account debit finding transaction through the internal balance\n\nTo successfully fund a transaction -\n- The currency needs to be the same as the input_currency on the transaction\n- The amount has to be the same as the input_amount on the transaction\n- The to_id is the id of the transaction\n- You need to have enough balance of the appropriate currency inside your wallet\n\nOnce the transaction is funded, we will immediately start trying to pay out the recipient(s).\n\nIt is also possible to create multiple account debits by supplying an array of debit objects\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                "debits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"debit\": {\n    \"to_id\": \"<uuid>\",\n    \"to_type\": \"<string>\",\n    \"amount\": \"<double>\",\n    \"currency\": \"<string>\",\n    \"metadata\": \"<object>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2b159341-3578-42d0-a0e1-014ac8590243",
+              "name": "Account Debit details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    "debits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"debit\": {\n    \"currency\": \"NGN\",\n    \"amount\": \"2000.0\",\n    \"to_id\": \"5f44026b-7904-4c30-87d6-f8972d790ded\",\n    \"to_type\": \"Transaction\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"pagination\": {\n      \"next_page\": 3,\n      \"total_count\": 45,\n      \"total_pages\": 5,\n      \"prev_page\": 1,\n      \"current_page\": 2\n    }\n  },\n  \"object\": [\n    {\n      \"to_type\": \"Transaction\",\n      \"amount\": 10000,\n      \"metadata\": {},\n      \"to_id\": \"5f44026b-7904-4c30-87d6-f8972d790ded\",\n      \"created_at\": \"2000-01-23T04:56:07.000+00:00\",\n      \"currency\": \"NGN\",\n      \"running_balance\": 2000000,\n      \"errors\": {\n        \"phone_number\": [\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"documents\": [\n          {\n            \"error\": \"blank\"\n          }\n        ]\n      },\n      \"usd_amount\": 200.06211683187206\n    },\n    {\n      \"to_type\": \"Transaction\",\n      \"amount\": 10000,\n      \"metadata\": {},\n      \"to_id\": \"5f44026b-7904-4c30-87d6-f8972d790ded\",\n      \"created_at\": \"2000-01-23T04:56:07.000+00:00\",\n      \"currency\": \"NGN\",\n      \"running_balance\": 2000000,\n      \"errors\": {\n        \"phone_number\": [\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"documents\": [\n          {\n            \"error\": \"blank\"\n          }\n        ]\n      },\n      \"usd_amount\": 200.06211683187206\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "abb34475-9dc4-4dd0-bc99-4d2fed6c6170",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    "debits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"debit\": {\n    \"currency\": \"NGN\",\n    \"amount\": \"2000.0\",\n    \"to_id\": \"5f44026b-7904-4c30-87d6-f8972d790ded\",\n    \"to_type\": \"Transaction\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "13c72b04-1e9f-40c3-bc7c-1c3096ff685a",
+              "name": "Invalid account debit object (includes errors object)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    "debits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"debit\": {\n    \"currency\": \"NGN\",\n    \"amount\": \"2000.0\",\n    \"to_id\": \"5f44026b-7904-4c30-87d6-f8972d790ded\",\n    \"to_type\": \"Transaction\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": [\n    {\n      \"to_id\": \"5f44026b-7904-4c30-87d6-f8972d790ded\",\n      \"to_type\": \"Transaction\",\n      \"amount\": 10000,\n      \"currency\": \"NGN\",\n      \"metadata\": {},\n      \"id\": \"5f44026b-7904-4c30-87d6-f8972d790ded\",\n      \"created_at\": \"1954-05-11T23:48:36.292Z\",\n      \"usd_amount\": 200.06211683187206,\n      \"running_balance\": 2000000,\n      \"errors\": {\n        \"key_0\": [\n          {\n            \"error\": \"invalid\"\n          },\n          {\n            \"error\": \"invalid\"\n          }\n        ]\n      }\n    },\n    {\n      \"to_id\": \"5f44026b-7904-4c30-87d6-f8972d790ded\",\n      \"to_type\": \"Transaction\",\n      \"amount\": 10000,\n      \"currency\": \"NGN\",\n      \"metadata\": {},\n      \"id\": \"5f44026b-7904-4c30-87d6-f8972d790ded\",\n      \"created_at\": \"1990-08-24T09:47:22.276Z\",\n      \"usd_amount\": 200.06211683187206,\n      \"running_balance\": 2000000,\n      \"errors\": {\n        \"key_0\": [\n          {\n            \"error\": \"invalid\"\n          },\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"key_1\": [\n          {\n            \"error\": \"invalid\"\n          },\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"key_2\": [\n          {\n            \"error\": \"invalid\"\n          },\n          {\n            \"error\": \"invalid\"\n          }\n        ]\n      }\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"next_page\": 3,\n      \"total_count\": 45,\n      \"total_pages\": 5,\n      \"prev_page\": 1,\n      \"current_page\": 2\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e20b176-b6d0-4b32-9c22-f2980632c83f",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    "debits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"debit\": {\n    \"currency\": \"NGN\",\n    \"amount\": \"2000.0\",\n    \"to_id\": \"5f44026b-7904-4c30-87d6-f8972d790ded\",\n    \"to_type\": \"Transaction\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.transferzero.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f0181aa5-5bbf-4429-896c-552cdc1cef75",
+    "name": "TransferZero Account Debits API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Reference documentation for the TransferZero API V1",
+      "type": "text/plain"
+    }
+  }
+}

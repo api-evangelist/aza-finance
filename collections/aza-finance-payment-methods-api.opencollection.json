@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TransferZero Account Debits Payment Methods API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization-Key",
+      "value": "{{Authorization-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payment Methods",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "This method returns possible payin methods.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.transferzero.com/v1/info/payment_methods/in"
+          },
+          "docs": "Fetching possible payin methods.\n"
+        },
+        {
+          "info": {
+            "name": "This method returns possible payout methods.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.transferzero.com/v1/info/payment_methods/out"
+          },
+          "docs": "Fetching possible payout methods.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

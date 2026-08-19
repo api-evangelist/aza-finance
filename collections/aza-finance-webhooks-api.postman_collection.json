@@ -1,0 +1,1181 @@
+{
+  "item": [
+    {
+      "id": "d58c5f5b-ee4d-47a3-a7b7-d685374b14cf",
+      "name": "Webhooks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9de00b17-8671-490e-999c-a853cfb9b777",
+          "name": "Listing webhooks",
+          "request": {
+            "name": "Listing webhooks",
+            "description": {
+              "content": "Get a list of created webhooks",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webhooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "The page number to request (defaults to 1)"
+                },
+                {
+                  "disabled": false,
+                  "key": "per",
+                  "value": "<integer>",
+                  "description": "The number of results to load per page (defaults to 10)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "58d74b82-62e6-4067-8504-0e3e28307553",
+              "name": "Array of webhooks requested. A paginated list of the webhooks created by the requesting API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"pagination\": {\n      \"next_page\": 3,\n      \"total_count\": 45,\n      \"total_pages\": 5,\n      \"prev_page\": 1,\n      \"current_page\": 2\n    }\n  },\n  \"object\": [\n    {\n      \"metadata\": {},\n      \"url\": \"http://webhook.site/webhooks\",\n      \"events\": [\n        \"transaction.paid_in\",\n        \"transaction.paid_in\"\n      ],\n      \"errors\": {\n        \"phone_number\": [\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"documents\": [\n          {\n            \"error\": \"blank\"\n          }\n        ]\n      }\n    },\n    {\n      \"metadata\": {},\n      \"url\": \"http://webhook.site/webhooks\",\n      \"events\": [\n        \"transaction.paid_in\",\n        \"transaction.paid_in\"\n      ],\n      \"errors\": {\n        \"phone_number\": [\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"documents\": [\n          {\n            \"error\": \"blank\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c237555d-ba29-43d2-897f-d8d3d8e3a133",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2645fa26-d2bd-40ef-9fa4-7fbf75527cb1",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa4d1b3f-721d-436b-a178-61400b7e1acf",
+          "name": "Creating a webhook",
+          "request": {
+            "name": "Creating a webhook",
+            "description": {
+              "content": "Creates a new webhook, subscribing the provided endpoint to the specified event(s)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webhooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"webhook\": {\n    \"events\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"url\": \"<string>\",\n    \"metadata\": \"<object>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "235cab18-f89c-422e-92ba-7438e68f73cb",
+              "name": "Details of created webhook",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhook\": {\n    \"url\": \"http://myhost.com/for/transaction.paid_in\",\n    \"events\": [\n      \"transaction.paid_in\"\n    ],\n    \"metadata\": {\n      \"my\": \"data\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"events\": [\n      \"transaction.paid_in\",\n      \"transaction.paid_in\"\n    ],\n    \"url\": \"http://webhook.site/webhooks\",\n    \"metadata\": {},\n    \"id\": \"1cd580b2-2a1b-4f73-81c8-0308308baef2\",\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a630de01-c4f8-43d2-bc59-08bdfab9dc27",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhook\": {\n    \"url\": \"http://myhost.com/for/transaction.paid_in\",\n    \"events\": [\n      \"transaction.paid_in\"\n    ],\n    \"metadata\": {\n      \"my\": \"data\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "72d9a89c-1b56-45df-8915-ee89fe210bd8",
+              "name": "Webhook details and errors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhook\": {\n    \"url\": \"http://myhost.com/for/transaction.paid_in\",\n    \"events\": [\n      \"transaction.paid_in\"\n    ],\n    \"metadata\": {\n      \"my\": \"data\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"events\": [\n      \"transaction.paid_in\",\n      \"transaction.paid_in\"\n    ],\n    \"url\": \"http://webhook.site/webhooks\",\n    \"metadata\": {},\n    \"id\": \"1cd580b2-2a1b-4f73-81c8-0308308baef2\",\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "533bd82b-113c-4268-ba6b-e26ffb8aab8f",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhook\": {\n    \"url\": \"http://myhost.com/for/transaction.paid_in\",\n    \"events\": [\n      \"transaction.paid_in\"\n    ],\n    \"metadata\": {\n      \"my\": \"data\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "44df0844-bcbe-45dd-b153-eac351574cc2",
+          "name": "Find a webhook's details",
+          "request": {
+            "name": "Find a webhook's details",
+            "description": {
+              "content": "Look up a webhook's details with its ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webhooks",
+                ":Webhook ID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "Webhook ID",
+                  "description": "(Required) The ID of the Webhook to look up\n\nExample: `/v1/webhooks/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "410293f8-5389-4120-9e51-5da85d25a87e",
+              "name": "Webhook details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":Webhook ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Webhook ID",
+                      "description": "(Required) The ID of the Webhook to look up\n\nExample: `/v1/webhooks/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"events\": [\n      \"transaction.paid_in\",\n      \"transaction.paid_in\"\n    ],\n    \"url\": \"http://webhook.site/webhooks\",\n    \"metadata\": {},\n    \"id\": \"1cd580b2-2a1b-4f73-81c8-0308308baef2\",\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "765969fc-4612-43c1-8c65-4a5191253586",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":Webhook ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Webhook ID",
+                      "description": "(Required) The ID of the Webhook to look up\n\nExample: `/v1/webhooks/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "047f09db-aba1-4627-968c-a1564a7b2b1f",
+              "name": "Resource Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":Webhook ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Webhook ID",
+                      "description": "(Required) The ID of the Webhook to look up\n\nExample: `/v1/webhooks/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9cc17f3f-467a-4cca-bc5d-e8ae8f3fd211",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":Webhook ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Webhook ID",
+                      "description": "(Required) The ID of the Webhook to look up\n\nExample: `/v1/webhooks/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f9d2dbc-ee28-480f-876a-da2b80cf7bc8",
+          "name": "Unsubscribing from a webhook",
+          "request": {
+            "name": "Unsubscribing from a webhook",
+            "description": {
+              "content": "Unsubscribes from a webhook specified",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webhooks",
+                ":Webhook ID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "Webhook ID",
+                  "description": "(Required) The ID of webhook to cancel.\n\nExample: `/v1/webhooks/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8dda6066-77cf-4726-a32d-cb12c0f6fde3",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":Webhook ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "Webhook ID",
+                      "description": "(Required) The ID of webhook to cancel.\n\nExample: `/v1/webhooks/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"events\": [\n      \"transaction.paid_in\",\n      \"transaction.paid_in\"\n    ],\n    \"url\": \"http://webhook.site/webhooks\",\n    \"metadata\": {},\n    \"id\": \"1cd580b2-2a1b-4f73-81c8-0308308baef2\",\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b50b0a1b-66e0-494d-bc58-4fedb4e92666",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":Webhook ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "Webhook ID",
+                      "description": "(Required) The ID of webhook to cancel.\n\nExample: `/v1/webhooks/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d3471813-9408-40bf-b175-dcbc134e5e58",
+              "name": "Resource Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":Webhook ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "Webhook ID",
+                      "description": "(Required) The ID of webhook to cancel.\n\nExample: `/v1/webhooks/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b6492b4d-27c2-4ac9-ba03-fdf5c148e36c",
+              "name": "Webhook details and errors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":Webhook ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "Webhook ID",
+                      "description": "(Required) The ID of webhook to cancel.\n\nExample: `/v1/webhooks/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"events\": [\n      \"transaction.paid_in\",\n      \"transaction.paid_in\"\n    ],\n    \"url\": \"http://webhook.site/webhooks\",\n    \"metadata\": {},\n    \"id\": \"1cd580b2-2a1b-4f73-81c8-0308308baef2\",\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25d1e9e7-a8f2-4b4a-845c-4526b69ea983",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":Webhook ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "Webhook ID",
+                      "description": "(Required) The ID of webhook to cancel.\n\nExample: `/v1/webhooks/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07607ab4-9258-44e8-a4ac-fd7f410efc70",
+          "name": "Find possible webhook events",
+          "request": {
+            "name": "Find possible webhook events",
+            "description": {
+              "content": "Fetching possible webhook events",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webhooks",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "885a15c5-a8b3-4fcf-82c5-4d64fb5a42af",
+              "name": "Webhook events",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": [\n    \"transaction.paid_in\",\n    \"transaction.paid_in\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a7d1ac1-d261-48f7-b071-406fb103b03a",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6531b756-4067-4f3d-9173-9c6413158518",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.transferzero.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f23d19d7-1ddc-415a-a62e-615d6176c37a",
+    "name": "TransferZero Account Debits Webhooks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Reference documentation for the TransferZero API V1",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TransferZero Account Debits Webhooks API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization-Key",
+      "value": "{{Authorization-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Listing webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.transferzero.com/v1/webhooks",
+            "params": [
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "The page number to request (defaults to 1)"
+              },
+              {
+                "name": "per",
+                "value": "10",
+                "type": "query",
+                "description": "The number of results to load per page (defaults to 10)"
+              }
+            ]
+          },
+          "docs": "Get a list of created webhooks"
+        },
+        {
+          "info": {
+            "name": "Creating a webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-sandbox.transferzero.com/v1/webhooks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new webhook, subscribing the provided endpoint to the specified event(s)\n"
+        },
+        {
+          "info": {
+            "name": "Find a webhook's details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.transferzero.com/v1/webhooks/:Webhook ID",
+            "params": [
+              {
+                "name": "Webhook ID",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Webhook to look up\n\nExample: `/v1/webhooks/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+              }
+            ]
+          },
+          "docs": "Look up a webhook's details with its ID"
+        },
+        {
+          "info": {
+            "name": "Unsubscribing from a webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-sandbox.transferzero.com/v1/webhooks/:Webhook ID",
+            "params": [
+              {
+                "name": "Webhook ID",
+                "value": "",
+                "type": "path",
+                "description": "The ID of webhook to cancel.\n\nExample: `/v1/webhooks/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+              }
+            ]
+          },
+          "docs": "Unsubscribes from a webhook specified"
+        },
+        {
+          "info": {
+            "name": "Find possible webhook events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.transferzero.com/v1/webhooks/events"
+          },
+          "docs": "Fetching possible webhook events"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TransferZero Account Debits Logs API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization-Key",
+      "value": "{{Authorization-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Logs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch a list of webhook logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.transferzero.com/v1/logs/webhooks",
+            "params": [
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "The page number to request (defaults to 1)"
+              },
+              {
+                "name": "per",
+                "value": "10",
+                "type": "query",
+                "description": "The number of results to load per page (defaults to 10)"
+              },
+              {
+                "name": "created_at_from",
+                "value": "",
+                "type": "query",
+                "description": "Start date to filter recipients by created_at range\nAllows filtering results by the specified `created_at` timeframe.\n\nExample: `/v1/recipients?created_at_from=2018-06-06&created_at_to=2018-06-08`"
+              },
+              {
+                "name": "created_at_to",
+                "value": "",
+                "type": "query",
+                "description": "End date to filter recipients by created_at range\nAllows filtering results by the specified `created_at` timeframe.\n\nExample: `/v1/recipients?created_at_from=2018-06-06&created_at_to=2018-06-08`"
+              }
+            ]
+          },
+          "docs": "Returns a list of webhook logs. Response includes pagination."
+        },
+        {
+          "info": {
+            "name": "Fetch an individual webhook log",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.transferzero.com/v1/logs/:Webhook Log ID",
+            "params": [
+              {
+                "name": "Webhook Log ID",
+                "value": "",
+                "type": "path",
+                "description": "ID of the webhook log to retrieve\n\nExample: `/v1/logs/9d1ad631-f34a-4cff-9a7e-2c83e3a556df`"
+              }
+            ]
+          },
+          "docs": "Returns a single webhook log based on the webhook log ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

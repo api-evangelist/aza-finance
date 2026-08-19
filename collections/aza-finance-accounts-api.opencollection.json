@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TransferZero Account Debits Accounts API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization-Key",
+      "value": "{{Authorization-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetches account balances for all currencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.transferzero.com/v1/accounts"
+          },
+          "docs": "Fetches account balances for all currencies, and returns an array of the current balances and associated currency codes."
+        },
+        {
+          "info": {
+            "name": "Fetches account balance for specified currrency",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.transferzero.com/v1/accounts/:Currency",
+            "params": [
+              {
+                "name": "Currency",
+                "value": "",
+                "type": "path",
+                "description": "Currency code of account balance to fetch\n\nExample: `/v1/accounts/USD`"
+              }
+            ]
+          },
+          "docs": "Fetches account balance for specified currrency, and returns current balance and associated currency code"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

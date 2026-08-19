@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TransferZero Account Debits Currency Info API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization-Key",
+      "value": "{{Authorization-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Currency Info",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Getting a list of possible requested currencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.transferzero.com/v1/info/currencies"
+          },
+          "docs": "Fetches a list of currencies available to use in other API requests. Usually the 3-character alpha ISO 4217 currency code (eg. USD) is used as the identifier."
+        },
+        {
+          "info": {
+            "name": "Getting a list of possible input currencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.transferzero.com/v1/info/currencies/in",
+            "params": [
+              {
+                "name": "sender_id",
+                "value": "",
+                "type": "query",
+                "description": "Allows the scoping of the results by `sender_id` (optional).\n\nExample: `/v1/info/currencies/in?sender_id=26ec8517-2f0d-48c0-b74f-0bccb9ab3a87`"
+              }
+            ]
+          },
+          "docs": "Fetches a list of currencies available to use as the input currency in other API requests.\nUsually the 3-character alpha ISO 4217 currency code (eg. USD) is used as the identifier.\nUse this endpoint to determine the current exchange rate from a specific input currency to any output currency that's available.\n"
+        },
+        {
+          "info": {
+            "name": "Getting a list of possible output currencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.transferzero.com/v1/info/currencies/out",
+            "params": [
+              {
+                "name": "sender_id",
+                "value": "",
+                "type": "query",
+                "description": "Allows the scoping of the results by `sender_id` (optional).\n\nExample: `/v1/info/currencies/out?sender_id=26ec8517-2f0d-48c0-b74f-0bccb9ab3a87`"
+              }
+            ]
+          },
+          "docs": "Fetches a list of currencies available to use as the output currency and their exchange rates against the available input currencies.\nUsually the 3-character alpha ISO 4217 currency code (eg. USD) is used as the identifier.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

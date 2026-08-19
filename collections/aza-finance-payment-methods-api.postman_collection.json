@@ -1,0 +1,377 @@
+{
+  "item": [
+    {
+      "id": "96b8f7b0-3c92-45e4-b135-995bf772e8cb",
+      "name": "Payment Methods",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "92799227-59b0-4a54-86df-7517e2430c6c",
+          "name": "This method returns possible payin methods.",
+          "request": {
+            "name": "This method returns possible payin methods.",
+            "description": {
+              "content": "Fetching possible payin methods.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "info",
+                "payment_methods",
+                "in"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5fab773b-f5b4-4ff5-a798-c24404537655",
+              "name": "List of possible methods",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "info",
+                    "payment_methods",
+                    "in"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": [\n    {\n      \"type\": \"NGN::Bank\",\n      \"provider\": \"Interswitch\",\n      \"otc_permitted\": false,\n      \"details\": [\n        \"email\",\n        \"first_name\",\n        \"last_name\",\n        \"address\"\n      ],\n      \"default\": false,\n      \"fields\": {\n        \"email\": {\n          \"type\": \"input\",\n          \"validations\": {\n            \"inclusion\": {\n              \"in\": {\n                \"NI\": \"National Id\",\n                \"PP\": \"Passport\"\n              },\n              \"allow_blank\": true\n            }\n          }\n        }\n      },\n      \"opposites\": [\n        {\n          \"type\": \"NGN::Bank\",\n          \"provider\": \"Interswitch\",\n          \"otc_permitted\": false,\n          \"details\": [\n            \"email\",\n            \"first_name\",\n            \"last_name\",\n            \"address\"\n          ],\n          \"default\": false,\n          \"fields\": {\n            \"email\": {\n              \"type\": \"input\",\n              \"validations\": {\n                \"inclusion\": {\n                  \"in\": {\n                    \"NI\": \"National Id\",\n                    \"PP\": \"Passport\"\n                  },\n                  \"allow_blank\": true\n                }\n              }\n            }\n          }\n        },\n        {\n          \"type\": \"NGN::Bank\",\n          \"provider\": \"Interswitch\",\n          \"otc_permitted\": false,\n          \"details\": [\n            \"email\",\n            \"first_name\",\n            \"last_name\",\n            \"address\"\n          ],\n          \"default\": false,\n          \"fields\": {\n            \"email\": {\n              \"type\": \"input\",\n              \"validations\": {\n                \"inclusion\": {\n                  \"in\": {\n                    \"NI\": \"National Id\",\n                    \"PP\": \"Passport\"\n                  },\n                  \"allow_blank\": true\n                }\n              }\n            }\n          }\n        }\n      ]\n    },\n    {\n      \"type\": \"NGN::Bank\",\n      \"provider\": \"Interswitch\",\n      \"otc_permitted\": false,\n      \"details\": [\n        \"email\",\n        \"first_name\",\n        \"last_name\",\n        \"address\"\n      ],\n      \"default\": false,\n      \"fields\": {\n        \"email\": {\n          \"type\": \"input\",\n          \"validations\": {\n            \"inclusion\": {\n              \"in\": {\n                \"NI\": \"National Id\",\n                \"PP\": \"Passport\"\n              },\n              \"allow_blank\": true\n            }\n          }\n        }\n      },\n      \"opposites\": [\n        {\n          \"type\": \"NGN::Bank\",\n          \"provider\": \"Interswitch\",\n          \"otc_permitted\": false,\n          \"details\": [\n            \"email\",\n            \"first_name\",\n            \"last_name\",\n            \"address\"\n          ],\n          \"default\": false,\n          \"fields\": {\n            \"email\": {\n              \"type\": \"input\",\n              \"validations\": {\n                \"inclusion\": {\n                  \"in\": {\n                    \"NI\": \"National Id\",\n                    \"PP\": \"Passport\"\n                  },\n                  \"allow_blank\": true\n                }\n              }\n            }\n          }\n        },\n        {\n          \"type\": \"NGN::Bank\",\n          \"provider\": \"Interswitch\",\n          \"otc_permitted\": false,\n          \"details\": [\n            \"email\",\n            \"first_name\",\n            \"last_name\",\n            \"address\"\n          ],\n          \"default\": false,\n          \"fields\": {\n            \"email\": {\n              \"type\": \"input\",\n              \"validations\": {\n                \"inclusion\": {\n                  \"in\": {\n                    \"NI\": \"National Id\",\n                    \"PP\": \"Passport\"\n                  },\n                  \"allow_blank\": true\n                }\n              }\n            }\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd18bbde-c348-4925-8a67-6653a685369d",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "info",
+                    "payment_methods",
+                    "in"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "116af385-cd3c-4eed-b371-19014ebc5612",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "info",
+                    "payment_methods",
+                    "in"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5ef80cb-9f1b-4b88-98b3-2610619eee56",
+          "name": "This method returns possible payout methods.",
+          "request": {
+            "name": "This method returns possible payout methods.",
+            "description": {
+              "content": "Fetching possible payout methods.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "info",
+                "payment_methods",
+                "out"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e01779ac-25b1-4d46-9ca7-9cb41ed1e64c",
+              "name": "List of possible methods",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "info",
+                    "payment_methods",
+                    "out"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": [\n    {\n      \"type\": \"NGN::Bank\",\n      \"provider\": \"Interswitch\",\n      \"otc_permitted\": false,\n      \"details\": [\n        \"email\",\n        \"first_name\",\n        \"last_name\",\n        \"address\"\n      ],\n      \"default\": false,\n      \"fields\": {\n        \"email\": {\n          \"type\": \"input\",\n          \"validations\": {\n            \"inclusion\": {\n              \"in\": {\n                \"NI\": \"National Id\",\n                \"PP\": \"Passport\"\n              },\n              \"allow_blank\": true\n            }\n          }\n        }\n      },\n      \"opposites\": [\n        {\n          \"type\": \"NGN::Bank\",\n          \"provider\": \"Interswitch\",\n          \"otc_permitted\": false,\n          \"details\": [\n            \"email\",\n            \"first_name\",\n            \"last_name\",\n            \"address\"\n          ],\n          \"default\": false,\n          \"fields\": {\n            \"email\": {\n              \"type\": \"input\",\n              \"validations\": {\n                \"inclusion\": {\n                  \"in\": {\n                    \"NI\": \"National Id\",\n                    \"PP\": \"Passport\"\n                  },\n                  \"allow_blank\": true\n                }\n              }\n            }\n          }\n        },\n        {\n          \"type\": \"NGN::Bank\",\n          \"provider\": \"Interswitch\",\n          \"otc_permitted\": false,\n          \"details\": [\n            \"email\",\n            \"first_name\",\n            \"last_name\",\n            \"address\"\n          ],\n          \"default\": false,\n          \"fields\": {\n            \"email\": {\n              \"type\": \"input\",\n              \"validations\": {\n                \"inclusion\": {\n                  \"in\": {\n                    \"NI\": \"National Id\",\n                    \"PP\": \"Passport\"\n                  },\n                  \"allow_blank\": true\n                }\n              }\n            }\n          }\n        }\n      ]\n    },\n    {\n      \"type\": \"NGN::Bank\",\n      \"provider\": \"Interswitch\",\n      \"otc_permitted\": false,\n      \"details\": [\n        \"email\",\n        \"first_name\",\n        \"last_name\",\n        \"address\"\n      ],\n      \"default\": false,\n      \"fields\": {\n        \"email\": {\n          \"type\": \"input\",\n          \"validations\": {\n            \"inclusion\": {\n              \"in\": {\n                \"NI\": \"National Id\",\n                \"PP\": \"Passport\"\n              },\n              \"allow_blank\": true\n            }\n          }\n        }\n      },\n      \"opposites\": [\n        {\n          \"type\": \"NGN::Bank\",\n          \"provider\": \"Interswitch\",\n          \"otc_permitted\": false,\n          \"details\": [\n            \"email\",\n            \"first_name\",\n            \"last_name\",\n            \"address\"\n          ],\n          \"default\": false,\n          \"fields\": {\n            \"email\": {\n              \"type\": \"input\",\n              \"validations\": {\n                \"inclusion\": {\n                  \"in\": {\n                    \"NI\": \"National Id\",\n                    \"PP\": \"Passport\"\n                  },\n                  \"allow_blank\": true\n                }\n              }\n            }\n          }\n        },\n        {\n          \"type\": \"NGN::Bank\",\n          \"provider\": \"Interswitch\",\n          \"otc_permitted\": false,\n          \"details\": [\n            \"email\",\n            \"first_name\",\n            \"last_name\",\n            \"address\"\n          ],\n          \"default\": false,\n          \"fields\": {\n            \"email\": {\n              \"type\": \"input\",\n              \"validations\": {\n                \"inclusion\": {\n                  \"in\": {\n                    \"NI\": \"National Id\",\n                    \"PP\": \"Passport\"\n                  },\n                  \"allow_blank\": true\n                }\n              }\n            }\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a2f2cfb-ca10-4297-81b2-2f8c73c57b17",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "info",
+                    "payment_methods",
+                    "out"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0cc7f9cf-06f7-46e1-8a3f-0323e8c089ee",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "info",
+                    "payment_methods",
+                    "out"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.transferzero.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f455219a-3fa2-4f72-a774-8de131a17910",
+    "name": "TransferZero Account Debits Payment Methods API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Reference documentation for the TransferZero API V1",
+      "type": "text/plain"
+    }
+  }
+}

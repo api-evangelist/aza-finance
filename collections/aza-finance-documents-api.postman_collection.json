@@ -1,0 +1,729 @@
+{
+  "item": [
+    {
+      "id": "ccd069f2-d178-43e2-a36f-71efb64ddc2d",
+      "name": "Documents",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "de85e214-35af-4388-9ddd-c008de488d8a",
+          "name": "Getting a list of documents",
+          "request": {
+            "name": "Getting a list of documents",
+            "description": {
+              "content": "Fetches a list of documents.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "The page number to request (defaults to 1)"
+                },
+                {
+                  "disabled": false,
+                  "key": "per",
+                  "value": "<integer>",
+                  "description": "The number of results to load per page (defaults to 10)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c677bfda-56bd-4f47-b58f-5cb11baaa162",
+              "name": "Array of documents requested",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"pagination\": {\n      \"next_page\": 3,\n      \"total_count\": 45,\n      \"total_pages\": 5,\n      \"prev_page\": 1,\n      \"current_page\": 2\n    }\n  },\n  \"object\": [\n    {\n      \"metadata\": {},\n      \"side\": \"front\",\n      \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n      \"expiry_date\": \"2000-01-23\",\n      \"upload_file_name\": \"example.png\",\n      \"upload_content_type\": \"image/png\",\n      \"source\": \"Manual\",\n      \"document_id\": \"XYZ12345\",\n      \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n      \"issuing_country\": \"NG\",\n      \"upload_file_size\": 30255,\n      \"category\": \"category\",\n      \"errors\": {\n        \"phone_number\": [\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"documents\": [\n          {\n            \"error\": \"blank\"\n          }\n        ]\n      },\n      \"document_type\": \"certificate_of_business_name_registration\"\n    },\n    {\n      \"metadata\": {},\n      \"side\": \"front\",\n      \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n      \"expiry_date\": \"2000-01-23\",\n      \"upload_file_name\": \"example.png\",\n      \"upload_content_type\": \"image/png\",\n      \"source\": \"Manual\",\n      \"document_id\": \"XYZ12345\",\n      \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n      \"issuing_country\": \"NG\",\n      \"upload_file_size\": 30255,\n      \"category\": \"category\",\n      \"errors\": {\n        \"phone_number\": [\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"documents\": [\n          {\n            \"error\": \"blank\"\n          }\n        ]\n      },\n      \"document_type\": \"certificate_of_business_name_registration\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d50dad52-2ec9-4274-a144-33c825ab08ea",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f9b23716-9b56-4061-9641-ff03cd9fd7d6",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ff8d3dd-e87a-4f09-8912-08a36726d5f7",
+          "name": "Creating a document",
+          "request": {
+            "name": "Creating a document",
+            "description": {
+              "content": "Creates a new document",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"document\": {\n    \"upload\": \"<string>\",\n    \"upload_file_name\": \"<string>\",\n    \"url\": \"<string>\",\n    \"metadata\": \"<object>\",\n    \"upload_content_type\": \"<string>\",\n    \"upload_file_size\": \"<integer>\",\n    \"document_type\": \"<string>\",\n    \"document_id\": \"<string>\",\n    \"expiry_date\": \"<date>\",\n    \"source\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6a0dbf42-7eef-4bfa-b7c9-18720fc28821",
+              "name": "Details of the created document",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"document\": {\n    \"upload\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAACXBIWXMAAAsT\\n3Y2wAAAAAElFTkSuQmCC(...)\",\n    \"upload_file_name\": \"passport.png\",\n    \"metadata\": {\n      \"meta\": \"data\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n    \"upload_file_name\": \"example.png\",\n    \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n    \"metadata\": {},\n    \"upload_content_type\": \"image/png\",\n    \"upload_file_size\": 30255,\n    \"category\": \"string\",\n    \"side\": \"back\",\n    \"document_type\": \"certificate_of_business_name_registration\",\n    \"issuing_country\": \"NG\",\n    \"id\": \"ebe9bc0b-f2f6-4ce8-802a-8b79912d041e\",\n    \"document_id\": \"XYZ12345\",\n    \"expiry_date\": \"<date>\",\n    \"source\": \"Manual\",\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_2\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_3\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f908ebe-53b7-43a7-9ed5-8c2a12c42d85",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"document\": {\n    \"upload\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAACXBIWXMAAAsT\\n3Y2wAAAAAElFTkSuQmCC(...)\",\n    \"upload_file_name\": \"passport.png\",\n    \"metadata\": {\n      \"meta\": \"data\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b8d216f1-a680-4826-aa5b-d0056d2e31f7",
+              "name": "Invalid document object (includes errors object)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"document\": {\n    \"upload\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAACXBIWXMAAAsT\\n3Y2wAAAAAElFTkSuQmCC(...)\",\n    \"upload_file_name\": \"passport.png\",\n    \"metadata\": {\n      \"meta\": \"data\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n    \"upload_file_name\": \"example.png\",\n    \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n    \"metadata\": {},\n    \"upload_content_type\": \"image/png\",\n    \"upload_file_size\": 30255,\n    \"category\": \"string\",\n    \"side\": \"back\",\n    \"document_type\": \"certificate_of_business_name_registration\",\n    \"issuing_country\": \"NG\",\n    \"id\": \"ebe9bc0b-f2f6-4ce8-802a-8b79912d041e\",\n    \"document_id\": \"XYZ12345\",\n    \"expiry_date\": \"<date>\",\n    \"source\": \"Manual\",\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_2\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_3\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c84e4e25-5aa5-4f4f-95e6-6dbeb5ccfe79",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"document\": {\n    \"upload\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAACXBIWXMAAAsT\\n3Y2wAAAAAElFTkSuQmCC(...)\",\n    \"upload_file_name\": \"passport.png\",\n    \"metadata\": {\n      \"meta\": \"data\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae9347a3-a518-473c-bd9d-dd9973249d1c",
+          "name": "Fetching a document",
+          "request": {
+            "name": "Fetching a document",
+            "description": {
+              "content": "Returns a single document by the Documents ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents",
+                ":Document ID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "Document ID",
+                  "description": "(Required) ID of the document to get.\n\nExample: `/v1/documents/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a7b0685-720f-45f7-8d39-29c980e169ac",
+              "name": "Details of requested document",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":Document ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Document ID",
+                      "description": "(Required) ID of the document to get.\n\nExample: `/v1/documents/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n    \"upload_file_name\": \"example.png\",\n    \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n    \"metadata\": {},\n    \"upload_content_type\": \"image/png\",\n    \"upload_file_size\": 30255,\n    \"category\": \"string\",\n    \"side\": \"back\",\n    \"document_type\": \"certificate_of_business_name_registration\",\n    \"issuing_country\": \"NG\",\n    \"id\": \"ebe9bc0b-f2f6-4ce8-802a-8b79912d041e\",\n    \"document_id\": \"XYZ12345\",\n    \"expiry_date\": \"<date>\",\n    \"source\": \"Manual\",\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_2\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_3\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "43dc026b-7009-4a35-ae99-da0777336ad8",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":Document ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Document ID",
+                      "description": "(Required) ID of the document to get.\n\nExample: `/v1/documents/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c266020-3698-4f9d-ae01-03b886ac2b46",
+              "name": "Resource Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":Document ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Document ID",
+                      "description": "(Required) ID of the document to get.\n\nExample: `/v1/documents/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "66a8e26f-49f5-4d8f-8d48-1d767a824f1c",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":Document ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Document ID",
+                      "description": "(Required) ID of the document to get.\n\nExample: `/v1/documents/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.transferzero.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fd8a9baf-a94a-4f78-bb9a-805fdb1f4b8a",
+    "name": "TransferZero Account Debits Documents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Reference documentation for the TransferZero API V1",
+      "type": "text/plain"
+    }
+  }
+}

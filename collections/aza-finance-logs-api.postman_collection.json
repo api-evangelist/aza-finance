@@ -1,0 +1,525 @@
+{
+  "item": [
+    {
+      "id": "e21cd2eb-f36d-41ae-b966-36c25f4ebb55",
+      "name": "Logs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "62123d3d-c0f4-4cb1-a6e7-83331a3362fd",
+          "name": "Fetch a list of webhook logs",
+          "request": {
+            "name": "Fetch a list of webhook logs",
+            "description": {
+              "content": "Returns a list of webhook logs. Response includes pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "logs",
+                "webhooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "The page number to request (defaults to 1)"
+                },
+                {
+                  "disabled": false,
+                  "key": "per",
+                  "value": "<integer>",
+                  "description": "The number of results to load per page (defaults to 10)"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at_from",
+                  "value": "<string>",
+                  "description": "Start date to filter recipients by created_at range\nAllows filtering results by the specified `created_at` timeframe.\n\nExample: `/v1/recipients?created_at_from=2018-06-06&created_at_to=2018-06-08`"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at_to",
+                  "value": "<string>",
+                  "description": "End date to filter recipients by created_at range\nAllows filtering results by the specified `created_at` timeframe.\n\nExample: `/v1/recipients?created_at_from=2018-06-06&created_at_to=2018-06-08`"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7ddac2a7-33e8-409c-bf9f-b849e4d18930",
+              "name": "Webhook logs returned within an array wrapped inside a JSON object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "logs",
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_at_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at_to",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"pagination\": {\n      \"next_page\": 3,\n      \"total_count\": 45,\n      \"total_pages\": 5,\n      \"prev_page\": 1,\n      \"current_page\": 2\n    }\n  },\n  \"object\": [\n    {\n      \"metadata\": {\n        \"tries\": 15,\n        \"request\": {\n          \"headers\": {\n            \"Content-Type\": \"application/json\",\n            \"Authorization-Nonce\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n            \"Authorization-Key\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n            \"Authorization-Signature\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n            \"Accept-Encoding\": \"gzip;q=1.0,deflate;q=0.6,identity;q=0.3\",\n            \"Accept\": \"*/*\",\n            \"User-Agent\": \"Ruby\",\n            \"Host\": \"localhost:3000\",\n            \"Content-Length\": \"3549\"\n          },\n          \"body\": \"{\\\"webhook\\\":\\\"54cbd6f2-b920-41e9-a225-b1000e024787\\\",\\\"event\\\":\\\"transaction.mispaid\\\",\\\"object\\\":{\\\"id\\\":\\\"cbcea909-85e3-448f-bd07-b9ecdff6e971\\\"}}\",\n          \"url\": \"http://localhost:3000\"\n        },\n        \"instance_id\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n        \"response\": {\n          \"headers\": {\n            \"date\": \"Fri, 11 Jan 2019 09:00:00 GMT\",\n            \"connection\": \"close\",\n            \"content-type\": \"text/html; charset=utf-8\",\n            \"x-web-console-session-id\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n            \"x-web-console-mount-point\": \"/__web_console\",\n            \"x-request-id\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n            \"x-runtime\": \"0.484015\",\n            \"content-length\": \"145453\"\n          },\n          \"body\": \"<!DOCTYPE html> <html lang=\\\"en\\\"> <head> <meta charset=\\\"utf-8\\\" /> <title>Action Controller: Exception caught</title>\",\n          \"status\": \"500\"\n        },\n        \"attempt_id\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n        \"params\": {\n          \"metadata\": {},\n          \"url\": \"http://webhook.site/webhooks\",\n          \"events\": [\n            \"transaction.paid_in\",\n            \"transaction.paid_in\"\n          ],\n          \"errors\": {\n            \"phone_number\": [\n              {\n                \"error\": \"invalid\"\n              }\n            ],\n            \"documents\": [\n              {\n                \"error\": \"blank\"\n              }\n            ]\n          }\n        },\n        \"event\": \"transaction.mispaid\",\n        \"instance_type\": \"Transaction\",\n        \"app_id\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n        \"api_key_id\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\"\n      },\n      \"parent_id\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n      \"created_at\": \"2018-12-31T23:59:50.059+0000\",\n      \"message\": \"Transaction(a0696374-de2f-4b4e-a2d7-cb4e0a1240c0) transaction.mispaid pending!\",\n      \"parent_type\": \"Webhook\"\n    },\n    {\n      \"metadata\": {\n        \"tries\": 15,\n        \"request\": {\n          \"headers\": {\n            \"Content-Type\": \"application/json\",\n            \"Authorization-Nonce\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n            \"Authorization-Key\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n            \"Authorization-Signature\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n            \"Accept-Encoding\": \"gzip;q=1.0,deflate;q=0.6,identity;q=0.3\",\n            \"Accept\": \"*/*\",\n            \"User-Agent\": \"Ruby\",\n            \"Host\": \"localhost:3000\",\n            \"Content-Length\": \"3549\"\n          },\n          \"body\": \"{\\\"webhook\\\":\\\"54cbd6f2-b920-41e9-a225-b1000e024787\\\",\\\"event\\\":\\\"transaction.mispaid\\\",\\\"object\\\":{\\\"id\\\":\\\"cbcea909-85e3-448f-bd07-b9ecdff6e971\\\"}}\",\n          \"url\": \"http://localhost:3000\"\n        },\n        \"instance_id\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n        \"response\": {\n          \"headers\": {\n            \"date\": \"Fri, 11 Jan 2019 09:00:00 GMT\",\n            \"connection\": \"close\",\n            \"content-type\": \"text/html; charset=utf-8\",\n            \"x-web-console-session-id\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n            \"x-web-console-mount-point\": \"/__web_console\",\n            \"x-request-id\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n            \"x-runtime\": \"0.484015\",\n            \"content-length\": \"145453\"\n          },\n          \"body\": \"<!DOCTYPE html> <html lang=\\\"en\\\"> <head> <meta charset=\\\"utf-8\\\" /> <title>Action Controller: Exception caught</title>\",\n          \"status\": \"500\"\n        },\n        \"attempt_id\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n        \"params\": {\n          \"metadata\": {},\n          \"url\": \"http://webhook.site/webhooks\",\n          \"events\": [\n            \"transaction.paid_in\",\n            \"transaction.paid_in\"\n          ],\n          \"errors\": {\n            \"phone_number\": [\n              {\n                \"error\": \"invalid\"\n              }\n            ],\n            \"documents\": [\n              {\n                \"error\": \"blank\"\n              }\n            ]\n          }\n        },\n        \"event\": \"transaction.mispaid\",\n        \"instance_type\": \"Transaction\",\n        \"app_id\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n        \"api_key_id\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\"\n      },\n      \"parent_id\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n      \"created_at\": \"2018-12-31T23:59:50.059+0000\",\n      \"message\": \"Transaction(a0696374-de2f-4b4e-a2d7-cb4e0a1240c0) transaction.mispaid pending!\",\n      \"parent_type\": \"Webhook\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64a4b949-b8d5-4c2e-b8fb-d711043f1de5",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "logs",
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_at_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at_to",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8ba08282-fd46-4b75-9723-1bce31c6761e",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "logs",
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_at_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at_to",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9fe69454-af34-45ee-9eb1-990011d9a5a0",
+          "name": "Fetch an individual webhook log",
+          "request": {
+            "name": "Fetch an individual webhook log",
+            "description": {
+              "content": "Returns a single webhook log based on the webhook log ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "logs",
+                ":Webhook Log ID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "Webhook Log ID",
+                  "description": "(Required) ID of the webhook log to retrieve\n\nExample: `/v1/logs/9d1ad631-f34a-4cff-9a7e-2c83e3a556df`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "81f98ad6-76de-4b51-9b1a-8475a4fd7d5d",
+              "name": "Details of requested webhook log",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "logs",
+                    ":Webhook Log ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Webhook Log ID",
+                      "description": "(Required) ID of the webhook log to retrieve\n\nExample: `/v1/logs/9d1ad631-f34a-4cff-9a7e-2c83e3a556df`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"id\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n    \"message\": \"Transaction(a0696374-de2f-4b4e-a2d7-cb4e0a1240c0) transaction.mispaid pending!\",\n    \"metadata\": {\n      \"params\": {\n        \"events\": [\n          \"transaction.paid_in\",\n          \"transaction.paid_in\"\n        ],\n        \"url\": \"http://webhook.site/webhooks\",\n        \"metadata\": {},\n        \"id\": \"1cd580b2-2a1b-4f73-81c8-0308308baef2\",\n        \"errors\": {\n          \"key_0\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"key_1\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"key_2\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"key_3\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"key_4\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"event\": \"transaction.mispaid\",\n      \"instance_id\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n      \"instance_type\": \"Transaction\",\n      \"attempt_id\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n      \"tries\": 15,\n      \"request\": {\n        \"headers\": {\n          \"Content-Type\": \"application/json\",\n          \"Authorization-Nonce\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n          \"Authorization-Key\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n          \"Authorization-Signature\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n          \"Accept-Encoding\": \"gzip;q=1.0,deflate;q=0.6,identity;q=0.3\",\n          \"Accept\": \"*/*\",\n          \"User-Agent\": \"Ruby\",\n          \"Host\": \"localhost:3000\",\n          \"Content-Length\": \"3549\"\n        },\n        \"body\": \"{\\\"webhook\\\":\\\"54cbd6f2-b920-41e9-a225-b1000e024787\\\",\\\"event\\\":\\\"transaction.mispaid\\\",\\\"object\\\":{\\\"id\\\":\\\"cbcea909-85e3-448f-bd07-b9ecdff6e971\\\"}}\",\n        \"url\": \"http://localhost:3000\"\n      },\n      \"response\": {\n        \"headers\": {\n          \"date\": \"Fri, 11 Jan 2019 09:00:00 GMT\",\n          \"connection\": \"close\",\n          \"content-type\": \"text/html; charset=utf-8\",\n          \"x-web-console-session-id\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n          \"x-web-console-mount-point\": \"/__web_console\",\n          \"x-request-id\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n          \"x-runtime\": \"0.484015\",\n          \"content-length\": \"145453\"\n        },\n        \"body\": \"<!DOCTYPE html> <html lang=\\\"en\\\"> <head> <meta charset=\\\"utf-8\\\" /> <title>Action Controller: Exception caught</title>\",\n        \"status\": \"500\"\n      },\n      \"app_id\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n      \"api_key_id\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\"\n    },\n    \"created_at\": \"2018-12-31T23:59:50.059+0000\",\n    \"parent_id\": \"a0696374-de2f-4b4e-a2d7-cb4e0a1240c0\",\n    \"parent_type\": \"Webhook\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a36c915-8b30-48a2-b364-83e9178073ce",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "logs",
+                    ":Webhook Log ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Webhook Log ID",
+                      "description": "(Required) ID of the webhook log to retrieve\n\nExample: `/v1/logs/9d1ad631-f34a-4cff-9a7e-2c83e3a556df`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e211a87d-4cee-4c11-92df-3740af3d26b9",
+              "name": "Resource Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "logs",
+                    ":Webhook Log ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Webhook Log ID",
+                      "description": "(Required) ID of the webhook log to retrieve\n\nExample: `/v1/logs/9d1ad631-f34a-4cff-9a7e-2c83e3a556df`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "acd1647b-8f6f-4be3-a298-21c975ac1c55",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "logs",
+                    ":Webhook Log ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Webhook Log ID",
+                      "description": "(Required) ID of the webhook log to retrieve\n\nExample: `/v1/logs/9d1ad631-f34a-4cff-9a7e-2c83e3a556df`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.transferzero.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "50a1e483-a778-458e-9411-0fc7034c8268",
+    "name": "TransferZero Account Debits Logs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Reference documentation for the TransferZero API V1",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1420 @@
+{
+  "item": [
+    {
+      "id": "900330ac-ae6f-48e8-b3a4-1b3138ec8ee1",
+      "name": "Senders",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bc1411ea-bdc7-4a2c-8a42-a3a72e29de61",
+          "name": "Listing senders",
+          "request": {
+            "name": "Listing senders",
+            "description": {
+              "content": "Get a list of available senders",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "senders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "The page number to request (defaults to 1)"
+                },
+                {
+                  "disabled": false,
+                  "key": "per",
+                  "value": "<integer>",
+                  "description": "The number of results to load per page (defaults to 10)"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at_from",
+                  "value": "<string>",
+                  "description": "Start date to filter recipients by created_at range\nAllows filtering results by the specified `created_at` timeframe.\n\nExample: `/v1/recipients?created_at_from=2018-06-06&created_at_to=2018-06-08`"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at_to",
+                  "value": "<string>",
+                  "description": "End date to filter recipients by created_at range\nAllows filtering results by the specified `created_at` timeframe.\n\nExample: `/v1/recipients?created_at_from=2018-06-06&created_at_to=2018-06-08`"
+                },
+                {
+                  "disabled": false,
+                  "key": "external_id",
+                  "value": "<string>",
+                  "description": "Allows filtering results by `external_id`.\n\nExample: `/v1/senders?external_id=26ec8517-2f0d-48c0-b74f-0bccb9ab3a87`"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "be82c734-2054-4e26-bfe2-40455177be7f",
+              "name": "Array of senders requested",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_at_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at_to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "external_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": [\n    {\n      \"city\": \"Kampala\",\n      \"country\": \"NG\",\n      \"documents\": [\n        {\n          \"metadata\": {},\n          \"side\": \"front\",\n          \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n          \"expiry_date\": \"2000-01-23\",\n          \"upload_file_name\": \"example.png\",\n          \"upload_content_type\": \"image/png\",\n          \"source\": \"Manual\",\n          \"document_id\": \"XYZ12345\",\n          \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n          \"issuing_country\": \"NG\",\n          \"upload_file_size\": 30255,\n          \"category\": \"category\",\n          \"errors\": {\n            \"phone_number\": [\n              {\n                \"error\": \"invalid\"\n              }\n            ],\n            \"documents\": [\n              {\n                \"error\": \"blank\"\n              }\n            ]\n          },\n          \"document_type\": \"certificate_of_business_name_registration\"\n        },\n        {\n          \"metadata\": {},\n          \"side\": \"front\",\n          \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n          \"expiry_date\": \"2000-01-23\",\n          \"upload_file_name\": \"example.png\",\n          \"upload_content_type\": \"image/png\",\n          \"source\": \"Manual\",\n          \"document_id\": \"XYZ12345\",\n          \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n          \"issuing_country\": \"NG\",\n          \"upload_file_size\": 30255,\n          \"category\": \"category\",\n          \"errors\": {\n            \"phone_number\": [\n              {\n                \"error\": \"invalid\"\n              }\n            ],\n            \"documents\": [\n              {\n                \"error\": \"blank\"\n              }\n            ]\n          },\n          \"document_type\": \"certificate_of_business_name_registration\"\n        }\n      ],\n      \"email\": \"example@home.org\",\n      \"ip\": \"127.0.0.1\",\n      \"postal_code\": \"798983\",\n      \"street\": \"Fake Street\",\n      \"id\": \"bf9ff782-e182-45ac-abea-5bce83ad6670\",\n      \"type\": \"person\",\n      \"state\": \"initial\",\n      \"phone_country\": \"NG\",\n      \"phone_number\": \"752403639\",\n      \"fingerprint\": \"fingerprint\",\n      \"address_description\": \"string\",\n      \"identification_number\": \"AB123456\",\n      \"identification_type\": \"ID\",\n      \"lang\": \"en\",\n      \"name\": \"string\",\n      \"first_name\": \"Johnny\",\n      \"middle_name\": \"Johnny\",\n      \"last_name\": \"English\",\n      \"birth_date\": \"1952-03-28\",\n      \"occupation\": \"Accountant\",\n      \"nationality\": \"NG\",\n      \"legal_entity_type\": \"privately_owned_company\",\n      \"registration_date\": \"1993-05-10\",\n      \"registration_number\": \"string\",\n      \"nature_of_business\": \"forestry\",\n      \"source_of_funds\": \"string\",\n      \"custom_source_of_funds\": \"string\",\n      \"core_business_activity\": \"string\",\n      \"purpose_of_opening_account\": \"string\",\n      \"office_phone\": \"string\",\n      \"vat_registration_number\": \"string\",\n      \"financial_regulator\": \"string\",\n      \"regulatory_licence_number\": \"string\",\n      \"contact_person_email\": \"string\",\n      \"trading_country\": \"string\",\n      \"trading_address\": \"string\",\n      \"trading_name\": \"string\",\n      \"number_monthly_transactions\": \"string\",\n      \"amount_monthly_transactions\": \"string\",\n      \"metadata\": {},\n      \"errors\": {\n        \"phone_number\": [\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"documents\": [\n          {\n            \"error\": \"blank\"\n          }\n        ]\n      },\n      \"onboarding_status\": \"string\",\n      \"politically_exposed_people\": [\n        {\n          \"name\": \"Ronald Reagan\",\n          \"position\": \"President of the United States\",\n          \"started_date\": \"1981-01-20T00:00:00.000Z\",\n          \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n          \"sender_id\": \"f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb\"\n        }\n      ],\n      \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n      \"city_of_birth\": \"London\",\n      \"country_of_birth\": \"GB\",\n      \"gender\": \"M\",\n      \"sales_lead_id\": \"HF6HJVF67\",\n      \"created_at\": \"2019-01-11T00:00:00.001+0000\",\n      \"company_office_number\": \"123123123\",\n      \"company_office_number_country\": \"GB\",\n      \"aml_officer_email\": \"string\",\n      \"aml_officer_phone\": \"123123123\",\n      \"aml_officer_phone_country\": \"GB\",\n      \"company_website_url\": \"www.azafinance.com\",\n      \"number_of_employees_in_company\": \"250+\",\n      \"list_of_countries_of_operation\": [\n        \"Spain\",\n        \"Germany\",\n        \"Poland\"\n      ],\n      \"estimated_annual_revenue_turnover\": \"string\",\n      \"declaration\": \"Yes\"\n    },\n    {\n      \"city\": \"Kampala\",\n      \"country\": \"NG\",\n      \"documents\": [\n        {\n          \"metadata\": {},\n          \"side\": \"front\",\n          \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n          \"expiry_date\": \"2000-01-23\",\n          \"upload_file_name\": \"example.png\",\n          \"upload_content_type\": \"image/png\",\n          \"source\": \"Manual\",\n          \"document_id\": \"XYZ12345\",\n          \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n          \"issuing_country\": \"NG\",\n          \"upload_file_size\": 30255,\n          \"category\": \"category\",\n          \"errors\": {\n            \"phone_number\": [\n              {\n                \"error\": \"invalid\"\n              }\n            ],\n            \"documents\": [\n              {\n                \"error\": \"blank\"\n              }\n            ]\n          },\n          \"document_type\": \"certificate_of_business_name_registration\"\n        },\n        {\n          \"metadata\": {},\n          \"side\": \"front\",\n          \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n          \"expiry_date\": \"2000-01-23\",\n          \"upload_file_name\": \"example.png\",\n          \"upload_content_type\": \"image/png\",\n          \"source\": \"Manual\",\n          \"document_id\": \"XYZ12345\",\n          \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n          \"issuing_country\": \"NG\",\n          \"upload_file_size\": 30255,\n          \"category\": \"category\",\n          \"errors\": {\n            \"phone_number\": [\n              {\n                \"error\": \"invalid\"\n              }\n            ],\n            \"documents\": [\n              {\n                \"error\": \"blank\"\n              }\n            ]\n          },\n          \"document_type\": \"certificate_of_business_name_registration\"\n        }\n      ],\n      \"email\": \"example@home.org\",\n      \"ip\": \"127.0.0.1\",\n      \"postal_code\": \"798983\",\n      \"street\": \"Fake Street\",\n      \"id\": \"bf9ff782-e182-45ac-abea-5bce83ad6670\",\n      \"type\": \"person\",\n      \"state\": \"initial\",\n      \"phone_country\": \"NG\",\n      \"phone_number\": \"752403639\",\n      \"fingerprint\": \"fingerprint\",\n      \"address_description\": \"string\",\n      \"identification_number\": \"AB123456\",\n      \"identification_type\": \"ID\",\n      \"lang\": \"en\",\n      \"name\": \"string\",\n      \"first_name\": \"Johnny\",\n      \"middle_name\": \"Johnny\",\n      \"last_name\": \"English\",\n      \"birth_date\": \"2001-01-10\",\n      \"occupation\": \"Accountant\",\n      \"nationality\": \"NG\",\n      \"legal_entity_type\": \"privately_owned_company\",\n      \"registration_date\": \"1949-01-02\",\n      \"registration_number\": \"string\",\n      \"nature_of_business\": \"fishing\",\n      \"source_of_funds\": \"string\",\n      \"custom_source_of_funds\": \"string\",\n      \"core_business_activity\": \"string\",\n      \"purpose_of_opening_account\": \"string\",\n      \"office_phone\": \"string\",\n      \"vat_registration_number\": \"string\",\n      \"financial_regulator\": \"string\",\n      \"regulatory_licence_number\": \"string\",\n      \"contact_person_email\": \"string\",\n      \"trading_country\": \"string\",\n      \"trading_address\": \"string\",\n      \"trading_name\": \"string\",\n      \"number_monthly_transactions\": \"string\",\n      \"amount_monthly_transactions\": \"string\",\n      \"metadata\": {},\n      \"errors\": {\n        \"phone_number\": [\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"documents\": [\n          {\n            \"error\": \"blank\"\n          }\n        ]\n      },\n      \"onboarding_status\": \"string\",\n      \"politically_exposed_people\": [\n        {\n          \"name\": \"Ronald Reagan\",\n          \"position\": \"President of the United States\",\n          \"started_date\": \"1981-01-20T00:00:00.000Z\",\n          \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n          \"sender_id\": \"f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb\"\n        }\n      ],\n      \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n      \"city_of_birth\": \"London\",\n      \"country_of_birth\": \"GB\",\n      \"gender\": \"M\",\n      \"sales_lead_id\": \"HF6HJVF67\",\n      \"created_at\": \"2019-01-11T00:00:00.001+0000\",\n      \"company_office_number\": \"123123123\",\n      \"company_office_number_country\": \"GB\",\n      \"aml_officer_email\": \"string\",\n      \"aml_officer_phone\": \"123123123\",\n      \"aml_officer_phone_country\": \"GB\",\n      \"company_website_url\": \"www.azafinance.com\",\n      \"number_of_employees_in_company\": \"250+\",\n      \"list_of_countries_of_operation\": [\n        \"Spain\",\n        \"Germany\",\n        \"Poland\"\n      ],\n      \"estimated_annual_revenue_turnover\": \"string\",\n      \"declaration\": \"Yes\"\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"next_page\": 3,\n      \"total_count\": 45,\n      \"total_pages\": 5,\n      \"prev_page\": 1,\n      \"current_page\": 2\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "766d6861-4dcc-483c-8143-1ce9dea7c437",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_at_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at_to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "external_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c59ca594-40b8-453b-a840-21b0f836759d",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_at_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at_to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "external_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c62353d3-8280-493c-9d91-30505f075f9c",
+          "name": "Creating a sender",
+          "request": {
+            "name": "Creating a sender",
+            "description": {
+              "content": "Creates a new sender in our system.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "senders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sender\": {\n    \"city\": \"<string>\",\n    \"country\": \"<string>\",\n    \"documents\": [\n      {\n        \"upload\": \"<string>\",\n        \"upload_file_name\": \"<string>\",\n        \"url\": \"<string>\",\n        \"metadata\": \"<object>\",\n        \"upload_content_type\": \"<string>\",\n        \"upload_file_size\": \"<integer>\",\n        \"document_type\": \"<string>\",\n        \"document_id\": \"<string>\",\n        \"expiry_date\": \"<date>\",\n        \"source\": \"<string>\"\n      },\n      {\n        \"upload\": \"<string>\",\n        \"upload_file_name\": \"<string>\",\n        \"url\": \"<string>\",\n        \"metadata\": \"<object>\",\n        \"upload_content_type\": \"<string>\",\n        \"upload_file_size\": \"<integer>\",\n        \"document_type\": \"<string>\",\n        \"document_id\": \"<string>\",\n        \"expiry_date\": \"<date>\",\n        \"source\": \"<string>\"\n      }\n    ],\n    \"email\": \"<email>\",\n    \"ip\": \"<ipv4>\",\n    \"postal_code\": \"<string>\",\n    \"street\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"type\": \"<string>\",\n    \"state\": \"<string>\",\n    \"phone_country\": \"<string>\",\n    \"phone_number\": \"<string>\",\n    \"fingerprint\": \"<string>\",\n    \"address_description\": \"<string>\",\n    \"identification_number\": \"<string>\",\n    \"identification_type\": \"<string>\",\n    \"lang\": \"<string>\",\n    \"name\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"middle_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"birth_date\": \"<date>\",\n    \"occupation\": \"<string>\",\n    \"nationality\": \"<string>\",\n    \"legal_entity_type\": \"<string>\",\n    \"registration_date\": \"<date>\",\n    \"registration_number\": \"<string>\",\n    \"nature_of_business\": \"<string>\",\n    \"source_of_funds\": \"<string>\",\n    \"custom_source_of_funds\": \"<string>\",\n    \"core_business_activity\": \"<string>\",\n    \"purpose_of_opening_account\": \"<string>\",\n    \"office_phone\": \"<string>\",\n    \"vat_registration_number\": \"<string>\",\n    \"financial_regulator\": \"<string>\",\n    \"regulatory_licence_number\": \"<string>\",\n    \"contact_person_email\": \"<string>\",\n    \"trading_country\": \"<string>\",\n    \"trading_address\": \"<string>\",\n    \"trading_name\": \"<string>\",\n    \"number_monthly_transactions\": \"<string>\",\n    \"amount_monthly_transactions\": \"<string>\",\n    \"metadata\": \"<object>\",\n    \"onboarding_status\": \"<string>\",\n    \"politically_exposed_people\": [\n      {\n        \"name\": \"<string>\",\n        \"position\": \"<string>\",\n        \"started_date\": \"<dateTime>\",\n        \"ended_date\": \"<dateTime>\",\n        \"sender_id\": \"<uuid>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"position\": \"<string>\",\n        \"started_date\": \"<dateTime>\",\n        \"ended_date\": \"<dateTime>\",\n        \"sender_id\": \"<uuid>\"\n      }\n    ],\n    \"external_id\": \"<string>\",\n    \"city_of_birth\": \"<string>\",\n    \"country_of_birth\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"sales_lead_id\": \"<string>\",\n    \"company_office_number\": \"<string>\",\n    \"company_office_number_country\": \"<string>\",\n    \"aml_officer_email\": \"<string>\",\n    \"aml_officer_phone\": \"<string>\",\n    \"aml_officer_phone_country\": \"<string>\",\n    \"company_website_url\": \"<string>\",\n    \"number_of_employees_in_company\": \"<string>\",\n    \"list_of_countries_of_operation\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"estimated_annual_revenue_turnover\": \"<string>\",\n    \"declaration\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "66f68e32-88f5-488c-bb17-67fe3e9fe766",
+              "name": "Sender details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sender\": {\n    \"country\": \"UG\",\n    \"phone_number\": \"+256752403639\",\n    \"email\": \"example@home.org\",\n    \"first_name\": \"Johnny\",\n    \"last_name\": \"English\",\n    \"city\": \"Kampala\",\n    \"street\": \"Unknown 17-3\",\n    \"address_description\": \"Description of address\",\n    \"postal_code\": \"798983\",\n    \"birth_date\": \"1900-12-31\",\n    \"documents\": [\n      {\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"upload_file_name\": \"example.png\",\n        \"metadata\": {\n          \"my\": \"data\"\n        }\n      }\n    ],\n    \"politically_exposed_people\": [\n      {\n        \"name\": \"Ronald Reagan\",\n        \"position\": \"President of the United States\",\n        \"started_date\": \"1981-01-20T00:00:00.000Z\",\n        \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n        \"sender_id\": \"344fb668-196d-43db-9d94-b34b7e6c7e0b\"\n      }\n    ],\n    \"ip\": \"127.0.0.1\",\n    \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"metadata\": {\n      \"my\": \"data\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"city\": \"Kampala\",\n    \"country\": \"NG\",\n    \"documents\": [\n      {\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"upload_file_name\": \"example.png\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"metadata\": {},\n        \"upload_content_type\": \"image/png\",\n        \"upload_file_size\": 30255,\n        \"category\": \"string\",\n        \"side\": \"back\",\n        \"document_type\": \"certificate_of_business_name_registration\",\n        \"issuing_country\": \"NG\",\n        \"id\": \"ebe9bc0b-f2f6-4ce8-802a-8b79912d041e\",\n        \"document_id\": \"XYZ12345\",\n        \"expiry_date\": \"<date>\",\n        \"source\": \"Manual\",\n        \"errors\": {\n          \"key_0\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_1\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_2\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_3\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ]\n        }\n      },\n      {\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"upload_file_name\": \"example.png\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"metadata\": {},\n        \"upload_content_type\": \"image/png\",\n        \"upload_file_size\": 30255,\n        \"category\": \"string\",\n        \"side\": \"front\",\n        \"document_type\": \"certificate_of_business_name_registration\",\n        \"issuing_country\": \"NG\",\n        \"id\": \"ebe9bc0b-f2f6-4ce8-802a-8b79912d041e\",\n        \"document_id\": \"XYZ12345\",\n        \"expiry_date\": \"<date>\",\n        \"source\": \"Manual\",\n        \"errors\": {\n          \"key_0\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_1\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ]\n        }\n      }\n    ],\n    \"email\": \"example@home.org\",\n    \"ip\": \"127.0.0.1\",\n    \"postal_code\": \"798983\",\n    \"street\": \"Fake Street\",\n    \"id\": \"bf9ff782-e182-45ac-abea-5bce83ad6670\",\n    \"type\": \"person\",\n    \"state\": \"initial\",\n    \"phone_country\": \"NG\",\n    \"phone_number\": \"752403639\",\n    \"fingerprint\": \"fingerprint\",\n    \"address_description\": \"<string>\",\n    \"identification_number\": \"AB123456\",\n    \"identification_type\": \"ID\",\n    \"lang\": \"en\",\n    \"name\": \"<string>\",\n    \"first_name\": \"Johnny\",\n    \"middle_name\": \"Johnny\",\n    \"last_name\": \"English\",\n    \"birth_date\": \"<date>\",\n    \"occupation\": \"Accountant\",\n    \"nationality\": \"NG\",\n    \"legal_entity_type\": \"privately_owned_company\",\n    \"registration_date\": \"<date>\",\n    \"registration_number\": \"<string>\",\n    \"nature_of_business\": \"<string>\",\n    \"source_of_funds\": \"<string>\",\n    \"custom_source_of_funds\": \"<string>\",\n    \"core_business_activity\": \"<string>\",\n    \"purpose_of_opening_account\": \"<string>\",\n    \"office_phone\": \"<string>\",\n    \"vat_registration_number\": \"<string>\",\n    \"financial_regulator\": \"<string>\",\n    \"regulatory_licence_number\": \"<string>\",\n    \"contact_person_email\": \"<string>\",\n    \"trading_country\": \"<string>\",\n    \"trading_address\": \"<string>\",\n    \"trading_name\": \"<string>\",\n    \"number_monthly_transactions\": \"<string>\",\n    \"amount_monthly_transactions\": \"<string>\",\n    \"metadata\": {},\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_2\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    },\n    \"onboarding_status\": \"<string>\",\n    \"politically_exposed_people\": [\n      {\n        \"name\": \"Ronald Reagan\",\n        \"position\": \"President of the United States\",\n        \"started_date\": \"1981-01-20T00:00:00.000Z\",\n        \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n        \"sender_id\": \"f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb\"\n      }\n    ],\n    \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"city_of_birth\": \"London\",\n    \"country_of_birth\": \"GB\",\n    \"gender\": \"M\",\n    \"sales_lead_id\": \"HF6HJVF67\",\n    \"created_at\": \"2019-01-11T00:00:00.001+0000\",\n    \"company_office_number\": \"123123123\",\n    \"company_office_number_country\": \"GB\",\n    \"aml_officer_email\": \"<string>\",\n    \"aml_officer_phone\": \"123123123\",\n    \"aml_officer_phone_country\": \"GB\",\n    \"company_website_url\": \"www.azafinance.com\",\n    \"number_of_employees_in_company\": \"250+\",\n    \"list_of_countries_of_operation\": [\n      \"Spain\",\n      \"Germany\",\n      \"Poland\"\n    ],\n    \"estimated_annual_revenue_turnover\": \"<string>\",\n    \"declaration\": \"Yes\"\n  },\n  \"meta\": {\n    \"existing\": {\n      \"sender\": {\n        \"city\": \"Kampala\",\n        \"country\": \"NG\",\n        \"documents\": [\n          {\n            \"metadata\": {},\n            \"side\": \"front\",\n            \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n            \"expiry_date\": \"2000-01-23\",\n            \"upload_file_name\": \"example.png\",\n            \"upload_content_type\": \"image/png\",\n            \"source\": \"Manual\",\n            \"document_id\": \"XYZ12345\",\n            \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n            \"issuing_country\": \"NG\",\n            \"upload_file_size\": 30255,\n            \"category\": \"category\",\n            \"errors\": {\n              \"phone_number\": [\n                {\n                  \"error\": \"invalid\"\n                }\n              ],\n              \"documents\": [\n                {\n                  \"error\": \"blank\"\n                }\n              ]\n            },\n            \"document_type\": \"certificate_of_business_name_registration\"\n          },\n          {\n            \"metadata\": {},\n            \"side\": \"front\",\n            \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n            \"expiry_date\": \"2000-01-23\",\n            \"upload_file_name\": \"example.png\",\n            \"upload_content_type\": \"image/png\",\n            \"source\": \"Manual\",\n            \"document_id\": \"XYZ12345\",\n            \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n            \"issuing_country\": \"NG\",\n            \"upload_file_size\": 30255,\n            \"category\": \"category\",\n            \"errors\": {\n              \"phone_number\": [\n                {\n                  \"error\": \"invalid\"\n                }\n              ],\n              \"documents\": [\n                {\n                  \"error\": \"blank\"\n                }\n              ]\n            },\n            \"document_type\": \"certificate_of_business_name_registration\"\n          }\n        ],\n        \"email\": \"example@home.org\",\n        \"ip\": \"127.0.0.1\",\n        \"postal_code\": \"798983\",\n        \"street\": \"Fake Street\",\n        \"id\": \"bf9ff782-e182-45ac-abea-5bce83ad6670\",\n        \"type\": \"person\",\n        \"state\": \"initial\",\n        \"phone_country\": \"NG\",\n        \"phone_number\": \"752403639\",\n        \"fingerprint\": \"fingerprint\",\n        \"address_description\": \"<string>\",\n        \"identification_number\": \"AB123456\",\n        \"identification_type\": \"ID\",\n        \"lang\": \"en\",\n        \"name\": \"<string>\",\n        \"first_name\": \"Johnny\",\n        \"middle_name\": \"Johnny\",\n        \"last_name\": \"English\",\n        \"birth_date\": \"<date>\",\n        \"occupation\": \"Accountant\",\n        \"nationality\": \"NG\",\n        \"legal_entity_type\": \"privately_owned_company\",\n        \"registration_date\": \"<date>\",\n        \"registration_number\": \"<string>\",\n        \"nature_of_business\": \"<string>\",\n        \"source_of_funds\": \"<string>\",\n        \"custom_source_of_funds\": \"<string>\",\n        \"core_business_activity\": \"<string>\",\n        \"purpose_of_opening_account\": \"<string>\",\n        \"office_phone\": \"<string>\",\n        \"vat_registration_number\": \"<string>\",\n        \"financial_regulator\": \"<string>\",\n        \"regulatory_licence_number\": \"<string>\",\n        \"contact_person_email\": \"<string>\",\n        \"trading_country\": \"<string>\",\n        \"trading_address\": \"<string>\",\n        \"trading_name\": \"<string>\",\n        \"number_monthly_transactions\": \"<string>\",\n        \"amount_monthly_transactions\": \"<string>\",\n        \"metadata\": {},\n        \"errors\": {\n          \"key_0\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"onboarding_status\": \"<string>\",\n        \"politically_exposed_people\": [\n          {\n            \"name\": \"Ronald Reagan\",\n            \"position\": \"President of the United States\",\n            \"started_date\": \"1981-01-20T00:00:00.000Z\",\n            \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n            \"sender_id\": \"f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb\"\n          }\n        ],\n        \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n        \"city_of_birth\": \"London\",\n        \"country_of_birth\": \"GB\",\n        \"gender\": \"M\",\n        \"sales_lead_id\": \"HF6HJVF67\",\n        \"created_at\": \"2019-01-11T00:00:00.001+0000\",\n        \"company_office_number\": \"123123123\",\n        \"company_office_number_country\": \"GB\",\n        \"aml_officer_email\": \"<string>\",\n        \"aml_officer_phone\": \"123123123\",\n        \"aml_officer_phone_country\": \"GB\",\n        \"company_website_url\": \"www.azafinance.com\",\n        \"number_of_employees_in_company\": \"250+\",\n        \"list_of_countries_of_operation\": [\n          \"Spain\",\n          \"Germany\",\n          \"Poland\"\n        ],\n        \"estimated_annual_revenue_turnover\": \"<string>\",\n        \"declaration\": \"Yes\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b383acf-b410-4c6f-8e59-ef875275c672",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sender\": {\n    \"country\": \"UG\",\n    \"phone_number\": \"+256752403639\",\n    \"email\": \"example@home.org\",\n    \"first_name\": \"Johnny\",\n    \"last_name\": \"English\",\n    \"city\": \"Kampala\",\n    \"street\": \"Unknown 17-3\",\n    \"address_description\": \"Description of address\",\n    \"postal_code\": \"798983\",\n    \"birth_date\": \"1900-12-31\",\n    \"documents\": [\n      {\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"upload_file_name\": \"example.png\",\n        \"metadata\": {\n          \"my\": \"data\"\n        }\n      }\n    ],\n    \"politically_exposed_people\": [\n      {\n        \"name\": \"Ronald Reagan\",\n        \"position\": \"President of the United States\",\n        \"started_date\": \"1981-01-20T00:00:00.000Z\",\n        \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n        \"sender_id\": \"344fb668-196d-43db-9d94-b34b7e6c7e0b\"\n      }\n    ],\n    \"ip\": \"127.0.0.1\",\n    \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"metadata\": {\n      \"my\": \"data\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "db52880e-a5e1-45fb-92cb-90161d24d137",
+              "name": "Invalid sender object (includes errors object and duplicate sender if external_id is already in use)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sender\": {\n    \"country\": \"UG\",\n    \"phone_number\": \"+256752403639\",\n    \"email\": \"example@home.org\",\n    \"first_name\": \"Johnny\",\n    \"last_name\": \"English\",\n    \"city\": \"Kampala\",\n    \"street\": \"Unknown 17-3\",\n    \"address_description\": \"Description of address\",\n    \"postal_code\": \"798983\",\n    \"birth_date\": \"1900-12-31\",\n    \"documents\": [\n      {\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"upload_file_name\": \"example.png\",\n        \"metadata\": {\n          \"my\": \"data\"\n        }\n      }\n    ],\n    \"politically_exposed_people\": [\n      {\n        \"name\": \"Ronald Reagan\",\n        \"position\": \"President of the United States\",\n        \"started_date\": \"1981-01-20T00:00:00.000Z\",\n        \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n        \"sender_id\": \"344fb668-196d-43db-9d94-b34b7e6c7e0b\"\n      }\n    ],\n    \"ip\": \"127.0.0.1\",\n    \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"metadata\": {\n      \"my\": \"data\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"city\": \"Kampala\",\n    \"country\": \"NG\",\n    \"documents\": [\n      {\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"upload_file_name\": \"example.png\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"metadata\": {},\n        \"upload_content_type\": \"image/png\",\n        \"upload_file_size\": 30255,\n        \"category\": \"string\",\n        \"side\": \"back\",\n        \"document_type\": \"certificate_of_business_name_registration\",\n        \"issuing_country\": \"NG\",\n        \"id\": \"ebe9bc0b-f2f6-4ce8-802a-8b79912d041e\",\n        \"document_id\": \"XYZ12345\",\n        \"expiry_date\": \"<date>\",\n        \"source\": \"Manual\",\n        \"errors\": {\n          \"key_0\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_1\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_2\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_3\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ]\n        }\n      },\n      {\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"upload_file_name\": \"example.png\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"metadata\": {},\n        \"upload_content_type\": \"image/png\",\n        \"upload_file_size\": 30255,\n        \"category\": \"string\",\n        \"side\": \"front\",\n        \"document_type\": \"certificate_of_business_name_registration\",\n        \"issuing_country\": \"NG\",\n        \"id\": \"ebe9bc0b-f2f6-4ce8-802a-8b79912d041e\",\n        \"document_id\": \"XYZ12345\",\n        \"expiry_date\": \"<date>\",\n        \"source\": \"Manual\",\n        \"errors\": {\n          \"key_0\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_1\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ]\n        }\n      }\n    ],\n    \"email\": \"example@home.org\",\n    \"ip\": \"127.0.0.1\",\n    \"postal_code\": \"798983\",\n    \"street\": \"Fake Street\",\n    \"id\": \"bf9ff782-e182-45ac-abea-5bce83ad6670\",\n    \"type\": \"person\",\n    \"state\": \"initial\",\n    \"phone_country\": \"NG\",\n    \"phone_number\": \"752403639\",\n    \"fingerprint\": \"fingerprint\",\n    \"address_description\": \"<string>\",\n    \"identification_number\": \"AB123456\",\n    \"identification_type\": \"ID\",\n    \"lang\": \"en\",\n    \"name\": \"<string>\",\n    \"first_name\": \"Johnny\",\n    \"middle_name\": \"Johnny\",\n    \"last_name\": \"English\",\n    \"birth_date\": \"<date>\",\n    \"occupation\": \"Accountant\",\n    \"nationality\": \"NG\",\n    \"legal_entity_type\": \"privately_owned_company\",\n    \"registration_date\": \"<date>\",\n    \"registration_number\": \"<string>\",\n    \"nature_of_business\": \"<string>\",\n    \"source_of_funds\": \"<string>\",\n    \"custom_source_of_funds\": \"<string>\",\n    \"core_business_activity\": \"<string>\",\n    \"purpose_of_opening_account\": \"<string>\",\n    \"office_phone\": \"<string>\",\n    \"vat_registration_number\": \"<string>\",\n    \"financial_regulator\": \"<string>\",\n    \"regulatory_licence_number\": \"<string>\",\n    \"contact_person_email\": \"<string>\",\n    \"trading_country\": \"<string>\",\n    \"trading_address\": \"<string>\",\n    \"trading_name\": \"<string>\",\n    \"number_monthly_transactions\": \"<string>\",\n    \"amount_monthly_transactions\": \"<string>\",\n    \"metadata\": {},\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_2\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    },\n    \"onboarding_status\": \"<string>\",\n    \"politically_exposed_people\": [\n      {\n        \"name\": \"Ronald Reagan\",\n        \"position\": \"President of the United States\",\n        \"started_date\": \"1981-01-20T00:00:00.000Z\",\n        \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n        \"sender_id\": \"f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb\"\n      }\n    ],\n    \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"city_of_birth\": \"London\",\n    \"country_of_birth\": \"GB\",\n    \"gender\": \"M\",\n    \"sales_lead_id\": \"HF6HJVF67\",\n    \"created_at\": \"2019-01-11T00:00:00.001+0000\",\n    \"company_office_number\": \"123123123\",\n    \"company_office_number_country\": \"GB\",\n    \"aml_officer_email\": \"<string>\",\n    \"aml_officer_phone\": \"123123123\",\n    \"aml_officer_phone_country\": \"GB\",\n    \"company_website_url\": \"www.azafinance.com\",\n    \"number_of_employees_in_company\": \"250+\",\n    \"list_of_countries_of_operation\": [\n      \"Spain\",\n      \"Germany\",\n      \"Poland\"\n    ],\n    \"estimated_annual_revenue_turnover\": \"<string>\",\n    \"declaration\": \"Yes\"\n  },\n  \"meta\": {\n    \"existing\": {\n      \"sender\": {\n        \"city\": \"Kampala\",\n        \"country\": \"NG\",\n        \"documents\": [\n          {\n            \"metadata\": {},\n            \"side\": \"front\",\n            \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n            \"expiry_date\": \"2000-01-23\",\n            \"upload_file_name\": \"example.png\",\n            \"upload_content_type\": \"image/png\",\n            \"source\": \"Manual\",\n            \"document_id\": \"XYZ12345\",\n            \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n            \"issuing_country\": \"NG\",\n            \"upload_file_size\": 30255,\n            \"category\": \"category\",\n            \"errors\": {\n              \"phone_number\": [\n                {\n                  \"error\": \"invalid\"\n                }\n              ],\n              \"documents\": [\n                {\n                  \"error\": \"blank\"\n                }\n              ]\n            },\n            \"document_type\": \"certificate_of_business_name_registration\"\n          },\n          {\n            \"metadata\": {},\n            \"side\": \"front\",\n            \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n            \"expiry_date\": \"2000-01-23\",\n            \"upload_file_name\": \"example.png\",\n            \"upload_content_type\": \"image/png\",\n            \"source\": \"Manual\",\n            \"document_id\": \"XYZ12345\",\n            \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n            \"issuing_country\": \"NG\",\n            \"upload_file_size\": 30255,\n            \"category\": \"category\",\n            \"errors\": {\n              \"phone_number\": [\n                {\n                  \"error\": \"invalid\"\n                }\n              ],\n              \"documents\": [\n                {\n                  \"error\": \"blank\"\n                }\n              ]\n            },\n            \"document_type\": \"certificate_of_business_name_registration\"\n          }\n        ],\n        \"email\": \"example@home.org\",\n        \"ip\": \"127.0.0.1\",\n        \"postal_code\": \"798983\",\n        \"street\": \"Fake Street\",\n        \"id\": \"bf9ff782-e182-45ac-abea-5bce83ad6670\",\n        \"type\": \"person\",\n        \"state\": \"initial\",\n        \"phone_country\": \"NG\",\n        \"phone_number\": \"752403639\",\n        \"fingerprint\": \"fingerprint\",\n        \"address_description\": \"<string>\",\n        \"identification_number\": \"AB123456\",\n        \"identification_type\": \"ID\",\n        \"lang\": \"en\",\n        \"name\": \"<string>\",\n        \"first_name\": \"Johnny\",\n        \"middle_name\": \"Johnny\",\n        \"last_name\": \"English\",\n        \"birth_date\": \"<date>\",\n        \"occupation\": \"Accountant\",\n        \"nationality\": \"NG\",\n        \"legal_entity_type\": \"privately_owned_company\",\n        \"registration_date\": \"<date>\",\n        \"registration_number\": \"<string>\",\n        \"nature_of_business\": \"<string>\",\n        \"source_of_funds\": \"<string>\",\n        \"custom_source_of_funds\": \"<string>\",\n        \"core_business_activity\": \"<string>\",\n        \"purpose_of_opening_account\": \"<string>\",\n        \"office_phone\": \"<string>\",\n        \"vat_registration_number\": \"<string>\",\n        \"financial_regulator\": \"<string>\",\n        \"regulatory_licence_number\": \"<string>\",\n        \"contact_person_email\": \"<string>\",\n        \"trading_country\": \"<string>\",\n        \"trading_address\": \"<string>\",\n        \"trading_name\": \"<string>\",\n        \"number_monthly_transactions\": \"<string>\",\n        \"amount_monthly_transactions\": \"<string>\",\n        \"metadata\": {},\n        \"errors\": {\n          \"key_0\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"onboarding_status\": \"<string>\",\n        \"politically_exposed_people\": [\n          {\n            \"name\": \"Ronald Reagan\",\n            \"position\": \"President of the United States\",\n            \"started_date\": \"1981-01-20T00:00:00.000Z\",\n            \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n            \"sender_id\": \"f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb\"\n          }\n        ],\n        \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n        \"city_of_birth\": \"London\",\n        \"country_of_birth\": \"GB\",\n        \"gender\": \"M\",\n        \"sales_lead_id\": \"HF6HJVF67\",\n        \"created_at\": \"2019-01-11T00:00:00.001+0000\",\n        \"company_office_number\": \"123123123\",\n        \"company_office_number_country\": \"GB\",\n        \"aml_officer_email\": \"<string>\",\n        \"aml_officer_phone\": \"123123123\",\n        \"aml_officer_phone_country\": \"GB\",\n        \"company_website_url\": \"www.azafinance.com\",\n        \"number_of_employees_in_company\": \"250+\",\n        \"list_of_countries_of_operation\": [\n          \"Spain\",\n          \"Germany\",\n          \"Poland\"\n        ],\n        \"estimated_annual_revenue_turnover\": \"<string>\",\n        \"declaration\": \"Yes\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80ad7077-514a-4749-8fae-d52c6d02387a",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sender\": {\n    \"country\": \"UG\",\n    \"phone_number\": \"+256752403639\",\n    \"email\": \"example@home.org\",\n    \"first_name\": \"Johnny\",\n    \"last_name\": \"English\",\n    \"city\": \"Kampala\",\n    \"street\": \"Unknown 17-3\",\n    \"address_description\": \"Description of address\",\n    \"postal_code\": \"798983\",\n    \"birth_date\": \"1900-12-31\",\n    \"documents\": [\n      {\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"upload_file_name\": \"example.png\",\n        \"metadata\": {\n          \"my\": \"data\"\n        }\n      }\n    ],\n    \"politically_exposed_people\": [\n      {\n        \"name\": \"Ronald Reagan\",\n        \"position\": \"President of the United States\",\n        \"started_date\": \"1981-01-20T00:00:00.000Z\",\n        \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n        \"sender_id\": \"344fb668-196d-43db-9d94-b34b7e6c7e0b\"\n      }\n    ],\n    \"ip\": \"127.0.0.1\",\n    \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"metadata\": {\n      \"my\": \"data\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac0d2fb0-c1ff-4bef-bbe7-7ab4e667e2dc",
+          "name": "Fetching a sender",
+          "request": {
+            "name": "Fetching a sender",
+            "description": {
+              "content": "Returns a single sender by the Sender ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "senders",
+                ":Sender ID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "Sender ID",
+                  "description": "(Required) ID of the sender to get.\n\nExample: `/v1/senders/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d18754ee-98ed-4703-8cae-0515576d46ae",
+              "name": "Details of requested sender",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senders",
+                    ":Sender ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Sender ID",
+                      "description": "(Required) ID of the sender to get.\n\nExample: `/v1/senders/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"city\": \"Kampala\",\n    \"country\": \"NG\",\n    \"documents\": [\n      {\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"upload_file_name\": \"example.png\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"metadata\": {},\n        \"upload_content_type\": \"image/png\",\n        \"upload_file_size\": 30255,\n        \"category\": \"string\",\n        \"side\": \"back\",\n        \"document_type\": \"certificate_of_business_name_registration\",\n        \"issuing_country\": \"NG\",\n        \"id\": \"ebe9bc0b-f2f6-4ce8-802a-8b79912d041e\",\n        \"document_id\": \"XYZ12345\",\n        \"expiry_date\": \"<date>\",\n        \"source\": \"Manual\",\n        \"errors\": {\n          \"key_0\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_1\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_2\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_3\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ]\n        }\n      },\n      {\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"upload_file_name\": \"example.png\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"metadata\": {},\n        \"upload_content_type\": \"image/png\",\n        \"upload_file_size\": 30255,\n        \"category\": \"string\",\n        \"side\": \"front\",\n        \"document_type\": \"certificate_of_business_name_registration\",\n        \"issuing_country\": \"NG\",\n        \"id\": \"ebe9bc0b-f2f6-4ce8-802a-8b79912d041e\",\n        \"document_id\": \"XYZ12345\",\n        \"expiry_date\": \"<date>\",\n        \"source\": \"Manual\",\n        \"errors\": {\n          \"key_0\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_1\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ]\n        }\n      }\n    ],\n    \"email\": \"example@home.org\",\n    \"ip\": \"127.0.0.1\",\n    \"postal_code\": \"798983\",\n    \"street\": \"Fake Street\",\n    \"id\": \"bf9ff782-e182-45ac-abea-5bce83ad6670\",\n    \"type\": \"person\",\n    \"state\": \"initial\",\n    \"phone_country\": \"NG\",\n    \"phone_number\": \"752403639\",\n    \"fingerprint\": \"fingerprint\",\n    \"address_description\": \"<string>\",\n    \"identification_number\": \"AB123456\",\n    \"identification_type\": \"ID\",\n    \"lang\": \"en\",\n    \"name\": \"<string>\",\n    \"first_name\": \"Johnny\",\n    \"middle_name\": \"Johnny\",\n    \"last_name\": \"English\",\n    \"birth_date\": \"<date>\",\n    \"occupation\": \"Accountant\",\n    \"nationality\": \"NG\",\n    \"legal_entity_type\": \"privately_owned_company\",\n    \"registration_date\": \"<date>\",\n    \"registration_number\": \"<string>\",\n    \"nature_of_business\": \"<string>\",\n    \"source_of_funds\": \"<string>\",\n    \"custom_source_of_funds\": \"<string>\",\n    \"core_business_activity\": \"<string>\",\n    \"purpose_of_opening_account\": \"<string>\",\n    \"office_phone\": \"<string>\",\n    \"vat_registration_number\": \"<string>\",\n    \"financial_regulator\": \"<string>\",\n    \"regulatory_licence_number\": \"<string>\",\n    \"contact_person_email\": \"<string>\",\n    \"trading_country\": \"<string>\",\n    \"trading_address\": \"<string>\",\n    \"trading_name\": \"<string>\",\n    \"number_monthly_transactions\": \"<string>\",\n    \"amount_monthly_transactions\": \"<string>\",\n    \"metadata\": {},\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_2\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    },\n    \"onboarding_status\": \"<string>\",\n    \"politically_exposed_people\": [\n      {\n        \"name\": \"Ronald Reagan\",\n        \"position\": \"President of the United States\",\n        \"started_date\": \"1981-01-20T00:00:00.000Z\",\n        \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n        \"sender_id\": \"f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb\"\n      }\n    ],\n    \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"city_of_birth\": \"London\",\n    \"country_of_birth\": \"GB\",\n    \"gender\": \"M\",\n    \"sales_lead_id\": \"HF6HJVF67\",\n    \"created_at\": \"2019-01-11T00:00:00.001+0000\",\n    \"company_office_number\": \"123123123\",\n    \"company_office_number_country\": \"GB\",\n    \"aml_officer_email\": \"<string>\",\n    \"aml_officer_phone\": \"123123123\",\n    \"aml_officer_phone_country\": \"GB\",\n    \"company_website_url\": \"www.azafinance.com\",\n    \"number_of_employees_in_company\": \"250+\",\n    \"list_of_countries_of_operation\": [\n      \"Spain\",\n      \"Germany\",\n      \"Poland\"\n    ],\n    \"estimated_annual_revenue_turnover\": \"<string>\",\n    \"declaration\": \"Yes\"\n  },\n  \"meta\": {\n    \"existing\": {\n      \"sender\": {\n        \"city\": \"Kampala\",\n        \"country\": \"NG\",\n        \"documents\": [\n          {\n            \"metadata\": {},\n            \"side\": \"front\",\n            \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n            \"expiry_date\": \"2000-01-23\",\n            \"upload_file_name\": \"example.png\",\n            \"upload_content_type\": \"image/png\",\n            \"source\": \"Manual\",\n            \"document_id\": \"XYZ12345\",\n            \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n            \"issuing_country\": \"NG\",\n            \"upload_file_size\": 30255,\n            \"category\": \"category\",\n            \"errors\": {\n              \"phone_number\": [\n                {\n                  \"error\": \"invalid\"\n                }\n              ],\n              \"documents\": [\n                {\n                  \"error\": \"blank\"\n                }\n              ]\n            },\n            \"document_type\": \"certificate_of_business_name_registration\"\n          },\n          {\n            \"metadata\": {},\n            \"side\": \"front\",\n            \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n            \"expiry_date\": \"2000-01-23\",\n            \"upload_file_name\": \"example.png\",\n            \"upload_content_type\": \"image/png\",\n            \"source\": \"Manual\",\n            \"document_id\": \"XYZ12345\",\n            \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n            \"issuing_country\": \"NG\",\n            \"upload_file_size\": 30255,\n            \"category\": \"category\",\n            \"errors\": {\n              \"phone_number\": [\n                {\n                  \"error\": \"invalid\"\n                }\n              ],\n              \"documents\": [\n                {\n                  \"error\": \"blank\"\n                }\n              ]\n            },\n            \"document_type\": \"certificate_of_business_name_registration\"\n          }\n        ],\n        \"email\": \"example@home.org\",\n        \"ip\": \"127.0.0.1\",\n        \"postal_code\": \"798983\",\n        \"street\": \"Fake Street\",\n        \"id\": \"bf9ff782-e182-45ac-abea-5bce83ad6670\",\n        \"type\": \"person\",\n        \"state\": \"initial\",\n        \"phone_country\": \"NG\",\n        \"phone_number\": \"752403639\",\n        \"fingerprint\": \"fingerprint\",\n        \"address_description\": \"<string>\",\n        \"identification_number\": \"AB123456\",\n        \"identification_type\": \"ID\",\n        \"lang\": \"en\",\n        \"name\": \"<string>\",\n        \"first_name\": \"Johnny\",\n        \"middle_name\": \"Johnny\",\n        \"last_name\": \"English\",\n        \"birth_date\": \"<date>\",\n        \"occupation\": \"Accountant\",\n        \"nationality\": \"NG\",\n        \"legal_entity_type\": \"privately_owned_company\",\n        \"registration_date\": \"<date>\",\n        \"registration_number\": \"<string>\",\n        \"nature_of_business\": \"<string>\",\n        \"source_of_funds\": \"<string>\",\n        \"custom_source_of_funds\": \"<string>\",\n        \"core_business_activity\": \"<string>\",\n        \"purpose_of_opening_account\": \"<string>\",\n        \"office_phone\": \"<string>\",\n        \"vat_registration_number\": \"<string>\",\n        \"financial_regulator\": \"<string>\",\n        \"regulatory_licence_number\": \"<string>\",\n        \"contact_person_email\": \"<string>\",\n        \"trading_country\": \"<string>\",\n        \"trading_address\": \"<string>\",\n        \"trading_name\": \"<string>\",\n        \"number_monthly_transactions\": \"<string>\",\n        \"amount_monthly_transactions\": \"<string>\",\n        \"metadata\": {},\n        \"errors\": {\n          \"key_0\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"onboarding_status\": \"<string>\",\n        \"politically_exposed_people\": [\n          {\n            \"name\": \"Ronald Reagan\",\n            \"position\": \"President of the United States\",\n            \"started_date\": \"1981-01-20T00:00:00.000Z\",\n            \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n            \"sender_id\": \"f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb\"\n          }\n        ],\n        \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n        \"city_of_birth\": \"London\",\n        \"country_of_birth\": \"GB\",\n        \"gender\": \"M\",\n        \"sales_lead_id\": \"HF6HJVF67\",\n        \"created_at\": \"2019-01-11T00:00:00.001+0000\",\n        \"company_office_number\": \"123123123\",\n        \"company_office_number_country\": \"GB\",\n        \"aml_officer_email\": \"<string>\",\n        \"aml_officer_phone\": \"123123123\",\n        \"aml_officer_phone_country\": \"GB\",\n        \"company_website_url\": \"www.azafinance.com\",\n        \"number_of_employees_in_company\": \"250+\",\n        \"list_of_countries_of_operation\": [\n          \"Spain\",\n          \"Germany\",\n          \"Poland\"\n        ],\n        \"estimated_annual_revenue_turnover\": \"<string>\",\n        \"declaration\": \"Yes\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b3b6b9dc-65f0-4485-bf22-708dbe5b5aad",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senders",
+                    ":Sender ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Sender ID",
+                      "description": "(Required) ID of the sender to get.\n\nExample: `/v1/senders/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f52a7113-3de6-4e2e-a935-bf21152c1293",
+              "name": "Resource Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senders",
+                    ":Sender ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Sender ID",
+                      "description": "(Required) ID of the sender to get.\n\nExample: `/v1/senders/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0a269ed7-3f02-4536-a214-30fb2bb5068f",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senders",
+                    ":Sender ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Sender ID",
+                      "description": "(Required) ID of the sender to get.\n\nExample: `/v1/senders/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ef1e6ec-41ac-4ae1-b62c-7fdb64726ae2",
+          "name": "Deleting a sender",
+          "request": {
+            "name": "Deleting a sender",
+            "description": {
+              "content": "Deletes a single sender by the Sender ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "senders",
+                ":Sender ID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "Sender ID",
+                  "description": "(Required) ID of the sender to delete.\n\nExample: `/v1/senders/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5b23abc2-65a5-49cc-a16b-f82b04ef2c6a",
+              "name": "Details of deleted sender",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senders",
+                    ":Sender ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Sender ID",
+                      "description": "(Required) ID of the sender to delete.\n\nExample: `/v1/senders/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"city\": \"Kampala\",\n    \"country\": \"NG\",\n    \"documents\": [\n      {\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"upload_file_name\": \"example.png\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"metadata\": {},\n        \"upload_content_type\": \"image/png\",\n        \"upload_file_size\": 30255,\n        \"category\": \"string\",\n        \"side\": \"back\",\n        \"document_type\": \"certificate_of_business_name_registration\",\n        \"issuing_country\": \"NG\",\n        \"id\": \"ebe9bc0b-f2f6-4ce8-802a-8b79912d041e\",\n        \"document_id\": \"XYZ12345\",\n        \"expiry_date\": \"<date>\",\n        \"source\": \"Manual\",\n        \"errors\": {\n          \"key_0\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_1\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_2\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_3\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ]\n        }\n      },\n      {\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"upload_file_name\": \"example.png\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"metadata\": {},\n        \"upload_content_type\": \"image/png\",\n        \"upload_file_size\": 30255,\n        \"category\": \"string\",\n        \"side\": \"front\",\n        \"document_type\": \"certificate_of_business_name_registration\",\n        \"issuing_country\": \"NG\",\n        \"id\": \"ebe9bc0b-f2f6-4ce8-802a-8b79912d041e\",\n        \"document_id\": \"XYZ12345\",\n        \"expiry_date\": \"<date>\",\n        \"source\": \"Manual\",\n        \"errors\": {\n          \"key_0\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_1\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ]\n        }\n      }\n    ],\n    \"email\": \"example@home.org\",\n    \"ip\": \"127.0.0.1\",\n    \"postal_code\": \"798983\",\n    \"street\": \"Fake Street\",\n    \"id\": \"bf9ff782-e182-45ac-abea-5bce83ad6670\",\n    \"type\": \"person\",\n    \"state\": \"initial\",\n    \"phone_country\": \"NG\",\n    \"phone_number\": \"752403639\",\n    \"fingerprint\": \"fingerprint\",\n    \"address_description\": \"<string>\",\n    \"identification_number\": \"AB123456\",\n    \"identification_type\": \"ID\",\n    \"lang\": \"en\",\n    \"name\": \"<string>\",\n    \"first_name\": \"Johnny\",\n    \"middle_name\": \"Johnny\",\n    \"last_name\": \"English\",\n    \"birth_date\": \"<date>\",\n    \"occupation\": \"Accountant\",\n    \"nationality\": \"NG\",\n    \"legal_entity_type\": \"privately_owned_company\",\n    \"registration_date\": \"<date>\",\n    \"registration_number\": \"<string>\",\n    \"nature_of_business\": \"<string>\",\n    \"source_of_funds\": \"<string>\",\n    \"custom_source_of_funds\": \"<string>\",\n    \"core_business_activity\": \"<string>\",\n    \"purpose_of_opening_account\": \"<string>\",\n    \"office_phone\": \"<string>\",\n    \"vat_registration_number\": \"<string>\",\n    \"financial_regulator\": \"<string>\",\n    \"regulatory_licence_number\": \"<string>\",\n    \"contact_person_email\": \"<string>\",\n    \"trading_country\": \"<string>\",\n    \"trading_address\": \"<string>\",\n    \"trading_name\": \"<string>\",\n    \"number_monthly_transactions\": \"<string>\",\n    \"amount_monthly_transactions\": \"<string>\",\n    \"metadata\": {},\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_2\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    },\n    \"onboarding_status\": \"<string>\",\n    \"politically_exposed_people\": [\n      {\n        \"name\": \"Ronald Reagan\",\n        \"position\": \"President of the United States\",\n        \"started_date\": \"1981-01-20T00:00:00.000Z\",\n        \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n        \"sender_id\": \"f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb\"\n      }\n    ],\n    \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"city_of_birth\": \"London\",\n    \"country_of_birth\": \"GB\",\n    \"gender\": \"M\",\n    \"sales_lead_id\": \"HF6HJVF67\",\n    \"created_at\": \"2019-01-11T00:00:00.001+0000\",\n    \"company_office_number\": \"123123123\",\n    \"company_office_number_country\": \"GB\",\n    \"aml_officer_email\": \"<string>\",\n    \"aml_officer_phone\": \"123123123\",\n    \"aml_officer_phone_country\": \"GB\",\n    \"company_website_url\": \"www.azafinance.com\",\n    \"number_of_employees_in_company\": \"250+\",\n    \"list_of_countries_of_operation\": [\n      \"Spain\",\n      \"Germany\",\n      \"Poland\"\n    ],\n    \"estimated_annual_revenue_turnover\": \"<string>\",\n    \"declaration\": \"Yes\"\n  },\n  \"meta\": {\n    \"existing\": {\n      \"sender\": {\n        \"city\": \"Kampala\",\n        \"country\": \"NG\",\n        \"documents\": [\n          {\n            \"metadata\": {},\n            \"side\": \"front\",\n            \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n            \"expiry_date\": \"2000-01-23\",\n            \"upload_file_name\": \"example.png\",\n            \"upload_content_type\": \"image/png\",\n            \"source\": \"Manual\",\n            \"document_id\": \"XYZ12345\",\n            \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n            \"issuing_country\": \"NG\",\n            \"upload_file_size\": 30255,\n            \"category\": \"category\",\n            \"errors\": {\n              \"phone_number\": [\n                {\n                  \"error\": \"invalid\"\n                }\n              ],\n              \"documents\": [\n                {\n                  \"error\": \"blank\"\n                }\n              ]\n            },\n            \"document_type\": \"certificate_of_business_name_registration\"\n          },\n          {\n            \"metadata\": {},\n            \"side\": \"front\",\n            \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n            \"expiry_date\": \"2000-01-23\",\n            \"upload_file_name\": \"example.png\",\n            \"upload_content_type\": \"image/png\",\n            \"source\": \"Manual\",\n            \"document_id\": \"XYZ12345\",\n            \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n            \"issuing_country\": \"NG\",\n            \"upload_file_size\": 30255,\n            \"category\": \"category\",\n            \"errors\": {\n              \"phone_number\": [\n                {\n                  \"error\": \"invalid\"\n                }\n              ],\n              \"documents\": [\n                {\n                  \"error\": \"blank\"\n                }\n              ]\n            },\n            \"document_type\": \"certificate_of_business_name_registration\"\n          }\n        ],\n        \"email\": \"example@home.org\",\n        \"ip\": \"127.0.0.1\",\n        \"postal_code\": \"798983\",\n        \"street\": \"Fake Street\",\n        \"id\": \"bf9ff782-e182-45ac-abea-5bce83ad6670\",\n        \"type\": \"person\",\n        \"state\": \"initial\",\n        \"phone_country\": \"NG\",\n        \"phone_number\": \"752403639\",\n        \"fingerprint\": \"fingerprint\",\n        \"address_description\": \"<string>\",\n        \"identification_number\": \"AB123456\",\n        \"identification_type\": \"ID\",\n        \"lang\": \"en\",\n        \"name\": \"<string>\",\n        \"first_name\": \"Johnny\",\n        \"middle_name\": \"Johnny\",\n        \"last_name\": \"English\",\n        \"birth_date\": \"<date>\",\n        \"occupation\": \"Accountant\",\n        \"nationality\": \"NG\",\n        \"legal_entity_type\": \"privately_owned_company\",\n        \"registration_date\": \"<date>\",\n        \"registration_number\": \"<string>\",\n        \"nature_of_business\": \"<string>\",\n        \"source_of_funds\": \"<string>\",\n        \"custom_source_of_funds\": \"<string>\",\n        \"core_business_activity\": \"<string>\",\n        \"purpose_of_opening_account\": \"<string>\",\n        \"office_phone\": \"<string>\",\n        \"vat_registration_number\": \"<string>\",\n        \"financial_regulator\": \"<string>\",\n        \"regulatory_licence_number\": \"<string>\",\n        \"contact_person_email\": \"<string>\",\n        \"trading_country\": \"<string>\",\n        \"trading_address\": \"<string>\",\n        \"trading_name\": \"<string>\",\n        \"number_monthly_transactions\": \"<string>\",\n        \"amount_monthly_transactions\": \"<string>\",\n        \"metadata\": {},\n        \"errors\": {\n          \"key_0\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"onboarding_status\": \"<string>\",\n        \"politically_exposed_people\": [\n          {\n            \"name\": \"Ronald Reagan\",\n            \"position\": \"President of the United States\",\n            \"started_date\": \"1981-01-20T00:00:00.000Z\",\n            \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n            \"sender_id\": \"f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb\"\n          }\n        ],\n        \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n        \"city_of_birth\": \"London\",\n        \"country_of_birth\": \"GB\",\n        \"gender\": \"M\",\n        \"sales_lead_id\": \"HF6HJVF67\",\n        \"created_at\": \"2019-01-11T00:00:00.001+0000\",\n        \"company_office_number\": \"123123123\",\n        \"company_office_number_country\": \"GB\",\n        \"aml_officer_email\": \"<string>\",\n        \"aml_officer_phone\": \"123123123\",\n        \"aml_officer_phone_country\": \"GB\",\n        \"company_website_url\": \"www.azafinance.com\",\n        \"number_of_employees_in_company\": \"250+\",\n        \"list_of_countries_of_operation\": [\n          \"Spain\",\n          \"Germany\",\n          \"Poland\"\n        ],\n        \"estimated_annual_revenue_turnover\": \"<string>\",\n        \"declaration\": \"Yes\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83ae58e8-8591-4586-8e1f-6125a8e3bf05",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senders",
+                    ":Sender ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Sender ID",
+                      "description": "(Required) ID of the sender to delete.\n\nExample: `/v1/senders/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4b47737d-b366-4853-bacf-a0fa694fe301",
+              "name": "Resource Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senders",
+                    ":Sender ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Sender ID",
+                      "description": "(Required) ID of the sender to delete.\n\nExample: `/v1/senders/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f24936c3-9f02-46a1-a34f-6453d06b6584",
+              "name": "Invalid sender object (includes errors object)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senders",
+                    ":Sender ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Sender ID",
+                      "description": "(Required) ID of the sender to delete.\n\nExample: `/v1/senders/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"city\": \"Kampala\",\n    \"country\": \"NG\",\n    \"documents\": [\n      {\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"upload_file_name\": \"example.png\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"metadata\": {},\n        \"upload_content_type\": \"image/png\",\n        \"upload_file_size\": 30255,\n        \"category\": \"string\",\n        \"side\": \"back\",\n        \"document_type\": \"certificate_of_business_name_registration\",\n        \"issuing_country\": \"NG\",\n        \"id\": \"ebe9bc0b-f2f6-4ce8-802a-8b79912d041e\",\n        \"document_id\": \"XYZ12345\",\n        \"expiry_date\": \"<date>\",\n        \"source\": \"Manual\",\n        \"errors\": {\n          \"key_0\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_1\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_2\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_3\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ]\n        }\n      },\n      {\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"upload_file_name\": \"example.png\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"metadata\": {},\n        \"upload_content_type\": \"image/png\",\n        \"upload_file_size\": 30255,\n        \"category\": \"string\",\n        \"side\": \"front\",\n        \"document_type\": \"certificate_of_business_name_registration\",\n        \"issuing_country\": \"NG\",\n        \"id\": \"ebe9bc0b-f2f6-4ce8-802a-8b79912d041e\",\n        \"document_id\": \"XYZ12345\",\n        \"expiry_date\": \"<date>\",\n        \"source\": \"Manual\",\n        \"errors\": {\n          \"key_0\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_1\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ]\n        }\n      }\n    ],\n    \"email\": \"example@home.org\",\n    \"ip\": \"127.0.0.1\",\n    \"postal_code\": \"798983\",\n    \"street\": \"Fake Street\",\n    \"id\": \"bf9ff782-e182-45ac-abea-5bce83ad6670\",\n    \"type\": \"person\",\n    \"state\": \"initial\",\n    \"phone_country\": \"NG\",\n    \"phone_number\": \"752403639\",\n    \"fingerprint\": \"fingerprint\",\n    \"address_description\": \"<string>\",\n    \"identification_number\": \"AB123456\",\n    \"identification_type\": \"ID\",\n    \"lang\": \"en\",\n    \"name\": \"<string>\",\n    \"first_name\": \"Johnny\",\n    \"middle_name\": \"Johnny\",\n    \"last_name\": \"English\",\n    \"birth_date\": \"<date>\",\n    \"occupation\": \"Accountant\",\n    \"nationality\": \"NG\",\n    \"legal_entity_type\": \"privately_owned_company\",\n    \"registration_date\": \"<date>\",\n    \"registration_number\": \"<string>\",\n    \"nature_of_business\": \"<string>\",\n    \"source_of_funds\": \"<string>\",\n    \"custom_source_of_funds\": \"<string>\",\n    \"core_business_activity\": \"<string>\",\n    \"purpose_of_opening_account\": \"<string>\",\n    \"office_phone\": \"<string>\",\n    \"vat_registration_number\": \"<string>\",\n    \"financial_regulator\": \"<string>\",\n    \"regulatory_licence_number\": \"<string>\",\n    \"contact_person_email\": \"<string>\",\n    \"trading_country\": \"<string>\",\n    \"trading_address\": \"<string>\",\n    \"trading_name\": \"<string>\",\n    \"number_monthly_transactions\": \"<string>\",\n    \"amount_monthly_transactions\": \"<string>\",\n    \"metadata\": {},\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_2\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    },\n    \"onboarding_status\": \"<string>\",\n    \"politically_exposed_people\": [\n      {\n        \"name\": \"Ronald Reagan\",\n        \"position\": \"President of the United States\",\n        \"started_date\": \"1981-01-20T00:00:00.000Z\",\n        \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n        \"sender_id\": \"f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb\"\n      }\n    ],\n    \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"city_of_birth\": \"London\",\n    \"country_of_birth\": \"GB\",\n    \"gender\": \"M\",\n    \"sales_lead_id\": \"HF6HJVF67\",\n    \"created_at\": \"2019-01-11T00:00:00.001+0000\",\n    \"company_office_number\": \"123123123\",\n    \"company_office_number_country\": \"GB\",\n    \"aml_officer_email\": \"<string>\",\n    \"aml_officer_phone\": \"123123123\",\n    \"aml_officer_phone_country\": \"GB\",\n    \"company_website_url\": \"www.azafinance.com\",\n    \"number_of_employees_in_company\": \"250+\",\n    \"list_of_countries_of_operation\": [\n      \"Spain\",\n      \"Germany\",\n      \"Poland\"\n    ],\n    \"estimated_annual_revenue_turnover\": \"<string>\",\n    \"declaration\": \"Yes\"\n  },\n  \"meta\": {\n    \"existing\": {\n      \"sender\": {\n        \"city\": \"Kampala\",\n        \"country\": \"NG\",\n        \"documents\": [\n          {\n            \"metadata\": {},\n            \"side\": \"front\",\n            \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n            \"expiry_date\": \"2000-01-23\",\n            \"upload_file_name\": \"example.png\",\n            \"upload_content_type\": \"image/png\",\n            \"source\": \"Manual\",\n            \"document_id\": \"XYZ12345\",\n            \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n            \"issuing_country\": \"NG\",\n            \"upload_file_size\": 30255,\n            \"category\": \"category\",\n            \"errors\": {\n              \"phone_number\": [\n                {\n                  \"error\": \"invalid\"\n                }\n              ],\n              \"documents\": [\n                {\n                  \"error\": \"blank\"\n                }\n              ]\n            },\n            \"document_type\": \"certificate_of_business_name_registration\"\n          },\n          {\n            \"metadata\": {},\n            \"side\": \"front\",\n            \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n            \"expiry_date\": \"2000-01-23\",\n            \"upload_file_name\": \"example.png\",\n            \"upload_content_type\": \"image/png\",\n            \"source\": \"Manual\",\n            \"document_id\": \"XYZ12345\",\n            \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n            \"issuing_country\": \"NG\",\n            \"upload_file_size\": 30255,\n            \"category\": \"category\",\n            \"errors\": {\n              \"phone_number\": [\n                {\n                  \"error\": \"invalid\"\n                }\n              ],\n              \"documents\": [\n                {\n                  \"error\": \"blank\"\n                }\n              ]\n            },\n            \"document_type\": \"certificate_of_business_name_registration\"\n          }\n        ],\n        \"email\": \"example@home.org\",\n        \"ip\": \"127.0.0.1\",\n        \"postal_code\": \"798983\",\n        \"street\": \"Fake Street\",\n        \"id\": \"bf9ff782-e182-45ac-abea-5bce83ad6670\",\n        \"type\": \"person\",\n        \"state\": \"initial\",\n        \"phone_country\": \"NG\",\n        \"phone_number\": \"752403639\",\n        \"fingerprint\": \"fingerprint\",\n        \"address_description\": \"<string>\",\n        \"identification_number\": \"AB123456\",\n        \"identification_type\": \"ID\",\n        \"lang\": \"en\",\n        \"name\": \"<string>\",\n        \"first_name\": \"Johnny\",\n        \"middle_name\": \"Johnny\",\n        \"last_name\": \"English\",\n        \"birth_date\": \"<date>\",\n        \"occupation\": \"Accountant\",\n        \"nationality\": \"NG\",\n        \"legal_entity_type\": \"privately_owned_company\",\n        \"registration_date\": \"<date>\",\n        \"registration_number\": \"<string>\",\n        \"nature_of_business\": \"<string>\",\n        \"source_of_funds\": \"<string>\",\n        \"custom_source_of_funds\": \"<string>\",\n        \"core_business_activity\": \"<string>\",\n        \"purpose_of_opening_account\": \"<string>\",\n        \"office_phone\": \"<string>\",\n        \"vat_registration_number\": \"<string>\",\n        \"financial_regulator\": \"<string>\",\n        \"regulatory_licence_number\": \"<string>\",\n        \"contact_person_email\": \"<string>\",\n        \"trading_country\": \"<string>\",\n        \"trading_address\": \"<string>\",\n        \"trading_name\": \"<string>\",\n        \"number_monthly_transactions\": \"<string>\",\n        \"amount_monthly_transactions\": \"<string>\",\n        \"metadata\": {},\n        \"errors\": {\n          \"key_0\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"onboarding_status\": \"<string>\",\n        \"politically_exposed_people\": [\n          {\n            \"name\": \"Ronald Reagan\",\n            \"position\": \"President of the United States\",\n            \"started_date\": \"1981-01-20T00:00:00.000Z\",\n            \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n            \"sender_id\": \"f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb\"\n          }\n        ],\n        \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n        \"city_of_birth\": \"London\",\n        \"country_of_birth\": \"GB\",\n        \"gender\": \"M\",\n        \"sales_lead_id\": \"HF6HJVF67\",\n        \"created_at\": \"2019-01-11T00:00:00.001+0000\",\n        \"company_office_number\": \"123123123\",\n        \"company_office_number_country\": \"GB\",\n        \"aml_officer_email\": \"<string>\",\n        \"aml_officer_phone\": \"123123123\",\n        \"aml_officer_phone_country\": \"GB\",\n        \"company_website_url\": \"www.azafinance.com\",\n        \"number_of_employees_in_company\": \"250+\",\n        \"list_of_countries_of_operation\": [\n          \"Spain\",\n          \"Germany\",\n          \"Poland\"\n        ],\n        \"estimated_annual_revenue_turnover\": \"<string>\",\n        \"declaration\": \"Yes\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e7438ce-e683-4cff-9186-46788cd6839b",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senders",
+                    ":Sender ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Sender ID",
+                      "description": "(Required) ID of the sender to delete.\n\nExample: `/v1/senders/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a110f73d-da57-487f-a519-eccbc3110925",
+          "name": "Updating a sender",
+          "request": {
+            "name": "Updating a sender",
+            "description": {
+              "content": "Updates a single sender by the Sender ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "senders",
+                ":Sender ID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "Sender ID",
+                  "description": "(Required) ID of the sender to get.\n\nExample: `/v1/senders/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sender\": {\n    \"city\": \"<string>\",\n    \"country\": \"<string>\",\n    \"documents\": [\n      {\n        \"upload\": \"<string>\",\n        \"upload_file_name\": \"<string>\",\n        \"url\": \"<string>\",\n        \"metadata\": \"<object>\",\n        \"upload_content_type\": \"<string>\",\n        \"upload_file_size\": \"<integer>\",\n        \"document_type\": \"<string>\",\n        \"document_id\": \"<string>\",\n        \"expiry_date\": \"<date>\",\n        \"source\": \"<string>\"\n      },\n      {\n        \"upload\": \"<string>\",\n        \"upload_file_name\": \"<string>\",\n        \"url\": \"<string>\",\n        \"metadata\": \"<object>\",\n        \"upload_content_type\": \"<string>\",\n        \"upload_file_size\": \"<integer>\",\n        \"document_type\": \"<string>\",\n        \"document_id\": \"<string>\",\n        \"expiry_date\": \"<date>\",\n        \"source\": \"<string>\"\n      }\n    ],\n    \"email\": \"<email>\",\n    \"ip\": \"<ipv4>\",\n    \"postal_code\": \"<string>\",\n    \"street\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"type\": \"<string>\",\n    \"state\": \"<string>\",\n    \"phone_country\": \"<string>\",\n    \"phone_number\": \"<string>\",\n    \"fingerprint\": \"<string>\",\n    \"address_description\": \"<string>\",\n    \"identification_number\": \"<string>\",\n    \"identification_type\": \"<string>\",\n    \"lang\": \"<string>\",\n    \"name\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"middle_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"birth_date\": \"<date>\",\n    \"occupation\": \"<string>\",\n    \"nationality\": \"<string>\",\n    \"legal_entity_type\": \"<string>\",\n    \"registration_date\": \"<date>\",\n    \"registration_number\": \"<string>\",\n    \"nature_of_business\": \"<string>\",\n    \"source_of_funds\": \"<string>\",\n    \"custom_source_of_funds\": \"<string>\",\n    \"core_business_activity\": \"<string>\",\n    \"purpose_of_opening_account\": \"<string>\",\n    \"office_phone\": \"<string>\",\n    \"vat_registration_number\": \"<string>\",\n    \"financial_regulator\": \"<string>\",\n    \"regulatory_licence_number\": \"<string>\",\n    \"contact_person_email\": \"<string>\",\n    \"trading_country\": \"<string>\",\n    \"trading_address\": \"<string>\",\n    \"trading_name\": \"<string>\",\n    \"number_monthly_transactions\": \"<string>\",\n    \"amount_monthly_transactions\": \"<string>\",\n    \"metadata\": \"<object>\",\n    \"onboarding_status\": \"<string>\",\n    \"politically_exposed_people\": [\n      {\n        \"name\": \"<string>\",\n        \"position\": \"<string>\",\n        \"started_date\": \"<dateTime>\",\n        \"ended_date\": \"<dateTime>\",\n        \"sender_id\": \"<uuid>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"position\": \"<string>\",\n        \"started_date\": \"<dateTime>\",\n        \"ended_date\": \"<dateTime>\",\n        \"sender_id\": \"<uuid>\"\n      }\n    ],\n    \"external_id\": \"<string>\",\n    \"city_of_birth\": \"<string>\",\n    \"country_of_birth\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"sales_lead_id\": \"<string>\",\n    \"company_office_number\": \"<string>\",\n    \"company_office_number_country\": \"<string>\",\n    \"aml_officer_email\": \"<string>\",\n    \"aml_officer_phone\": \"<string>\",\n    \"aml_officer_phone_country\": \"<string>\",\n    \"company_website_url\": \"<string>\",\n    \"number_of_employees_in_company\": \"<string>\",\n    \"list_of_countries_of_operation\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"estimated_annual_revenue_turnover\": \"<string>\",\n    \"declaration\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1ec72b6a-b9c5-46b1-a61c-aab10d6114f5",
+              "name": "Details of updated sender",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senders",
+                    ":Sender ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Sender ID",
+                      "description": "(Required) ID of the sender to get.\n\nExample: `/v1/senders/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sender\": {\n    \"city\": \"Kampala\",\n    \"country\": \"NG\",\n    \"documents\": [\n      {\n        \"metadata\": {},\n        \"side\": \"front\",\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"expiry_date\": \"2000-01-23\",\n        \"upload_file_name\": \"example.png\",\n        \"upload_content_type\": \"image/png\",\n        \"source\": \"Manual\",\n        \"document_id\": \"XYZ12345\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"issuing_country\": \"NG\",\n        \"upload_file_size\": 30255,\n        \"category\": \"category\",\n        \"errors\": {\n          \"phone_number\": [\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"documents\": [\n            {\n              \"error\": \"blank\"\n            }\n          ]\n        },\n        \"document_type\": \"certificate_of_business_name_registration\"\n      },\n      {\n        \"metadata\": {},\n        \"side\": \"front\",\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"expiry_date\": \"2000-01-23\",\n        \"upload_file_name\": \"example.png\",\n        \"upload_content_type\": \"image/png\",\n        \"source\": \"Manual\",\n        \"document_id\": \"XYZ12345\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"issuing_country\": \"NG\",\n        \"upload_file_size\": 30255,\n        \"category\": \"category\",\n        \"errors\": {\n          \"phone_number\": [\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"documents\": [\n            {\n              \"error\": \"blank\"\n            }\n          ]\n        },\n        \"document_type\": \"certificate_of_business_name_registration\"\n      }\n    ],\n    \"email\": \"example@home.org\",\n    \"ip\": \"127.0.0.1\",\n    \"postal_code\": \"798983\",\n    \"street\": \"Fake Street\",\n    \"id\": \"bf9ff782-e182-45ac-abea-5bce83ad6670\",\n    \"type\": \"person\",\n    \"state\": \"initial\",\n    \"phone_country\": \"NG\",\n    \"phone_number\": \"752403639\",\n    \"fingerprint\": \"fingerprint\",\n    \"address_description\": \"<string>\",\n    \"identification_number\": \"AB123456\",\n    \"identification_type\": \"ID\",\n    \"lang\": \"en\",\n    \"name\": \"<string>\",\n    \"first_name\": \"Johnny\",\n    \"middle_name\": \"Johnny\",\n    \"last_name\": \"English\",\n    \"birth_date\": \"<date>\",\n    \"occupation\": \"Accountant\",\n    \"nationality\": \"NG\",\n    \"legal_entity_type\": \"privately_owned_company\",\n    \"registration_date\": \"<date>\",\n    \"registration_number\": \"<string>\",\n    \"nature_of_business\": \"<string>\",\n    \"source_of_funds\": \"<string>\",\n    \"custom_source_of_funds\": \"<string>\",\n    \"core_business_activity\": \"<string>\",\n    \"purpose_of_opening_account\": \"<string>\",\n    \"office_phone\": \"<string>\",\n    \"vat_registration_number\": \"<string>\",\n    \"financial_regulator\": \"<string>\",\n    \"regulatory_licence_number\": \"<string>\",\n    \"contact_person_email\": \"<string>\",\n    \"trading_country\": \"<string>\",\n    \"trading_address\": \"<string>\",\n    \"trading_name\": \"<string>\",\n    \"number_monthly_transactions\": \"<string>\",\n    \"amount_monthly_transactions\": \"<string>\",\n    \"metadata\": {},\n    \"onboarding_status\": \"<string>\",\n    \"politically_exposed_people\": [\n      {\n        \"name\": \"Ronald Reagan\",\n        \"position\": \"President of the United States\",\n        \"started_date\": \"1981-01-20T00:00:00.000Z\",\n        \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n        \"sender_id\": \"f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb\"\n      }\n    ],\n    \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"city_of_birth\": \"London\",\n    \"country_of_birth\": \"GB\",\n    \"gender\": \"M\",\n    \"sales_lead_id\": \"HF6HJVF67\",\n    \"company_office_number\": \"123123123\",\n    \"company_office_number_country\": \"GB\",\n    \"aml_officer_email\": \"<string>\",\n    \"aml_officer_phone\": \"123123123\",\n    \"aml_officer_phone_country\": \"GB\",\n    \"company_website_url\": \"www.azafinance.com\",\n    \"number_of_employees_in_company\": \"250+\",\n    \"list_of_countries_of_operation\": [\n      \"Spain\",\n      \"Germany\",\n      \"Poland\"\n    ],\n    \"estimated_annual_revenue_turnover\": \"<string>\",\n    \"declaration\": \"Yes\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"city\": \"Kampala\",\n    \"country\": \"NG\",\n    \"documents\": [\n      {\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"upload_file_name\": \"example.png\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"metadata\": {},\n        \"upload_content_type\": \"image/png\",\n        \"upload_file_size\": 30255,\n        \"category\": \"string\",\n        \"side\": \"back\",\n        \"document_type\": \"certificate_of_business_name_registration\",\n        \"issuing_country\": \"NG\",\n        \"id\": \"ebe9bc0b-f2f6-4ce8-802a-8b79912d041e\",\n        \"document_id\": \"XYZ12345\",\n        \"expiry_date\": \"<date>\",\n        \"source\": \"Manual\",\n        \"errors\": {\n          \"key_0\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_1\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_2\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_3\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ]\n        }\n      },\n      {\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"upload_file_name\": \"example.png\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"metadata\": {},\n        \"upload_content_type\": \"image/png\",\n        \"upload_file_size\": 30255,\n        \"category\": \"string\",\n        \"side\": \"front\",\n        \"document_type\": \"certificate_of_business_name_registration\",\n        \"issuing_country\": \"NG\",\n        \"id\": \"ebe9bc0b-f2f6-4ce8-802a-8b79912d041e\",\n        \"document_id\": \"XYZ12345\",\n        \"expiry_date\": \"<date>\",\n        \"source\": \"Manual\",\n        \"errors\": {\n          \"key_0\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_1\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ]\n        }\n      }\n    ],\n    \"email\": \"example@home.org\",\n    \"ip\": \"127.0.0.1\",\n    \"postal_code\": \"798983\",\n    \"street\": \"Fake Street\",\n    \"id\": \"bf9ff782-e182-45ac-abea-5bce83ad6670\",\n    \"type\": \"person\",\n    \"state\": \"initial\",\n    \"phone_country\": \"NG\",\n    \"phone_number\": \"752403639\",\n    \"fingerprint\": \"fingerprint\",\n    \"address_description\": \"<string>\",\n    \"identification_number\": \"AB123456\",\n    \"identification_type\": \"ID\",\n    \"lang\": \"en\",\n    \"name\": \"<string>\",\n    \"first_name\": \"Johnny\",\n    \"middle_name\": \"Johnny\",\n    \"last_name\": \"English\",\n    \"birth_date\": \"<date>\",\n    \"occupation\": \"Accountant\",\n    \"nationality\": \"NG\",\n    \"legal_entity_type\": \"privately_owned_company\",\n    \"registration_date\": \"<date>\",\n    \"registration_number\": \"<string>\",\n    \"nature_of_business\": \"<string>\",\n    \"source_of_funds\": \"<string>\",\n    \"custom_source_of_funds\": \"<string>\",\n    \"core_business_activity\": \"<string>\",\n    \"purpose_of_opening_account\": \"<string>\",\n    \"office_phone\": \"<string>\",\n    \"vat_registration_number\": \"<string>\",\n    \"financial_regulator\": \"<string>\",\n    \"regulatory_licence_number\": \"<string>\",\n    \"contact_person_email\": \"<string>\",\n    \"trading_country\": \"<string>\",\n    \"trading_address\": \"<string>\",\n    \"trading_name\": \"<string>\",\n    \"number_monthly_transactions\": \"<string>\",\n    \"amount_monthly_transactions\": \"<string>\",\n    \"metadata\": {},\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_2\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    },\n    \"onboarding_status\": \"<string>\",\n    \"politically_exposed_people\": [\n      {\n        \"name\": \"Ronald Reagan\",\n        \"position\": \"President of the United States\",\n        \"started_date\": \"1981-01-20T00:00:00.000Z\",\n        \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n        \"sender_id\": \"f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb\"\n      }\n    ],\n    \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"city_of_birth\": \"London\",\n    \"country_of_birth\": \"GB\",\n    \"gender\": \"M\",\n    \"sales_lead_id\": \"HF6HJVF67\",\n    \"created_at\": \"2019-01-11T00:00:00.001+0000\",\n    \"company_office_number\": \"123123123\",\n    \"company_office_number_country\": \"GB\",\n    \"aml_officer_email\": \"<string>\",\n    \"aml_officer_phone\": \"123123123\",\n    \"aml_officer_phone_country\": \"GB\",\n    \"company_website_url\": \"www.azafinance.com\",\n    \"number_of_employees_in_company\": \"250+\",\n    \"list_of_countries_of_operation\": [\n      \"Spain\",\n      \"Germany\",\n      \"Poland\"\n    ],\n    \"estimated_annual_revenue_turnover\": \"<string>\",\n    \"declaration\": \"Yes\"\n  },\n  \"meta\": {\n    \"existing\": {\n      \"sender\": {\n        \"city\": \"Kampala\",\n        \"country\": \"NG\",\n        \"documents\": [\n          {\n            \"metadata\": {},\n            \"side\": \"front\",\n            \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n            \"expiry_date\": \"2000-01-23\",\n            \"upload_file_name\": \"example.png\",\n            \"upload_content_type\": \"image/png\",\n            \"source\": \"Manual\",\n            \"document_id\": \"XYZ12345\",\n            \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n            \"issuing_country\": \"NG\",\n            \"upload_file_size\": 30255,\n            \"category\": \"category\",\n            \"errors\": {\n              \"phone_number\": [\n                {\n                  \"error\": \"invalid\"\n                }\n              ],\n              \"documents\": [\n                {\n                  \"error\": \"blank\"\n                }\n              ]\n            },\n            \"document_type\": \"certificate_of_business_name_registration\"\n          },\n          {\n            \"metadata\": {},\n            \"side\": \"front\",\n            \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n            \"expiry_date\": \"2000-01-23\",\n            \"upload_file_name\": \"example.png\",\n            \"upload_content_type\": \"image/png\",\n            \"source\": \"Manual\",\n            \"document_id\": \"XYZ12345\",\n            \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n            \"issuing_country\": \"NG\",\n            \"upload_file_size\": 30255,\n            \"category\": \"category\",\n            \"errors\": {\n              \"phone_number\": [\n                {\n                  \"error\": \"invalid\"\n                }\n              ],\n              \"documents\": [\n                {\n                  \"error\": \"blank\"\n                }\n              ]\n            },\n            \"document_type\": \"certificate_of_business_name_registration\"\n          }\n        ],\n        \"email\": \"example@home.org\",\n        \"ip\": \"127.0.0.1\",\n        \"postal_code\": \"798983\",\n        \"street\": \"Fake Street\",\n        \"id\": \"bf9ff782-e182-45ac-abea-5bce83ad6670\",\n        \"type\": \"person\",\n        \"state\": \"initial\",\n        \"phone_country\": \"NG\",\n        \"phone_number\": \"752403639\",\n        \"fingerprint\": \"fingerprint\",\n        \"address_description\": \"<string>\",\n        \"identification_number\": \"AB123456\",\n        \"identification_type\": \"ID\",\n        \"lang\": \"en\",\n        \"name\": \"<string>\",\n        \"first_name\": \"Johnny\",\n        \"middle_name\": \"Johnny\",\n        \"last_name\": \"English\",\n        \"birth_date\": \"<date>\",\n        \"occupation\": \"Accountant\",\n        \"nationality\": \"NG\",\n        \"legal_entity_type\": \"privately_owned_company\",\n        \"registration_date\": \"<date>\",\n        \"registration_number\": \"<string>\",\n        \"nature_of_business\": \"<string>\",\n        \"source_of_funds\": \"<string>\",\n        \"custom_source_of_funds\": \"<string>\",\n        \"core_business_activity\": \"<string>\",\n        \"purpose_of_opening_account\": \"<string>\",\n        \"office_phone\": \"<string>\",\n        \"vat_registration_number\": \"<string>\",\n        \"financial_regulator\": \"<string>\",\n        \"regulatory_licence_number\": \"<string>\",\n        \"contact_person_email\": \"<string>\",\n        \"trading_country\": \"<string>\",\n        \"trading_address\": \"<string>\",\n        \"trading_name\": \"<string>\",\n        \"number_monthly_transactions\": \"<string>\",\n        \"amount_monthly_transactions\": \"<string>\",\n        \"metadata\": {},\n        \"errors\": {\n          \"key_0\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"onboarding_status\": \"<string>\",\n        \"politically_exposed_people\": [\n          {\n            \"name\": \"Ronald Reagan\",\n            \"position\": \"President of the United States\",\n            \"started_date\": \"1981-01-20T00:00:00.000Z\",\n            \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n            \"sender_id\": \"f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb\"\n          }\n        ],\n        \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n        \"city_of_birth\": \"London\",\n        \"country_of_birth\": \"GB\",\n        \"gender\": \"M\",\n        \"sales_lead_id\": \"HF6HJVF67\",\n        \"created_at\": \"2019-01-11T00:00:00.001+0000\",\n        \"company_office_number\": \"123123123\",\n        \"company_office_number_country\": \"GB\",\n        \"aml_officer_email\": \"<string>\",\n        \"aml_officer_phone\": \"123123123\",\n        \"aml_officer_phone_country\": \"GB\",\n        \"company_website_url\": \"www.azafinance.com\",\n        \"number_of_employees_in_company\": \"250+\",\n        \"list_of_countries_of_operation\": [\n          \"Spain\",\n          \"Germany\",\n          \"Poland\"\n        ],\n        \"estimated_annual_revenue_turnover\": \"<string>\",\n        \"declaration\": \"Yes\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d5a393f-5d0f-4341-92e4-0014fa2a248a",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senders",
+                    ":Sender ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Sender ID",
+                      "description": "(Required) ID of the sender to get.\n\nExample: `/v1/senders/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sender\": {\n    \"city\": \"Kampala\",\n    \"country\": \"NG\",\n    \"documents\": [\n      {\n        \"metadata\": {},\n        \"side\": \"front\",\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"expiry_date\": \"2000-01-23\",\n        \"upload_file_name\": \"example.png\",\n        \"upload_content_type\": \"image/png\",\n        \"source\": \"Manual\",\n        \"document_id\": \"XYZ12345\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"issuing_country\": \"NG\",\n        \"upload_file_size\": 30255,\n        \"category\": \"category\",\n        \"errors\": {\n          \"phone_number\": [\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"documents\": [\n            {\n              \"error\": \"blank\"\n            }\n          ]\n        },\n        \"document_type\": \"certificate_of_business_name_registration\"\n      },\n      {\n        \"metadata\": {},\n        \"side\": \"front\",\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"expiry_date\": \"2000-01-23\",\n        \"upload_file_name\": \"example.png\",\n        \"upload_content_type\": \"image/png\",\n        \"source\": \"Manual\",\n        \"document_id\": \"XYZ12345\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"issuing_country\": \"NG\",\n        \"upload_file_size\": 30255,\n        \"category\": \"category\",\n        \"errors\": {\n          \"phone_number\": [\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"documents\": [\n            {\n              \"error\": \"blank\"\n            }\n          ]\n        },\n        \"document_type\": \"certificate_of_business_name_registration\"\n      }\n    ],\n    \"email\": \"example@home.org\",\n    \"ip\": \"127.0.0.1\",\n    \"postal_code\": \"798983\",\n    \"street\": \"Fake Street\",\n    \"id\": \"bf9ff782-e182-45ac-abea-5bce83ad6670\",\n    \"type\": \"person\",\n    \"state\": \"initial\",\n    \"phone_country\": \"NG\",\n    \"phone_number\": \"752403639\",\n    \"fingerprint\": \"fingerprint\",\n    \"address_description\": \"<string>\",\n    \"identification_number\": \"AB123456\",\n    \"identification_type\": \"ID\",\n    \"lang\": \"en\",\n    \"name\": \"<string>\",\n    \"first_name\": \"Johnny\",\n    \"middle_name\": \"Johnny\",\n    \"last_name\": \"English\",\n    \"birth_date\": \"<date>\",\n    \"occupation\": \"Accountant\",\n    \"nationality\": \"NG\",\n    \"legal_entity_type\": \"privately_owned_company\",\n    \"registration_date\": \"<date>\",\n    \"registration_number\": \"<string>\",\n    \"nature_of_business\": \"<string>\",\n    \"source_of_funds\": \"<string>\",\n    \"custom_source_of_funds\": \"<string>\",\n    \"core_business_activity\": \"<string>\",\n    \"purpose_of_opening_account\": \"<string>\",\n    \"office_phone\": \"<string>\",\n    \"vat_registration_number\": \"<string>\",\n    \"financial_regulator\": \"<string>\",\n    \"regulatory_licence_number\": \"<string>\",\n    \"contact_person_email\": \"<string>\",\n    \"trading_country\": \"<string>\",\n    \"trading_address\": \"<string>\",\n    \"trading_name\": \"<string>\",\n    \"number_monthly_transactions\": \"<string>\",\n    \"amount_monthly_transactions\": \"<string>\",\n    \"metadata\": {},\n    \"onboarding_status\": \"<string>\",\n    \"politically_exposed_people\": [\n      {\n        \"name\": \"Ronald Reagan\",\n        \"position\": \"President of the United States\",\n        \"started_date\": \"1981-01-20T00:00:00.000Z\",\n        \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n        \"sender_id\": \"f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb\"\n      }\n    ],\n    \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"city_of_birth\": \"London\",\n    \"country_of_birth\": \"GB\",\n    \"gender\": \"M\",\n    \"sales_lead_id\": \"HF6HJVF67\",\n    \"company_office_number\": \"123123123\",\n    \"company_office_number_country\": \"GB\",\n    \"aml_officer_email\": \"<string>\",\n    \"aml_officer_phone\": \"123123123\",\n    \"aml_officer_phone_country\": \"GB\",\n    \"company_website_url\": \"www.azafinance.com\",\n    \"number_of_employees_in_company\": \"250+\",\n    \"list_of_countries_of_operation\": [\n      \"Spain\",\n      \"Germany\",\n      \"Poland\"\n    ],\n    \"estimated_annual_revenue_turnover\": \"<string>\",\n    \"declaration\": \"Yes\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fed21d74-7c67-45c8-9604-04dbfb0de5bd",
+              "name": "Resource Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senders",
+                    ":Sender ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Sender ID",
+                      "description": "(Required) ID of the sender to get.\n\nExample: `/v1/senders/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sender\": {\n    \"city\": \"Kampala\",\n    \"country\": \"NG\",\n    \"documents\": [\n      {\n        \"metadata\": {},\n        \"side\": \"front\",\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"expiry_date\": \"2000-01-23\",\n        \"upload_file_name\": \"example.png\",\n        \"upload_content_type\": \"image/png\",\n        \"source\": \"Manual\",\n        \"document_id\": \"XYZ12345\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"issuing_country\": \"NG\",\n        \"upload_file_size\": 30255,\n        \"category\": \"category\",\n        \"errors\": {\n          \"phone_number\": [\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"documents\": [\n            {\n              \"error\": \"blank\"\n            }\n          ]\n        },\n        \"document_type\": \"certificate_of_business_name_registration\"\n      },\n      {\n        \"metadata\": {},\n        \"side\": \"front\",\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"expiry_date\": \"2000-01-23\",\n        \"upload_file_name\": \"example.png\",\n        \"upload_content_type\": \"image/png\",\n        \"source\": \"Manual\",\n        \"document_id\": \"XYZ12345\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"issuing_country\": \"NG\",\n        \"upload_file_size\": 30255,\n        \"category\": \"category\",\n        \"errors\": {\n          \"phone_number\": [\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"documents\": [\n            {\n              \"error\": \"blank\"\n            }\n          ]\n        },\n        \"document_type\": \"certificate_of_business_name_registration\"\n      }\n    ],\n    \"email\": \"example@home.org\",\n    \"ip\": \"127.0.0.1\",\n    \"postal_code\": \"798983\",\n    \"street\": \"Fake Street\",\n    \"id\": \"bf9ff782-e182-45ac-abea-5bce83ad6670\",\n    \"type\": \"person\",\n    \"state\": \"initial\",\n    \"phone_country\": \"NG\",\n    \"phone_number\": \"752403639\",\n    \"fingerprint\": \"fingerprint\",\n    \"address_description\": \"<string>\",\n    \"identification_number\": \"AB123456\",\n    \"identification_type\": \"ID\",\n    \"lang\": \"en\",\n    \"name\": \"<string>\",\n    \"first_name\": \"Johnny\",\n    \"middle_name\": \"Johnny\",\n    \"last_name\": \"English\",\n    \"birth_date\": \"<date>\",\n    \"occupation\": \"Accountant\",\n    \"nationality\": \"NG\",\n    \"legal_entity_type\": \"privately_owned_company\",\n    \"registration_date\": \"<date>\",\n    \"registration_number\": \"<string>\",\n    \"nature_of_business\": \"<string>\",\n    \"source_of_funds\": \"<string>\",\n    \"custom_source_of_funds\": \"<string>\",\n    \"core_business_activity\": \"<string>\",\n    \"purpose_of_opening_account\": \"<string>\",\n    \"office_phone\": \"<string>\",\n    \"vat_registration_number\": \"<string>\",\n    \"financial_regulator\": \"<string>\",\n    \"regulatory_licence_number\": \"<string>\",\n    \"contact_person_email\": \"<string>\",\n    \"trading_country\": \"<string>\",\n    \"trading_address\": \"<string>\",\n    \"trading_name\": \"<string>\",\n    \"number_monthly_transactions\": \"<string>\",\n    \"amount_monthly_transactions\": \"<string>\",\n    \"metadata\": {},\n    \"onboarding_status\": \"<string>\",\n    \"politically_exposed_people\": [\n      {\n        \"name\": \"Ronald Reagan\",\n        \"position\": \"President of the United States\",\n        \"started_date\": \"1981-01-20T00:00:00.000Z\",\n        \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n        \"sender_id\": \"f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb\"\n      }\n    ],\n    \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"city_of_birth\": \"London\",\n    \"country_of_birth\": \"GB\",\n    \"gender\": \"M\",\n    \"sales_lead_id\": \"HF6HJVF67\",\n    \"company_office_number\": \"123123123\",\n    \"company_office_number_country\": \"GB\",\n    \"aml_officer_email\": \"<string>\",\n    \"aml_officer_phone\": \"123123123\",\n    \"aml_officer_phone_country\": \"GB\",\n    \"company_website_url\": \"www.azafinance.com\",\n    \"number_of_employees_in_company\": \"250+\",\n    \"list_of_countries_of_operation\": [\n      \"Spain\",\n      \"Germany\",\n      \"Poland\"\n    ],\n    \"estimated_annual_revenue_turnover\": \"<string>\",\n    \"declaration\": \"Yes\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "203b9c5c-8494-4f4b-838d-a443b310a057",
+              "name": "Invalid sender object (includes errors object)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senders",
+                    ":Sender ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Sender ID",
+                      "description": "(Required) ID of the sender to get.\n\nExample: `/v1/senders/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sender\": {\n    \"city\": \"Kampala\",\n    \"country\": \"NG\",\n    \"documents\": [\n      {\n        \"metadata\": {},\n        \"side\": \"front\",\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"expiry_date\": \"2000-01-23\",\n        \"upload_file_name\": \"example.png\",\n        \"upload_content_type\": \"image/png\",\n        \"source\": \"Manual\",\n        \"document_id\": \"XYZ12345\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"issuing_country\": \"NG\",\n        \"upload_file_size\": 30255,\n        \"category\": \"category\",\n        \"errors\": {\n          \"phone_number\": [\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"documents\": [\n            {\n              \"error\": \"blank\"\n            }\n          ]\n        },\n        \"document_type\": \"certificate_of_business_name_registration\"\n      },\n      {\n        \"metadata\": {},\n        \"side\": \"front\",\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"expiry_date\": \"2000-01-23\",\n        \"upload_file_name\": \"example.png\",\n        \"upload_content_type\": \"image/png\",\n        \"source\": \"Manual\",\n        \"document_id\": \"XYZ12345\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"issuing_country\": \"NG\",\n        \"upload_file_size\": 30255,\n        \"category\": \"category\",\n        \"errors\": {\n          \"phone_number\": [\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"documents\": [\n            {\n              \"error\": \"blank\"\n            }\n          ]\n        },\n        \"document_type\": \"certificate_of_business_name_registration\"\n      }\n    ],\n    \"email\": \"example@home.org\",\n    \"ip\": \"127.0.0.1\",\n    \"postal_code\": \"798983\",\n    \"street\": \"Fake Street\",\n    \"id\": \"bf9ff782-e182-45ac-abea-5bce83ad6670\",\n    \"type\": \"person\",\n    \"state\": \"initial\",\n    \"phone_country\": \"NG\",\n    \"phone_number\": \"752403639\",\n    \"fingerprint\": \"fingerprint\",\n    \"address_description\": \"<string>\",\n    \"identification_number\": \"AB123456\",\n    \"identification_type\": \"ID\",\n    \"lang\": \"en\",\n    \"name\": \"<string>\",\n    \"first_name\": \"Johnny\",\n    \"middle_name\": \"Johnny\",\n    \"last_name\": \"English\",\n    \"birth_date\": \"<date>\",\n    \"occupation\": \"Accountant\",\n    \"nationality\": \"NG\",\n    \"legal_entity_type\": \"privately_owned_company\",\n    \"registration_date\": \"<date>\",\n    \"registration_number\": \"<string>\",\n    \"nature_of_business\": \"<string>\",\n    \"source_of_funds\": \"<string>\",\n    \"custom_source_of_funds\": \"<string>\",\n    \"core_business_activity\": \"<string>\",\n    \"purpose_of_opening_account\": \"<string>\",\n    \"office_phone\": \"<string>\",\n    \"vat_registration_number\": \"<string>\",\n    \"financial_regulator\": \"<string>\",\n    \"regulatory_licence_number\": \"<string>\",\n    \"contact_person_email\": \"<string>\",\n    \"trading_country\": \"<string>\",\n    \"trading_address\": \"<string>\",\n    \"trading_name\": \"<string>\",\n    \"number_monthly_transactions\": \"<string>\",\n    \"amount_monthly_transactions\": \"<string>\",\n    \"metadata\": {},\n    \"onboarding_status\": \"<string>\",\n    \"politically_exposed_people\": [\n      {\n        \"name\": \"Ronald Reagan\",\n        \"position\": \"President of the United States\",\n        \"started_date\": \"1981-01-20T00:00:00.000Z\",\n        \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n        \"sender_id\": \"f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb\"\n      }\n    ],\n    \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"city_of_birth\": \"London\",\n    \"country_of_birth\": \"GB\",\n    \"gender\": \"M\",\n    \"sales_lead_id\": \"HF6HJVF67\",\n    \"company_office_number\": \"123123123\",\n    \"company_office_number_country\": \"GB\",\n    \"aml_officer_email\": \"<string>\",\n    \"aml_officer_phone\": \"123123123\",\n    \"aml_officer_phone_country\": \"GB\",\n    \"company_website_url\": \"www.azafinance.com\",\n    \"number_of_employees_in_company\": \"250+\",\n    \"list_of_countries_of_operation\": [\n      \"Spain\",\n      \"Germany\",\n      \"Poland\"\n    ],\n    \"estimated_annual_revenue_turnover\": \"<string>\",\n    \"declaration\": \"Yes\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"city\": \"Kampala\",\n    \"country\": \"NG\",\n    \"documents\": [\n      {\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"upload_file_name\": \"example.png\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"metadata\": {},\n        \"upload_content_type\": \"image/png\",\n        \"upload_file_size\": 30255,\n        \"category\": \"string\",\n        \"side\": \"back\",\n        \"document_type\": \"certificate_of_business_name_registration\",\n        \"issuing_country\": \"NG\",\n        \"id\": \"ebe9bc0b-f2f6-4ce8-802a-8b79912d041e\",\n        \"document_id\": \"XYZ12345\",\n        \"expiry_date\": \"<date>\",\n        \"source\": \"Manual\",\n        \"errors\": {\n          \"key_0\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_1\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_2\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_3\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ]\n        }\n      },\n      {\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"upload_file_name\": \"example.png\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"metadata\": {},\n        \"upload_content_type\": \"image/png\",\n        \"upload_file_size\": 30255,\n        \"category\": \"string\",\n        \"side\": \"front\",\n        \"document_type\": \"certificate_of_business_name_registration\",\n        \"issuing_country\": \"NG\",\n        \"id\": \"ebe9bc0b-f2f6-4ce8-802a-8b79912d041e\",\n        \"document_id\": \"XYZ12345\",\n        \"expiry_date\": \"<date>\",\n        \"source\": \"Manual\",\n        \"errors\": {\n          \"key_0\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"key_1\": [\n            {\n              \"error\": \"invalid\"\n            },\n            {\n              \"error\": \"invalid\"\n            }\n          ]\n        }\n      }\n    ],\n    \"email\": \"example@home.org\",\n    \"ip\": \"127.0.0.1\",\n    \"postal_code\": \"798983\",\n    \"street\": \"Fake Street\",\n    \"id\": \"bf9ff782-e182-45ac-abea-5bce83ad6670\",\n    \"type\": \"person\",\n    \"state\": \"initial\",\n    \"phone_country\": \"NG\",\n    \"phone_number\": \"752403639\",\n    \"fingerprint\": \"fingerprint\",\n    \"address_description\": \"<string>\",\n    \"identification_number\": \"AB123456\",\n    \"identification_type\": \"ID\",\n    \"lang\": \"en\",\n    \"name\": \"<string>\",\n    \"first_name\": \"Johnny\",\n    \"middle_name\": \"Johnny\",\n    \"last_name\": \"English\",\n    \"birth_date\": \"<date>\",\n    \"occupation\": \"Accountant\",\n    \"nationality\": \"NG\",\n    \"legal_entity_type\": \"privately_owned_company\",\n    \"registration_date\": \"<date>\",\n    \"registration_number\": \"<string>\",\n    \"nature_of_business\": \"<string>\",\n    \"source_of_funds\": \"<string>\",\n    \"custom_source_of_funds\": \"<string>\",\n    \"core_business_activity\": \"<string>\",\n    \"purpose_of_opening_account\": \"<string>\",\n    \"office_phone\": \"<string>\",\n    \"vat_registration_number\": \"<string>\",\n    \"financial_regulator\": \"<string>\",\n    \"regulatory_licence_number\": \"<string>\",\n    \"contact_person_email\": \"<string>\",\n    \"trading_country\": \"<string>\",\n    \"trading_address\": \"<string>\",\n    \"trading_name\": \"<string>\",\n    \"number_monthly_transactions\": \"<string>\",\n    \"amount_monthly_transactions\": \"<string>\",\n    \"metadata\": {},\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_2\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    },\n    \"onboarding_status\": \"<string>\",\n    \"politically_exposed_people\": [\n      {\n        \"name\": \"Ronald Reagan\",\n        \"position\": \"President of the United States\",\n        \"started_date\": \"1981-01-20T00:00:00.000Z\",\n        \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n        \"sender_id\": \"f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb\"\n      }\n    ],\n    \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"city_of_birth\": \"London\",\n    \"country_of_birth\": \"GB\",\n    \"gender\": \"M\",\n    \"sales_lead_id\": \"HF6HJVF67\",\n    \"created_at\": \"2019-01-11T00:00:00.001+0000\",\n    \"company_office_number\": \"123123123\",\n    \"company_office_number_country\": \"GB\",\n    \"aml_officer_email\": \"<string>\",\n    \"aml_officer_phone\": \"123123123\",\n    \"aml_officer_phone_country\": \"GB\",\n    \"company_website_url\": \"www.azafinance.com\",\n    \"number_of_employees_in_company\": \"250+\",\n    \"list_of_countries_of_operation\": [\n      \"Spain\",\n      \"Germany\",\n      \"Poland\"\n    ],\n    \"estimated_annual_revenue_turnover\": \"<string>\",\n    \"declaration\": \"Yes\"\n  },\n  \"meta\": {\n    \"existing\": {\n      \"sender\": {\n        \"city\": \"Kampala\",\n        \"country\": \"NG\",\n        \"documents\": [\n          {\n            \"metadata\": {},\n            \"side\": \"front\",\n            \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n            \"expiry_date\": \"2000-01-23\",\n            \"upload_file_name\": \"example.png\",\n            \"upload_content_type\": \"image/png\",\n            \"source\": \"Manual\",\n            \"document_id\": \"XYZ12345\",\n            \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n            \"issuing_country\": \"NG\",\n            \"upload_file_size\": 30255,\n            \"category\": \"category\",\n            \"errors\": {\n              \"phone_number\": [\n                {\n                  \"error\": \"invalid\"\n                }\n              ],\n              \"documents\": [\n                {\n                  \"error\": \"blank\"\n                }\n              ]\n            },\n            \"document_type\": \"certificate_of_business_name_registration\"\n          },\n          {\n            \"metadata\": {},\n            \"side\": \"front\",\n            \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n            \"expiry_date\": \"2000-01-23\",\n            \"upload_file_name\": \"example.png\",\n            \"upload_content_type\": \"image/png\",\n            \"source\": \"Manual\",\n            \"document_id\": \"XYZ12345\",\n            \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n            \"issuing_country\": \"NG\",\n            \"upload_file_size\": 30255,\n            \"category\": \"category\",\n            \"errors\": {\n              \"phone_number\": [\n                {\n                  \"error\": \"invalid\"\n                }\n              ],\n              \"documents\": [\n                {\n                  \"error\": \"blank\"\n                }\n              ]\n            },\n            \"document_type\": \"certificate_of_business_name_registration\"\n          }\n        ],\n        \"email\": \"example@home.org\",\n        \"ip\": \"127.0.0.1\",\n        \"postal_code\": \"798983\",\n        \"street\": \"Fake Street\",\n        \"id\": \"bf9ff782-e182-45ac-abea-5bce83ad6670\",\n        \"type\": \"person\",\n        \"state\": \"initial\",\n        \"phone_country\": \"NG\",\n        \"phone_number\": \"752403639\",\n        \"fingerprint\": \"fingerprint\",\n        \"address_description\": \"<string>\",\n        \"identification_number\": \"AB123456\",\n        \"identification_type\": \"ID\",\n        \"lang\": \"en\",\n        \"name\": \"<string>\",\n        \"first_name\": \"Johnny\",\n        \"middle_name\": \"Johnny\",\n        \"last_name\": \"English\",\n        \"birth_date\": \"<date>\",\n        \"occupation\": \"Accountant\",\n        \"nationality\": \"NG\",\n        \"legal_entity_type\": \"privately_owned_company\",\n        \"registration_date\": \"<date>\",\n        \"registration_number\": \"<string>\",\n        \"nature_of_business\": \"<string>\",\n        \"source_of_funds\": \"<string>\",\n        \"custom_source_of_funds\": \"<string>\",\n        \"core_business_activity\": \"<string>\",\n        \"purpose_of_opening_account\": \"<string>\",\n        \"office_phone\": \"<string>\",\n        \"vat_registration_number\": \"<string>\",\n        \"financial_regulator\": \"<string>\",\n        \"regulatory_licence_number\": \"<string>\",\n        \"contact_person_email\": \"<string>\",\n        \"trading_country\": \"<string>\",\n        \"trading_address\": \"<string>\",\n        \"trading_name\": \"<string>\",\n        \"number_monthly_transactions\": \"<string>\",\n        \"amount_monthly_transactions\": \"<string>\",\n        \"metadata\": {},\n        \"errors\": {\n          \"key_0\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"onboarding_status\": \"<string>\",\n        \"politically_exposed_people\": [\n          {\n            \"name\": \"Ronald Reagan\",\n            \"position\": \"President of the United States\",\n            \"started_date\": \"1981-01-20T00:00:00.000Z\",\n            \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n            \"sender_id\": \"f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb\"\n          }\n        ],\n        \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n        \"city_of_birth\": \"London\",\n        \"country_of_birth\": \"GB\",\n        \"gender\": \"M\",\n        \"sales_lead_id\": \"HF6HJVF67\",\n        \"created_at\": \"2019-01-11T00:00:00.001+0000\",\n        \"company_office_number\": \"123123123\",\n        \"company_office_number_country\": \"GB\",\n        \"aml_officer_email\": \"<string>\",\n        \"aml_officer_phone\": \"123123123\",\n        \"aml_officer_phone_country\": \"GB\",\n        \"company_website_url\": \"www.azafinance.com\",\n        \"number_of_employees_in_company\": \"250+\",\n        \"list_of_countries_of_operation\": [\n          \"Spain\",\n          \"Germany\",\n          \"Poland\"\n        ],\n        \"estimated_annual_revenue_turnover\": \"<string>\",\n        \"declaration\": \"Yes\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff2b6aa3-d87c-4137-b87f-5504cc1193ba",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senders",
+                    ":Sender ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Sender ID",
+                      "description": "(Required) ID of the sender to get.\n\nExample: `/v1/senders/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sender\": {\n    \"city\": \"Kampala\",\n    \"country\": \"NG\",\n    \"documents\": [\n      {\n        \"metadata\": {},\n        \"side\": \"front\",\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"expiry_date\": \"2000-01-23\",\n        \"upload_file_name\": \"example.png\",\n        \"upload_content_type\": \"image/png\",\n        \"source\": \"Manual\",\n        \"document_id\": \"XYZ12345\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"issuing_country\": \"NG\",\n        \"upload_file_size\": 30255,\n        \"category\": \"category\",\n        \"errors\": {\n          \"phone_number\": [\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"documents\": [\n            {\n              \"error\": \"blank\"\n            }\n          ]\n        },\n        \"document_type\": \"certificate_of_business_name_registration\"\n      },\n      {\n        \"metadata\": {},\n        \"side\": \"front\",\n        \"upload\": \"data:image/png;base64,iVBORw0KGg...lFTkSuQmCC\",\n        \"expiry_date\": \"2000-01-23\",\n        \"upload_file_name\": \"example.png\",\n        \"upload_content_type\": \"image/png\",\n        \"source\": \"Manual\",\n        \"document_id\": \"XYZ12345\",\n        \"url\": \"https://bitpesa-documents.amazonaws.com/document.pdf\",\n        \"issuing_country\": \"NG\",\n        \"upload_file_size\": 30255,\n        \"category\": \"category\",\n        \"errors\": {\n          \"phone_number\": [\n            {\n              \"error\": \"invalid\"\n            }\n          ],\n          \"documents\": [\n            {\n              \"error\": \"blank\"\n            }\n          ]\n        },\n        \"document_type\": \"certificate_of_business_name_registration\"\n      }\n    ],\n    \"email\": \"example@home.org\",\n    \"ip\": \"127.0.0.1\",\n    \"postal_code\": \"798983\",\n    \"street\": \"Fake Street\",\n    \"id\": \"bf9ff782-e182-45ac-abea-5bce83ad6670\",\n    \"type\": \"person\",\n    \"state\": \"initial\",\n    \"phone_country\": \"NG\",\n    \"phone_number\": \"752403639\",\n    \"fingerprint\": \"fingerprint\",\n    \"address_description\": \"<string>\",\n    \"identification_number\": \"AB123456\",\n    \"identification_type\": \"ID\",\n    \"lang\": \"en\",\n    \"name\": \"<string>\",\n    \"first_name\": \"Johnny\",\n    \"middle_name\": \"Johnny\",\n    \"last_name\": \"English\",\n    \"birth_date\": \"<date>\",\n    \"occupation\": \"Accountant\",\n    \"nationality\": \"NG\",\n    \"legal_entity_type\": \"privately_owned_company\",\n    \"registration_date\": \"<date>\",\n    \"registration_number\": \"<string>\",\n    \"nature_of_business\": \"<string>\",\n    \"source_of_funds\": \"<string>\",\n    \"custom_source_of_funds\": \"<string>\",\n    \"core_business_activity\": \"<string>\",\n    \"purpose_of_opening_account\": \"<string>\",\n    \"office_phone\": \"<string>\",\n    \"vat_registration_number\": \"<string>\",\n    \"financial_regulator\": \"<string>\",\n    \"regulatory_licence_number\": \"<string>\",\n    \"contact_person_email\": \"<string>\",\n    \"trading_country\": \"<string>\",\n    \"trading_address\": \"<string>\",\n    \"trading_name\": \"<string>\",\n    \"number_monthly_transactions\": \"<string>\",\n    \"amount_monthly_transactions\": \"<string>\",\n    \"metadata\": {},\n    \"onboarding_status\": \"<string>\",\n    \"politically_exposed_people\": [\n      {\n        \"name\": \"Ronald Reagan\",\n        \"position\": \"President of the United States\",\n        \"started_date\": \"1981-01-20T00:00:00.000Z\",\n        \"ended_date\": \"1989-01-20T00:00:00.000Z\",\n        \"sender_id\": \"f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb\"\n      }\n    ],\n    \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"city_of_birth\": \"London\",\n    \"country_of_birth\": \"GB\",\n    \"gender\": \"M\",\n    \"sales_lead_id\": \"HF6HJVF67\",\n    \"company_office_number\": \"123123123\",\n    \"company_office_number_country\": \"GB\",\n    \"aml_officer_email\": \"<string>\",\n    \"aml_officer_phone\": \"123123123\",\n    \"aml_officer_phone_country\": \"GB\",\n    \"company_website_url\": \"www.azafinance.com\",\n    \"number_of_employees_in_company\": \"250+\",\n    \"list_of_countries_of_operation\": [\n      \"Spain\",\n      \"Germany\",\n      \"Poland\"\n    ],\n    \"estimated_annual_revenue_turnover\": \"<string>\",\n    \"declaration\": \"Yes\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.transferzero.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4eb33e13-4067-4a04-92b6-97d3469a1e1c",
+    "name": "TransferZero Account Debits Senders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Reference documentation for the TransferZero API V1",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TransferZero Account Debits Payin Methods API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization-Key",
+      "value": "{{Authorization-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payin Methods",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetching a payin method",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.transferzero.com/v1/payin_methods/:PayinMethod ID",
+            "params": [
+              {
+                "name": "PayinMethod ID",
+                "value": "",
+                "type": "path",
+                "description": "ID of the payin method to get.\n\nExample: `/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+              }
+            ]
+          },
+          "docs": "Show a payin method by id"
+        },
+        {
+          "info": {
+            "name": "Updating a payin method",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api-sandbox.transferzero.com/v1/payin_methods/:PayinMethod ID",
+            "params": [
+              {
+                "name": "PayinMethod ID",
+                "value": "",
+                "type": "path",
+                "description": "ID of the payin method to get.\n\nExample: `/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a single payin method by the Payin Method ID"
+        },
+        {
+          "info": {
+            "name": "Deleting a payin method",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-sandbox.transferzero.com/v1/payin_methods/:PayinMethod ID",
+            "params": [
+              {
+                "name": "PayinMethod ID",
+                "value": "",
+                "type": "path",
+                "description": "ID of the payin method to delete.\n\nExample: `/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+              }
+            ]
+          },
+          "docs": "Initiates a cancellation request for the specified payin method"
+        },
+        {
+          "info": {
+            "name": "Retries PayinMethod",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-sandbox.transferzero.com/v1/payin_methods/:PayinMethod ID/retry",
+            "params": [
+              {
+                "name": "PayinMethod ID",
+                "value": "",
+                "type": "path",
+                "description": "ID of the payin method whose collection process should be retried\n\nExample: `/v1/payin_methods/9d4d7b73-a94c-4979-ab57-09074fd55d33/retry`"
+              }
+            ]
+          },
+          "docs": "Retries the collection process for the payin method.\n\nPlease note only payin methods in `error` state can be retried."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TransferZero Account Debits API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization-Key",
+      "value": "{{Authorization-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account Debits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creating an account debit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-sandbox.transferzero.com/v1/accounts/debits",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new account debit finding transaction through the internal balance\n\nTo successfully fund a transaction -\n- The currency needs to be the same as the input_currency on the transaction\n- The amount has to be the same as the input_amount on the transaction\n- The to_id is the id of the transaction\n- You need to have enough balance of the appropriate currency inside your wallet\n\nOnce the transaction is funded, we will immediately start trying to pay out the recipient(s).\n\nIt is also possible"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,581 @@
+{
+  "item": [
+    {
+      "id": "7d8904fa-7c8a-4cf5-85e5-00296e435065",
+      "name": "Currency Info",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4028d2a5-712a-4b97-a85e-d152ecb5ccde",
+          "name": "Getting a list of possible requested currencies",
+          "request": {
+            "name": "Getting a list of possible requested currencies",
+            "description": {
+              "content": "Fetches a list of currencies available to use in other API requests. Usually the 3-character alpha ISO 4217 currency code (eg. USD) is used as the identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "info",
+                "currencies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "be94152e-07ad-4459-907d-3bec699f5c8e",
+              "name": "Returns the available currencies in the system",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "info",
+                    "currencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": [\n    {\n      \"code\": \"NGN\",\n      \"name\": \"Nigerian Naira\",\n      \"symbol\": \"₦\",\n      \"decimals\": 2,\n      \"subunit_to_unit\": \"100\",\n      \"primary\": true,\n      \"min\": \"100\",\n      \"max\": \"50000000\",\n      \"usd_equivalent\": \"string\"\n    },\n    {\n      \"code\": \"NGN\",\n      \"name\": \"Nigerian Naira\",\n      \"symbol\": \"₦\",\n      \"decimals\": 2,\n      \"subunit_to_unit\": \"100\",\n      \"primary\": true,\n      \"min\": \"100\",\n      \"max\": \"50000000\",\n      \"usd_equivalent\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c78e0db-9731-4a13-89f1-fbeb43d97b02",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "info",
+                    "currencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0b7c387d-76fb-43d6-96c8-d6d40daa3fb9",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "info",
+                    "currencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5774ab6-1b84-411f-badb-f9371b0f6d49",
+          "name": "Getting a list of possible input currencies",
+          "request": {
+            "name": "Getting a list of possible input currencies",
+            "description": {
+              "content": "Fetches a list of currencies available to use as the input currency in other API requests.\nUsually the 3-character alpha ISO 4217 currency code (eg. USD) is used as the identifier.\nUse this endpoint to determine the current exchange rate from a specific input currency to any output currency that's available.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "info",
+                "currencies",
+                "in"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sender_id",
+                  "value": "<uuid>",
+                  "description": "Allows the scoping of the results by `sender_id` (optional).\n\nExample: `/v1/info/currencies/in?sender_id=26ec8517-2f0d-48c0-b74f-0bccb9ab3a87`"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ff6e20f3-a902-4da7-aff3-9d770c0ea2bd",
+              "name": "Returns the potential input currencies with their exchange rates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "info",
+                    "currencies",
+                    "in"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sender_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": [\n    {\n      \"code\": \"NGN\",\n      \"name\": \"Nigerian Naira\",\n      \"symbol\": \"₦\",\n      \"decimals\": 2,\n      \"subunit_to_unit\": \"100\",\n      \"primary\": true,\n      \"min\": \"100\",\n      \"max\": \"50000000\",\n      \"usd_equivalent\": \"string\",\n      \"opposites\": [\n        {\n          \"code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"symbol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"decimals\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"subunit_to_unit\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"primary\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"min\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"max\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"usd_equivalent\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rate\": 4844.661173849507,\n          \"mtm_rate\": 5852.086301960208,\n          \"margin\": \"string\"\n        },\n        {\n          \"code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"symbol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"decimals\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"subunit_to_unit\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"primary\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"min\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"max\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"usd_equivalent\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rate\": 9624.567605029164,\n          \"mtm_rate\": 7992.259956090466,\n          \"margin\": \"string\"\n        }\n      ]\n    },\n    {\n      \"code\": \"NGN\",\n      \"name\": \"Nigerian Naira\",\n      \"symbol\": \"₦\",\n      \"decimals\": 2,\n      \"subunit_to_unit\": \"100\",\n      \"primary\": true,\n      \"min\": \"100\",\n      \"max\": \"50000000\",\n      \"usd_equivalent\": \"string\",\n      \"opposites\": [\n        {\n          \"code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"symbol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"decimals\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"subunit_to_unit\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"primary\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"min\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"max\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"usd_equivalent\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rate\": 9786.032181499786,\n          \"mtm_rate\": 7347.353184313422,\n          \"margin\": \"string\"\n        },\n        {\n          \"code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"symbol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"decimals\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"subunit_to_unit\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"primary\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"min\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"max\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"usd_equivalent\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rate\": 310.46672880552075,\n          \"mtm_rate\": 3203.621829283191,\n          \"margin\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03f294d3-3394-4e1d-b76b-dce46042ec0e",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "info",
+                    "currencies",
+                    "in"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sender_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "077d4d7e-9b81-445c-98e2-769b138fef00",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "info",
+                    "currencies",
+                    "in"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sender_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a85d7c0c-bdb7-485a-8d8b-d421faf54493",
+          "name": "Getting a list of possible output currencies",
+          "request": {
+            "name": "Getting a list of possible output currencies",
+            "description": {
+              "content": "Fetches a list of currencies available to use as the output currency and their exchange rates against the available input currencies.\nUsually the 3-character alpha ISO 4217 currency code (eg. USD) is used as the identifier.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "info",
+                "currencies",
+                "out"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sender_id",
+                  "value": "<uuid>",
+                  "description": "Allows the scoping of the results by `sender_id` (optional).\n\nExample: `/v1/info/currencies/out?sender_id=26ec8517-2f0d-48c0-b74f-0bccb9ab3a87`"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b54fb3ea-561b-4979-8aad-b39519a64ffa",
+              "name": "Returns the potential output currencies with their exchange rates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "info",
+                    "currencies",
+                    "out"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sender_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": [\n    {\n      \"code\": \"NGN\",\n      \"name\": \"Nigerian Naira\",\n      \"symbol\": \"₦\",\n      \"decimals\": 2,\n      \"subunit_to_unit\": \"100\",\n      \"primary\": true,\n      \"min\": \"100\",\n      \"max\": \"50000000\",\n      \"usd_equivalent\": \"string\",\n      \"opposites\": [\n        {\n          \"code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"symbol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"decimals\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"subunit_to_unit\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"primary\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"min\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"max\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"usd_equivalent\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rate\": 5356.016484244713,\n          \"mtm_rate\": 6769.777017464026,\n          \"margin\": \"string\"\n        },\n        {\n          \"code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"symbol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"decimals\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"subunit_to_unit\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"primary\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"min\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"max\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"usd_equivalent\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rate\": 1373.1469143394404,\n          \"mtm_rate\": 8416.779285096824,\n          \"margin\": \"string\"\n        }\n      ]\n    },\n    {\n      \"code\": \"NGN\",\n      \"name\": \"Nigerian Naira\",\n      \"symbol\": \"₦\",\n      \"decimals\": 2,\n      \"subunit_to_unit\": \"100\",\n      \"primary\": true,\n      \"min\": \"100\",\n      \"max\": \"50000000\",\n      \"usd_equivalent\": \"string\",\n      \"opposites\": [\n        {\n          \"code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"symbol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"decimals\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"subunit_to_unit\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"primary\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"min\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"max\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"usd_equivalent\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rate\": 3685.633449876906,\n          \"mtm_rate\": 7836.907747803261,\n          \"margin\": \"string\"\n        },\n        {\n          \"code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"symbol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"decimals\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"subunit_to_unit\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"primary\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"min\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"max\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"usd_equivalent\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"rate\": 2287.6376107378815,\n          \"mtm_rate\": 1882.9092182906427,\n          \"margin\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1cfb5781-0879-40b3-b4e5-d1e8b015f820",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "info",
+                    "currencies",
+                    "out"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sender_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d9820f65-b9aa-454f-9b04-965a6f5c9ca9",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "info",
+                    "currencies",
+                    "out"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sender_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.transferzero.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "67cedb6f-6a84-48ce-aa7b-de837e863b62",
+    "name": "TransferZero Account Debits Currency Info API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Reference documentation for the TransferZero API V1",
+      "type": "text/plain"
+    }
+  }
+}

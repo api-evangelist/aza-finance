@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TransferZero Account Debits Mandates API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization-Key",
+      "value": "{{Authorization-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mandates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch a single mandate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.transferzero.com/v1/mandates/:Mandate ID",
+            "params": [
+              {
+                "name": "Mandate ID",
+                "value": "",
+                "type": "path",
+                "description": "ID of the mandate.\n\nExample: `/v1/mandates/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+              }
+            ]
+          },
+          "docs": "Finds and returns a Mandate created within the current calendar year,\nwhere the mandate is linked to a Recipient owned by the authenticated\nAPI key.\n\nReturns 404 if the mandate is not owned by the API key or was not\nissued in the current calendar year — mandates are only valid for\nthe year in which they were issued."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

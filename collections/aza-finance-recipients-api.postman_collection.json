@@ -1,0 +1,1173 @@
+{
+  "item": [
+    {
+      "id": "f626a9ee-e325-4420-b3ba-2314cbfd7e50",
+      "name": "Recipients",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f3cf60f2-d981-4993-b47a-e78a1e384cc7",
+          "name": "Getting a list of recipients with filtering",
+          "request": {
+            "name": "Getting a list of recipients with filtering",
+            "description": {
+              "content": "Fetches details of all recipients.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recipients"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "The page number to request (defaults to 1)"
+                },
+                {
+                  "disabled": false,
+                  "key": "per",
+                  "value": "<integer>",
+                  "description": "The number of results to load per page (defaults to 10)"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at_from",
+                  "value": "<string>",
+                  "description": "Start date to filter recipients by created_at range\nAllows filtering results by the specified `created_at` timeframe.\n\nExample: `/v1/recipients?created_at_from=2018-06-06&created_at_to=2018-06-08`"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at_to",
+                  "value": "<string>",
+                  "description": "End date to filter recipients by created_at range\nAllows filtering results by the specified `created_at` timeframe.\n\nExample: `/v1/recipients?created_at_from=2018-06-06&created_at_to=2018-06-08`"
+                },
+                {
+                  "disabled": false,
+                  "key": "amount_from",
+                  "value": "<string>",
+                  "description": "Minimum amount to filter recipients by amount range.\n\nAllows filtering results by the specified `amount` range. When using this filter, the `currency` should also be specified.\n\nExample: `/v1/recipients?currency=NGN&amount_from=83.76672339&amount_to=83.76672339`"
+                },
+                {
+                  "disabled": false,
+                  "key": "amount_to",
+                  "value": "<string>",
+                  "description": "Max amount to filter recipients by amount range.\n\nAllows filtering results by the specified `amount` range. When using this filter, the `currency` should also be specified.\n\nExample: `/v1/recipients?currency=NGN&amount_from=83.76672339&amount_to=83.76672339`"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "Allows filtering results by `state` of recipient. See [API Documentation - Recipient state](https://docs.transferzero.com/docs/transaction-flow/#state) for possible states.\n\nExample: `/v1/recipients?state[]=error&state[]=initial`"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "Allows filtering results by `state` of recipient. See [API Documentation - Recipient state](https://docs.transferzero.com/docs/transaction-flow/#state) for possible states.\n\nExample: `/v1/recipients?state[]=error&state[]=initial`"
+                },
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "<string>",
+                  "description": "Allows filtering results by `input_currency`.\n\nAdditionally required when filtering by an amount range\nExample: `/v1/recipients?currency[]=KES&currency[]=NGN`"
+                },
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "<string>",
+                  "description": "Allows filtering results by `input_currency`.\n\nAdditionally required when filtering by an amount range\nExample: `/v1/recipients?currency[]=KES&currency[]=NGN`"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bd8c66ff-ad52-4aae-bf7a-a2a0ecfb1719",
+              "name": "Array of recipients requested",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_at_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at_to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amount_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amount_to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": [\n    {\n      \"created_at\": \"2018-06-07T15:12:12.513Z\",\n      \"editable\": true,\n      \"retriable\": true,\n      \"input_usd_amount\": 1031.31,\n      \"may_cancel\": false,\n      \"metadata\": {},\n      \"state\": \"canceled\",\n      \"transaction_id\": \"7901b86c-07cb-4f68-9e25-db48fc5d96d3\",\n      \"transaction_state\": \"manual\",\n      \"payout_method\": {\n        \"type\": \"NGN::Bank\",\n        \"details\": {\n          \"bank_code\": 58,\n          \"bank_account\": \"123456789\",\n          \"bank_account_type\": \"10\",\n          \"last_name\": \"English\",\n          \"first_name\": \"Johnny\"\n        },\n        \"metadata\": {\n          \"my\": \"data\"\n        }\n      },\n      \"exchange_rate\": 1036911.90353524,\n      \"fee_fractional\": 2723,\n      \"requested_amount\": 1000,\n      \"requested_currency\": \"USD\",\n      \"input_amount\": 908,\n      \"input_currency\": \"UGX\",\n      \"output_amount\": 941.51600841,\n      \"output_currency\": \"NGN\"\n    },\n    {\n      \"created_at\": \"2018-06-07T15:12:12.513Z\",\n      \"editable\": true,\n      \"retriable\": true,\n      \"input_usd_amount\": 1031.31,\n      \"may_cancel\": false,\n      \"metadata\": {},\n      \"state\": \"canceled\",\n      \"transaction_id\": \"7901b86c-07cb-4f68-9e25-db48fc5d96d3\",\n      \"transaction_state\": \"manual\",\n      \"payout_method\": {\n        \"type\": \"NGN::Bank\",\n        \"details\": {\n          \"bank_code\": 58,\n          \"bank_account\": \"123456789\",\n          \"bank_account_type\": \"10\",\n          \"last_name\": \"English\",\n          \"first_name\": \"Johnny\"\n        },\n        \"metadata\": {\n          \"my\": \"data\"\n        }\n      },\n      \"exchange_rate\": 1036911.90353524,\n      \"fee_fractional\": 2723,\n      \"requested_amount\": 1000,\n      \"requested_currency\": \"USD\",\n      \"input_amount\": 908,\n      \"input_currency\": \"UGX\",\n      \"output_amount\": 941.51600841,\n      \"output_currency\": \"NGN\"\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"next_page\": 3,\n      \"total_count\": 45,\n      \"total_pages\": 5,\n      \"prev_page\": 1,\n      \"current_page\": 2\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96144040-1291-4778-9495-2487daf51721",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_at_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at_to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amount_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amount_to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8853d682-62d2-4988-93af-ab164a58ef3c",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_at_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at_to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amount_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amount_to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ebae7a8-70e5-49a9-84cd-069cf4c12b74",
+          "name": "Cancelling a recipient",
+          "request": {
+            "name": "Cancelling a recipient",
+            "description": {
+              "content": "Cancels the payment to the recipient specified in the URL path.\n\nPlease note recipients where the `may_cancel` attribute is true will be cancelled immediately. If the `may_cancel` attribute is false you can still try to cancel the recipient, however it will only gets cancelled if we will receive a confirmation from our partner that the payment has failed",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recipients",
+                ":Recipient ID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "Recipient ID",
+                  "description": "(Required) ID of recipient to cancel.\n\nExample: `/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f79e954e-d421-4aec-a489-a59cf01c0248",
+              "name": "Details of recipient cancelled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    ":Recipient ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Recipient ID",
+                      "description": "(Required) ID of recipient to cancel.\n\nExample: `/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"payout_method\": {\n      \"type\": \"NGN::Bank\",\n      \"details\": {\n        \"bank_account\": \"string\",\n        \"bank_code\": \"string\",\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"bank_account_type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"birth_date\": \"2023-12-03\",\n        \"street\": \"string\"\n      },\n      \"metadata\": {},\n      \"id\": \"15573fba-5858-8a14-b4b1-45469bae1b08\",\n      \"errors\": {\n        \"key_0\": [\n          {\n            \"error\": \"invalid\"\n          },\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"key_1\": [\n          {\n            \"error\": \"invalid\"\n          },\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"key_2\": [\n          {\n            \"error\": \"invalid\"\n          },\n          {\n            \"error\": \"invalid\"\n          }\n        ]\n      },\n      \"fields\": {\n        \"email\": {\n          \"type\": \"input\",\n          \"validations\": {\n            \"inclusion\": {\n              \"in\": {\n                \"NI\": \"National Id\",\n                \"PP\": \"Passport\"\n              },\n              \"allow_blank\": true\n            }\n          }\n        }\n      }\n    },\n    \"requested_amount\": 750,\n    \"requested_currency\": \"NGN\",\n    \"metadata\": {},\n    \"created_at\": \"1994-04-14T17:35:53.311Z\",\n    \"editable\": true,\n    \"retriable\": true,\n    \"input_usd_amount\": 10,\n    \"may_cancel\": true,\n    \"state_reason\": \"string\",\n    \"state_reason_details\": {\n      \"code\": \"311\",\n      \"category\": \"temporary_error\",\n      \"messages\": [\n        \"Temporary error\",\n        \"Switch Error\",\n        \"Issuer/Switch inoperative\"\n      ],\n      \"description\": \"The central switch is not accepting transactions at the moment. We will retry the transaction\"\n    },\n    \"state\": \"initial\",\n    \"transaction_id\": \"97e79719-06e4-4794-aeeb-d2d9415d983a\",\n    \"transaction_external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"transaction_state\": \"initial\",\n    \"exchange_rate\": 1000,\n    \"fee_fractional\": 100,\n    \"input_amount\": 10,\n    \"input_currency\": \"USD\",\n    \"output_amount\": 10000,\n    \"output_currency\": \"NGN\",\n    \"id\": \"97e79719-06e4-4794-aeeb-d2d9415d983a\",\n    \"type\": \"person\",\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_2\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    },\n    \"mandate_id\": \"97e79719-06e4-4794-aeeb-d2d9415d983a\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d18d8df-2ea3-47bf-87bc-d730d95b406f",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    ":Recipient ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Recipient ID",
+                      "description": "(Required) ID of recipient to cancel.\n\nExample: `/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "980a8e0e-4676-480f-965d-845f98efd933",
+              "name": "Resource Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    ":Recipient ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Recipient ID",
+                      "description": "(Required) ID of recipient to cancel.\n\nExample: `/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "04b2073f-792f-447b-a645-963c8226f582",
+              "name": "Invalid recipient object (includes errors object)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    ":Recipient ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Recipient ID",
+                      "description": "(Required) ID of recipient to cancel.\n\nExample: `/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"payout_method\": {\n      \"type\": \"NGN::Bank\",\n      \"details\": {\n        \"bank_account\": \"string\",\n        \"bank_code\": \"string\",\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"bank_account_type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"birth_date\": \"2023-12-03\",\n        \"street\": \"string\"\n      },\n      \"metadata\": {},\n      \"id\": \"15573fba-5858-8a14-b4b1-45469bae1b08\",\n      \"errors\": {\n        \"key_0\": [\n          {\n            \"error\": \"invalid\"\n          },\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"key_1\": [\n          {\n            \"error\": \"invalid\"\n          },\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"key_2\": [\n          {\n            \"error\": \"invalid\"\n          },\n          {\n            \"error\": \"invalid\"\n          }\n        ]\n      },\n      \"fields\": {\n        \"email\": {\n          \"type\": \"input\",\n          \"validations\": {\n            \"inclusion\": {\n              \"in\": {\n                \"NI\": \"National Id\",\n                \"PP\": \"Passport\"\n              },\n              \"allow_blank\": true\n            }\n          }\n        }\n      }\n    },\n    \"requested_amount\": 750,\n    \"requested_currency\": \"NGN\",\n    \"metadata\": {},\n    \"created_at\": \"1994-04-14T17:35:53.311Z\",\n    \"editable\": true,\n    \"retriable\": true,\n    \"input_usd_amount\": 10,\n    \"may_cancel\": true,\n    \"state_reason\": \"string\",\n    \"state_reason_details\": {\n      \"code\": \"311\",\n      \"category\": \"temporary_error\",\n      \"messages\": [\n        \"Temporary error\",\n        \"Switch Error\",\n        \"Issuer/Switch inoperative\"\n      ],\n      \"description\": \"The central switch is not accepting transactions at the moment. We will retry the transaction\"\n    },\n    \"state\": \"initial\",\n    \"transaction_id\": \"97e79719-06e4-4794-aeeb-d2d9415d983a\",\n    \"transaction_external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"transaction_state\": \"initial\",\n    \"exchange_rate\": 1000,\n    \"fee_fractional\": 100,\n    \"input_amount\": 10,\n    \"input_currency\": \"USD\",\n    \"output_amount\": 10000,\n    \"output_currency\": \"NGN\",\n    \"id\": \"97e79719-06e4-4794-aeeb-d2d9415d983a\",\n    \"type\": \"person\",\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"key_2\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    },\n    \"mandate_id\": \"97e79719-06e4-4794-aeeb-d2d9415d983a\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87af068d-f5c2-4490-904d-d48e368db790",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    ":Recipient ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Recipient ID",
+                      "description": "(Required) ID of recipient to cancel.\n\nExample: `/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7a31b562-4038-4c00-92f1-8dcf1aa93578",
+          "name": "Updating a recipient",
+          "request": {
+            "name": "Updating a recipient",
+            "description": {
+              "content": "Updates the recipient specified in the URL path.\n\nPlease note that only recipients where the `editable` field is true can be modified. Once the recipient is modified any subsequent payout tries will be sent to the updated details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recipients",
+                ":Recipient ID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "Recipient ID",
+                  "description": "(Required) ID of recipient to update.\n\nExample: `/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipient\": {\n    \"payout_method\": {\n      \"type\": \"<string>\",\n      \"details\": {\n        \"bank_account\": \"<string>\",\n        \"bank_code\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"bank_account_type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"birth_date\": \"<date>\",\n        \"street\": \"<string>\"\n      },\n      \"metadata\": \"<object>\",\n      \"id\": \"<uuid>\"\n    },\n    \"requested_amount\": \"<number>\",\n    \"requested_currency\": \"<string>\",\n    \"metadata\": \"<object>\",\n    \"state_reason_details\": {},\n    \"state\": \"<string>\",\n    \"transaction_external_id\": \"<string>\",\n    \"transaction_state\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b108c98e-05f2-41cc-9dc4-330a75e7f9a9",
+              "name": "Details of the updated recipient",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    ":Recipient ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Recipient ID",
+                      "description": "(Required) ID of recipient to update.\n\nExample: `/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recipient\": {\n    \"payout_method\": {\n      \"metadata\": {},\n      \"type\": \"NGN::Bank\",\n      \"fields\": {\n        \"email\": {\n          \"type\": \"input\",\n          \"validations\": {\n            \"inclusion\": {\n              \"in\": {\n                \"NI\": \"National Id\",\n                \"PP\": \"Passport\"\n              },\n              \"allow_blank\": true\n            }\n          }\n        }\n      },\n      \"errors\": {\n        \"phone_number\": [\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"documents\": [\n          {\n            \"error\": \"blank\"\n          }\n        ]\n      }\n    },\n    \"requested_amount\": 750,\n    \"requested_currency\": \"NGN\",\n    \"metadata\": {},\n    \"state_reason_details\": {\n      \"code\": \"311\",\n      \"category\": \"temporary_error\",\n      \"messages\": [\n        \"Temporary error - Retriable\",\n        \"Switch Error\",\n        \"Issuer/Switch inoperative\"\n      ],\n      \"description\": \"The central switch is not accepting transactions at the moment. We will retry the transaction\"\n    },\n    \"state\": \"initial\",\n    \"transaction_external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"transaction_state\": \"initial\",\n    \"type\": \"person\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"payout_method\": {\n      \"type\": \"NGN::Bank\",\n      \"details\": {\n        \"bank_account\": \"<string>\",\n        \"bank_code\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"bank_account_type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"birth_date\": \"<date>\",\n        \"street\": \"<string>\"\n      },\n      \"metadata\": {},\n      \"id\": \"<uuid>\",\n      \"errors\": {\n        \"key_0\": [\n          {\n            \"error\": \"invalid\"\n          },\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"key_1\": [\n          {\n            \"error\": \"invalid\"\n          },\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"key_2\": [\n          {\n            \"error\": \"invalid\"\n          },\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"key_3\": [\n          {\n            \"error\": \"invalid\"\n          },\n          {\n            \"error\": \"invalid\"\n          }\n        ]\n      },\n      \"fields\": {\n        \"email\": {\n          \"type\": \"input\",\n          \"validations\": {\n            \"inclusion\": {\n              \"in\": {\n                \"NI\": \"National Id\",\n                \"PP\": \"Passport\"\n              },\n              \"allow_blank\": true\n            }\n          }\n        }\n      }\n    },\n    \"requested_amount\": 750,\n    \"requested_currency\": \"NGN\",\n    \"metadata\": {},\n    \"created_at\": \"1972-12-05T20:31:10.877Z\",\n    \"editable\": true,\n    \"retriable\": true,\n    \"input_usd_amount\": 10,\n    \"may_cancel\": true,\n    \"state_reason\": \"string\",\n    \"state_reason_details\": {\n      \"code\": \"311\",\n      \"category\": \"temporary_error\",\n      \"messages\": [\n        \"Temporary error\",\n        \"Switch Error\",\n        \"Issuer/Switch inoperative\"\n      ],\n      \"description\": \"The central switch is not accepting transactions at the moment. We will retry the transaction\"\n    },\n    \"state\": \"initial\",\n    \"transaction_id\": \"97e79719-06e4-4794-aeeb-d2d9415d983a\",\n    \"transaction_external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"transaction_state\": \"initial\",\n    \"exchange_rate\": 1000,\n    \"fee_fractional\": 100,\n    \"input_amount\": 10,\n    \"input_currency\": \"USD\",\n    \"output_amount\": 10000,\n    \"output_currency\": \"NGN\",\n    \"id\": \"97e79719-06e4-4794-aeeb-d2d9415d983a\",\n    \"type\": \"person\",\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    },\n    \"mandate_id\": \"97e79719-06e4-4794-aeeb-d2d9415d983a\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7cf6ce91-7c80-4b4e-850c-5e28181edf2a",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    ":Recipient ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Recipient ID",
+                      "description": "(Required) ID of recipient to update.\n\nExample: `/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recipient\": {\n    \"payout_method\": {\n      \"metadata\": {},\n      \"type\": \"NGN::Bank\",\n      \"fields\": {\n        \"email\": {\n          \"type\": \"input\",\n          \"validations\": {\n            \"inclusion\": {\n              \"in\": {\n                \"NI\": \"National Id\",\n                \"PP\": \"Passport\"\n              },\n              \"allow_blank\": true\n            }\n          }\n        }\n      },\n      \"errors\": {\n        \"phone_number\": [\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"documents\": [\n          {\n            \"error\": \"blank\"\n          }\n        ]\n      }\n    },\n    \"requested_amount\": 750,\n    \"requested_currency\": \"NGN\",\n    \"metadata\": {},\n    \"state_reason_details\": {\n      \"code\": \"311\",\n      \"category\": \"temporary_error\",\n      \"messages\": [\n        \"Temporary error - Retriable\",\n        \"Switch Error\",\n        \"Issuer/Switch inoperative\"\n      ],\n      \"description\": \"The central switch is not accepting transactions at the moment. We will retry the transaction\"\n    },\n    \"state\": \"initial\",\n    \"transaction_external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"transaction_state\": \"initial\",\n    \"type\": \"person\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e2a03d69-844f-4ddb-ba29-dd25ba5bcaa3",
+              "name": "Resource Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    ":Recipient ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Recipient ID",
+                      "description": "(Required) ID of recipient to update.\n\nExample: `/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recipient\": {\n    \"payout_method\": {\n      \"metadata\": {},\n      \"type\": \"NGN::Bank\",\n      \"fields\": {\n        \"email\": {\n          \"type\": \"input\",\n          \"validations\": {\n            \"inclusion\": {\n              \"in\": {\n                \"NI\": \"National Id\",\n                \"PP\": \"Passport\"\n              },\n              \"allow_blank\": true\n            }\n          }\n        }\n      },\n      \"errors\": {\n        \"phone_number\": [\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"documents\": [\n          {\n            \"error\": \"blank\"\n          }\n        ]\n      }\n    },\n    \"requested_amount\": 750,\n    \"requested_currency\": \"NGN\",\n    \"metadata\": {},\n    \"state_reason_details\": {\n      \"code\": \"311\",\n      \"category\": \"temporary_error\",\n      \"messages\": [\n        \"Temporary error - Retriable\",\n        \"Switch Error\",\n        \"Issuer/Switch inoperative\"\n      ],\n      \"description\": \"The central switch is not accepting transactions at the moment. We will retry the transaction\"\n    },\n    \"state\": \"initial\",\n    \"transaction_external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"transaction_state\": \"initial\",\n    \"type\": \"person\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0c2e0ce3-7566-482c-a0ea-0367996f4c93",
+              "name": "Invalid recipient object (includes errors object)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    ":Recipient ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Recipient ID",
+                      "description": "(Required) ID of recipient to update.\n\nExample: `/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recipient\": {\n    \"payout_method\": {\n      \"metadata\": {},\n      \"type\": \"NGN::Bank\",\n      \"fields\": {\n        \"email\": {\n          \"type\": \"input\",\n          \"validations\": {\n            \"inclusion\": {\n              \"in\": {\n                \"NI\": \"National Id\",\n                \"PP\": \"Passport\"\n              },\n              \"allow_blank\": true\n            }\n          }\n        }\n      },\n      \"errors\": {\n        \"phone_number\": [\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"documents\": [\n          {\n            \"error\": \"blank\"\n          }\n        ]\n      }\n    },\n    \"requested_amount\": 750,\n    \"requested_currency\": \"NGN\",\n    \"metadata\": {},\n    \"state_reason_details\": {\n      \"code\": \"311\",\n      \"category\": \"temporary_error\",\n      \"messages\": [\n        \"Temporary error - Retriable\",\n        \"Switch Error\",\n        \"Issuer/Switch inoperative\"\n      ],\n      \"description\": \"The central switch is not accepting transactions at the moment. We will retry the transaction\"\n    },\n    \"state\": \"initial\",\n    \"transaction_external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"transaction_state\": \"initial\",\n    \"type\": \"person\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"payout_method\": {\n      \"type\": \"NGN::Bank\",\n      \"details\": {\n        \"bank_account\": \"<string>\",\n        \"bank_code\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"bank_account_type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"birth_date\": \"<date>\",\n        \"street\": \"<string>\"\n      },\n      \"metadata\": {},\n      \"id\": \"<uuid>\",\n      \"errors\": {\n        \"key_0\": [\n          {\n            \"error\": \"invalid\"\n          },\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"key_1\": [\n          {\n            \"error\": \"invalid\"\n          },\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"key_2\": [\n          {\n            \"error\": \"invalid\"\n          },\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"key_3\": [\n          {\n            \"error\": \"invalid\"\n          },\n          {\n            \"error\": \"invalid\"\n          }\n        ]\n      },\n      \"fields\": {\n        \"email\": {\n          \"type\": \"input\",\n          \"validations\": {\n            \"inclusion\": {\n              \"in\": {\n                \"NI\": \"National Id\",\n                \"PP\": \"Passport\"\n              },\n              \"allow_blank\": true\n            }\n          }\n        }\n      }\n    },\n    \"requested_amount\": 750,\n    \"requested_currency\": \"NGN\",\n    \"metadata\": {},\n    \"created_at\": \"1972-12-05T20:31:10.877Z\",\n    \"editable\": true,\n    \"retriable\": true,\n    \"input_usd_amount\": 10,\n    \"may_cancel\": true,\n    \"state_reason\": \"string\",\n    \"state_reason_details\": {\n      \"code\": \"311\",\n      \"category\": \"temporary_error\",\n      \"messages\": [\n        \"Temporary error\",\n        \"Switch Error\",\n        \"Issuer/Switch inoperative\"\n      ],\n      \"description\": \"The central switch is not accepting transactions at the moment. We will retry the transaction\"\n    },\n    \"state\": \"initial\",\n    \"transaction_id\": \"97e79719-06e4-4794-aeeb-d2d9415d983a\",\n    \"transaction_external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"transaction_state\": \"initial\",\n    \"exchange_rate\": 1000,\n    \"fee_fractional\": 100,\n    \"input_amount\": 10,\n    \"input_currency\": \"USD\",\n    \"output_amount\": 10000,\n    \"output_currency\": \"NGN\",\n    \"id\": \"97e79719-06e4-4794-aeeb-d2d9415d983a\",\n    \"type\": \"person\",\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    },\n    \"mandate_id\": \"97e79719-06e4-4794-aeeb-d2d9415d983a\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9b77434-8c28-40db-b4b4-ff568c97b726",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    ":Recipient ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Recipient ID",
+                      "description": "(Required) ID of recipient to update.\n\nExample: `/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recipient\": {\n    \"payout_method\": {\n      \"metadata\": {},\n      \"type\": \"NGN::Bank\",\n      \"fields\": {\n        \"email\": {\n          \"type\": \"input\",\n          \"validations\": {\n            \"inclusion\": {\n              \"in\": {\n                \"NI\": \"National Id\",\n                \"PP\": \"Passport\"\n              },\n              \"allow_blank\": true\n            }\n          }\n        }\n      },\n      \"errors\": {\n        \"phone_number\": [\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"documents\": [\n          {\n            \"error\": \"blank\"\n          }\n        ]\n      }\n    },\n    \"requested_amount\": 750,\n    \"requested_currency\": \"NGN\",\n    \"metadata\": {},\n    \"state_reason_details\": {\n      \"code\": \"311\",\n      \"category\": \"temporary_error\",\n      \"messages\": [\n        \"Temporary error - Retriable\",\n        \"Switch Error\",\n        \"Issuer/Switch inoperative\"\n      ],\n      \"description\": \"The central switch is not accepting transactions at the moment. We will retry the transaction\"\n    },\n    \"state\": \"initial\",\n    \"transaction_external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",\n    \"transaction_state\": \"initial\",\n    \"type\": \"person\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "512928ad-6b78-4572-a04b-d4ccff54bfa5",
+          "name": "Returns list of proof of payments",
+          "request": {
+            "name": "Returns list of proof of payments",
+            "description": {
+              "content": "Returns a list of uploaded proof of payment files for a transaction recipient",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recipients",
+                ":Recipient ID",
+                "proof_of_payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "Recipient ID",
+                  "description": "(Required) ID of the recipient for whom the proof of payments will be returned.\n\nExample: `/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33/proof_of_payments`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3735531c-e041-4799-8d01-bd119e7e852e",
+              "name": "Collection of proof of payment objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    ":Recipient ID",
+                    "proof_of_payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Recipient ID",
+                      "description": "(Required) ID of the recipient for whom the proof of payments will be returned.\n\nExample: `/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33/proof_of_payments`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": [\n    {\n      \"thumbnail\": \"https://bitpesa-development-reports.s3.eu-west-1.amazonaws.com/my_file_thumb.jpg\",\n      \"file_name\": \"my_file.jpg\",\n      \"url\": \"https://bitpesa-development-reports.s3.eu-west-1.amazonaws.com/my_file.jpg\"\n    },\n    {\n      \"thumbnail\": \"https://bitpesa-development-reports.s3.eu-west-1.amazonaws.com/my_file_thumb.jpg\",\n      \"file_name\": \"my_file.jpg\",\n      \"url\": \"https://bitpesa-development-reports.s3.eu-west-1.amazonaws.com/my_file.jpg\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aeccaefa-eb90-4922-b374-82afc94de123",
+              "name": "Unable to process the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    ":Recipient ID",
+                    "proof_of_payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Recipient ID",
+                      "description": "(Required) ID of the recipient for whom the proof of payments will be returned.\n\nExample: `/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33/proof_of_payments`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.transferzero.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "db81e9d5-aa5d-4be9-9c45-edabc65b5347",
+    "name": "TransferZero Account Debits Recipients API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Reference documentation for the TransferZero API V1",
+      "type": "text/plain"
+    }
+  }
+}

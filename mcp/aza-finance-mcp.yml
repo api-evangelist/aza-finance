@@ -157,3 +157,9 @@ tools:
 - name: get_webhook_events
   description: Find possible webhook events
   source_operation: openapi/aza-finance-openapi-original.json#get-webhook-events
+deployment:
+  mode: none
+  verified: derived
+  tools: 49
+  checked: '2026-08-12'
+  source: catalog MCP census

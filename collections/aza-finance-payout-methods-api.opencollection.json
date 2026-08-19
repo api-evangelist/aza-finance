@@ -1,0 +1,157 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TransferZero Account Debits Payout Methods API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization-Key",
+      "value": "{{Authorization-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payout Methods",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Listing payout methods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.transferzero.com/v1/payout_methods",
+            "params": [
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Allows filtering results by `state` of the payout method.\n\nExample: `/v1/payout_methods?state[]=enabled`"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Allows filtering results by the specified type.\n\nExample: `/v1/payout_methods?type[]=NGN::Bank`"
+              },
+              {
+                "name": "sender_id",
+                "value": "",
+                "type": "query",
+                "description": "Allows filtering results by the specified sender id.\n\nExample: `/v1/payout_methods?sender_id=bf9ff782-e182-45ac-abea-5bce83ad6670`"
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "The page number to request (defaults to 1)"
+              },
+              {
+                "name": "per",
+                "value": "10",
+                "type": "query",
+                "description": "The number of results to load per page (defaults to 10)"
+              },
+              {
+                "name": "created_at_from",
+                "value": "",
+                "type": "query",
+                "description": "Start date to filter recipients by created_at range\nAllows filtering results by the specified `created_at` timeframe.\n\nExample: `/v1/recipients?created_at_from=2018-06-06&created_at_to=2018-06-08`"
+              },
+              {
+                "name": "created_at_to",
+                "value": "",
+                "type": "query",
+                "description": "End date to filter recipients by created_at range\nAllows filtering results by the specified `created_at` timeframe.\n\nExample: `/v1/recipients?created_at_from=2018-06-06&created_at_to=2018-06-08`"
+              }
+            ]
+          },
+          "docs": "List available payout methods"
+        },
+        {
+          "info": {
+            "name": "Creating a payout method",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-sandbox.transferzero.com/v1/payout_methods",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new payout method in our system.\n"
+        },
+        {
+          "info": {
+            "name": "Fetching a payout method",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.transferzero.com/v1/payout_methods/:Payout Method ID",
+            "params": [
+              {
+                "name": "Payout Method ID",
+                "value": "",
+                "type": "path",
+                "description": "ID of the payout method to get.\n\nExample: `/v1/payout_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+              }
+            ]
+          },
+          "docs": "Show a payout method by id"
+        },
+        {
+          "info": {
+            "name": "Updating a payout method",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api-sandbox.transferzero.com/v1/payout_methods/:Payout Method ID",
+            "params": [
+              {
+                "name": "Payout Method ID",
+                "value": "",
+                "type": "path",
+                "description": "ID of the payout method to get.\n\nExample: `/v1/payout_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a single payout method by the Payout Method ID"
+        },
+        {
+          "info": {
+            "name": "Deleting a payout method",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-sandbox.transferzero.com/v1/payout_methods/:Payout Method ID",
+            "params": [
+              {
+                "name": "Payout Method ID",
+                "value": "",
+                "type": "path",
+                "description": "ID of the payout method to delete.\n\nExample: `/v1/payout_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+              }
+            ]
+          },
+          "docs": "Deletes a single payout method by the Payout Method ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

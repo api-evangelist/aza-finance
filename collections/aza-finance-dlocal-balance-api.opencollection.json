@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TransferZero Account Debits dlocal balance API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization-Key",
+      "value": "{{Authorization-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dlocal balance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get dlocal balances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.transferzero.com/v1/dlocal/balance"
+          },
+          "docs": "This endpoint retrieves dlocal account balances"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TransferZero Account Debits API Logs API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization-Key",
+      "value": "{{Authorization-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "API Logs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch a list of API logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.transferzero.com/v1/api_logs",
+            "params": [
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "The page number to request (defaults to 1)"
+              },
+              {
+                "name": "per",
+                "value": "10",
+                "type": "query",
+                "description": "The number of results to load per page (defaults to 10)"
+              },
+              {
+                "name": "created_at_from",
+                "value": "",
+                "type": "query",
+                "description": "Start date to filter recipients by created_at range\nAllows filtering results by the specified `created_at` timeframe.\n\nExample: `/v1/recipients?created_at_from=2018-06-06&created_at_to=2018-06-08`"
+              },
+              {
+                "name": "created_at_to",
+                "value": "",
+                "type": "query",
+                "description": "End date to filter recipients by created_at range\nAllows filtering results by the specified `created_at` timeframe.\n\nExample: `/v1/recipients?created_at_from=2018-06-06&created_at_to=2018-06-08`"
+              }
+            ]
+          },
+          "docs": "Returns a list of API logs. Also includes information relating to the original request."
+        },
+        {
+          "info": {
+            "name": "Fetch an individual API log",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-sandbox.transferzero.com/v1/api_logs/:API Log ID",
+            "params": [
+              {
+                "name": "API Log ID",
+                "value": "",
+                "type": "path",
+                "description": "ID of the API log to retrieve\n\nExample: `/v1/api_logs/00485ce9-532b-45e7-8518-7e5582242407`"
+              }
+            ]
+          },
+          "docs": "Returns a single API log based on the API log ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

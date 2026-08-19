@@ -1,0 +1,1220 @@
+{
+  "item": [
+    {
+      "id": "7867d330-9934-4d2c-a3a3-9abf7eefc940",
+      "name": "Payin Methods",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "934e14e1-7de6-4b93-8873-38fb45367973",
+          "name": "Fetching a payin method",
+          "request": {
+            "name": "Fetching a payin method",
+            "description": {
+              "content": "Show a payin method by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payin_methods",
+                ":PayinMethod ID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "PayinMethod ID",
+                  "description": "(Required) ID of the payin method to get.\n\nExample: `/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b1341213-2e74-4b5d-9b94-909b26f8cf9b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payin_methods",
+                    ":PayinMethod ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "PayinMethod ID",
+                      "description": "(Required) ID of the payin method to get.\n\nExample: `/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"type\": \"GHS::Mobile\",\n    \"ux_flow\": \"ussd_popup\",\n    \"in_details\": {\n      \"phone_number\": \"+233541299999\",\n      \"mobile_provider\": \"vodafone\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2c3896d-9ba5-4186-bade-048e552b69fe",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payin_methods",
+                    ":PayinMethod ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "PayinMethod ID",
+                      "description": "(Required) ID of the payin method to get.\n\nExample: `/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0dfa2d09-2e61-4e9b-a3aa-7f6bc8a04952",
+              "name": "Resource Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payin_methods",
+                    ":PayinMethod ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "PayinMethod ID",
+                      "description": "(Required) ID of the payin method to get.\n\nExample: `/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "16e7e52d-8cb2-48c5-9a48-0d95bf6551d3",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payin_methods",
+                    ":PayinMethod ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "PayinMethod ID",
+                      "description": "(Required) ID of the payin method to get.\n\nExample: `/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5ca5bb5-3473-4ece-959b-49eb03d405b7",
+          "name": "Deleting a payin method",
+          "request": {
+            "name": "Deleting a payin method",
+            "description": {
+              "content": "Initiates a cancellation request for the specified payin method",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payin_methods",
+                ":PayinMethod ID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "PayinMethod ID",
+                  "description": "(Required) ID of the payin method to delete.\n\nExample: `/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "df944b21-1dcc-4122-a7a2-46f3d8dddd96",
+              "name": "Details of deleted payin method",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payin_methods",
+                    ":PayinMethod ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "PayinMethod ID",
+                      "description": "(Required) ID of the payin method to delete.\n\nExample: `/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"type\": \"GHS::Mobile\",\n    \"ux_flow\": \"ussd_popup\",\n    \"in_details\": {\n      \"phone_number\": \"+233541299999\",\n      \"mobile_provider\": \"vodafone\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a8e7ad2-73d4-48ff-9211-36adf8bbd2e6",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payin_methods",
+                    ":PayinMethod ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "PayinMethod ID",
+                      "description": "(Required) ID of the payin method to delete.\n\nExample: `/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9941aadc-05c7-4fea-86d6-0c6db509980a",
+              "name": "Resource Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payin_methods",
+                    ":PayinMethod ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "PayinMethod ID",
+                      "description": "(Required) ID of the payin method to delete.\n\nExample: `/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "403c9ebf-4b44-4ef2-97d1-89c766c5d01c",
+              "name": "Invalid payin method object (includes errors object)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payin_methods",
+                    ":PayinMethod ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "PayinMethod ID",
+                      "description": "(Required) ID of the payin method to delete.\n\nExample: `/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"type\": \"GHS::Mobile\",\n    \"ux_flow\": \"ussd_popup\",\n    \"in_details\": {\n      \"phone_number\": \"+233541299999\",\n      \"mobile_provider\": \"vodafone\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "060263d5-8f5a-4f41-abee-7634650589d8",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payin_methods",
+                    ":PayinMethod ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "PayinMethod ID",
+                      "description": "(Required) ID of the payin method to delete.\n\nExample: `/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5f9a6a52-51ed-40a5-9b6e-bfe86f1fe96c",
+          "name": "Updating a payin method",
+          "request": {
+            "name": "Updating a payin method",
+            "description": {
+              "content": "Updates a single payin method by the Payin Method ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payin_methods",
+                ":PayinMethod ID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "PayinMethod ID",
+                  "description": "(Required) ID of the payin method to get.\n\nExample: `/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"ux_flow\": \"<string>\",\n  \"in_details\": {\n    \"phone_number\": \"<string>\",\n    \"account_name\": \"<string>\",\n    \"account_number\": \"<string>\"\n  },\n  \"state\": \"<string>\",\n  \"state_reason_details\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6061860b-2acf-444b-ab69-74ac3ade7012",
+              "name": "Details of updated payin method",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payin_methods",
+                    ":PayinMethod ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "PayinMethod ID",
+                      "description": "(Required) ID of the payin method to get.\n\nExample: `/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"GHS::Mobile\",\n  \"ux_flow\": \"ussd_popup\",\n  \"in_details\": {\n    \"phone_number\": \"+233541299999\",\n    \"mobile_provider\": \"vodafone\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"type\": \"GHS::Mobile\",\n    \"ux_flow\": \"ussd_popup\",\n    \"in_details\": {\n      \"phone_number\": \"+233541299999\",\n      \"mobile_provider\": \"vodafone\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7b6a76e-ec73-4ab2-9368-18657876b5bb",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payin_methods",
+                    ":PayinMethod ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "PayinMethod ID",
+                      "description": "(Required) ID of the payin method to get.\n\nExample: `/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"GHS::Mobile\",\n  \"ux_flow\": \"ussd_popup\",\n  \"in_details\": {\n    \"phone_number\": \"+233541299999\",\n    \"mobile_provider\": \"vodafone\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c198f498-5e62-40c2-83aa-80e6cee989db",
+              "name": "Resource Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payin_methods",
+                    ":PayinMethod ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "PayinMethod ID",
+                      "description": "(Required) ID of the payin method to get.\n\nExample: `/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"GHS::Mobile\",\n  \"ux_flow\": \"ussd_popup\",\n  \"in_details\": {\n    \"phone_number\": \"+233541299999\",\n    \"mobile_provider\": \"vodafone\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "05c57896-6b05-4e50-af44-b5d35a33b9ac",
+              "name": "Invalid payin method object (includes errors object)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payin_methods",
+                    ":PayinMethod ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "PayinMethod ID",
+                      "description": "(Required) ID of the payin method to get.\n\nExample: `/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"GHS::Mobile\",\n  \"ux_flow\": \"ussd_popup\",\n  \"in_details\": {\n    \"phone_number\": \"+233541299999\",\n    \"mobile_provider\": \"vodafone\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"type\": \"GHS::Mobile\",\n    \"ux_flow\": \"ussd_popup\",\n    \"in_details\": {\n      \"phone_number\": \"+233541299999\",\n      \"mobile_provider\": \"vodafone\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "764ba7c1-6cca-4335-927d-d14ac20d422a",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payin_methods",
+                    ":PayinMethod ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "PayinMethod ID",
+                      "description": "(Required) ID of the payin method to get.\n\nExample: `/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"GHS::Mobile\",\n  \"ux_flow\": \"ussd_popup\",\n  \"in_details\": {\n    \"phone_number\": \"+233541299999\",\n    \"mobile_provider\": \"vodafone\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4aa41c74-b825-4ff1-812b-05a6c9e0471e",
+          "name": "Retries PayinMethod",
+          "request": {
+            "name": "Retries PayinMethod",
+            "description": {
+              "content": "Retries the collection process for the payin method.\n\nPlease note only payin methods in `error` state can be retried.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payin_methods",
+                ":PayinMethod ID",
+                "retry"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "PayinMethod ID",
+                  "description": "(Required) ID of the payin method whose collection process should be retried\n\nExample: `/v1/payin_methods/9d4d7b73-a94c-4979-ab57-09074fd55d33/retry`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bcea52c6-d20e-4937-bf9c-2b10380fb63a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payin_methods",
+                    ":PayinMethod ID",
+                    "retry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "PayinMethod ID",
+                      "description": "(Required) ID of the payin method whose collection process should be retried\n\nExample: `/v1/payin_methods/9d4d7b73-a94c-4979-ab57-09074fd55d33/retry`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"type\": \"GHS::Mobile\",\n    \"ux_flow\": \"ussd_popup\",\n    \"in_details\": {\n      \"phone_number\": \"+233541299999\",\n      \"mobile_provider\": \"vodafone\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dbfd6dcd-74cf-414a-b6aa-32ed811e32db",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payin_methods",
+                    ":PayinMethod ID",
+                    "retry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "PayinMethod ID",
+                      "description": "(Required) ID of the payin method whose collection process should be retried\n\nExample: `/v1/payin_methods/9d4d7b73-a94c-4979-ab57-09074fd55d33/retry`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5b254c67-5087-4070-ac9b-f865abec9ac2",
+              "name": "Resource Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payin_methods",
+                    ":PayinMethod ID",
+                    "retry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "PayinMethod ID",
+                      "description": "(Required) ID of the payin method whose collection process should be retried\n\nExample: `/v1/payin_methods/9d4d7b73-a94c-4979-ab57-09074fd55d33/retry`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f5487d44-50f4-485f-a95e-a961de2616f7",
+              "name": "This operation is unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payin_methods",
+                    ":PayinMethod ID",
+                    "retry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "PayinMethod ID",
+                      "description": "(Required) ID of the payin method whose collection process should be retried\n\nExample: `/v1/payin_methods/9d4d7b73-a94c-4979-ab57-09074fd55d33/retry`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f7289020-8d83-4430-a6a2-99b25ec22fcd",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payin_methods",
+                    ":PayinMethod ID",
+                    "retry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "PayinMethod ID",
+                      "description": "(Required) ID of the payin method whose collection process should be retried\n\nExample: `/v1/payin_methods/9d4d7b73-a94c-4979-ab57-09074fd55d33/retry`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.transferzero.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1c772e8f-28cc-4176-b2c6-fc2ad6e5ce04",
+    "name": "TransferZero Account Debits Payin Methods API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Reference documentation for the TransferZero API V1",
+      "type": "text/plain"
+    }
+  }
+}

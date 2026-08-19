@@ -1,0 +1,521 @@
+{
+  "item": [
+    {
+      "id": "bb581279-3b9d-4a18-9f65-6e53d8e6787c",
+      "name": "API Logs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6c0e9905-e558-4a09-9eff-3ba7bff80744",
+          "name": "Fetch a list of API logs",
+          "request": {
+            "name": "Fetch a list of API logs",
+            "description": {
+              "content": "Returns a list of API logs. Also includes information relating to the original request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api_logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "The page number to request (defaults to 1)"
+                },
+                {
+                  "disabled": false,
+                  "key": "per",
+                  "value": "<integer>",
+                  "description": "The number of results to load per page (defaults to 10)"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at_from",
+                  "value": "<string>",
+                  "description": "Start date to filter recipients by created_at range\nAllows filtering results by the specified `created_at` timeframe.\n\nExample: `/v1/recipients?created_at_from=2018-06-06&created_at_to=2018-06-08`"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at_to",
+                  "value": "<string>",
+                  "description": "End date to filter recipients by created_at range\nAllows filtering results by the specified `created_at` timeframe.\n\nExample: `/v1/recipients?created_at_from=2018-06-06&created_at_to=2018-06-08`"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0d545067-c1b2-475c-90b6-c40824aad4ec",
+              "name": "API logs returned within an array wrapped inside a JSON object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api_logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_at_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at_to",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"pagination\": {\n      \"next_page\": 3,\n      \"total_count\": 45,\n      \"total_pages\": 5,\n      \"prev_page\": 1,\n      \"current_page\": 2\n    }\n  },\n  \"object\": [\n    {\n      \"response_headers\": {\n        \"X-Frame-Options\": \"SAMEORIGIN\",\n        \"X-XSS-Protection\": \"1; mode=block\",\n        \"X-Content-Type-Options\": \"nosniff\",\n        \"Content-Type\": \"application/json; charset=UTF-8\"\n      },\n      \"request_body\": \"{\\\"message\\\":\\\"Email dispatched: Accepted (user@transferzero.com)\\\"}\",\n      \"response_status\": \"200\",\n      \"request_headers\": {\n        \"HTTP_VERSION\": \"HTTP/1.1\",\n        \"HTTP_ACCEPT\": \"application/json\",\n        \"HTTP_USER_AGENT\": \"TransferZero Ruby\",\n        \"HTTP_AUTHORIZATION_NONCE\": \"0000\",\n        \"HTTP_AUTHORIZATION_KEY\": \"0000\",\n        \"HTTP_AUTHORIZATION_SIGNATURE\": \"0000\",\n        \"HTTP_CONNECTION\": \"close\",\n        \"HTTP_HOST\": \"localhost:3002\"\n      },\n      \"response_body\": \"{\\\"object\\\":{\\\"result\\\":0}}\",\n      \"created_at\": \"2019-01-11T00:00:00.001+0000\",\n      \"request_method\": \"POST\",\n      \"request_url\": \"https://api.transferzero/v1/transactions/validate\"\n    },\n    {\n      \"response_headers\": {\n        \"X-Frame-Options\": \"SAMEORIGIN\",\n        \"X-XSS-Protection\": \"1; mode=block\",\n        \"X-Content-Type-Options\": \"nosniff\",\n        \"Content-Type\": \"application/json; charset=UTF-8\"\n      },\n      \"request_body\": \"{\\\"message\\\":\\\"Email dispatched: Accepted (user@transferzero.com)\\\"}\",\n      \"response_status\": \"200\",\n      \"request_headers\": {\n        \"HTTP_VERSION\": \"HTTP/1.1\",\n        \"HTTP_ACCEPT\": \"application/json\",\n        \"HTTP_USER_AGENT\": \"TransferZero Ruby\",\n        \"HTTP_AUTHORIZATION_NONCE\": \"0000\",\n        \"HTTP_AUTHORIZATION_KEY\": \"0000\",\n        \"HTTP_AUTHORIZATION_SIGNATURE\": \"0000\",\n        \"HTTP_CONNECTION\": \"close\",\n        \"HTTP_HOST\": \"localhost:3002\"\n      },\n      \"response_body\": \"{\\\"object\\\":{\\\"result\\\":0}}\",\n      \"created_at\": \"2019-01-11T00:00:00.001+0000\",\n      \"request_method\": \"POST\",\n      \"request_url\": \"https://api.transferzero/v1/transactions/validate\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e090830c-b5b4-410d-a0a0-5de0cb1bd384",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api_logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_at_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at_to",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ab1c0996-bd4a-45c7-b8d8-ef764bb14f53",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api_logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_at_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at_to",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc6ee6b8-9cdf-4cfd-a7f0-f00874d6e0e9",
+          "name": "Fetch an individual API log",
+          "request": {
+            "name": "Fetch an individual API log",
+            "description": {
+              "content": "Returns a single API log based on the API log ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api_logs",
+                ":API Log ID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "API Log ID",
+                  "description": "(Required) ID of the API log to retrieve\n\nExample: `/v1/api_logs/00485ce9-532b-45e7-8518-7e5582242407`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9a8ca1cd-2140-48d3-a9ad-64513978b338",
+              "name": "Details of requested API log",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api_logs",
+                    ":API Log ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "API Log ID",
+                      "description": "(Required) ID of the API log to retrieve\n\nExample: `/v1/api_logs/00485ce9-532b-45e7-8518-7e5582242407`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"response_headers\": {\n      \"X-Frame-Options\": \"SAMEORIGIN\",\n      \"X-XSS-Protection\": \"1; mode=block\",\n      \"X-Content-Type-Options\": \"nosniff\",\n      \"Content-Type\": \"application/json; charset=UTF-8\"\n    },\n    \"request_body\": \"{\\\"message\\\":\\\"Email dispatched: Accepted (user@transferzero.com)\\\"}\",\n    \"response_status\": \"200\",\n    \"request_headers\": {\n      \"HTTP_VERSION\": \"HTTP/1.1\",\n      \"HTTP_ACCEPT\": \"application/json\",\n      \"HTTP_USER_AGENT\": \"TransferZero Ruby\",\n      \"HTTP_AUTHORIZATION_NONCE\": \"0000\",\n      \"HTTP_AUTHORIZATION_KEY\": \"0000\",\n      \"HTTP_AUTHORIZATION_SIGNATURE\": \"0000\",\n      \"HTTP_CONNECTION\": \"close\",\n      \"HTTP_HOST\": \"localhost:3002\"\n    },\n    \"response_body\": \"{\\\"object\\\":{\\\"result\\\":0}}\",\n    \"created_at\": \"2019-01-11T00:00:00.001+0000\",\n    \"request_method\": \"POST\",\n    \"request_url\": \"https://api.transferzero/v1/transactions/validate\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f759e445-e8c8-4402-878c-56a630eb56a0",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api_logs",
+                    ":API Log ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "API Log ID",
+                      "description": "(Required) ID of the API log to retrieve\n\nExample: `/v1/api_logs/00485ce9-532b-45e7-8518-7e5582242407`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b854a475-d607-45e3-ae59-1c605e1d9a98",
+              "name": "Resource Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api_logs",
+                    ":API Log ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "API Log ID",
+                      "description": "(Required) ID of the API log to retrieve\n\nExample: `/v1/api_logs/00485ce9-532b-45e7-8518-7e5582242407`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cbda74d6-9938-483d-ade9-19aa091cf07e",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api_logs",
+                    ":API Log ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "API Log ID",
+                      "description": "(Required) ID of the API log to retrieve\n\nExample: `/v1/api_logs/00485ce9-532b-45e7-8518-7e5582242407`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.transferzero.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7f02ed39-6fa3-4aca-8eb7-a4f49be27ff5",
+    "name": "TransferZero Account Debits API Logs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Reference documentation for the TransferZero API V1",
+      "type": "text/plain"
+    }
+  }
+}

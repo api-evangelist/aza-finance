@@ -1,0 +1,1492 @@
+{
+  "item": [
+    {
+      "id": "52192060-f6f1-42c4-80b3-b4906a23da73",
+      "name": "Payout Methods",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "709e4f15-d692-421c-aa8a-e310d1fe1d49",
+          "name": "Listing payout methods",
+          "request": {
+            "name": "Listing payout methods",
+            "description": {
+              "content": "List available payout methods",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payout_methods"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "Allows filtering results by `state` of the payout method.\n\nExample: `/v1/payout_methods?state[]=enabled`"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "Allows filtering results by `state` of the payout method.\n\nExample: `/v1/payout_methods?state[]=enabled`"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Allows filtering results by the specified type.\n\nExample: `/v1/payout_methods?type[]=NGN::Bank`"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Allows filtering results by the specified type.\n\nExample: `/v1/payout_methods?type[]=NGN::Bank`"
+                },
+                {
+                  "disabled": false,
+                  "key": "sender_id",
+                  "value": "<string>",
+                  "description": "Allows filtering results by the specified sender id.\n\nExample: `/v1/payout_methods?sender_id=bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "The page number to request (defaults to 1)"
+                },
+                {
+                  "disabled": false,
+                  "key": "per",
+                  "value": "<integer>",
+                  "description": "The number of results to load per page (defaults to 10)"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at_from",
+                  "value": "<string>",
+                  "description": "Start date to filter recipients by created_at range\nAllows filtering results by the specified `created_at` timeframe.\n\nExample: `/v1/recipients?created_at_from=2018-06-06&created_at_to=2018-06-08`"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at_to",
+                  "value": "<string>",
+                  "description": "End date to filter recipients by created_at range\nAllows filtering results by the specified `created_at` timeframe.\n\nExample: `/v1/recipients?created_at_from=2018-06-06&created_at_to=2018-06-08`"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aa99161b-162b-4c2a-8a31-edb401f23889",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sender_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_at_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at_to",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"pagination\": {\n      \"next_page\": 3,\n      \"total_count\": 45,\n      \"total_pages\": 5,\n      \"prev_page\": 1,\n      \"current_page\": 2\n    }\n  },\n  \"object\": [\n    {\n      \"metadata\": {},\n      \"type\": \"NGN::Bank\",\n      \"fields\": {\n        \"email\": {\n          \"type\": \"input\",\n          \"validations\": {\n            \"inclusion\": {\n              \"in\": {\n                \"NI\": \"National Id\",\n                \"PP\": \"Passport\"\n              },\n              \"allow_blank\": true\n            }\n          }\n        }\n      },\n      \"errors\": {\n        \"phone_number\": [\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"documents\": [\n          {\n            \"error\": \"blank\"\n          }\n        ]\n      }\n    },\n    {\n      \"metadata\": {},\n      \"type\": \"NGN::Bank\",\n      \"fields\": {\n        \"email\": {\n          \"type\": \"input\",\n          \"validations\": {\n            \"inclusion\": {\n              \"in\": {\n                \"NI\": \"National Id\",\n                \"PP\": \"Passport\"\n              },\n              \"allow_blank\": true\n            }\n          }\n        }\n      },\n      \"errors\": {\n        \"phone_number\": [\n          {\n            \"error\": \"invalid\"\n          }\n        ],\n        \"documents\": [\n          {\n            \"error\": \"blank\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b12d2bc6-5142-4de1-9951-d3145357a657",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sender_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_at_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at_to",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "60e3e20f-f875-4ba7-af90-47c52e0072e2",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sender_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_at_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at_to",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61a872b8-5f97-4820-8035-2300d849c05c",
+          "name": "Creating a payout method",
+          "request": {
+            "name": "Creating a payout method",
+            "description": {
+              "content": "Creates a new payout method in our system.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payout_methods"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payout_method\": {\n    \"type\": \"<string>\",\n    \"details\": {\n      \"bank_account\": \"<string>\",\n      \"bank_code\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"bank_account_type\": \"<string>\",\n      \"birth_date\": \"<date>\",\n      \"street\": \"<string>\"\n    },\n    \"metadata\": \"<object>\",\n    \"id\": \"<uuid>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "abddbde1-ac18-4b86-8c86-36821f67c586",
+              "name": "Payout Method details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payout_method\": {\n    \"metadata\": {},\n    \"type\": \"NGN::Bank\",\n    \"fields\": {\n      \"email\": {\n        \"type\": \"input\",\n        \"validations\": {\n          \"inclusion\": {\n            \"in\": {\n              \"NI\": \"National Id\",\n              \"PP\": \"Passport\"\n            },\n            \"allow_blank\": true\n          }\n        }\n      }\n    },\n    \"errors\": {\n      \"phone_number\": [\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"documents\": [\n        {\n          \"error\": \"blank\"\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"type\": \"NGN::Bank\",\n    \"details\": {\n      \"bank_account\": \"<string>\",\n      \"bank_code\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"bank_account_type\": \"10\",\n      \"birth_date\": \"<date>\",\n      \"street\": \"<string>\"\n    },\n    \"metadata\": {},\n    \"id\": \"<uuid>\",\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    },\n    \"fields\": {\n      \"email\": {\n        \"type\": \"input\",\n        \"validations\": {\n          \"inclusion\": {\n            \"in\": {\n              \"NI\": \"National Id\",\n              \"PP\": \"Passport\"\n            },\n            \"allow_blank\": true\n          }\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6b30ac38-25b5-41aa-be53-f5234833e328",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payout_method\": {\n    \"metadata\": {},\n    \"type\": \"NGN::Bank\",\n    \"fields\": {\n      \"email\": {\n        \"type\": \"input\",\n        \"validations\": {\n          \"inclusion\": {\n            \"in\": {\n              \"NI\": \"National Id\",\n              \"PP\": \"Passport\"\n            },\n            \"allow_blank\": true\n          }\n        }\n      }\n    },\n    \"errors\": {\n      \"phone_number\": [\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"documents\": [\n        {\n          \"error\": \"blank\"\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "983611c4-201c-4905-bd14-da59b0d35dfd",
+              "name": "Invalid payout method object (includes errors object)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payout_method\": {\n    \"metadata\": {},\n    \"type\": \"NGN::Bank\",\n    \"fields\": {\n      \"email\": {\n        \"type\": \"input\",\n        \"validations\": {\n          \"inclusion\": {\n            \"in\": {\n              \"NI\": \"National Id\",\n              \"PP\": \"Passport\"\n            },\n            \"allow_blank\": true\n          }\n        }\n      }\n    },\n    \"errors\": {\n      \"phone_number\": [\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"documents\": [\n        {\n          \"error\": \"blank\"\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"type\": \"NGN::Bank\",\n    \"details\": {\n      \"bank_account\": \"<string>\",\n      \"bank_code\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"bank_account_type\": \"10\",\n      \"birth_date\": \"<date>\",\n      \"street\": \"<string>\"\n    },\n    \"metadata\": {},\n    \"id\": \"<uuid>\",\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    },\n    \"fields\": {\n      \"email\": {\n        \"type\": \"input\",\n        \"validations\": {\n          \"inclusion\": {\n            \"in\": {\n              \"NI\": \"National Id\",\n              \"PP\": \"Passport\"\n            },\n            \"allow_blank\": true\n          }\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bbc7467e-5a45-4511-9bb1-6dc37f689884",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payout_method\": {\n    \"metadata\": {},\n    \"type\": \"NGN::Bank\",\n    \"fields\": {\n      \"email\": {\n        \"type\": \"input\",\n        \"validations\": {\n          \"inclusion\": {\n            \"in\": {\n              \"NI\": \"National Id\",\n              \"PP\": \"Passport\"\n            },\n            \"allow_blank\": true\n          }\n        }\n      }\n    },\n    \"errors\": {\n      \"phone_number\": [\n        {\n          \"error\": \"invalid\"\n        }\n      ],\n      \"documents\": [\n        {\n          \"error\": \"blank\"\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "309de284-fcef-4e8a-9b47-40e5b7aac5ed",
+          "name": "Fetching a payout method",
+          "request": {
+            "name": "Fetching a payout method",
+            "description": {
+              "content": "Show a payout method by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payout_methods",
+                ":Payout Method ID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "Payout Method ID",
+                  "description": "(Required) ID of the payout method to get.\n\nExample: `/v1/payout_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "056c949d-ce5a-4eea-9820-a16a2fe5b4eb",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":Payout Method ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Payout Method ID",
+                      "description": "(Required) ID of the payout method to get.\n\nExample: `/v1/payout_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"type\": \"NGN::Bank\",\n    \"details\": {\n      \"bank_account\": \"<string>\",\n      \"bank_code\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"bank_account_type\": \"10\",\n      \"birth_date\": \"<date>\",\n      \"street\": \"<string>\"\n    },\n    \"metadata\": {},\n    \"id\": \"<uuid>\",\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    },\n    \"fields\": {\n      \"email\": {\n        \"type\": \"input\",\n        \"validations\": {\n          \"inclusion\": {\n            \"in\": {\n              \"NI\": \"National Id\",\n              \"PP\": \"Passport\"\n            },\n            \"allow_blank\": true\n          }\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6207ad4-4484-40ee-b6d8-de01201c9901",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":Payout Method ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Payout Method ID",
+                      "description": "(Required) ID of the payout method to get.\n\nExample: `/v1/payout_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "129d91f6-17d6-4fea-ad35-9175fdf7d832",
+              "name": "Resource Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":Payout Method ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Payout Method ID",
+                      "description": "(Required) ID of the payout method to get.\n\nExample: `/v1/payout_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "03857d11-e83d-4760-848c-c386373d9284",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":Payout Method ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Payout Method ID",
+                      "description": "(Required) ID of the payout method to get.\n\nExample: `/v1/payout_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cbd2d2f2-8baa-4959-812a-5cd4c874fc9f",
+          "name": "Deleting a payout method",
+          "request": {
+            "name": "Deleting a payout method",
+            "description": {
+              "content": "Deletes a single payout method by the Payout Method ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payout_methods",
+                ":Payout Method ID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "Payout Method ID",
+                  "description": "(Required) ID of the payout method to delete.\n\nExample: `/v1/payout_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc3357f8-9587-4555-a0d4-91b4e2998961",
+              "name": "Details of deleted payout method",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":Payout Method ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Payout Method ID",
+                      "description": "(Required) ID of the payout method to delete.\n\nExample: `/v1/payout_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"type\": \"NGN::Bank\",\n    \"details\": {\n      \"bank_account\": \"<string>\",\n      \"bank_code\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"bank_account_type\": \"10\",\n      \"birth_date\": \"<date>\",\n      \"street\": \"<string>\"\n    },\n    \"metadata\": {},\n    \"id\": \"<uuid>\",\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    },\n    \"fields\": {\n      \"email\": {\n        \"type\": \"input\",\n        \"validations\": {\n          \"inclusion\": {\n            \"in\": {\n              \"NI\": \"National Id\",\n              \"PP\": \"Passport\"\n            },\n            \"allow_blank\": true\n          }\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc3089f9-4dfb-48ad-82fb-9a1d3cb2016a",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":Payout Method ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Payout Method ID",
+                      "description": "(Required) ID of the payout method to delete.\n\nExample: `/v1/payout_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "be7de9f5-526a-45ba-ac5a-392e2cada96f",
+              "name": "Resource Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":Payout Method ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Payout Method ID",
+                      "description": "(Required) ID of the payout method to delete.\n\nExample: `/v1/payout_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9efedf9c-526d-46ac-81ce-a5b496863d6d",
+              "name": "Invalid payout method object (includes errors object)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":Payout Method ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Payout Method ID",
+                      "description": "(Required) ID of the payout method to delete.\n\nExample: `/v1/payout_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"type\": \"NGN::Bank\",\n    \"details\": {\n      \"bank_account\": \"<string>\",\n      \"bank_code\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"bank_account_type\": \"10\",\n      \"birth_date\": \"<date>\",\n      \"street\": \"<string>\"\n    },\n    \"metadata\": {},\n    \"id\": \"<uuid>\",\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    },\n    \"fields\": {\n      \"email\": {\n        \"type\": \"input\",\n        \"validations\": {\n          \"inclusion\": {\n            \"in\": {\n              \"NI\": \"National Id\",\n              \"PP\": \"Passport\"\n            },\n            \"allow_blank\": true\n          }\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e987cc9-a8a0-48b1-90b6-b0ee6cbcdde9",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":Payout Method ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Payout Method ID",
+                      "description": "(Required) ID of the payout method to delete.\n\nExample: `/v1/payout_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba21e128-e39a-45da-a37b-7fe85b942b9a",
+          "name": "Updating a payout method",
+          "request": {
+            "name": "Updating a payout method",
+            "description": {
+              "content": "Updates a single payout method by the Payout Method ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payout_methods",
+                ":Payout Method ID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "Payout Method ID",
+                  "description": "(Required) ID of the payout method to get.\n\nExample: `/v1/payout_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"details\": {\n    \"bank_account\": \"<string>\",\n    \"bank_code\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"bank_account_type\": \"<string>\",\n    \"birth_date\": \"<date>\",\n    \"street\": \"<string>\"\n  },\n  \"metadata\": \"<object>\",\n  \"id\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "143f7d15-c461-4f15-b708-1c63db0e2a2e",
+              "name": "Details of updated payout method",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":Payout Method ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Payout Method ID",
+                      "description": "(Required) ID of the payout method to get.\n\nExample: `/v1/payout_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadata\": {},\n  \"type\": \"NGN::Bank\",\n  \"fields\": {\n    \"email\": {\n      \"type\": \"input\",\n      \"validations\": {\n        \"inclusion\": {\n          \"in\": {\n            \"NI\": \"National Id\",\n            \"PP\": \"Passport\"\n          },\n          \"allow_blank\": true\n        }\n      }\n    }\n  },\n  \"errors\": {\n    \"phone_number\": [\n      {\n        \"error\": \"invalid\"\n      }\n    ],\n    \"documents\": [\n      {\n        \"error\": \"blank\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"type\": \"NGN::Bank\",\n    \"details\": {\n      \"bank_account\": \"<string>\",\n      \"bank_code\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"bank_account_type\": \"10\",\n      \"birth_date\": \"<date>\",\n      \"street\": \"<string>\"\n    },\n    \"metadata\": {},\n    \"id\": \"<uuid>\",\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    },\n    \"fields\": {\n      \"email\": {\n        \"type\": \"input\",\n        \"validations\": {\n          \"inclusion\": {\n            \"in\": {\n              \"NI\": \"National Id\",\n              \"PP\": \"Passport\"\n            },\n            \"allow_blank\": true\n          }\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3af483e-6226-4ad4-9b8d-bfbf802d8c5b",
+              "name": "Authentication information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":Payout Method ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Payout Method ID",
+                      "description": "(Required) ID of the payout method to get.\n\nExample: `/v1/payout_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadata\": {},\n  \"type\": \"NGN::Bank\",\n  \"fields\": {\n    \"email\": {\n      \"type\": \"input\",\n      \"validations\": {\n        \"inclusion\": {\n          \"in\": {\n            \"NI\": \"National Id\",\n            \"PP\": \"Passport\"\n          },\n          \"allow_blank\": true\n        }\n      }\n    }\n  },\n  \"errors\": {\n    \"phone_number\": [\n      {\n        \"error\": \"invalid\"\n      }\n    ],\n    \"documents\": [\n      {\n        \"error\": \"blank\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "87ad169b-9cbf-4f57-89b4-87d1415c3479",
+              "name": "Resource Not Found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":Payout Method ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Payout Method ID",
+                      "description": "(Required) ID of the payout method to get.\n\nExample: `/v1/payout_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadata\": {},\n  \"type\": \"NGN::Bank\",\n  \"fields\": {\n    \"email\": {\n      \"type\": \"input\",\n      \"validations\": {\n        \"inclusion\": {\n          \"in\": {\n            \"NI\": \"National Id\",\n            \"PP\": \"Passport\"\n          },\n          \"allow_blank\": true\n        }\n      }\n    }\n  },\n  \"errors\": {\n    \"phone_number\": [\n      {\n        \"error\": \"invalid\"\n      }\n    ],\n    \"documents\": [\n      {\n        \"error\": \"blank\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "63ce4c54-80ac-4625-b745-ac2abd632936",
+              "name": "Invalid payout method object (includes errors object)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":Payout Method ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Payout Method ID",
+                      "description": "(Required) ID of the payout method to get.\n\nExample: `/v1/payout_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadata\": {},\n  \"type\": \"NGN::Bank\",\n  \"fields\": {\n    \"email\": {\n      \"type\": \"input\",\n      \"validations\": {\n        \"inclusion\": {\n          \"in\": {\n            \"NI\": \"National Id\",\n            \"PP\": \"Passport\"\n          },\n          \"allow_blank\": true\n        }\n      }\n    }\n  },\n  \"errors\": {\n    \"phone_number\": [\n      {\n        \"error\": \"invalid\"\n      }\n    ],\n    \"documents\": [\n      {\n        \"error\": \"blank\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": {\n    \"type\": \"NGN::Bank\",\n    \"details\": {\n      \"bank_account\": \"<string>\",\n      \"bank_code\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"bank_account_type\": \"10\",\n      \"birth_date\": \"<date>\",\n      \"street\": \"<string>\"\n    },\n    \"metadata\": {},\n    \"id\": \"<uuid>\",\n    \"errors\": {\n      \"key_0\": [\n        {\n          \"error\": \"invalid\"\n        },\n        {\n          \"error\": \"invalid\"\n        }\n      ]\n    },\n    \"fields\": {\n      \"email\": {\n        \"type\": \"input\",\n        \"validations\": {\n          \"inclusion\": {\n            \"in\": {\n              \"NI\": \"National Id\",\n              \"PP\": \"Passport\"\n            },\n            \"allow_blank\": true\n          }\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7fdef8ee-d2fd-4618-a1a3-c65adf51b2b1",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":Payout Method ID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "Payout Method ID",
+                      "description": "(Required) ID of the payout method to get.\n\nExample: `/v1/payout_methods/bf9ff782-e182-45ac-abea-5bce83ad6670`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadata\": {},\n  \"type\": \"NGN::Bank\",\n  \"fields\": {\n    \"email\": {\n      \"type\": \"input\",\n      \"validations\": {\n        \"inclusion\": {\n          \"in\": {\n            \"NI\": \"National Id\",\n            \"PP\": \"Passport\"\n          },\n          \"allow_blank\": true\n        }\n      }\n    }\n  },\n  \"errors\": {\n    \"phone_number\": [\n      {\n        \"error\": \"invalid\"\n      }\n    ],\n    \"documents\": [\n      {\n        \"error\": \"blank\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-sandbox.transferzero.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5da00cd0-3c78-4053-a8e5-2dc439165dea",
+    "name": "TransferZero Account Debits Payout Methods API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Reference documentation for the TransferZero API V1",
+      "type": "text/plain"
+    }
+  }
+}
