@@ -35,6 +35,14 @@ created: '2026-07-17'
 modified: '2026-07-18'
 tags:
 - Company
+- Financial-Services
+- Payments
+- Foreign Exchange
+- Cross-Border Payments
+- Africa
+- Fintech
+tags_raw:
+- Company
 - Financial Services
 - Payments
 - Foreign Exchange
@@ -94,6 +102,8 @@ apis:
   humanURL: https://docs.transferzero.com/
   baseURL: https://api.transferzero.com/v1
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -334,6 +344,8 @@ apis:
   humanURL: https://docs.transferzero.com/
   baseURL: https://api.transferzero.com/v1
   tags:
+  - Transaction
+  tags_raw:
   - Transactions
   properties:
   - type: OpenAPI
@@ -354,6 +366,8 @@ apis:
   humanURL: https://docs.transferzero.com/
   baseURL: https://api.transferzero.com/v1
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
