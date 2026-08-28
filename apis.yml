@@ -10,6 +10,18 @@ description: >-
   Authentication is HMAC request-signing; official SDKs are published for Ruby,
   JavaScript, PHP, .NET and Java. AZA Finance is licensed by the UK FCA (#673100),
   the Bank of Uganda (#MR 125/23) and the Central Bank of Nigeria.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
