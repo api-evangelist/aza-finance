@@ -395,6 +395,9 @@ apis:
   - type: Arazzo
     url: arazzo/aza-finance-send-payout.yml
 common:
+- type: CapabilityMap
+  url: capabilities/aza-finance-capability-edges.yml
+  name: AZA Finance Business Capability Map
 - type: Overlay
   url: overlays/aza-finance-openapi-overlay.yaml
 - type: DeveloperPortal
