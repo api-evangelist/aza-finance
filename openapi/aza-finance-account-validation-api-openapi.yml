@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: TransferZero Account Debits Account Validation API
+  title: TransferZero Account Validation API
   description: Reference documentation for the TransferZero API V1
   version: '1.0'
 servers:
@@ -73,15 +73,6 @@ paths:
           description: Internal Server Error.
 components:
   schemas:
-    AccountValidationError:
-      type: object
-      properties:
-        error:
-          type: string
-          readOnly: true
-          example: Could not find account
-      description: Describes the error message on an unsuccessful match
-      readOnly: true
     AccountValidationResult:
       type: object
       properties:
@@ -98,6 +89,27 @@ components:
           readOnly: true
           example: active
       description: Describes the account holder name on a successful match
+      readOnly: true
+    AccountValidationResponse:
+      type: object
+      properties:
+        object:
+          $ref: '#/components/schemas/AccountValidationResult'
+        meta:
+          $ref: '#/components/schemas/AccountValidationError'
+      readOnly: true
+      example:
+        object:
+          account_name: John Smith
+          mapped_mobile_provider: mtn
+    AccountValidationError:
+      type: object
+      properties:
+        error:
+          type: string
+          readOnly: true
+          example: Could not find account
+      description: Describes the error message on an unsuccessful match
       readOnly: true
     AccountValidationRequest:
       required:
@@ -170,18 +182,6 @@ components:
         phone_number: '+233000000000'
         currency: NGN
         bank_account: bank_account
-    AccountValidationResponse:
-      type: object
-      properties:
-        object:
-          $ref: '#/components/schemas/AccountValidationResult'
-        meta:
-          $ref: '#/components/schemas/AccountValidationError'
-      readOnly: true
-      example:
-        object:
-          account_name: John Smith
-          mapped_mobile_provider: mtn
     PayoutMethodMobileProviderEnum:
       type: string
       description: 'The Mobile Wallet provider of the recipient:

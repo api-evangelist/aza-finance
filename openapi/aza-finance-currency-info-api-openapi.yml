@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: TransferZero Account Debits Currency Info API
+  title: TransferZero Currency Info API
   description: Reference documentation for the TransferZero API V1
   version: '1.0'
 servers:
@@ -43,9 +43,7 @@ paths:
 
         Usually the 3-character alpha ISO 4217 currency code (eg. USD) is used as the identifier.
 
-        Use this endpoint to determine the current exchange rate from a specific input currency to any output currency that''s available.
-
-        '
+        Use this endpoint to determine the current exchange rate from a specific input currency to any output currency that''s available.'
       operationId: info-currencies-in
       parameters:
       - name: sender_id
@@ -78,9 +76,7 @@ paths:
       summary: Getting a list of possible output currencies
       description: 'Fetches a list of currencies available to use as the output currency and their exchange rates against the available input currencies.
 
-        Usually the 3-character alpha ISO 4217 currency code (eg. USD) is used as the identifier.
-
-        '
+        Usually the 3-character alpha ISO 4217 currency code (eg. USD) is used as the identifier.'
       operationId: info-currencies-out
       parameters:
       - name: sender_id
@@ -189,6 +185,24 @@ components:
             usd_equivalent: '0.002743485349395299586854627'
             rate: 0.09613478691774034
             mtm_rate: 10.402061855670103
+    CurrencyOpposite:
+      allOf:
+      - $ref: '#/components/schemas/Currency'
+      - type: object
+        properties:
+          rate:
+            type: number
+            description: The rate of this particular currency with the base one
+            readOnly: true
+          mtm_rate:
+            type: number
+            description: Mark to market rate of this particular currency against the base one with the margin factored in
+            readOnly: true
+          margin:
+            type: string
+            description: The margin set for transactions of this particular currency with the base one
+            readOnly: true
+        readOnly: true
     CurrencyListResponse:
       type: object
       properties:
@@ -217,18 +231,6 @@ components:
           primary: true
           min: '0.000000000000000000000001'
           max: '999999999999999999999999999.0'
-    CurrencyExchange:
-      allOf:
-      - $ref: '#/components/schemas/Currency'
-      - type: object
-        properties:
-          opposites:
-            type: array
-            description: Lists the currencies where you can exchange from this one
-            readOnly: true
-            items:
-              $ref: '#/components/schemas/CurrencyOpposite'
-        readOnly: true
     Currency:
       type: object
       properties:
@@ -277,23 +279,17 @@ components:
           description: The equivalent of the currency to 1 USD
           readOnly: true
       readOnly: true
-    CurrencyOpposite:
+    CurrencyExchange:
       allOf:
       - $ref: '#/components/schemas/Currency'
       - type: object
         properties:
-          rate:
-            type: number
-            description: The rate of this particular currency with the base one
+          opposites:
+            type: array
+            description: Lists the currencies where you can exchange from this one
             readOnly: true
-          mtm_rate:
-            type: number
-            description: Mark to market rate of this particular currency against the base one with the margin factored in
-            readOnly: true
-          margin:
-            type: string
-            description: The margin set for transactions of this particular currency with the base one
-            readOnly: true
+            items:
+              $ref: '#/components/schemas/CurrencyOpposite'
         readOnly: true
   securitySchemes:
     AuthorizationKey:

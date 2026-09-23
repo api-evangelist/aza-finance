@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: TransferZero Account Debits dlocal balance API
+  title: TransferZero dlocal balance API
   description: Reference documentation for the TransferZero API V1
   version: '1.0'
 servers:

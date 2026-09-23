@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: TransferZero Account Debits Accounts API
+  title: TransferZero Accounts API
   description: Reference documentation for the TransferZero API V1
   version: '1.0'
 servers:
@@ -67,21 +67,17 @@ paths:
       x-group-parameters: true
 components:
   schemas:
-    AccountResponse:
+    AccountMeta:
       type: object
       properties:
-        object:
-          $ref: '#/components/schemas/Account'
-        meta:
-          $ref: '#/components/schemas/AccountMeta'
+        negative_balance:
+          type: boolean
+          description: Indicates whether account balances are permitted to be debited below zero
+          readOnly: true
+          example: false
       readOnly: true
       example:
-        meta:
-          negative_balance: false
-        object:
-          amount: 1000.0
-          amount_after_pending: 1000.0
-          currency: USD
+        negative_balance: false
     Account:
       properties:
         amount:
@@ -104,17 +100,21 @@ components:
         amount: 1000.0
         amount_after_pending: 1000.0
         currency: USD
-    AccountMeta:
+    AccountResponse:
       type: object
       properties:
-        negative_balance:
-          type: boolean
-          description: Indicates whether account balances are permitted to be debited below zero
-          readOnly: true
-          example: false
+        object:
+          $ref: '#/components/schemas/Account'
+        meta:
+          $ref: '#/components/schemas/AccountMeta'
       readOnly: true
       example:
-        negative_balance: false
+        meta:
+          negative_balance: false
+        object:
+          amount: 1000.0
+          amount_after_pending: 1000.0
+          currency: USD
     AccountListResponse:
       type: object
       properties:

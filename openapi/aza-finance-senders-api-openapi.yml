@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: TransferZero Account Debits Senders API
+  title: TransferZero Senders API
   description: Reference documentation for the TransferZero API V1
   version: '1.0'
 servers:
@@ -84,9 +84,7 @@ paths:
       tags:
       - Senders
       summary: Creating a sender
-      description: 'Creates a new sender in our system.
-
-        '
+      description: Creates a new sender in our system.
       operationId: post-senders
       requestBody:
         content:
@@ -224,143 +222,6 @@ paths:
           description: Internal Server Error.
 components:
   schemas:
-    SenderResponseMeta:
-      type: object
-      properties:
-        existing:
-          $ref: '#/components/schemas/SenderResponseExisting'
-      readOnly: true
-      example:
-        existing:
-          sender:
-            country: NG
-            metadata: {}
-            occupation: Accountant
-            documents:
-            - id: b6648ba3-1c7b-4f59-8580-684899c84a07
-            politically_exposed_people:
-            - id: '40'
-              name: Ronald Reagan
-              position: President of the United States
-              started_date: '1981-01-20T00:00:00.000Z'
-              ended_date: '1989-01-20T00:00:00.000Z'
-              sender_id: f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb
-            birth_date: '2000-01-23'
-            type: person
-            amount_monthly_transactions: amount_monthly_transactions
-            legal_entity_type: privately_owned_company
-            company_office_number_country: GB
-            trading_address: trading_address
-            fingerprint: fingerprint
-            regulatory_licence_number: regulatory_licence_number
-            phone_country: NG
-            aml_officer_phone_country: GB
-            id: bf9ff782-e182-45ac-abea-5bce83ad6670
-            state: initial
-            number_monthly_transactions: number_monthly_transactions
-            aml_officer_phone: '123123123'
-            ip: 127.0.0.1
-            custom_source_of_funds: custom_source_of_funds
-            registration_date: '2000-01-23'
-            nationality: NG
-            trading_name: trading_name
-            name: name
-            phone_number: '752403639'
-            address_description: address_description
-            trading_country: trading_country
-            errors:
-              phone_number:
-              - error: invalid
-              documents:
-              - error: blank
-            financial_regulator: financial_regulator
-            company_office_number: '123123123'
-            purpose_of_opening_account: purpose_of_opening_account
-            identification_number: AB123456
-            gender: M
-            city: Kampala
-            sales_lead_id: HF6HJVF67
-            registration_number: registration_number
-            identification_type: ID
-            created_at: 2019-01-11T00:00:00.001+0000
-            external_id: 806ec63a-a5a7-43cc-9d75-1ee74fbcc026
-            list_of_countries_of_operation:
-            - Spain
-            - Germany
-            - Poland
-            nature_of_business: personal
-            street: Fake Street
-            vat_registration_number: vat_registration_number
-            country_of_birth: GB
-            company_website_url: www.azafinance.com
-            lang: en
-            first_name: Johnny
-            source_of_funds: source_of_funds
-            email: example@home.org
-            contact_person_email: contact_person_email
-            number_of_employees_in_company: 250+
-            onboarding_status: onboarding_status
-            last_name: English
-            middle_name: Johnny
-            declaration: 'Yes'
-            core_business_activity: core_business_activity
-            office_phone: office_phone
-            aml_officer_email: aml_officer_email
-            estimated_annual_revenue_turnover: estimated_annual_revenue_turnover
-            postal_code: '798983'
-            city_of_birth: London
-    SenderRequest:
-      type: object
-      properties:
-        sender:
-          $ref: '#/components/schemas/Sender'
-      example:
-        sender:
-          country: UG
-          phone_number: '+256752403639'
-          email: example@home.org
-          first_name: Johnny
-          last_name: English
-          city: Kampala
-          street: Unknown 17-3
-          address_description: Description of address
-          postal_code: '798983'
-          birth_date: '1900-12-31'
-          documents: []
-          ip: 127.0.0.1
-          identification_number: AB123456
-          identification_type: ID
-          lang: en
-          external_id: 806ec63a-a5a7-43cc-9d75-1ee74fbcc026
-          city_of_birth: London
-          country_of_birth: GB
-          gender: M
-          metadata: {}
-    PaginationMeta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-      readOnly: true
-      example:
-        pagination:
-          next_page: 3
-          total_count: 45
-          total_pages: 5
-          prev_page: 1
-          current_page: 2
-    ValidationErrorDescription:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Describes what the problem is with the field
-          readOnly: true
-          example: invalid
-      description: The description of the error
-      readOnly: true
-      example:
-        error: invalid
     SenderResponse:
       type: object
       properties:
@@ -526,6 +387,139 @@ components:
           estimated_annual_revenue_turnover: estimated_annual_revenue_turnover
           postal_code: '798983'
           city_of_birth: London
+    SenderResponseMeta:
+      type: object
+      properties:
+        existing:
+          $ref: '#/components/schemas/SenderResponseExisting'
+      readOnly: true
+      example:
+        existing:
+          sender:
+            country: NG
+            metadata: {}
+            occupation: Accountant
+            documents:
+            - id: b6648ba3-1c7b-4f59-8580-684899c84a07
+            politically_exposed_people:
+            - id: '40'
+              name: Ronald Reagan
+              position: President of the United States
+              started_date: '1981-01-20T00:00:00.000Z'
+              ended_date: '1989-01-20T00:00:00.000Z'
+              sender_id: f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb
+            birth_date: '2000-01-23'
+            type: person
+            amount_monthly_transactions: amount_monthly_transactions
+            legal_entity_type: privately_owned_company
+            company_office_number_country: GB
+            trading_address: trading_address
+            fingerprint: fingerprint
+            regulatory_licence_number: regulatory_licence_number
+            phone_country: NG
+            aml_officer_phone_country: GB
+            id: bf9ff782-e182-45ac-abea-5bce83ad6670
+            state: initial
+            number_monthly_transactions: number_monthly_transactions
+            aml_officer_phone: '123123123'
+            ip: 127.0.0.1
+            custom_source_of_funds: custom_source_of_funds
+            registration_date: '2000-01-23'
+            nationality: NG
+            trading_name: trading_name
+            name: name
+            phone_number: '752403639'
+            address_description: address_description
+            trading_country: trading_country
+            errors:
+              phone_number:
+              - error: invalid
+              documents:
+              - error: blank
+            financial_regulator: financial_regulator
+            company_office_number: '123123123'
+            purpose_of_opening_account: purpose_of_opening_account
+            identification_number: AB123456
+            gender: M
+            city: Kampala
+            sales_lead_id: HF6HJVF67
+            registration_number: registration_number
+            identification_type: ID
+            created_at: 2019-01-11T00:00:00.001+0000
+            external_id: 806ec63a-a5a7-43cc-9d75-1ee74fbcc026
+            list_of_countries_of_operation:
+            - Spain
+            - Germany
+            - Poland
+            nature_of_business: personal
+            street: Fake Street
+            vat_registration_number: vat_registration_number
+            country_of_birth: GB
+            company_website_url: www.azafinance.com
+            lang: en
+            first_name: Johnny
+            source_of_funds: source_of_funds
+            email: example@home.org
+            contact_person_email: contact_person_email
+            number_of_employees_in_company: 250+
+            onboarding_status: onboarding_status
+            last_name: English
+            middle_name: Johnny
+            declaration: 'Yes'
+            core_business_activity: core_business_activity
+            office_phone: office_phone
+            aml_officer_email: aml_officer_email
+            estimated_annual_revenue_turnover: estimated_annual_revenue_turnover
+            postal_code: '798983'
+            city_of_birth: London
+    PoliticallyExposedPerson:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+          example: 1
+        name:
+          type: string
+          description: 'Full name of the politically exposed person
+
+            '
+          example: Ronald Reagan
+        position:
+          type: string
+          description: 'The office held by the politically exposed person
+
+            '
+          example: President of the United States
+        started_date:
+          type: string
+          description: 'The date on which the person started holding the office
+
+            '
+          format: date-time
+        ended_date:
+          type: string
+          description: 'The date on which the person ended holding the office
+
+            '
+          format: date-time
+        sender_id:
+          type: string
+          description: 'The ID of the Sender to whom the person is attached to
+
+            '
+          format: uuid
+          example: 83a4f5fd-9260-4aaa-9743-63f8a6d8309d
+        created_at:
+          type: string
+          description: Date and time the person was created
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          description: Date and time the person was updated
+          format: date-time
+          readOnly: true
     SenderState:
       type: string
       description: 'The state of the sender. Can be one of the following:
@@ -554,148 +548,54 @@ components:
       - banned
       - rejected
       - disabled
-    Pagination:
-      type: object
-      properties:
-        current_page:
-          type: integer
-          description: The number of the current page
-          readOnly: true
-          example: 2
-        next_page:
-          type: integer
-          description: The number of the next page. If no next page exists, this will be `null`
-          readOnly: true
-          example: 3
-        prev_page:
-          type: integer
-          description: The number of the previous page. If no previous page exists, this will be `null`
-          readOnly: true
-          example: 1
-        total_pages:
-          type: integer
-          description: The number of pages in the result set
-          readOnly: true
-          example: 5
-        total_count:
-          type: integer
-          description: The total number of results in the set
-          readOnly: true
-          example: 45
-      readOnly: true
-      example:
-        next_page: 3
-        total_count: 45
-        total_pages: 5
-        prev_page: 1
-        current_page: 2
-    Document:
-      required:
-      - upload
-      - upload_file_name
-      type: object
-      properties:
-        upload:
-          type: string
-          description: Base64 encoded data uri of an image/pdf file or a fully qualified url
-          example: data:image/png;base64,iVBORw0KGg...lFTkSuQmCC
-        url:
-          type: string
-          description: URL of the document location
-          example: https://bitpesa-documents.amazonaws.com/document.pdf
-        upload_file_name:
-          type: string
-          description: Name of the upload
-          example: example.png
-        metadata:
-          type: object
-          description: Metadata of document
-          example: {}
-        upload_content_type:
-          type: string
-          example: image/png
-        upload_file_size:
-          type: integer
-          example: 30255
-        category:
-          type: string
-          description: uncategorised
-          readOnly: true
-        side:
-          type: string
-          description: The side of the KYC ID. One of 'front' or 'back'
-          readOnly: true
-          enum:
-          - front
-          - back
-        document_type:
-          type: string
-          description: This is a brief description of the document type
-          example: certificate_of_business_name_registration
-        issuing_country:
-          type: string
-          description: Issuing country of ID in 2-character alpha ISO 3166-2 country format
-          readOnly: true
-          example: NG
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          example: ebe9bc0b-f2f6-4ce8-802a-8b79912d041e
-        document_id:
-          type: string
-          description: Document ID issued by government
-          example: XYZ12345
-        expiry_date:
-          type: string
-          description: Document expiry date issued by government
-          format: date
-        source:
-          type: string
-          description: Determines the document's source. Default value "Manual"
-          example: Manual
-        errors:
-          additionalProperties:
-            type: array
-            readOnly: true
-            items:
-              $ref: '#/components/schemas/ValidationErrorDescription'
-          description: The fields that have some problems and don't pass validation
-          readOnly: true
-          example:
-            phone_number:
-            - error: invalid
-            documents:
-            - error: blank
-      example:
-        metadata: {}
-        side: front
-        upload: data:image/png;base64,iVBORw0KGg...lFTkSuQmCC
-        expiry_date: '2000-01-23'
-        upload_file_name: example.png
-        upload_content_type: image/png
-        source: Manual
-        document_id: XYZ12345
-        url: https://bitpesa-documents.amazonaws.com/document.pdf
-        issuing_country: NG
-        id: ebe9bc0b-f2f6-4ce8-802a-8b79912d041e
-        upload_file_size: 30255
-        category: category
-        errors:
-          phone_number:
-          - error: invalid
-          documents:
-          - error: blank
-        document_type: certificate_of_business_name_registration
-    SenderResponseExisting:
+    SenderRequest:
       type: object
       properties:
         sender:
           $ref: '#/components/schemas/Sender'
-      readOnly: true
       example:
         sender:
-          country: NG
+          country: UG
+          phone_number: '+256752403639'
+          email: example@home.org
+          first_name: Johnny
+          last_name: English
+          city: Kampala
+          street: Unknown 17-3
+          address_description: Description of address
+          postal_code: '798983'
+          birth_date: '1900-12-31'
+          documents: []
+          ip: 127.0.0.1
+          identification_number: AB123456
+          identification_type: ID
+          lang: en
+          external_id: 806ec63a-a5a7-43cc-9d75-1ee74fbcc026
+          city_of_birth: London
+          country_of_birth: GB
+          gender: M
+          metadata: {}
+    SenderListResponse:
+      type: object
+      properties:
+        object:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Sender'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+      readOnly: true
+      example:
+        meta:
+          pagination:
+            next_page: 3
+            total_count: 45
+            total_pages: 5
+            prev_page: 1
+            current_page: 2
+        object:
+        - country: NG
           metadata: {}
           occupation: Accountant
           documents:
@@ -771,54 +671,82 @@ components:
           estimated_annual_revenue_turnover: estimated_annual_revenue_turnover
           postal_code: '798983'
           city_of_birth: London
-    PoliticallyExposedPerson:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-          example: 1
-        name:
-          type: string
-          description: 'Full name of the politically exposed person
-
-            '
-          example: Ronald Reagan
-        position:
-          type: string
-          description: 'The office held by the politically exposed person
-
-            '
-          example: President of the United States
-        started_date:
-          type: string
-          description: 'The date on which the person started holding the office
-
-            '
-          format: date-time
-        ended_date:
-          type: string
-          description: 'The date on which the person ended holding the office
-
-            '
-          format: date-time
-        sender_id:
-          type: string
-          description: 'The ID of the Sender to whom the person is attached to
-
-            '
-          format: uuid
-          example: 83a4f5fd-9260-4aaa-9743-63f8a6d8309d
-        created_at:
-          type: string
-          description: Date and time the person was created
-          format: date-time
-          readOnly: true
-        updated_at:
-          type: string
-          description: Date and time the person was updated
-          format: date-time
-          readOnly: true
+        - country: NG
+          metadata: {}
+          occupation: Accountant
+          documents:
+          - id: b6648ba3-1c7b-4f59-8580-684899c84a07
+          politically_exposed_people:
+          - id: '40'
+            name: Ronald Reagan
+            position: President of the United States
+            started_date: '1981-01-20T00:00:00.000Z'
+            ended_date: '1989-01-20T00:00:00.000Z'
+            sender_id: f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb
+          birth_date: '2000-01-23'
+          type: person
+          amount_monthly_transactions: amount_monthly_transactions
+          legal_entity_type: privately_owned_company
+          company_office_number_country: GB
+          trading_address: trading_address
+          fingerprint: fingerprint
+          regulatory_licence_number: regulatory_licence_number
+          phone_country: NG
+          aml_officer_phone_country: GB
+          id: bf9ff782-e182-45ac-abea-5bce83ad6670
+          state: initial
+          number_monthly_transactions: number_monthly_transactions
+          aml_officer_phone: '123123123'
+          ip: 127.0.0.1
+          custom_source_of_funds: custom_source_of_funds
+          registration_date: '2000-01-23'
+          nationality: NG
+          trading_name: trading_name
+          name: name
+          phone_number: '752403639'
+          address_description: address_description
+          trading_country: trading_country
+          errors:
+            phone_number:
+            - error: invalid
+            documents:
+            - error: blank
+          financial_regulator: financial_regulator
+          company_office_number: '123123123'
+          purpose_of_opening_account: purpose_of_opening_account
+          identification_number: AB123456
+          gender: M
+          city: Kampala
+          sales_lead_id: HF6HJVF67
+          registration_number: registration_number
+          identification_type: ID
+          created_at: 2019-01-11T00:00:00.001+0000
+          external_id: 806ec63a-a5a7-43cc-9d75-1ee74fbcc026
+          list_of_countries_of_operation:
+          - Spain
+          - Germany
+          - Poland
+          nature_of_business: personal
+          street: Fake Street
+          vat_registration_number: vat_registration_number
+          country_of_birth: GB
+          company_website_url: www.azafinance.com
+          lang: en
+          first_name: Johnny
+          source_of_funds: source_of_funds
+          email: example@home.org
+          contact_person_email: contact_person_email
+          number_of_employees_in_company: 250+
+          onboarding_status: onboarding_status
+          last_name: English
+          middle_name: Johnny
+          declaration: 'Yes'
+          core_business_activity: core_business_activity
+          office_phone: office_phone
+          aml_officer_email: aml_officer_email
+          estimated_annual_revenue_turnover: estimated_annual_revenue_turnover
+          postal_code: '798983'
+          city_of_birth: London
     Sender:
       required:
       - city
@@ -1255,27 +1183,126 @@ components:
       externalDocs:
         description: Sender in the API documentation
         url: https://docs.transferzero.com/docs/transaction-flow/#sender
-    SenderListResponse:
+    Document:
+      required:
+      - upload
+      - upload_file_name
       type: object
       properties:
-        object:
-          type: array
+        upload:
+          type: string
+          description: Base64 encoded data uri of an image/pdf file or a fully qualified url
+          example: data:image/png;base64,iVBORw0KGg...lFTkSuQmCC
+        url:
+          type: string
+          description: URL of the document location
+          example: https://bitpesa-documents.amazonaws.com/document.pdf
+        upload_file_name:
+          type: string
+          description: Name of the upload
+          example: example.png
+        metadata:
+          type: object
+          description: Metadata of document
+          example: {}
+        upload_content_type:
+          type: string
+          example: image/png
+        upload_file_size:
+          type: integer
+          example: 30255
+        category:
+          type: string
+          description: uncategorised
           readOnly: true
-          items:
-            $ref: '#/components/schemas/Sender'
-        meta:
-          $ref: '#/components/schemas/PaginationMeta'
+        side:
+          type: string
+          description: The side of the KYC ID. One of 'front' or 'back'
+          readOnly: true
+          enum:
+          - front
+          - back
+        document_type:
+          type: string
+          description: This is a brief description of the document type
+          example: certificate_of_business_name_registration
+        issuing_country:
+          type: string
+          description: Issuing country of ID in 2-character alpha ISO 3166-2 country format
+          readOnly: true
+          example: NG
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          example: ebe9bc0b-f2f6-4ce8-802a-8b79912d041e
+        document_id:
+          type: string
+          description: Document ID issued by government
+          example: XYZ12345
+        expiry_date:
+          type: string
+          description: Document expiry date issued by government
+          format: date
+        source:
+          type: string
+          description: Determines the document's source. Default value "Manual"
+          example: Manual
+        errors:
+          additionalProperties:
+            type: array
+            readOnly: true
+            items:
+              $ref: '#/components/schemas/ValidationErrorDescription'
+          description: The fields that have some problems and don't pass validation
+          readOnly: true
+          example:
+            phone_number:
+            - error: invalid
+            documents:
+            - error: blank
+      example:
+        metadata: {}
+        side: front
+        upload: data:image/png;base64,iVBORw0KGg...lFTkSuQmCC
+        expiry_date: '2000-01-23'
+        upload_file_name: example.png
+        upload_content_type: image/png
+        source: Manual
+        document_id: XYZ12345
+        url: https://bitpesa-documents.amazonaws.com/document.pdf
+        issuing_country: NG
+        id: ebe9bc0b-f2f6-4ce8-802a-8b79912d041e
+        upload_file_size: 30255
+        category: category
+        errors:
+          phone_number:
+          - error: invalid
+          documents:
+          - error: blank
+        document_type: certificate_of_business_name_registration
+    PaginationMeta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
       readOnly: true
       example:
-        meta:
-          pagination:
-            next_page: 3
-            total_count: 45
-            total_pages: 5
-            prev_page: 1
-            current_page: 2
-        object:
-        - country: NG
+        pagination:
+          next_page: 3
+          total_count: 45
+          total_pages: 5
+          prev_page: 1
+          current_page: 2
+    SenderResponseExisting:
+      type: object
+      properties:
+        sender:
+          $ref: '#/components/schemas/Sender'
+      readOnly: true
+      example:
+        sender:
+          country: NG
           metadata: {}
           occupation: Accountant
           documents:
@@ -1351,82 +1378,53 @@ components:
           estimated_annual_revenue_turnover: estimated_annual_revenue_turnover
           postal_code: '798983'
           city_of_birth: London
-        - country: NG
-          metadata: {}
-          occupation: Accountant
-          documents:
-          - id: b6648ba3-1c7b-4f59-8580-684899c84a07
-          politically_exposed_people:
-          - id: '40'
-            name: Ronald Reagan
-            position: President of the United States
-            started_date: '1981-01-20T00:00:00.000Z'
-            ended_date: '1989-01-20T00:00:00.000Z'
-            sender_id: f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb
-          birth_date: '2000-01-23'
-          type: person
-          amount_monthly_transactions: amount_monthly_transactions
-          legal_entity_type: privately_owned_company
-          company_office_number_country: GB
-          trading_address: trading_address
-          fingerprint: fingerprint
-          regulatory_licence_number: regulatory_licence_number
-          phone_country: NG
-          aml_officer_phone_country: GB
-          id: bf9ff782-e182-45ac-abea-5bce83ad6670
-          state: initial
-          number_monthly_transactions: number_monthly_transactions
-          aml_officer_phone: '123123123'
-          ip: 127.0.0.1
-          custom_source_of_funds: custom_source_of_funds
-          registration_date: '2000-01-23'
-          nationality: NG
-          trading_name: trading_name
-          name: name
-          phone_number: '752403639'
-          address_description: address_description
-          trading_country: trading_country
-          errors:
-            phone_number:
-            - error: invalid
-            documents:
-            - error: blank
-          financial_regulator: financial_regulator
-          company_office_number: '123123123'
-          purpose_of_opening_account: purpose_of_opening_account
-          identification_number: AB123456
-          gender: M
-          city: Kampala
-          sales_lead_id: HF6HJVF67
-          registration_number: registration_number
-          identification_type: ID
-          created_at: 2019-01-11T00:00:00.001+0000
-          external_id: 806ec63a-a5a7-43cc-9d75-1ee74fbcc026
-          list_of_countries_of_operation:
-          - Spain
-          - Germany
-          - Poland
-          nature_of_business: personal
-          street: Fake Street
-          vat_registration_number: vat_registration_number
-          country_of_birth: GB
-          company_website_url: www.azafinance.com
-          lang: en
-          first_name: Johnny
-          source_of_funds: source_of_funds
-          email: example@home.org
-          contact_person_email: contact_person_email
-          number_of_employees_in_company: 250+
-          onboarding_status: onboarding_status
-          last_name: English
-          middle_name: Johnny
-          declaration: 'Yes'
-          core_business_activity: core_business_activity
-          office_phone: office_phone
-          aml_officer_email: aml_officer_email
-          estimated_annual_revenue_turnover: estimated_annual_revenue_turnover
-          postal_code: '798983'
-          city_of_birth: London
+    ValidationErrorDescription:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Describes what the problem is with the field
+          readOnly: true
+          example: invalid
+      description: The description of the error
+      readOnly: true
+      example:
+        error: invalid
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: integer
+          description: The number of the current page
+          readOnly: true
+          example: 2
+        next_page:
+          type: integer
+          description: The number of the next page. If no next page exists, this will be `null`
+          readOnly: true
+          example: 3
+        prev_page:
+          type: integer
+          description: The number of the previous page. If no previous page exists, this will be `null`
+          readOnly: true
+          example: 1
+        total_pages:
+          type: integer
+          description: The number of pages in the result set
+          readOnly: true
+          example: 5
+        total_count:
+          type: integer
+          description: The total number of results in the set
+          readOnly: true
+          example: 45
+      readOnly: true
+      example:
+        next_page: 3
+        total_count: 45
+        total_pages: 5
+        prev_page: 1
+        current_page: 2
   securitySchemes:
     AuthorizationKey:
       type: apiKey

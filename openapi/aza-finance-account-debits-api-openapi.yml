@@ -1,4 +1,4 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
   title: TransferZero Account Debits API
   description: Reference documentation for the TransferZero API V1
@@ -37,9 +37,7 @@ paths:
         Once the transaction is funded, we will immediately start trying to pay out the recipient(s).
 
 
-        It is also possible to create multiple account debits by supplying an array of debit objects
-
-        '
+        It is also possible to create multiple account debits by supplying an array of debit objects'
       externalDocs:
         description: Funding Transaction guide including alternative ways to fund transactions.
         url: https://docs.transferzero.com/docs/transaction-flow/#funding-transactions
@@ -94,6 +92,61 @@ paths:
           description: Internal Server Error.
 components:
   schemas:
+    DebitListResponse:
+      type: object
+      properties:
+        object:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Debit'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+      readOnly: true
+      example:
+        meta:
+          pagination:
+            next_page: 3
+            total_count: 45
+            total_pages: 5
+            prev_page: 1
+            current_page: 2
+        object:
+        - to_type: Transaction
+          amount: 10000
+          metadata: {}
+          to_id: 5f44026b-7904-4c30-87d6-f8972d790ded
+          created_at: '2000-01-23T04:56:07.000+00:00'
+          currency: NGN
+          id: 5f44026b-7904-4c30-87d6-f8972d790ded
+          running_balance: 2000000
+          errors:
+            phone_number:
+            - error: invalid
+            documents:
+            - error: blank
+          usd_amount: 200.06211683187206
+        - to_type: Transaction
+          amount: 10000
+          metadata: {}
+          to_id: 5f44026b-7904-4c30-87d6-f8972d790ded
+          created_at: '2000-01-23T04:56:07.000+00:00'
+          currency: NGN
+          id: 5f44026b-7904-4c30-87d6-f8972d790ded
+          running_balance: 2000000
+          errors:
+            phone_number:
+            - error: invalid
+            documents:
+            - error: blank
+          usd_amount: 200.06211683187206
+    DebitListRequest:
+      type: object
+      properties:
+        debit:
+          type: array
+          items:
+            $ref: '#/components/schemas/Debit'
     Debit:
       required:
       - to_id
@@ -198,54 +251,16 @@ components:
       externalDocs:
         description: Funding Transactions in the API Guide
         url: https://docs.transferzero.com/docs/transaction-flow/#funding-transactions
-    DebitListResponse:
-      type: object
-      properties:
-        object:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/Debit'
-        meta:
-          $ref: '#/components/schemas/PaginationMeta'
-      readOnly: true
+    DebitRequestWrapper:
       example:
-        meta:
-          pagination:
-            next_page: 3
-            total_count: 45
-            total_pages: 5
-            prev_page: 1
-            current_page: 2
-        object:
-        - to_type: Transaction
-          amount: 10000
-          metadata: {}
-          to_id: 5f44026b-7904-4c30-87d6-f8972d790ded
-          created_at: '2000-01-23T04:56:07.000+00:00'
+        debit:
           currency: NGN
-          id: 5f44026b-7904-4c30-87d6-f8972d790ded
-          running_balance: 2000000
-          errors:
-            phone_number:
-            - error: invalid
-            documents:
-            - error: blank
-          usd_amount: 200.06211683187206
-        - to_type: Transaction
-          amount: 10000
-          metadata: {}
+          amount: '2000.0'
           to_id: 5f44026b-7904-4c30-87d6-f8972d790ded
-          created_at: '2000-01-23T04:56:07.000+00:00'
-          currency: NGN
-          id: 5f44026b-7904-4c30-87d6-f8972d790ded
-          running_balance: 2000000
-          errors:
-            phone_number:
-            - error: invalid
-            documents:
-            - error: blank
-          usd_amount: 200.06211683187206
+          to_type: Transaction
+      oneOf:
+      - $ref: '#/components/schemas/DebitRequest'
+      - $ref: '#/components/schemas/DebitListRequest'
     PaginationMeta:
       type: object
       properties:
@@ -271,28 +286,11 @@ components:
       readOnly: true
       example:
         error: invalid
-    DebitRequestWrapper:
-      example:
-        debit:
-          currency: NGN
-          amount: '2000.0'
-          to_id: 5f44026b-7904-4c30-87d6-f8972d790ded
-          to_type: Transaction
-      oneOf:
-      - $ref: '#/components/schemas/DebitRequest'
-      - $ref: '#/components/schemas/DebitListRequest'
     DebitRequest:
       type: object
       properties:
         debit:
           $ref: '#/components/schemas/Debit'
-    DebitListRequest:
-      type: object
-      properties:
-        debit:
-          type: array
-          items:
-            $ref: '#/components/schemas/Debit'
     Pagination:
       type: object
       properties:
