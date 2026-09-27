@@ -73,23 +73,6 @@ paths:
           description: Internal Server Error.
 components:
   schemas:
-    AccountValidationResult:
-      type: object
-      properties:
-        account_name:
-          type: string
-          readOnly: true
-          example: John Smith
-        mapped_mobile_provider:
-          type: string
-          readOnly: true
-          example: mtn
-        account_status:
-          type: string
-          readOnly: true
-          example: active
-      description: Describes the account holder name on a successful match
-      readOnly: true
     AccountValidationResponse:
       type: object
       properties:
@@ -102,86 +85,6 @@ components:
         object:
           account_name: John Smith
           mapped_mobile_provider: mtn
-    AccountValidationError:
-      type: object
-      properties:
-        error:
-          type: string
-          readOnly: true
-          example: Could not find account
-      description: Describes the error message on an unsuccessful match
-      readOnly: true
-    AccountValidationRequest:
-      required:
-      - country
-      - currency
-      - method
-      type: object
-      properties:
-        bank_account:
-          type: string
-          description: Account Number to query
-          writeOnly: true
-        bank_code:
-          type: string
-          description: Bank Code to query - same codes are used as for creating the transactions
-          writeOnly: true
-        iban:
-          type: string
-          description: IBAN to query - BBAN format for XOF bank accounts
-          writeOnly: true
-        phone_number:
-          type: string
-          description: Phone number to query in E.164 format
-          writeOnly: true
-          example: '+233000000000'
-        mobile_provider:
-          $ref: '#/components/schemas/PayoutMethodMobileProviderEnum'
-        country:
-          type: string
-          description: Country of account in 2-character alpha ISO 3166-2 country format
-          writeOnly: true
-          enum:
-          - BF
-          - BJ
-          - CG
-          - CI
-          - CM
-          - GA
-          - GH
-          - KE
-          - NG
-          - SN
-          - TD
-          - TG
-          - UG
-        currency:
-          type: string
-          description: The currency the bank account is in
-          writeOnly: true
-          enum:
-          - NGN
-          - GHS
-          - KES
-          - XOF
-          - UGX
-          - XAF
-        method:
-          type: string
-          description: The method of the payment. Currently bank and mobile are supported
-          writeOnly: true
-          enum:
-          - bank
-          - mobile
-      example:
-        bank_code: bank_code
-        country: BF
-        mobile_provider: orange
-        method: bank
-        iban: iban
-        phone_number: '+233000000000'
-        currency: NGN
-        bank_account: bank_account
     PayoutMethodMobileProviderEnum:
       type: string
       description: 'The Mobile Wallet provider of the recipient:
@@ -319,6 +222,103 @@ components:
       - tmoney
       - vodafone
       - wave
+    AccountValidationResult:
+      type: object
+      properties:
+        account_name:
+          type: string
+          readOnly: true
+          example: John Smith
+        mapped_mobile_provider:
+          type: string
+          readOnly: true
+          example: mtn
+        account_status:
+          type: string
+          readOnly: true
+          example: active
+      description: Describes the account holder name on a successful match
+      readOnly: true
+    AccountValidationRequest:
+      required:
+      - country
+      - currency
+      - method
+      type: object
+      properties:
+        bank_account:
+          type: string
+          description: Account Number to query
+          writeOnly: true
+        bank_code:
+          type: string
+          description: Bank Code to query - same codes are used as for creating the transactions
+          writeOnly: true
+        iban:
+          type: string
+          description: IBAN to query - BBAN format for XOF bank accounts
+          writeOnly: true
+        phone_number:
+          type: string
+          description: Phone number to query in E.164 format
+          writeOnly: true
+          example: '+233000000000'
+        mobile_provider:
+          $ref: '#/components/schemas/PayoutMethodMobileProviderEnum'
+        country:
+          type: string
+          description: Country of account in 2-character alpha ISO 3166-2 country format
+          writeOnly: true
+          enum:
+          - BF
+          - BJ
+          - CG
+          - CI
+          - CM
+          - GA
+          - GH
+          - KE
+          - NG
+          - SN
+          - TD
+          - TG
+          - UG
+        currency:
+          type: string
+          description: The currency the bank account is in
+          writeOnly: true
+          enum:
+          - NGN
+          - GHS
+          - KES
+          - XOF
+          - UGX
+          - XAF
+        method:
+          type: string
+          description: The method of the payment. Currently bank and mobile are supported
+          writeOnly: true
+          enum:
+          - bank
+          - mobile
+      example:
+        bank_code: bank_code
+        country: BF
+        mobile_provider: orange
+        method: bank
+        iban: iban
+        phone_number: '+233000000000'
+        currency: NGN
+        bank_account: bank_account
+    AccountValidationError:
+      type: object
+      properties:
+        error:
+          type: string
+          readOnly: true
+          example: Could not find account
+      description: Describes the error message on an unsuccessful match
+      readOnly: true
   securitySchemes:
     AuthorizationKey:
       type: apiKey

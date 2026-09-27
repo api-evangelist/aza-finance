@@ -67,17 +67,21 @@ paths:
       x-group-parameters: true
 components:
   schemas:
-    AccountMeta:
+    AccountResponse:
       type: object
       properties:
-        negative_balance:
-          type: boolean
-          description: Indicates whether account balances are permitted to be debited below zero
-          readOnly: true
-          example: false
+        object:
+          $ref: '#/components/schemas/Account'
+        meta:
+          $ref: '#/components/schemas/AccountMeta'
       readOnly: true
       example:
-        negative_balance: false
+        meta:
+          negative_balance: false
+        object:
+          amount: 1000.0
+          amount_after_pending: 1000.0
+          currency: USD
     Account:
       properties:
         amount:
@@ -100,21 +104,6 @@ components:
         amount: 1000.0
         amount_after_pending: 1000.0
         currency: USD
-    AccountResponse:
-      type: object
-      properties:
-        object:
-          $ref: '#/components/schemas/Account'
-        meta:
-          $ref: '#/components/schemas/AccountMeta'
-      readOnly: true
-      example:
-        meta:
-          negative_balance: false
-        object:
-          amount: 1000.0
-          amount_after_pending: 1000.0
-          currency: USD
     AccountListResponse:
       type: object
       properties:
@@ -136,6 +125,17 @@ components:
         - amount: 1000.0
           amount_after_pending: 1000.0
           currency: USD
+    AccountMeta:
+      type: object
+      properties:
+        negative_balance:
+          type: boolean
+          description: Indicates whether account balances are permitted to be debited below zero
+          readOnly: true
+          example: false
+      readOnly: true
+      example:
+        negative_balance: false
   securitySchemes:
     AuthorizationKey:
       type: apiKey

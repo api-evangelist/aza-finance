@@ -104,6 +104,54 @@ paths:
       x-group-parameters: true
 components:
   schemas:
+    Currency:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The currency code in 3-character alpha ISO 4217 currency format
+          readOnly: true
+          example: NGN
+        name:
+          type: string
+          description: Name of currency
+          readOnly: true
+          example: Nigerian Naira
+        symbol:
+          type: string
+          description: Symbol of currency
+          readOnly: true
+          example: ₦
+        decimals:
+          type: number
+          description: Number of decimal points
+          readOnly: true
+          example: 2
+        subunit_to_unit:
+          type: string
+          description: Subunits in Unit (eg. there are 100 cents in 1 US Dollar)
+          readOnly: true
+          example: '100'
+        primary:
+          type: boolean
+          description: Is this a primary currency?
+          readOnly: true
+          example: true
+        min:
+          type: string
+          description: The minimum amount allowed in a transaction
+          readOnly: true
+          example: '100'
+        max:
+          type: string
+          description: The maximum amount allowed in a transaction
+          readOnly: true
+          example: '50000000'
+        usd_equivalent:
+          type: string
+          description: The equivalent of the currency to 1 USD
+          readOnly: true
+      readOnly: true
     CurrencyExchangeListResponse:
       properties:
         object:
@@ -185,6 +233,18 @@ components:
             usd_equivalent: '0.002743485349395299586854627'
             rate: 0.09613478691774034
             mtm_rate: 10.402061855670103
+    CurrencyExchange:
+      allOf:
+      - $ref: '#/components/schemas/Currency'
+      - type: object
+        properties:
+          opposites:
+            type: array
+            description: Lists the currencies where you can exchange from this one
+            readOnly: true
+            items:
+              $ref: '#/components/schemas/CurrencyOpposite'
+        readOnly: true
     CurrencyOpposite:
       allOf:
       - $ref: '#/components/schemas/Currency'
@@ -231,66 +291,6 @@ components:
           primary: true
           min: '0.000000000000000000000001'
           max: '999999999999999999999999999.0'
-    Currency:
-      type: object
-      properties:
-        code:
-          type: string
-          description: The currency code in 3-character alpha ISO 4217 currency format
-          readOnly: true
-          example: NGN
-        name:
-          type: string
-          description: Name of currency
-          readOnly: true
-          example: Nigerian Naira
-        symbol:
-          type: string
-          description: Symbol of currency
-          readOnly: true
-          example: ₦
-        decimals:
-          type: number
-          description: Number of decimal points
-          readOnly: true
-          example: 2
-        subunit_to_unit:
-          type: string
-          description: Subunits in Unit (eg. there are 100 cents in 1 US Dollar)
-          readOnly: true
-          example: '100'
-        primary:
-          type: boolean
-          description: Is this a primary currency?
-          readOnly: true
-          example: true
-        min:
-          type: string
-          description: The minimum amount allowed in a transaction
-          readOnly: true
-          example: '100'
-        max:
-          type: string
-          description: The maximum amount allowed in a transaction
-          readOnly: true
-          example: '50000000'
-        usd_equivalent:
-          type: string
-          description: The equivalent of the currency to 1 USD
-          readOnly: true
-      readOnly: true
-    CurrencyExchange:
-      allOf:
-      - $ref: '#/components/schemas/Currency'
-      - type: object
-        properties:
-          opposites:
-            type: array
-            description: Lists the currencies where you can exchange from this one
-            readOnly: true
-            items:
-              $ref: '#/components/schemas/CurrencyOpposite'
-        readOnly: true
   securitySchemes:
     AuthorizationKey:
       type: apiKey

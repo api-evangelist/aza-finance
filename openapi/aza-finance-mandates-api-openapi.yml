@@ -60,21 +60,6 @@ paths:
       x-group-parameters: true
 components:
   schemas:
-    MandateResponse:
-      type: object
-      properties:
-        object:
-          $ref: '#/components/schemas/Mandate'
-      readOnly: true
-      example:
-        object:
-          reference: 74a07630
-          updated_at: '2000-01-23T04:56:07.000+00:00'
-          type_id: 1
-          signed_at: '2000-01-23T04:56:07.000+00:00'
-          created_at: '2000-01-23T04:56:07.000+00:00'
-          id: bf9ff782-e182-45ac-abea-5bce83ad6670
-          status: signed
     MandateStatus:
       type: string
       description: 'Current state of the mandate.
@@ -97,6 +82,21 @@ components:
       - signed
       - failed
       - bypassed
+    MandateResponse:
+      type: object
+      properties:
+        object:
+          $ref: '#/components/schemas/Mandate'
+      readOnly: true
+      example:
+        object:
+          reference: 74a07630
+          updated_at: '2000-01-23T04:56:07.000+00:00'
+          type_id: 1
+          signed_at: '2000-01-23T04:56:07.000+00:00'
+          created_at: '2000-01-23T04:56:07.000+00:00'
+          id: bf9ff782-e182-45ac-abea-5bce83ad6670
+          status: signed
     Mandate:
       type: object
       properties:

@@ -55,60 +55,77 @@ paths:
       x-group-parameters: true
 components:
   schemas:
-    FieldSelectValidation:
+    PaymentMethodListResponse:
       type: object
       properties:
-        in:
-          type: object
-          description: Describes the valid options for this selectbox
+        object:
+          type: array
           readOnly: true
-          example:
-            '20': Current
-            '10': Savings
-        allow_blank:
-          type: boolean
-          description: Describes whether the field is optional or not
-          readOnly: true
-          example: false
-    FieldValidation:
-      type: object
-      properties:
-        presence:
-          type: boolean
-          description: Describes whether the field is mandatory or not
-          readOnly: true
-          example: true
-        inclusion:
-          $ref: '#/components/schemas/FieldSelectValidation'
-        format:
-          type: object
-          description: Contains the regex to use to validate the input field
-          readOnly: true
-          example:
-            with: (?-mix:\A\d+\z)
-    FieldDescription:
-      type: object
-      properties:
-        type:
-          type: string
-          description: the type of the field.
-          readOnly: true
-          example: input
-          enum:
-          - input
-          - select
-        validations:
-          $ref: '#/components/schemas/FieldValidation'
-    PaymentMethodOpposite:
-      allOf:
-      - $ref: '#/components/schemas/PaymentMethod'
-      - properties:
+          items:
+            $ref: '#/components/schemas/PaymentMethodOpposite'
+      readOnly: true
+      example:
+        object:
+        - type: NGN::Bank
+          provider: interswitch
+          otc_permitted: false
+          details:
+          - url
           opposites:
-            type: array
-            description: List of all providers that can be used in conjunction with the main provider
-            readOnly: true
-            items:
-              $ref: '#/components/schemas/PaymentMethod'
+          - type: CNY::Bank
+            provider: melotic
+            otc_permitted: false
+            details:
+            - email
+            - name
+            - phone_number
+            - bank_account
+            default: true
+            fields:
+              email:
+                type: input
+                validations:
+                  format: \A((\w+([\-+.]\w+)*@[a-zA-Z0-9]+([\-\.][a-zA-Z0-9]+)*)*){3,320}\z
+              name:
+                type: input
+                validations:
+                  presence: true
+              phone_number:
+                type: input
+                validations:
+                  presence: true
+                  invalid: true
+              bank_account:
+                type: input
+                validations:
+                  presence: true
+                  invalid: true
+          - type: USD::Manual::Bank
+            provider: bank_transfer
+            otc_permitted: false
+            details:
+            - email
+            - first_name
+            - last_name
+            - bank_name
+            - bank_account
+            - routing_number
+            default: true
+            fields:
+              email:
+                type: input
+                validations:
+                  format: \A((\w+([\-+.]\w+)*@[a-zA-Z0-9]+([\-\.][a-zA-Z0-9]+)*)*){3,320}\z
+              first_name:
+                type: input
+              last_name:
+                type: input
+              bank_name:
+                type: input
+              bank_account:
+                type: input
+              routing_number:
+                type: input
     PaymentMethod:
       type: object
       properties:
@@ -204,77 +221,60 @@ components:
             type: input
             validations:
               presence: true
-    PaymentMethodListResponse:
+    FieldDescription:
       type: object
       properties:
-        object:
-          type: array
+        type:
+          type: string
+          description: the type of the field.
           readOnly: true
-          items:
-            $ref: '#/components/schemas/PaymentMethodOpposite'
-      readOnly: true
-      example:
-        object:
-        - type: NGN::Bank
-          provider: interswitch
-          otc_permitted: false
-          details:
-          - url
+          example: input
+          enum:
+          - input
+          - select
+        validations:
+          $ref: '#/components/schemas/FieldValidation'
+    FieldSelectValidation:
+      type: object
+      properties:
+        in:
+          type: object
+          description: Describes the valid options for this selectbox
+          readOnly: true
+          example:
+            '20': Current
+            '10': Savings
+        allow_blank:
+          type: boolean
+          description: Describes whether the field is optional or not
+          readOnly: true
+          example: false
+    PaymentMethodOpposite:
+      allOf:
+      - $ref: '#/components/schemas/PaymentMethod'
+      - properties:
           opposites:
-          - type: CNY::Bank
-            provider: melotic
-            otc_permitted: false
-            details:
-            - email
-            - name
-            - phone_number
-            - bank_account
-            default: true
-            fields:
-              email:
-                type: input
-                validations:
-                  format: \A((\w+([\-+.]\w+)*@[a-zA-Z0-9]+([\-\.][a-zA-Z0-9]+)*)*){3,320}\z
-              name:
-                type: input
-                validations:
-                  presence: true
-              phone_number:
-                type: input
-                validations:
-                  presence: true
-                  invalid: true
-              bank_account:
-                type: input
-                validations:
-                  presence: true
-                  invalid: true
-          - type: USD::Manual::Bank
-            provider: bank_transfer
-            otc_permitted: false
-            details:
-            - email
-            - first_name
-            - last_name
-            - bank_name
-            - bank_account
-            - routing_number
-            default: true
-            fields:
-              email:
-                type: input
-                validations:
-                  format: \A((\w+([\-+.]\w+)*@[a-zA-Z0-9]+([\-\.][a-zA-Z0-9]+)*)*){3,320}\z
-              first_name:
-                type: input
-              last_name:
-                type: input
-              bank_name:
-                type: input
-              bank_account:
-                type: input
-              routing_number:
-                type: input
+            type: array
+            description: List of all providers that can be used in conjunction with the main provider
+            readOnly: true
+            items:
+              $ref: '#/components/schemas/PaymentMethod'
+    FieldValidation:
+      type: object
+      properties:
+        presence:
+          type: boolean
+          description: Describes whether the field is mandatory or not
+          readOnly: true
+          example: true
+        inclusion:
+          $ref: '#/components/schemas/FieldSelectValidation'
+        format:
+          type: object
+          description: Contains the regex to use to validate the input field
+          readOnly: true
+          example:
+            with: (?-mix:\A\d+\z)
   securitySchemes:
     AuthorizationKey:
       type: apiKey
