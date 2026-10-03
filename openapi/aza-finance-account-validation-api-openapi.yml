@@ -73,18 +73,6 @@ paths:
           description: Internal Server Error.
 components:
   schemas:
-    AccountValidationResponse:
-      type: object
-      properties:
-        object:
-          $ref: '#/components/schemas/AccountValidationResult'
-        meta:
-          $ref: '#/components/schemas/AccountValidationError'
-      readOnly: true
-      example:
-        object:
-          account_name: John Smith
-          mapped_mobile_provider: mtn
     PayoutMethodMobileProviderEnum:
       type: string
       description: 'The Mobile Wallet provider of the recipient:
@@ -239,6 +227,27 @@ components:
           example: active
       description: Describes the account holder name on a successful match
       readOnly: true
+    AccountValidationError:
+      type: object
+      properties:
+        error:
+          type: string
+          readOnly: true
+          example: Could not find account
+      description: Describes the error message on an unsuccessful match
+      readOnly: true
+    AccountValidationResponse:
+      type: object
+      properties:
+        object:
+          $ref: '#/components/schemas/AccountValidationResult'
+        meta:
+          $ref: '#/components/schemas/AccountValidationError'
+      readOnly: true
+      example:
+        object:
+          account_name: John Smith
+          mapped_mobile_provider: mtn
     AccountValidationRequest:
       required:
       - country
@@ -310,15 +319,6 @@ components:
         phone_number: '+233000000000'
         currency: NGN
         bank_account: bank_account
-    AccountValidationError:
-      type: object
-      properties:
-        error:
-          type: string
-          readOnly: true
-          example: Could not find account
-      description: Describes the error message on an unsuccessful match
-      readOnly: true
   securitySchemes:
     AuthorizationKey:
       type: apiKey

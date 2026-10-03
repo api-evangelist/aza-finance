@@ -92,101 +92,6 @@ paths:
           description: Internal Server Error.
 components:
   schemas:
-    DebitListResponse:
-      type: object
-      properties:
-        object:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/Debit'
-        meta:
-          $ref: '#/components/schemas/PaginationMeta'
-      readOnly: true
-      example:
-        meta:
-          pagination:
-            next_page: 3
-            total_count: 45
-            total_pages: 5
-            prev_page: 1
-            current_page: 2
-        object:
-        - to_type: Transaction
-          amount: 10000
-          metadata: {}
-          to_id: 5f44026b-7904-4c30-87d6-f8972d790ded
-          created_at: '2000-01-23T04:56:07.000+00:00'
-          currency: NGN
-          id: 5f44026b-7904-4c30-87d6-f8972d790ded
-          running_balance: 2000000
-          errors:
-            phone_number:
-            - error: invalid
-            documents:
-            - error: blank
-          usd_amount: 200.06211683187206
-        - to_type: Transaction
-          amount: 10000
-          metadata: {}
-          to_id: 5f44026b-7904-4c30-87d6-f8972d790ded
-          created_at: '2000-01-23T04:56:07.000+00:00'
-          currency: NGN
-          id: 5f44026b-7904-4c30-87d6-f8972d790ded
-          running_balance: 2000000
-          errors:
-            phone_number:
-            - error: invalid
-            documents:
-            - error: blank
-          usd_amount: 200.06211683187206
-    PaginationMeta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-      readOnly: true
-      example:
-        pagination:
-          next_page: 3
-          total_count: 45
-          total_pages: 5
-          prev_page: 1
-          current_page: 2
-    DebitRequestWrapper:
-      example:
-        debit:
-          currency: NGN
-          amount: '2000.0'
-          to_id: 5f44026b-7904-4c30-87d6-f8972d790ded
-          to_type: Transaction
-      oneOf:
-      - $ref: '#/components/schemas/DebitRequest'
-      - $ref: '#/components/schemas/DebitListRequest'
-    DebitRequest:
-      type: object
-      properties:
-        debit:
-          $ref: '#/components/schemas/Debit'
-    ValidationErrorDescription:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Describes what the problem is with the field
-          readOnly: true
-          example: invalid
-      description: The description of the error
-      readOnly: true
-      example:
-        error: invalid
-    DebitListRequest:
-      type: object
-      properties:
-        debit:
-          type: array
-          items:
-            $ref: '#/components/schemas/Debit'
     Debit:
       required:
       - to_id
@@ -291,6 +196,53 @@ components:
       externalDocs:
         description: Funding Transactions in the API Guide
         url: https://docs.transferzero.com/docs/transaction-flow/#funding-transactions
+    DebitRequest:
+      type: object
+      properties:
+        debit:
+          $ref: '#/components/schemas/Debit'
+    PaginationMeta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+      readOnly: true
+      example:
+        pagination:
+          next_page: 3
+          total_count: 45
+          total_pages: 5
+          prev_page: 1
+          current_page: 2
+    ValidationErrorDescription:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Describes what the problem is with the field
+          readOnly: true
+          example: invalid
+      description: The description of the error
+      readOnly: true
+      example:
+        error: invalid
+    DebitListRequest:
+      type: object
+      properties:
+        debit:
+          type: array
+          items:
+            $ref: '#/components/schemas/Debit'
+    DebitRequestWrapper:
+      example:
+        debit:
+          currency: NGN
+          amount: '2000.0'
+          to_id: 5f44026b-7904-4c30-87d6-f8972d790ded
+          to_type: Transaction
+      oneOf:
+      - $ref: '#/components/schemas/DebitRequest'
+      - $ref: '#/components/schemas/DebitListRequest'
     Pagination:
       type: object
       properties:
@@ -326,6 +278,54 @@ components:
         total_pages: 5
         prev_page: 1
         current_page: 2
+    DebitListResponse:
+      type: object
+      properties:
+        object:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Debit'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+      readOnly: true
+      example:
+        meta:
+          pagination:
+            next_page: 3
+            total_count: 45
+            total_pages: 5
+            prev_page: 1
+            current_page: 2
+        object:
+        - to_type: Transaction
+          amount: 10000
+          metadata: {}
+          to_id: 5f44026b-7904-4c30-87d6-f8972d790ded
+          created_at: '2000-01-23T04:56:07.000+00:00'
+          currency: NGN
+          id: 5f44026b-7904-4c30-87d6-f8972d790ded
+          running_balance: 2000000
+          errors:
+            phone_number:
+            - error: invalid
+            documents:
+            - error: blank
+          usd_amount: 200.06211683187206
+        - to_type: Transaction
+          amount: 10000
+          metadata: {}
+          to_id: 5f44026b-7904-4c30-87d6-f8972d790ded
+          created_at: '2000-01-23T04:56:07.000+00:00'
+          currency: NGN
+          id: 5f44026b-7904-4c30-87d6-f8972d790ded
+          running_balance: 2000000
+          errors:
+            phone_number:
+            - error: invalid
+            documents:
+            - error: blank
+          usd_amount: 200.06211683187206
   securitySchemes:
     AuthorizationKey:
       type: apiKey

@@ -168,35 +168,6 @@ components:
           id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
           request_method: POST
           request_url: https://api.transferzero/v1/transactions/validate
-    ApiLogResponse:
-      type: object
-      properties:
-        object:
-          $ref: '#/components/schemas/ApiLog'
-      readOnly: true
-      example:
-        object:
-          response_headers:
-            X-Frame-Options: SAMEORIGIN
-            X-XSS-Protection: 1; mode=block
-            X-Content-Type-Options: nosniff
-            Content-Type: application/json; charset=UTF-8
-          request_body: '{"message":"Email dispatched: Accepted (user@transferzero.com)"}'
-          response_status: '200'
-          request_headers:
-            HTTP_VERSION: HTTP/1.1
-            HTTP_ACCEPT: application/json
-            HTTP_USER_AGENT: TransferZero Ruby
-            HTTP_AUTHORIZATION_NONCE: '0000'
-            HTTP_AUTHORIZATION_KEY: '0000'
-            HTTP_AUTHORIZATION_SIGNATURE: '0000'
-            HTTP_CONNECTION: close
-            HTTP_HOST: localhost:3002
-          response_body: '{"object":{"result":0}}'
-          created_at: 2019-01-11T00:00:00.001+0000
-          id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
-          request_method: POST
-          request_url: https://api.transferzero/v1/transactions/validate
     PaginationMeta:
       type: object
       properties:
@@ -301,6 +272,35 @@ components:
         id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
         request_method: POST
         request_url: https://api.transferzero/v1/transactions/validate
+    ApiLogResponse:
+      type: object
+      properties:
+        object:
+          $ref: '#/components/schemas/ApiLog'
+      readOnly: true
+      example:
+        object:
+          response_headers:
+            X-Frame-Options: SAMEORIGIN
+            X-XSS-Protection: 1; mode=block
+            X-Content-Type-Options: nosniff
+            Content-Type: application/json; charset=UTF-8
+          request_body: '{"message":"Email dispatched: Accepted (user@transferzero.com)"}'
+          response_status: '200'
+          request_headers:
+            HTTP_VERSION: HTTP/1.1
+            HTTP_ACCEPT: application/json
+            HTTP_USER_AGENT: TransferZero Ruby
+            HTTP_AUTHORIZATION_NONCE: '0000'
+            HTTP_AUTHORIZATION_KEY: '0000'
+            HTTP_AUTHORIZATION_SIGNATURE: '0000'
+            HTTP_CONNECTION: close
+            HTTP_HOST: localhost:3002
+          response_body: '{"object":{"result":0}}'
+          created_at: 2019-01-11T00:00:00.001+0000
+          id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+          request_method: POST
+          request_url: https://api.transferzero/v1/transactions/validate
     Pagination:
       type: object
       properties:

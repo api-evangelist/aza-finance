@@ -55,77 +55,6 @@ paths:
       x-group-parameters: true
 components:
   schemas:
-    PaymentMethodListResponse:
-      type: object
-      properties:
-        object:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/PaymentMethodOpposite'
-      readOnly: true
-      example:
-        object:
-        - type: NGN::Bank
-          provider: interswitch
-          otc_permitted: false
-          details:
-          - url
-          opposites:
-          - type: CNY::Bank
-            provider: melotic
-            otc_permitted: false
-            details:
-            - email
-            - name
-            - phone_number
-            - bank_account
-            default: true
-            fields:
-              email:
-                type: input
-                validations:
-                  format: \A((\w+([\-+.]\w+)*@[a-zA-Z0-9]+([\-\.][a-zA-Z0-9]+)*)*){3,320}\z
-              name:
-                type: input
-                validations:
-                  presence: true
-              phone_number:
-                type: input
-                validations:
-                  presence: true
-                  invalid: true
-              bank_account:
-                type: input
-                validations:
-                  presence: true
-                  invalid: true
-          - type: USD::Manual::Bank
-            provider: bank_transfer
-            otc_permitted: false
-            details:
-            - email
-            - first_name
-            - last_name
-            - bank_name
-            - bank_account
-            - routing_number
-            default: true
-            fields:
-              email:
-                type: input
-                validations:
-                  format: \A((\w+([\-+.]\w+)*@[a-zA-Z0-9]+([\-\.][a-zA-Z0-9]+)*)*){3,320}\z
-              first_name:
-                type: input
-              last_name:
-                type: input
-              bank_name:
-                type: input
-              bank_account:
-                type: input
-              routing_number:
-                type: input
     PaymentMethod:
       type: object
       properties:
@@ -221,6 +150,77 @@ components:
             type: input
             validations:
               presence: true
+    PaymentMethodListResponse:
+      type: object
+      properties:
+        object:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/PaymentMethodOpposite'
+      readOnly: true
+      example:
+        object:
+        - type: NGN::Bank
+          provider: interswitch
+          otc_permitted: false
+          details:
+          - url
+          opposites:
+          - type: CNY::Bank
+            provider: melotic
+            otc_permitted: false
+            details:
+            - email
+            - name
+            - phone_number
+            - bank_account
+            default: true
+            fields:
+              email:
+                type: input
+                validations:
+                  format: \A((\w+([\-+.]\w+)*@[a-zA-Z0-9]+([\-\.][a-zA-Z0-9]+)*)*){3,320}\z
+              name:
+                type: input
+                validations:
+                  presence: true
+              phone_number:
+                type: input
+                validations:
+                  presence: true
+                  invalid: true
+              bank_account:
+                type: input
+                validations:
+                  presence: true
+                  invalid: true
+          - type: USD::Manual::Bank
+            provider: bank_transfer
+            otc_permitted: false
+            details:
+            - email
+            - first_name
+            - last_name
+            - bank_name
+            - bank_account
+            - routing_number
+            default: true
+            fields:
+              email:
+                type: input
+                validations:
+                  format: \A((\w+([\-+.]\w+)*@[a-zA-Z0-9]+([\-\.][a-zA-Z0-9]+)*)*){3,320}\z
+              first_name:
+                type: input
+              last_name:
+                type: input
+              bank_name:
+                type: input
+              bank_account:
+                type: input
+              routing_number:
+                type: input
     FieldDescription:
       type: object
       properties:
@@ -234,21 +234,6 @@ components:
           - select
         validations:
           $ref: '#/components/schemas/FieldValidation'
-    FieldSelectValidation:
-      type: object
-      properties:
-        in:
-          type: object
-          description: Describes the valid options for this selectbox
-          readOnly: true
-          example:
-            '20': Current
-            '10': Savings
-        allow_blank:
-          type: boolean
-          description: Describes whether the field is optional or not
-          readOnly: true
-          example: false
     PaymentMethodOpposite:
       allOf:
       - $ref: '#/components/schemas/PaymentMethod'
@@ -275,6 +260,21 @@ components:
           readOnly: true
           example:
             with: (?-mix:\A\d+\z)
+    FieldSelectValidation:
+      type: object
+      properties:
+        in:
+          type: object
+          description: Describes the valid options for this selectbox
+          readOnly: true
+          example:
+            '20': Current
+            '10': Savings
+        allow_blank:
+          type: boolean
+          description: Describes whether the field is optional or not
+          readOnly: true
+          example: false
   securitySchemes:
     AuthorizationKey:
       type: apiKey

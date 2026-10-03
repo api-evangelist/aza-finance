@@ -67,11 +67,25 @@ paths:
       x-group-parameters: true
 components:
   schemas:
-    AccountResponse:
+    AccountMeta:
+      type: object
+      properties:
+        negative_balance:
+          type: boolean
+          description: Indicates whether account balances are permitted to be debited below zero
+          readOnly: true
+          example: false
+      readOnly: true
+      example:
+        negative_balance: false
+    AccountListResponse:
       type: object
       properties:
         object:
-          $ref: '#/components/schemas/Account'
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Account'
         meta:
           $ref: '#/components/schemas/AccountMeta'
       readOnly: true
@@ -79,7 +93,10 @@ components:
         meta:
           negative_balance: false
         object:
-          amount: 1000.0
+        - amount: 1000.0
+          amount_after_pending: 1000.0
+          currency: USD
+        - amount: 1000.0
           amount_after_pending: 1000.0
           currency: USD
     Account:
@@ -104,14 +121,11 @@ components:
         amount: 1000.0
         amount_after_pending: 1000.0
         currency: USD
-    AccountListResponse:
+    AccountResponse:
       type: object
       properties:
         object:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/Account'
+          $ref: '#/components/schemas/Account'
         meta:
           $ref: '#/components/schemas/AccountMeta'
       readOnly: true
@@ -119,23 +133,9 @@ components:
         meta:
           negative_balance: false
         object:
-        - amount: 1000.0
+          amount: 1000.0
           amount_after_pending: 1000.0
           currency: USD
-        - amount: 1000.0
-          amount_after_pending: 1000.0
-          currency: USD
-    AccountMeta:
-      type: object
-      properties:
-        negative_balance:
-          type: boolean
-          description: Indicates whether account balances are permitted to be debited below zero
-          readOnly: true
-          example: false
-      readOnly: true
-      example:
-        negative_balance: false
   securitySchemes:
     AuthorizationKey:
       type: apiKey

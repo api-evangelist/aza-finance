@@ -104,6 +104,36 @@ paths:
       x-group-parameters: true
 components:
   schemas:
+    CurrencyOpposite:
+      allOf:
+      - $ref: '#/components/schemas/Currency'
+      - type: object
+        properties:
+          rate:
+            type: number
+            description: The rate of this particular currency with the base one
+            readOnly: true
+          mtm_rate:
+            type: number
+            description: Mark to market rate of this particular currency against the base one with the margin factored in
+            readOnly: true
+          margin:
+            type: string
+            description: The margin set for transactions of this particular currency with the base one
+            readOnly: true
+        readOnly: true
+    CurrencyExchange:
+      allOf:
+      - $ref: '#/components/schemas/Currency'
+      - type: object
+        properties:
+          opposites:
+            type: array
+            description: Lists the currencies where you can exchange from this one
+            readOnly: true
+            items:
+              $ref: '#/components/schemas/CurrencyOpposite'
+        readOnly: true
     Currency:
       type: object
       properties:
@@ -233,36 +263,6 @@ components:
             usd_equivalent: '0.002743485349395299586854627'
             rate: 0.09613478691774034
             mtm_rate: 10.402061855670103
-    CurrencyExchange:
-      allOf:
-      - $ref: '#/components/schemas/Currency'
-      - type: object
-        properties:
-          opposites:
-            type: array
-            description: Lists the currencies where you can exchange from this one
-            readOnly: true
-            items:
-              $ref: '#/components/schemas/CurrencyOpposite'
-        readOnly: true
-    CurrencyOpposite:
-      allOf:
-      - $ref: '#/components/schemas/Currency'
-      - type: object
-        properties:
-          rate:
-            type: number
-            description: The rate of this particular currency with the base one
-            readOnly: true
-          mtm_rate:
-            type: number
-            description: Mark to market rate of this particular currency against the base one with the margin factored in
-            readOnly: true
-          margin:
-            type: string
-            description: The margin set for transactions of this particular currency with the base one
-            readOnly: true
-        readOnly: true
     CurrencyListResponse:
       type: object
       properties:
