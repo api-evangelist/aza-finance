@@ -105,6 +105,70 @@ paths:
       x-group-parameters: true
 components:
   schemas:
+    ApiLogResponse:
+      type: object
+      properties:
+        object:
+          $ref: '#/components/schemas/ApiLog'
+      readOnly: true
+      example:
+        object:
+          response_headers:
+            X-Frame-Options: SAMEORIGIN
+            X-XSS-Protection: 1; mode=block
+            X-Content-Type-Options: nosniff
+            Content-Type: application/json; charset=UTF-8
+          request_body: '{"message":"Email dispatched: Accepted (user@transferzero.com)"}'
+          response_status: '200'
+          request_headers:
+            HTTP_VERSION: HTTP/1.1
+            HTTP_ACCEPT: application/json
+            HTTP_USER_AGENT: TransferZero Ruby
+            HTTP_AUTHORIZATION_NONCE: '0000'
+            HTTP_AUTHORIZATION_KEY: '0000'
+            HTTP_AUTHORIZATION_SIGNATURE: '0000'
+            HTTP_CONNECTION: close
+            HTTP_HOST: localhost:3002
+          response_body: '{"object":{"result":0}}'
+          created_at: 2019-01-11T00:00:00.001+0000
+          id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
+          request_method: POST
+          request_url: https://api.transferzero/v1/transactions/validate
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: integer
+          description: The number of the current page
+          readOnly: true
+          example: 2
+        next_page:
+          type: integer
+          description: The number of the next page. If no next page exists, this will be `null`
+          readOnly: true
+          example: 3
+        prev_page:
+          type: integer
+          description: The number of the previous page. If no previous page exists, this will be `null`
+          readOnly: true
+          example: 1
+        total_pages:
+          type: integer
+          description: The number of pages in the result set
+          readOnly: true
+          example: 5
+        total_count:
+          type: integer
+          description: The total number of results in the set
+          readOnly: true
+          example: 45
+      readOnly: true
+      example:
+        next_page: 3
+        total_count: 45
+        total_pages: 5
+        prev_page: 1
+        current_page: 2
     ApiLogListResponse:
       type: object
       properties:
@@ -168,19 +232,6 @@ components:
           id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
           request_method: POST
           request_url: https://api.transferzero/v1/transactions/validate
-    PaginationMeta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-      readOnly: true
-      example:
-        pagination:
-          next_page: 3
-          total_count: 45
-          total_pages: 5
-          prev_page: 1
-          current_page: 2
     ApiLog:
       type: object
       properties:
@@ -272,70 +323,19 @@ components:
         id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
         request_method: POST
         request_url: https://api.transferzero/v1/transactions/validate
-    ApiLogResponse:
+    PaginationMeta:
       type: object
       properties:
-        object:
-          $ref: '#/components/schemas/ApiLog'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
       readOnly: true
       example:
-        object:
-          response_headers:
-            X-Frame-Options: SAMEORIGIN
-            X-XSS-Protection: 1; mode=block
-            X-Content-Type-Options: nosniff
-            Content-Type: application/json; charset=UTF-8
-          request_body: '{"message":"Email dispatched: Accepted (user@transferzero.com)"}'
-          response_status: '200'
-          request_headers:
-            HTTP_VERSION: HTTP/1.1
-            HTTP_ACCEPT: application/json
-            HTTP_USER_AGENT: TransferZero Ruby
-            HTTP_AUTHORIZATION_NONCE: '0000'
-            HTTP_AUTHORIZATION_KEY: '0000'
-            HTTP_AUTHORIZATION_SIGNATURE: '0000'
-            HTTP_CONNECTION: close
-            HTTP_HOST: localhost:3002
-          response_body: '{"object":{"result":0}}'
-          created_at: 2019-01-11T00:00:00.001+0000
-          id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0
-          request_method: POST
-          request_url: https://api.transferzero/v1/transactions/validate
-    Pagination:
-      type: object
-      properties:
-        current_page:
-          type: integer
-          description: The number of the current page
-          readOnly: true
-          example: 2
-        next_page:
-          type: integer
-          description: The number of the next page. If no next page exists, this will be `null`
-          readOnly: true
-          example: 3
-        prev_page:
-          type: integer
-          description: The number of the previous page. If no previous page exists, this will be `null`
-          readOnly: true
-          example: 1
-        total_pages:
-          type: integer
-          description: The number of pages in the result set
-          readOnly: true
-          example: 5
-        total_count:
-          type: integer
-          description: The total number of results in the set
-          readOnly: true
-          example: 45
-      readOnly: true
-      example:
-        next_page: 3
-        total_count: 45
-        total_pages: 5
-        prev_page: 1
-        current_page: 2
+        pagination:
+          next_page: 3
+          total_count: 45
+          total_pages: 5
+          prev_page: 1
+          current_page: 2
   securitySchemes:
     AuthorizationKey:
       type: apiKey

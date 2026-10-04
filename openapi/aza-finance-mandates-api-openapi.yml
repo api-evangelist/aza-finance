@@ -60,28 +60,6 @@ paths:
       x-group-parameters: true
 components:
   schemas:
-    MandateStatus:
-      type: string
-      description: 'Current state of the mandate.
-
-
-        * `pending` — created, awaiting signing flow
-
-        * `notified` — recipient has been notified to sign
-
-        * `signed` — recipient signed; mandate is active
-
-        * `failed` — signing flow failed (e.g. AVS/CDV rejection)
-
-        * `bypassed` — administratively bypassed for an inward AZA payment'
-      readOnly: true
-      example: signed
-      enum:
-      - pending
-      - notified
-      - signed
-      - failed
-      - bypassed
     Mandate:
       type: object
       properties:
@@ -140,6 +118,28 @@ components:
         created_at: '2000-01-23T04:56:07.000+00:00'
         id: bf9ff782-e182-45ac-abea-5bce83ad6670
         status: signed
+    MandateStatus:
+      type: string
+      description: 'Current state of the mandate.
+
+
+        * `pending` — created, awaiting signing flow
+
+        * `notified` — recipient has been notified to sign
+
+        * `signed` — recipient signed; mandate is active
+
+        * `failed` — signing flow failed (e.g. AVS/CDV rejection)
+
+        * `bypassed` — administratively bypassed for an inward AZA payment'
+      readOnly: true
+      example: signed
+      enum:
+      - pending
+      - notified
+      - signed
+      - failed
+      - bypassed
     MandateResponse:
       type: object
       properties:

@@ -35,6 +35,25 @@ paths:
           description: Internal Server Error.
 components:
   schemas:
+    DlocalBalanceResponse:
+      type: object
+      properties:
+        object:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/DlocalBalance'
+      readOnly: true
+      example:
+        object:
+        - current_balance_date: '2026-02-24'
+          currency: USD
+          available_balance: 1000
+          previous_day_closing_balance: 1000
+        - current_balance_date: '2026-02-24'
+          currency: USD
+          available_balance: 1000
+          previous_day_closing_balance: 1000
     DlocalBalance:
       properties:
         currency:
@@ -63,25 +82,6 @@ components:
         currency: USD
         available_balance: 1000
         previous_day_closing_balance: 1000
-    DlocalBalanceResponse:
-      type: object
-      properties:
-        object:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/DlocalBalance'
-      readOnly: true
-      example:
-        object:
-        - current_balance_date: '2026-02-24'
-          currency: USD
-          available_balance: 1000
-          previous_day_closing_balance: 1000
-        - current_balance_date: '2026-02-24'
-          currency: USD
-          available_balance: 1000
-          previous_day_closing_balance: 1000
   securitySchemes:
     AuthorizationKey:
       type: apiKey

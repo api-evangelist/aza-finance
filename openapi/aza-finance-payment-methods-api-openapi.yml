@@ -150,6 +150,32 @@ components:
             type: input
             validations:
               presence: true
+    PaymentMethodOpposite:
+      allOf:
+      - $ref: '#/components/schemas/PaymentMethod'
+      - properties:
+          opposites:
+            type: array
+            description: List of all providers that can be used in conjunction with the main provider
+            readOnly: true
+            items:
+              $ref: '#/components/schemas/PaymentMethod'
+    FieldValidation:
+      type: object
+      properties:
+        presence:
+          type: boolean
+          description: Describes whether the field is mandatory or not
+          readOnly: true
+          example: true
+        inclusion:
+          $ref: '#/components/schemas/FieldSelectValidation'
+        format:
+          type: object
+          description: Contains the regex to use to validate the input field
+          readOnly: true
+          example:
+            with: (?-mix:\A\d+\z)
     PaymentMethodListResponse:
       type: object
       properties:
@@ -221,45 +247,6 @@ components:
                 type: input
               routing_number:
                 type: input
-    FieldDescription:
-      type: object
-      properties:
-        type:
-          type: string
-          description: the type of the field.
-          readOnly: true
-          example: input
-          enum:
-          - input
-          - select
-        validations:
-          $ref: '#/components/schemas/FieldValidation'
-    PaymentMethodOpposite:
-      allOf:
-      - $ref: '#/components/schemas/PaymentMethod'
-      - properties:
-          opposites:
-            type: array
-            description: List of all providers that can be used in conjunction with the main provider
-            readOnly: true
-            items:
-              $ref: '#/components/schemas/PaymentMethod'
-    FieldValidation:
-      type: object
-      properties:
-        presence:
-          type: boolean
-          description: Describes whether the field is mandatory or not
-          readOnly: true
-          example: true
-        inclusion:
-          $ref: '#/components/schemas/FieldSelectValidation'
-        format:
-          type: object
-          description: Contains the regex to use to validate the input field
-          readOnly: true
-          example:
-            with: (?-mix:\A\d+\z)
     FieldSelectValidation:
       type: object
       properties:
@@ -275,6 +262,19 @@ components:
           description: Describes whether the field is optional or not
           readOnly: true
           example: false
+    FieldDescription:
+      type: object
+      properties:
+        type:
+          type: string
+          description: the type of the field.
+          readOnly: true
+          example: input
+          enum:
+          - input
+          - select
+        validations:
+          $ref: '#/components/schemas/FieldValidation'
   securitySchemes:
     AuthorizationKey:
       type: apiKey

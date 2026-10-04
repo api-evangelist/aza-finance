@@ -112,32 +112,18 @@ paths:
       x-group-parameters: true
 components:
   schemas:
-    DocumentRequest:
+    ValidationErrorDescription:
       type: object
       properties:
-        document:
-          $ref: '#/components/schemas/Document'
-      example:
-        document:
-          upload: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAACXBIWXMAAAsT
-
-            3Y2wAAAAAElFTkSuQmCC(...)'
-          upload_file_name: passport.png
-          metadata:
-            meta: data
-    PaginationMeta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
+        error:
+          type: string
+          description: Describes what the problem is with the field
+          readOnly: true
+          example: invalid
+      description: The description of the error
       readOnly: true
       example:
-        pagination:
-          next_page: 3
-          total_count: 45
-          total_pages: 5
-          prev_page: 1
-          current_page: 2
+        error: invalid
     Document:
       required:
       - upload
@@ -236,18 +222,33 @@ components:
           documents:
           - error: blank
         document_type: certificate_of_business_name_registration
-    ValidationErrorDescription:
+    DocumentResponse:
       type: object
       properties:
-        error:
-          type: string
-          description: Describes what the problem is with the field
-          readOnly: true
-          example: invalid
-      description: The description of the error
+        object:
+          $ref: '#/components/schemas/Document'
       readOnly: true
       example:
-        error: invalid
+        object:
+          metadata: {}
+          side: front
+          upload: data:image/png;base64,iVBORw0KGg...lFTkSuQmCC
+          expiry_date: '2000-01-23'
+          upload_file_name: example.png
+          upload_content_type: image/png
+          source: Manual
+          document_id: XYZ12345
+          url: https://bitpesa-documents.amazonaws.com/document.pdf
+          issuing_country: NG
+          id: ebe9bc0b-f2f6-4ce8-802a-8b79912d041e
+          upload_file_size: 30255
+          category: category
+          errors:
+            phone_number:
+            - error: invalid
+            documents:
+            - error: blank
+          document_type: certificate_of_business_name_registration
     DocumentListResponse:
       type: object
       properties:
@@ -306,33 +307,6 @@ components:
             documents:
             - error: blank
           document_type: certificate_of_business_name_registration
-    DocumentResponse:
-      type: object
-      properties:
-        object:
-          $ref: '#/components/schemas/Document'
-      readOnly: true
-      example:
-        object:
-          metadata: {}
-          side: front
-          upload: data:image/png;base64,iVBORw0KGg...lFTkSuQmCC
-          expiry_date: '2000-01-23'
-          upload_file_name: example.png
-          upload_content_type: image/png
-          source: Manual
-          document_id: XYZ12345
-          url: https://bitpesa-documents.amazonaws.com/document.pdf
-          issuing_country: NG
-          id: ebe9bc0b-f2f6-4ce8-802a-8b79912d041e
-          upload_file_size: 30255
-          category: category
-          errors:
-            phone_number:
-            - error: invalid
-            documents:
-            - error: blank
-          document_type: certificate_of_business_name_registration
     Pagination:
       type: object
       properties:
@@ -368,6 +342,32 @@ components:
         total_pages: 5
         prev_page: 1
         current_page: 2
+    DocumentRequest:
+      type: object
+      properties:
+        document:
+          $ref: '#/components/schemas/Document'
+      example:
+        document:
+          upload: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAACXBIWXMAAAsT
+
+            3Y2wAAAAAElFTkSuQmCC(...)'
+          upload_file_name: passport.png
+          metadata:
+            meta: data
+    PaginationMeta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+      readOnly: true
+      example:
+        pagination:
+          next_page: 3
+          total_count: 45
+          total_pages: 5
+          prev_page: 1
+          current_page: 2
   securitySchemes:
     AuthorizationKey:
       type: apiKey

@@ -73,6 +73,23 @@ paths:
           description: Internal Server Error.
 components:
   schemas:
+    AccountValidationResult:
+      type: object
+      properties:
+        account_name:
+          type: string
+          readOnly: true
+          example: John Smith
+        mapped_mobile_provider:
+          type: string
+          readOnly: true
+          example: mtn
+        account_status:
+          type: string
+          readOnly: true
+          example: active
+      description: Describes the account holder name on a successful match
+      readOnly: true
     PayoutMethodMobileProviderEnum:
       type: string
       description: 'The Mobile Wallet provider of the recipient:
@@ -210,32 +227,6 @@ components:
       - tmoney
       - vodafone
       - wave
-    AccountValidationResult:
-      type: object
-      properties:
-        account_name:
-          type: string
-          readOnly: true
-          example: John Smith
-        mapped_mobile_provider:
-          type: string
-          readOnly: true
-          example: mtn
-        account_status:
-          type: string
-          readOnly: true
-          example: active
-      description: Describes the account holder name on a successful match
-      readOnly: true
-    AccountValidationError:
-      type: object
-      properties:
-        error:
-          type: string
-          readOnly: true
-          example: Could not find account
-      description: Describes the error message on an unsuccessful match
-      readOnly: true
     AccountValidationResponse:
       type: object
       properties:
@@ -248,6 +239,15 @@ components:
         object:
           account_name: John Smith
           mapped_mobile_provider: mtn
+    AccountValidationError:
+      type: object
+      properties:
+        error:
+          type: string
+          readOnly: true
+          example: Could not find account
+      description: Describes the error message on an unsuccessful match
+      readOnly: true
     AccountValidationRequest:
       required:
       - country

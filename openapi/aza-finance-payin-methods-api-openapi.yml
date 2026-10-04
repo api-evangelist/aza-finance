@@ -163,6 +163,47 @@ paths:
           description: Internal Server Error.
 components:
   schemas:
+    PayinMethodDetails:
+      description: 'Fields needed by the payment processor. Depends on the chose payin type.
+
+
+        See the appropriate model details for more info:
+
+
+        - `NGN::Bank`: see [`PayinMethodDetailsNGNBank`](#model-PayinMethodDetailsNGNBank)
+
+        - `GHS::Mobile`: see [`PayinMethodDetailsMobile`](#model-PayinMethodDetailsMobile)
+
+        - `UGX::Mobile`: see [`PayinMethodDetailsMobile`](#model-PayinMethodDetailsMobile)
+
+
+        Note that some payin processors don''t require additional input, these include `lhv` through `EUR::Bank` and `GBP::Bank`.
+
+        Some providers like `providus` also have all of their fields set as optional, so you might not want to set any values.
+
+        To use these providers please set this value to `{}` (an empty hash)
+
+        '
+      oneOf:
+      - $ref: '#/components/schemas/PayinMethodDetailsNGNBank'
+      - $ref: '#/components/schemas/PayinMethodDetailsMobile'
+      - $ref: '#/components/schemas/PayinMethodDetailsBTC'
+    PayinMethodDetailsNGNBank:
+      type: object
+      properties:
+        phone_number:
+          type: string
+          description: Sender's phone number
+          example: '+2348187221236'
+        account_name:
+          type: string
+          description: Merchant's virtual account name
+          example: Test Merchant
+        account_number:
+          type: string
+          description: Merchant's virtual account number
+          example: '1234567890'
+      description: "```JSON\n  \"details\": {\n    \"phone_number\": \"+2348187221236\",\n    \"account_name\": \"Test Merchant\",\n    \"account_number\": \"1234567890\"\n  }\n```"
     PayoutMethodMobileProviderEnum:
       type: string
       description: 'The Mobile Wallet provider of the recipient:
@@ -300,6 +341,38 @@ components:
       - tmoney
       - vodafone
       - wave
+    ValidationErrorDescription:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Describes what the problem is with the field
+          readOnly: true
+          example: invalid
+      description: The description of the error
+      readOnly: true
+      example:
+        error: invalid
+    PayinMethodDetailsBTC:
+      type: object
+      properties:
+        refund_address:
+          type: string
+          description: Please make sure the refund_address is a valid BTC address belonging to the sender, as that is going to be used in case the transaction has to be refunded.
+      description: "```JSON\n  \"details\": {\n    \"refund_address\": \"n4VQ5YdHf7hLQ2gWQYYrcxoE5B7nWuDFNF\"\n  }\n```"
+    PayinMethodResponse:
+      type: object
+      properties:
+        object:
+          $ref: '#/components/schemas/PayinMethod'
+      readOnly: true
+      example:
+        object:
+          type: GHS::Mobile
+          ux_flow: ussd_popup
+          in_details:
+            phone_number: '+233541299999'
+            mobile_provider: vodafone
     PayinMethod:
       type: object
       properties:
@@ -368,6 +441,123 @@ components:
       externalDocs:
         description: Collections Details
         url: https://docs.transferzero.com/docs/collection-details
+    StateReasonDetails:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Status code of transaction
+          readOnly: true
+          example: '311'
+        category:
+          type: string
+          description: Main category of status code, it could be paid, unknown, pickupable, temporary_error, recipient_error, sender_error, sender_action_required
+          readOnly: true
+          example: temporary_error
+        messages:
+          type: array
+          description: Tiered messages
+          readOnly: true
+          example:
+          - Temporary error
+          - Switch Error
+          - Issuer/Switch inoperative
+          items:
+            type: string
+        description:
+          type: string
+          description: Public, human readable, detailed error message
+          readOnly: true
+          example: The central switch is not accepting transactions at the moment. We will retry the transaction
+      readOnly: true
+      example:
+        code: '311'
+        category: temporary_error
+        messages:
+        - Temporary error - Retriable
+        - Switch Error
+        - Issuer/Switch inoperative
+        description: The central switch is not accepting transactions at the moment. We will retry the transaction
+    PayinMethodState:
+      type: string
+      description: 'The state of the payin method, which can be one of the following:
+
+
+        * `incomplete`: Some fields need to be filled in in_details before we can initiate the collection request.
+
+        * `initial`: All required fields in in_details are present and collection process with the sender will start.
+
+        * `pending`: Collection process has been started, waiting for sender to send funds.
+
+        * `success`: Collection succeeded and funds have been cleared.
+
+        * `processing`: Collection succeeded but waiting for funds to fully clear.
+
+        * `error`: Collection failed. No funds received from sender. You can update or retry the PayinMethod.
+
+        * `mispaid`: Collection succeeded but sender sent the wrong amount.
+
+        * `canceled`: The transaction has been canceled and we will refund the sender soon.
+
+        * `refunded`: The sender has been refunded the amount they sent in.
+
+        * `exception`: An exception happened during processing of the collection. Please contact support.'
+      readOnly: true
+      example: initial
+      enum:
+      - incomplete
+      - initial
+      - pending
+      - success
+      - processing
+      - error
+      - mispaid
+      - canceled
+      - refunded
+      - exception
+    PayinMethodDetailsMobile:
+      type: object
+      properties:
+        phone_number:
+          type: string
+          description: The phone number where the funds should be collected from
+          example: '+256129999999'
+        mobile_provider:
+          $ref: '#/components/schemas/PayoutMethodMobileProviderEnum'
+        country:
+          $ref: '#/components/schemas/PayoutMethodCountryEnum'
+        otp:
+          type: string
+          description: The OTP that the sender received in otp verified ussd popup ux flow.
+      description: "```JSON\n\"details\": {\n  \"phone_number\": \"+256129999999\",\n}\n```"
+    PayinMethodUxFlow:
+      type: string
+      description: 'Describes the collection experience that will be presented to
+
+        the sender. Can be one of the following:
+
+
+        * `ussd_popup`: Payment prompt is pushed to the sender''s phone. They can approve or decline. Supported for GHS::Mobile, UGX::Mobile
+
+        * `ussd_voucher`: Sender has to request an authorization code via ussd of the mobile provider and then provide that code to initiate the transaction. Supported for XOF::Mobile(Orange)
+
+        * `ussd_menu_approval`: Sender has to dial a USSD code and navigate to a list of payments to approve.
+
+        * `otp_verified_ussd_popup`: Sender receives and validates an OTP then a payment prompt is pushed if the OTP they submit is valid.
+
+        * `bank_transfer`: For bank collections. Sender should send funds to the bank account details specified in out_details. Supported for EUR::Bank, GBP::Bank
+
+        * `http_redirect`: The sender will be redirected to a website where they can fill in their details to initiate the collection.'
+      example: ussd_popup
+      enum:
+      - ussd_popup
+      - ussd_voucher
+      - ussd_menu_approval
+      - otp_verified_ussd_popup
+      - bank_transfer
+      - http_redirect
+      - blockchain
+      - unknown
     PayoutMethodCountryEnum:
       type: string
       description: 'The country for the pickup or mobile payout.
@@ -654,196 +844,6 @@ components:
       - EH
       - YE
       - ZM
-    PayinMethodDetails:
-      description: 'Fields needed by the payment processor. Depends on the chose payin type.
-
-
-        See the appropriate model details for more info:
-
-
-        - `NGN::Bank`: see [`PayinMethodDetailsNGNBank`](#model-PayinMethodDetailsNGNBank)
-
-        - `GHS::Mobile`: see [`PayinMethodDetailsMobile`](#model-PayinMethodDetailsMobile)
-
-        - `UGX::Mobile`: see [`PayinMethodDetailsMobile`](#model-PayinMethodDetailsMobile)
-
-
-        Note that some payin processors don''t require additional input, these include `lhv` through `EUR::Bank` and `GBP::Bank`.
-
-        Some providers like `providus` also have all of their fields set as optional, so you might not want to set any values.
-
-        To use these providers please set this value to `{}` (an empty hash)
-
-        '
-      oneOf:
-      - $ref: '#/components/schemas/PayinMethodDetailsNGNBank'
-      - $ref: '#/components/schemas/PayinMethodDetailsMobile'
-      - $ref: '#/components/schemas/PayinMethodDetailsBTC'
-    ValidationErrorDescription:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Describes what the problem is with the field
-          readOnly: true
-          example: invalid
-      description: The description of the error
-      readOnly: true
-      example:
-        error: invalid
-    PayinMethodDetailsNGNBank:
-      type: object
-      properties:
-        phone_number:
-          type: string
-          description: Sender's phone number
-          example: '+2348187221236'
-        account_name:
-          type: string
-          description: Merchant's virtual account name
-          example: Test Merchant
-        account_number:
-          type: string
-          description: Merchant's virtual account number
-          example: '1234567890'
-      description: "```JSON\n  \"details\": {\n    \"phone_number\": \"+2348187221236\",\n    \"account_name\": \"Test Merchant\",\n    \"account_number\": \"1234567890\"\n  }\n```"
-    PayinMethodDetailsMobile:
-      type: object
-      properties:
-        phone_number:
-          type: string
-          description: The phone number where the funds should be collected from
-          example: '+256129999999'
-        mobile_provider:
-          $ref: '#/components/schemas/PayoutMethodMobileProviderEnum'
-        country:
-          $ref: '#/components/schemas/PayoutMethodCountryEnum'
-        otp:
-          type: string
-          description: The OTP that the sender received in otp verified ussd popup ux flow.
-      description: "```JSON\n\"details\": {\n  \"phone_number\": \"+256129999999\",\n}\n```"
-    PayinMethodResponse:
-      type: object
-      properties:
-        object:
-          $ref: '#/components/schemas/PayinMethod'
-      readOnly: true
-      example:
-        object:
-          type: GHS::Mobile
-          ux_flow: ussd_popup
-          in_details:
-            phone_number: '+233541299999'
-            mobile_provider: vodafone
-    PayinMethodDetailsBTC:
-      type: object
-      properties:
-        refund_address:
-          type: string
-          description: Please make sure the refund_address is a valid BTC address belonging to the sender, as that is going to be used in case the transaction has to be refunded.
-      description: "```JSON\n  \"details\": {\n    \"refund_address\": \"n4VQ5YdHf7hLQ2gWQYYrcxoE5B7nWuDFNF\"\n  }\n```"
-    PayinMethodState:
-      type: string
-      description: 'The state of the payin method, which can be one of the following:
-
-
-        * `incomplete`: Some fields need to be filled in in_details before we can initiate the collection request.
-
-        * `initial`: All required fields in in_details are present and collection process with the sender will start.
-
-        * `pending`: Collection process has been started, waiting for sender to send funds.
-
-        * `success`: Collection succeeded and funds have been cleared.
-
-        * `processing`: Collection succeeded but waiting for funds to fully clear.
-
-        * `error`: Collection failed. No funds received from sender. You can update or retry the PayinMethod.
-
-        * `mispaid`: Collection succeeded but sender sent the wrong amount.
-
-        * `canceled`: The transaction has been canceled and we will refund the sender soon.
-
-        * `refunded`: The sender has been refunded the amount they sent in.
-
-        * `exception`: An exception happened during processing of the collection. Please contact support.'
-      readOnly: true
-      example: initial
-      enum:
-      - incomplete
-      - initial
-      - pending
-      - success
-      - processing
-      - error
-      - mispaid
-      - canceled
-      - refunded
-      - exception
-    PayinMethodUxFlow:
-      type: string
-      description: 'Describes the collection experience that will be presented to
-
-        the sender. Can be one of the following:
-
-
-        * `ussd_popup`: Payment prompt is pushed to the sender''s phone. They can approve or decline. Supported for GHS::Mobile, UGX::Mobile
-
-        * `ussd_voucher`: Sender has to request an authorization code via ussd of the mobile provider and then provide that code to initiate the transaction. Supported for XOF::Mobile(Orange)
-
-        * `ussd_menu_approval`: Sender has to dial a USSD code and navigate to a list of payments to approve.
-
-        * `otp_verified_ussd_popup`: Sender receives and validates an OTP then a payment prompt is pushed if the OTP they submit is valid.
-
-        * `bank_transfer`: For bank collections. Sender should send funds to the bank account details specified in out_details. Supported for EUR::Bank, GBP::Bank
-
-        * `http_redirect`: The sender will be redirected to a website where they can fill in their details to initiate the collection.'
-      example: ussd_popup
-      enum:
-      - ussd_popup
-      - ussd_voucher
-      - ussd_menu_approval
-      - otp_verified_ussd_popup
-      - bank_transfer
-      - http_redirect
-      - blockchain
-      - unknown
-    StateReasonDetails:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Status code of transaction
-          readOnly: true
-          example: '311'
-        category:
-          type: string
-          description: Main category of status code, it could be paid, unknown, pickupable, temporary_error, recipient_error, sender_error, sender_action_required
-          readOnly: true
-          example: temporary_error
-        messages:
-          type: array
-          description: Tiered messages
-          readOnly: true
-          example:
-          - Temporary error
-          - Switch Error
-          - Issuer/Switch inoperative
-          items:
-            type: string
-        description:
-          type: string
-          description: Public, human readable, detailed error message
-          readOnly: true
-          example: The central switch is not accepting transactions at the moment. We will retry the transaction
-      readOnly: true
-      example:
-        code: '311'
-        category: temporary_error
-        messages:
-        - Temporary error - Retriable
-        - Switch Error
-        - Issuer/Switch inoperative
-        description: The central switch is not accepting transactions at the moment. We will retry the transaction
   securitySchemes:
     AuthorizationKey:
       type: apiKey
