@@ -1,0 +1,12 @@
+{
+ "url": "https://specification.transferzero.com/generated/openapi.json",
+ "requested_url": "https://specification.transferzero.com/generated/openapi.json",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 385295,
+ "sha256": "e6dd3e0e80e80e6574e56c53205b56ff8c832670061cbe84bb6d218e4bac7026",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
