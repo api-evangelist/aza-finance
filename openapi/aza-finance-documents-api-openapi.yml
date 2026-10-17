@@ -112,18 +112,6 @@ paths:
       x-group-parameters: true
 components:
   schemas:
-    ValidationErrorDescription:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Describes what the problem is with the field
-          readOnly: true
-          example: invalid
-      description: The description of the error
-      readOnly: true
-      example:
-        error: invalid
     Document:
       required:
       - upload
@@ -222,6 +210,54 @@ components:
           documents:
           - error: blank
         document_type: certificate_of_business_name_registration
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: integer
+          description: The number of the current page
+          readOnly: true
+          example: 2
+        next_page:
+          type: integer
+          description: The number of the next page. If no next page exists, this will be `null`
+          readOnly: true
+          example: 3
+        prev_page:
+          type: integer
+          description: The number of the previous page. If no previous page exists, this will be `null`
+          readOnly: true
+          example: 1
+        total_pages:
+          type: integer
+          description: The number of pages in the result set
+          readOnly: true
+          example: 5
+        total_count:
+          type: integer
+          description: The total number of results in the set
+          readOnly: true
+          example: 45
+      readOnly: true
+      example:
+        next_page: 3
+        total_count: 45
+        total_pages: 5
+        prev_page: 1
+        current_page: 2
+    DocumentRequest:
+      type: object
+      properties:
+        document:
+          $ref: '#/components/schemas/Document'
+      example:
+        document:
+          upload: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAACXBIWXMAAAsT
+
+            3Y2wAAAAAElFTkSuQmCC(...)'
+          upload_file_name: passport.png
+          metadata:
+            meta: data
     DocumentResponse:
       type: object
       properties:
@@ -307,54 +343,6 @@ components:
             documents:
             - error: blank
           document_type: certificate_of_business_name_registration
-    Pagination:
-      type: object
-      properties:
-        current_page:
-          type: integer
-          description: The number of the current page
-          readOnly: true
-          example: 2
-        next_page:
-          type: integer
-          description: The number of the next page. If no next page exists, this will be `null`
-          readOnly: true
-          example: 3
-        prev_page:
-          type: integer
-          description: The number of the previous page. If no previous page exists, this will be `null`
-          readOnly: true
-          example: 1
-        total_pages:
-          type: integer
-          description: The number of pages in the result set
-          readOnly: true
-          example: 5
-        total_count:
-          type: integer
-          description: The total number of results in the set
-          readOnly: true
-          example: 45
-      readOnly: true
-      example:
-        next_page: 3
-        total_count: 45
-        total_pages: 5
-        prev_page: 1
-        current_page: 2
-    DocumentRequest:
-      type: object
-      properties:
-        document:
-          $ref: '#/components/schemas/Document'
-      example:
-        document:
-          upload: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAACXBIWXMAAAsT
-
-            3Y2wAAAAAElFTkSuQmCC(...)'
-          upload_file_name: passport.png
-          metadata:
-            meta: data
     PaginationMeta:
       type: object
       properties:
@@ -368,6 +356,18 @@ components:
           total_pages: 5
           prev_page: 1
           current_page: 2
+    ValidationErrorDescription:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Describes what the problem is with the field
+          readOnly: true
+          example: invalid
+      description: The description of the error
+      readOnly: true
+      example:
+        error: invalid
   securitySchemes:
     AuthorizationKey:
       type: apiKey
