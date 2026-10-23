@@ -179,3 +179,9 @@ components:
 externalDocs:
   description: API documentation and onboarding guide
   url: https://docs.transferzero.com/
+x-provenance:
+  method: harvested
+  publisher: AZA Finance
+  source: https://specification.transferzero.com/generated/openapi.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
